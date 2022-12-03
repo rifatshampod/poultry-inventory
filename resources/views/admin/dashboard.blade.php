@@ -24,7 +24,6 @@
     ***********************************-->
     <div id="main-wrapper">
         <x-header />
-        <x-sidenav />
 
         <!--**********************************
             Content body start
