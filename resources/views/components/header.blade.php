@@ -1,3 +1,18 @@
+<!--*******************
+        Preloader start
+    ********************-->
+<div id="preloader">
+    <div class="loader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+        </svg>
+    </div>
+</div>
+<!--*******************
+        Preloader end
+    ********************-->
+
+
 <!--**********************************
             Nav header start
         ***********************************-->
@@ -142,25 +157,25 @@
                 </a>
                 <ul aria-expanded="false">
                     <li>
-                        <a href="flock.html" aria-expanded="false">Flock</a>
+                        <a href="flock" aria-expanded="false">Flock</a>
                     </li>
                     <li>
-                        <a href="farm.html" aria-expanded="false">Farm</a>
+                        <a href="farm" aria-expanded="false">Farm</a>
                     </li>
                     <li>
-                        <a href="expenseType.html" aria-expanded="false">Expense Type</a>
+                        <a href="house" aria-expanded="false">House</a>
                     </li>
                     <li>
-                        <a href="expenseSector.html" aria-expanded="false">Expense Sector</a>
+                        <a href="expense-type" aria-expanded="false">Expense Type</a>
                     </li>
                     <li>
-                        <a href="house.html" aria-expanded="false">House</a>
+                        <a href="expense-sector" aria-expanded="false">Expense Sector</a>
                     </li>
                     <li>
-                        <a href="bonusType.html" aria-expanded="false">Bonus Type</a>
+                        <a href="bonus-type" aria-expanded="false">Bonus Type</a>
                     </li>
                     <li>
-                        <a href="user.html" aria-expanded="false">User</a>
+                        <a href="users" aria-expanded="false">User</a>
                     </li>
                 </ul>
             </li>

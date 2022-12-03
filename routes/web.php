@@ -20,6 +20,15 @@ Route::get('/', function () {
 
 Route::view('dashboard',"admin/dashboard");
 
+//settings
+Route::view('users',"admin/settings/user");
+Route::view('flock',"admin/settings/flock");
+Route::view('farm',"admin/settings/farm");
+Route::view('house',"admin/settings/house");
+Route::view('expense-type',"admin/settings/expenseType");
+Route::view('expense-sector',"admin/settings/expenseSector");
+Route::view('bonus-type',"admin/settings/bonusType");
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
