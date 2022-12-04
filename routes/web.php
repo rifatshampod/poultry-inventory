@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\settingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +22,14 @@ Route::get('/', function () {
 Route::view('dashboard',"admin/dashboard");
 
 //settings
-Route::view('users',"admin/settings/user");
-Route::view('flock',"admin/settings/flock");
-Route::view('farm',"admin/settings/farm");
-Route::view('house',"admin/settings/house");
-Route::view('expense-type',"admin/settings/expenseType");
-Route::view('expense-sector',"admin/settings/expenseSector");
-Route::view('bonus-type',"admin/settings/bonusType");
+Route::get('users',[settingsController::class,'getUser']);
+Route::get('flock',[settingsController::class,'getFlock']);
+Route::get('farm',[settingsController::class,'getFarm']);
+Route::post('add-farm', [settingsController::class,'addFarm']);
+Route::get('house',[settingsController::class,'getHouse']);
+Route::get('expense-type',[settingsController::class,'getExpenseType']);
+Route::get('expense-sector',[settingsController::class,'getExpenseSector']);
+Route::get('bonus-type',[settingsController::class,'getBonusType']);
 
 Auth::routes();
 

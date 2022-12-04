@@ -29,25 +29,26 @@
             </div>
             <div class="container-fluid mt-3">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-5">
                         <div class="card">
                             <div class="card-body">
                                 <div class="mb-4">
                                     <h3>Add Farm</h3>
                                 </div>
-                                <form action="">
+                                <form action="add-farm" method="POST">
+                                    @csrf
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label>Farm Name</label>
-                                            <input type="text" class="form-control input-default" placeholder="Farm Name" />
+                                            <input type="text" name="name" class="form-control input-default" placeholder="Farm Name" />
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Location</label>
-                                            <input type="text" class="form-control input-default" placeholder="Location" />
+                                            <label>Contact Number</label>
+                                            <input type="phone" name="phone" class="form-control input-default" placeholder="Contact Number" />
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Manager</label>
-                                            <input type="text" class="form-control input-default" placeholder="Manager" />
+                                        <div class="form-group col-md-12">
+                                            <label>Address</label>
+                                            <textarea class="form-control input-default" name="address" rows="2" cols="50" placeholder="Address"></textarea>
                                         </div>
                                         <div class="col-md-12">
                                             <div>
@@ -61,7 +62,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-7">
+                        @if (Session::get('status'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{Session::get('status')}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        @endif
+
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">All Farm</h4>
@@ -70,93 +81,31 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">Farm</th>
-                                                <th scope="col">Location</th>
-                                                <th scope="col">Manager</th>
-                                                <th scope="col">Contact</th>
+                                                <th scope="col">Address</th>
+                                                <th scope="col">Contact Number</th>
                                                 <th class="" scope="col">
                                                     <span class="float-right">Action</span>
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($farmList as $item)
                                             <tr>
-                                                <td>Farm Name</td>
-                                                <td>Bhaluka</td>
-                                                <td>Shompod</td>
-                                                <td>+8801887980841</td>
+                                                <td>{{$item['name']}}</td>
+                                                <td>{{$item['address']}}</td>
+                                                <td>{{$item['phone']}}</td>
                                                 <td>
-                                                    <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
+                                                    <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i>
                                                         </a>
                                                         <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
                                                         </a>
                                                     </span>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>Farm Name</td>
-                                                <td>Bhaluka</td>
-                                                <td>Shompod</td>
-                                                <td>+8801887980841</td>
-                                                <td>
-                                                    <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
-                                                        </a>
-                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
-                                                        </a>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Farm Name</td>
-                                                <td>Bhaluka</td>
-                                                <td>Shompod</td>
-                                                <td>+8801887980841</td>
-                                                <td>
-                                                    <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
-                                                        </a>
-                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
-                                                        </a>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Farm Name</td>
-                                                <td>Bhaluka</td>
-                                                <td>Shompod</td>
-                                                <td>+8801887980841</td>
-                                                <td>
-                                                    <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
-                                                        </a>
-                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
-                                                        </a>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Farm Name</td>
-                                                <td>Bhaluka</td>
-                                                <td>Shompod</td>
-                                                <td>+8801887980841</td>
-                                                <td>
-                                                    <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
-                                                        </a>
-                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
-                                                        </a>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Farm Name</td>
-                                                <td>Bhaluka</td>
-                                                <td>Shompod</td>
-                                                <td>+8801887980841</td>
-                                                <td>
-                                                    <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
-                                                        </a>
-                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
-                                                        </a>
-                                                    </span>
-                                                </td>
-                                            </tr>
+
+                                            @endforeach
+
+
                                         </tbody>
                                     </table>
                                 </div>
