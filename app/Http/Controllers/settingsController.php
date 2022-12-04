@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Farm;
+use App\Models\House;
 
 class settingsController extends Controller
 {
@@ -18,11 +19,11 @@ class settingsController extends Controller
     }
     function addFarm(Request $req){
 
-        $farm = new Farm;
-        $farm->name = $req->input('name');
-        $farm->address=$req->input('address');
-        $farm->phone=$req->input('phone');
-        $farm->save();
+        $data = new Farm;
+        $data->name = $req->input('name');
+        $data->address=$req->input('address');
+        $data->phone=$req->input('phone');
+        $data->save();
 
         $req->session()->flash('status','New farm added successfully');
         return redirect()->back();
@@ -30,8 +31,24 @@ class settingsController extends Controller
 
     //House
     function getHouse(){
-        return view('admin/settings/house');
+
+        $farmList = Farm::all();
+        $houseList = House::all();
+
+        return view('admin/settings/house')->with('farmList', $farmList)->with('houseList', $houseList);
     }
+    function addHouse(Request $req){
+
+        $data = new House;
+        $data->name = $req->input('name');
+        $data->farm_id=$req->input('farm_id');
+        $data->save();
+
+        $req->session()->flash('status','New house added successfully');
+        return redirect()->back();
+    }
+
+    //Expense Type
     function getExpenseType(){
         return view('admin/settings/expenseType');
     }

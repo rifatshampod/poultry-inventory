@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Farm extends Model
+class House extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-    'name' , 'address' , 'phone',
+    'name' , 'farm_id' ,
     ];
-
     protected $guarded = ['id'];
 
-    public function house()
+    public function farm()
     {
-    return $this->hasMany(House::class);
+    return $this->belongsTo(Farm::class);
     }
 }

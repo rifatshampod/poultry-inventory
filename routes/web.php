@@ -26,7 +26,10 @@ Route::get('users',[settingsController::class,'getUser']);
 Route::get('flock',[settingsController::class,'getFlock']);
 Route::get('farm',[settingsController::class,'getFarm']);
 Route::post('add-farm', [settingsController::class,'addFarm']);
+
 Route::get('house',[settingsController::class,'getHouse']);
+Route::post('add-house', [settingsController::class,'addHouse']);
+
 Route::get('expense-type',[settingsController::class,'getExpenseType']);
 Route::get('expense-sector',[settingsController::class,'getExpenseSector']);
 Route::get('bonus-type',[settingsController::class,'getBonusType']);

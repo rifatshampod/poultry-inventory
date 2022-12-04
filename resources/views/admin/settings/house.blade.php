@@ -35,15 +35,24 @@
                                 <div class="mb-4">
                                     <h3>Add House</h3>
                                 </div>
-                                <form action="">
+                                <form action="add-house" method="POST">
+                                    @csrf
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label>House Name</label>
-                                            <input type="text" class="form-control input-default" placeholder="House Name" />
+                                            <input type="name" name="name" class="form-control input-default" placeholder="House Name" />
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Farm Name</label>
-                                            <input type="text" class="form-control input-default" placeholder="Farm Name" />
+                                            <select name="farm_id" class="form-control input-default">
+                                                <option selected disabled hidden>
+                                                    Select a Farm...
+                                                </option>
+                                                @foreach ($farmList as $item)
+                                                <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                                @endforeach
+                                            </select>
+
                                         </div>
                                         <div class="col-md-12">
                                             <div>
@@ -73,9 +82,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($houseList as $item)
                                             <tr>
-                                                <td>House 23</td>
-                                                <td>Alpa</td>
+                                                <td>{{$item['name']}}</td>
+                                                <td>{{$item->farm->name}}</td>
                                                 <td>
                                                     <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
                                                         </a>
@@ -84,28 +94,10 @@
                                                     </span>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>House 23</td>
-                                                <td>Alpa</td>
-                                                <td>
-                                                    <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
-                                                        </a>
-                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
-                                                        </a>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>House 23</td>
-                                                <td>Alpa</td>
-                                                <td>
-                                                    <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
-                                                        </a>
-                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
-                                                        </a>
-                                                    </span>
-                                                </td>
-                                            </tr>
+
+                                            @endforeach
+
+
                                         </tbody>
                                     </table>
                                 </div>
