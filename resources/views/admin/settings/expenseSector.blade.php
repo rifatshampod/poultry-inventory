@@ -29,7 +29,7 @@
             </div>
             <div class="container-fluid mt-3">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-5">
                         <div class="card">
                             <div class="card-body">
                                 <div class="mb-4">
@@ -53,7 +53,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-7">
+                        @if (Session::get('status'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{Session::get('status')}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
+
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">All Expense Sector</h4>

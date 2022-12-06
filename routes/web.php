@@ -16,7 +16,7 @@ use App\Http\Controllers\settingsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin/dashboard');
 });
 
 Route::view('dashboard',"admin/dashboard");
@@ -31,8 +31,13 @@ Route::get('house',[settingsController::class,'getHouse']);
 Route::post('add-house', [settingsController::class,'addHouse']);
 
 Route::get('expense-type',[settingsController::class,'getExpenseType']);
+Route::post('add-expense-type',[settingsController::class,'addExpenseType']);
+
 Route::get('expense-sector',[settingsController::class,'getExpenseSector']);
+Route::post('add-expense-sector',[settingsController::class,'addExpenseSector']);
+
 Route::get('bonus-type',[settingsController::class,'getBonusType']);
+Route::post('add-bonus-type',[settingsController::class,'addBonusType']);
 
 Auth::routes();
 

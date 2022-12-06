@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bonus_type;
+use App\Models\Expense_sector;
+use App\Models\Expense_type;
 use Illuminate\Http\Request;
 use App\Models\Farm;
 use App\Models\House;
@@ -50,14 +53,56 @@ class settingsController extends Controller
 
     //Expense Type
     function getExpenseType(){
-        return view('admin/settings/expenseType');
+
+        $getList = Expense_type::all();
+
+        return view('admin/settings/expenseType')->with('getList', $getList);
     }
+    function addExpenseType(Request $req){
+
+        $data = new Expense_type();
+        $data->name = $req->input('name');
+        $data->save();
+
+        $req->session()->flash('status','New expense type added successfully');
+        return redirect()->back();
+    }
+
+    //expense sector
     function getExpenseSector(){
-        return view('admin/settings/expenseSector');
+        
+        $getList = Expense_sector::all();
+        
+        return view('admin/settings/expenseSector')->with('getList', $getList);
     }
+    function addExpenseSector(Request $req){
+
+        $data = new Expense_sector();
+        $data->name = $req->input('name');
+        $data->save();
+
+        $req->session()->flash('status','New expense sector added successfully');
+        return redirect()->back();
+    }
+
+    //bonus type
     function getBonusType(){
-        return view('admin/settings/bonusType');
+        
+        $getList = Bonus_type::all();
+
+        return view('admin/settings/bonusType')->with('getList', $getList);
     }
+    function addBonusType(Request $req){
+
+        $data = new Bonus_type();
+        $data->name = $req->input('name');
+        $data->description = $req->input('description');
+        $data->save();
+
+        $req->session()->flash('status','New bonus type added successfully');
+        return redirect()->back();
+    }
+
     function getUser(){
         return view('admin/settings/user');
     }

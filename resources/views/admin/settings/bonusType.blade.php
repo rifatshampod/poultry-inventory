@@ -29,21 +29,22 @@
             </div>
             <div class="container-fluid mt-3">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-5">
                         <div class="card">
                             <div class="card-body">
                                 <div class="mb-4">
                                     <h3>Add Bonus Type</h3>
                                 </div>
-                                <form action="">
+                                <form action="add-bonus-type" method="POST">
+                                    @csrf
                                     <div class="row">
                                         <div class="form-group col-md-12">
                                             <label>Type Name</label>
-                                            <input type="text" class="form-control input-default" placeholder="Type Name" />
+                                            <input type="text" name="name" class="form-control input-default" placeholder="Type Name" />
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>Description</label>
-                                            <textarea class="form-control input-default" name="" id="" cols="" rows="6" placeholder="Description"></textarea>
+                                            <textarea class="form-control input-default" name="description" id="" cols="" rows="6" placeholder="Description"></textarea>
                                         </div>
                                         <div class="col-md-12">
                                             <div>
@@ -57,7 +58,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-7">
+                        @if (Session::get('status'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{Session::get('status')}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
+
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">All Bonus Type</h4>
@@ -73,9 +83,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($getList as $item)
                                             <tr>
-                                                <td>Regular</td>
-                                                <td>Lorem ipsum dolor sit amet.</td>
+                                                <td>{{$item['name']}}</td>
+                                                <td>{{$item['description']}}</td>
                                                 <td>
                                                     <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
                                                         </a>
@@ -84,28 +95,10 @@
                                                     </span>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>Regular</td>
-                                                <td>Lorem ipsum dolor sit amet.</td>
-                                                <td>
-                                                    <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
-                                                        </a>
-                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
-                                                        </a>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Regular</td>
-                                                <td>Lorem ipsum dolor sit amet.</td>
-                                                <td>
-                                                    <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
-                                                        </a>
-                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
-                                                        </a>
-                                                    </span>
-                                                </td>
-                                            </tr>
+
+                                            @endforeach
+
+
                                         </tbody>
                                     </table>
                                 </div>
