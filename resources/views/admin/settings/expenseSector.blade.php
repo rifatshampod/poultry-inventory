@@ -35,11 +35,12 @@
                                 <div class="mb-4">
                                     <h3>Add Expense Sector</h3>
                                 </div>
-                                <form action="">
+                                <form action="add-expense-sector" method="post">
+                                    @csrf
                                     <div class="row">
                                         <div class="form-group col-md-12">
                                             <label>Sector Name</label>
-                                            <input type="text" class="form-control input-default" placeholder="Sector Name" />
+                                            <input type="text" name="name" class="form-control input-default" placeholder="Sector Name" />
                                         </div>
                                         <div class="col-md-12">
                                             <div>
@@ -78,9 +79,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($getList as $item)
                                             <tr>
-                                                <td>Feed</td>
-                                                <td>2000</td>
+                                                <td>{{$item['name']}}</td>
+                                                <td>-</td>
                                                 <td>
                                                     <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
                                                         </a>
@@ -89,28 +91,10 @@
                                                     </span>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>Feed</td>
-                                                <td>2000</td>
-                                                <td>
-                                                    <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
-                                                        </a>
-                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
-                                                        </a>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Feed</td>
-                                                <td>2000</td>
-                                                <td>
-                                                    <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
-                                                        </a>
-                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
-                                                        </a>
-                                                    </span>
-                                                </td>
-                                            </tr>
+
+                                            @endforeach
+
+
                                         </tbody>
                                     </table>
                                 </div>
