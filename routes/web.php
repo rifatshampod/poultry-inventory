@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\settingsController;
+use App\Http\Controllers\hrController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,9 @@ Route::get('/', function () {
 });
 
 Route::view('dashboard',"admin/dashboard");
+
+//core HR
+Route::get('active-employee',[hrController::class,'getEmployee']);
 
 //settings
 Route::get('users',[settingsController::class,'getUser']);

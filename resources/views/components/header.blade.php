@@ -132,7 +132,7 @@
                     <i class="icon-grid menu-icon"></i><span class="nav-text">Core HR</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="activeEmployee.html">Active Employee</a></li>
+                    <li><a href="active-employee">Active Employee</a></li>
                     <li><a href="addEmployee.html">Add Employee</a></li>
                     <li><a href="leaveRequest.html">Leave Request</a></li>
                     <li><a href="payroll.html">Payroll</a></li>
