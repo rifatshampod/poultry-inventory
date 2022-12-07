@@ -24,6 +24,7 @@ Route::view('dashboard',"admin/dashboard");
 
 //core HR
 Route::get('active-employee',[hrController::class,'getEmployee']);
+Route::post('add-employee',[hrController::class,'addEmployee']);
 
 //settings
 Route::get('users',[settingsController::class,'getUser']);

@@ -35,38 +35,39 @@
                                 <div class="mb-4">
                                     <h3>Add Employee</h3>
                                 </div>
-                                <form action="">
+                                <form action="add-employee" method="POST">
+                                    @csrf
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label>Name</label>
-                                            <input type="text" class="form-control input-default" placeholder="Name" />
+                                            <input type="text" name="name" class="form-control input-default" placeholder="Name" />
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Phone</label>
-                                            <input type="number" class="form-control input-default" placeholder="Number" />
+                                            <input type="number" name="phone" class="form-control input-default" placeholder="Number" />
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-12">
                                             <label>Address</label>
-                                            <input type="text" class="form-control input-default" placeholder="Address" />
+                                            <input type="text" name="address" class="form-control input-default" placeholder="Address" />
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Designation</label>
-                                                <select class="form-control input-default">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
+                                                <select class="form-control input-default" name="designation_id">
+                                                    <!--    <option value="" selected disabled hidden>Select Employee Designation</option> -->
+                                                    @foreach ($designationList as $item)
+                                                    <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>NID</label>
-                                            <input type="text" class="form-control input-default" placeholder="NID No." />
+                                            <input type="number" name="nid" class="form-control input-default" placeholder="NID No." />
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Salary</label>
-                                            <input type="number" class="form-control input-default" placeholder="Salary" />
+                                            <label>Monthly Salary</label>
+                                            <input type="number" name="salary" class="form-control input-default" placeholder="Salary" />
                                         </div>
                                         <div class="col-md-12">
                                             <div>
@@ -81,6 +82,15 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
+                        @if (Session::get('status'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{Session::get('status')}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
+
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">All Employee</h4>
@@ -98,11 +108,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($employeeList as $item)
                                             <tr>
-                                                <td>Arif Bipu</td>
-                                                <td>01887980841</td>
-                                                <td>Team Lead</td>
-                                                <td>$20000</td>
+                                                <td>{{$item['name']}}</td>
+                                                <td>{{$item['phone']}}</td>
+                                                <td>{{$item->designation->name}}</td>
+                                                <td>{{$item['salary']}}</td>
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
@@ -116,60 +127,9 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>Arif Bipu</td>
-                                                <td>01887980841</td>
-                                                <td>Team Lead</td>
-                                                <td>$20000</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="singleEmployee.html">View</a>
-                                                            <a class="dropdown-item text-warning" href="#">Edit</a>
-                                                            <a class="dropdown-item text-danger" href="#">Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Arif Bipu</td>
-                                                <td>01887980841</td>
-                                                <td>Team Lead</td>
-                                                <td>$20000</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="singleEmployee.html">View</a>
-                                                            <a class="dropdown-item text-warning" href="#">Edit</a>
-                                                            <a class="dropdown-item text-danger" href="#">Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Arif Bipu</td>
-                                                <td>01887980841</td>
-                                                <td>Team Lead</td>
-                                                <td>$20000</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="singleEmployee.html">View</a>
-                                                            <a class="dropdown-item text-warning" href="#">Edit</a>
-                                                            <a class="dropdown-item text-danger" href="#">Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+
+                                            @endforeach
+
                                         </tbody>
                                     </table>
                                 </div>
