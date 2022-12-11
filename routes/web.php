@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\settingsController;
 use App\Http\Controllers\hrController;
+use App\Http\Controllers\chickenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,12 @@ Route::get('/', function () {
 
 Route::view('dashboard',"admin/dashboard");
 
+//Chicken
+Route::get('all-chicken', [chickenController::class,'getChicken']);
+Route::get('add-chicken', [chickenController::class,'getAddChicken']);
+Route::get('daily-chicken', [chickenController::class,'getHouseChicken']);
+
+
 //core HR
 Route::get('active-employee',[hrController::class,'getEmployee']);
 Route::post('add-employee',[hrController::class,'addEmployee']);
@@ -29,7 +36,7 @@ Route::post('add-employee',[hrController::class,'addEmployee']);
 Route::get('all-leave',[hrController::class,'getLeaveRequests']);
 Route::post('add-leave',[hrController::class,'addLeaveRequests']);
 
-//settings
+//settings         ---------------------------------------------------
 Route::get('users',[settingsController::class,'getUser']);
 Route::get('flock',[settingsController::class,'getFlock']);
 Route::get('farm',[settingsController::class,'getFarm']);
@@ -49,8 +56,7 @@ Route::post('add-bonus-type',[settingsController::class,'addBonusType']);
 
 Route::get('designation',[settingsController::class,'getDesignation']);
 Route::post('add-designation',[settingsController::class,'addDesignation']);
-
-
+//Settings ---------------------------------------------------------------------
 
 Auth::routes();
 

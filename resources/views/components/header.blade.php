@@ -85,8 +85,8 @@
                     <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Chicken</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="allChicken.html">All Chicken (House)</a></li>
-                    <li><a href="dailyChicken.html">Daily Chicken</a></li>
+                    <li><a href="all-chicken">All Chicken (House Wise)</a></li>
+                    <li><a href="daily-chicken">Daily Chicken</a></li>
                 </ul>
             </li>
             <li>
