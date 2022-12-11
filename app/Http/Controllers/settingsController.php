@@ -8,6 +8,7 @@ use App\Models\Expense_type;
 use Illuminate\Http\Request;
 use App\Models\Farm;
 use App\Models\House;
+use App\Models\Designation;
 
 class settingsController extends Controller
 {
@@ -93,6 +94,24 @@ class settingsController extends Controller
         return view('admin/settings/bonusType')->with('getList', $getList);
     }
     function addBonusType(Request $req){
+
+        $data = new Bonus_type();
+        $data->name = $req->input('name');
+        $data->description = $req->input('description');
+        $data->save();
+
+        $req->session()->flash('status','New bonus type added successfully');
+        return redirect()->back();
+    }
+
+    //designation
+    function getDesignation(){
+        
+        $getList = Designation::all();
+
+        return view('admin/settings/designation')->with('getList', $getList);
+    }
+    function addDesignation(Request $req){
 
         $data = new Bonus_type();
         $data->name = $req->input('name');

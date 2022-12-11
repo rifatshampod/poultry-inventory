@@ -133,8 +133,8 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="active-employee">Active Employee</a></li>
-                    <li><a href="addEmployee.html">Add Employee</a></li>
-                    <li><a href="leaveRequest.html">Leave Request</a></li>
+                    {{-- <li><a href="addEmployee.html">Add Employee</a></li> --}}
+                    <li><a href="all-leave">Leave Request</a></li>
                     <li><a href="payroll.html">Payroll</a></li>
                 </ul>
             </li>
@@ -157,23 +157,27 @@
                 </a>
                 <ul aria-expanded="false">
                     <li>
-                        <a href="flock" aria-expanded="false">Flock</a>
+                        <a href="flock" aria-expanded="false">Flocks</a>
                     </li>
                     <li>
-                        <a href="farm" aria-expanded="false">Farm</a>
+                        <a href="farm" aria-expanded="false">Farms</a>
                     </li>
                     <li>
-                        <a href="house" aria-expanded="false">House</a>
+                        <a href="house" aria-expanded="false">Houses</a>
                     </li>
                     <li>
-                        <a href="expense-type" aria-expanded="false">Expense Type</a>
+                        <a href="expense-type" aria-expanded="false">Expense Types</a>
                     </li>
                     <li>
-                        <a href="expense-sector" aria-expanded="false">Expense Sector</a>
+                        <a href="expense-sector" aria-expanded="false">Expense Sectors</a>
                     </li>
                     <li>
-                        <a href="bonus-type" aria-expanded="false">Bonus Type</a>
+                        <a href="bonus-type" aria-expanded="false">Bonus Types</a>
                     </li>
+                    <li>
+                        <a href="designation" aria-expanded="false">Designations</a>
+                    </li>
+
                     <li>
                         <a href="users" aria-expanded="false">User</a>
                     </li>

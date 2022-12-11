@@ -25,6 +25,9 @@ Route::view('dashboard',"admin/dashboard");
 //core HR
 Route::get('active-employee',[hrController::class,'getEmployee']);
 Route::post('add-employee',[hrController::class,'addEmployee']);
+//leave
+Route::get('all-leave',[hrController::class,'getLeaveRequests']);
+Route::post('add-leave',[hrController::class,'addLeaveRequests']);
 
 //settings
 Route::get('users',[settingsController::class,'getUser']);
@@ -43,6 +46,11 @@ Route::post('add-expense-sector',[settingsController::class,'addExpenseSector'])
 
 Route::get('bonus-type',[settingsController::class,'getBonusType']);
 Route::post('add-bonus-type',[settingsController::class,'addBonusType']);
+
+Route::get('designation',[settingsController::class,'getDesignation']);
+Route::post('add-designation',[settingsController::class,'addDesignation']);
+
+
 
 Auth::routes();
 

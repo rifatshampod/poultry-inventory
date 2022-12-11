@@ -21,6 +21,7 @@ class CreateEmployeesTable extends Migration
             $table->foreignId('designation_id')->constrained();
             $table->float('salary', 8, 2)->nullable();
             $table->string('nid')->nullable();
+            $table->string('image')->nullable();
             $table->boolean('status')->default(1);
             $table->timestamps();
         });
