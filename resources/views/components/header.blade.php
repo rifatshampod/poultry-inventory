@@ -82,6 +82,16 @@
             </li>
             <li class="">
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="icon-globe-alt menu-icon"></i><span class="nav-text">DOC</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="all-doc">All DOC</a></li>
+                    <li><a href="add-doc">Add DOC</a></li>
+                </ul>
+            </li>
+
+            <li class="">
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                     <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Chicken</span>
                 </a>
                 <ul aria-expanded="false">

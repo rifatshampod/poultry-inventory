@@ -9,11 +9,26 @@ use Illuminate\Http\Request;
 use App\Models\Farm;
 use App\Models\House;
 use App\Models\Designation;
+use App\Models\Flock;
 
 class settingsController extends Controller
 {
     function getFlock(){
-        return view('admin/settings/flock');
+        $flockList = Flock::all();
+
+        return view('admin/settings/flock')->with('flockList', $flockList);
+    }
+    function addFlock(Request $req){
+
+        $data = new Flock;
+        $data->name = $req->input('name');
+        $data->start_date=$req->input('start_date');
+        $data->end_date=$req->input('end_date');
+        $data->status = 1;
+        $data->save();
+
+        $req->session()->flash('status','New flock added successfully');
+        return redirect()->back();
     }
     //Farm 
     function getFarm(){
@@ -125,4 +140,6 @@ class settingsController extends Controller
     function getUser(){
         return view('admin/settings/user');
     }
+
+    
 }

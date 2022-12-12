@@ -35,19 +35,20 @@
                                 <div class="mb-4">
                                     <h3>Add Flock</h3>
                                 </div>
-                                <form action="">
+                                <form action="add-flock" method="POST">
+                                    @csrf
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label>Flock Name</label>
-                                            <input type="text" class="form-control input-default" placeholder="Flock Name" />
+                                            <input type="text" name="name" class="form-control input-default" placeholder="Flock Name" />
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Start Date</label>
-                                            <input type="date" class="form-control input-default" placeholder="date" />
+                                            <input type="date" name="start_date" class="form-control input-default" placeholder="date" />
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Assumed complete date</label>
-                                            <input type="date" class="form-control input-default" placeholder="Assumed complete date" />
+                                            <input type="date" name="end_date" class="form-control input-default" placeholder="Assumed complete date" />
                                         </div>
                                         <div class="col-md-12">
                                             <div>
@@ -79,32 +80,20 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($flockList as $item)
                                             <tr>
-                                                <td>Flock Name</td>
-                                                <td>01/02/2022</td>
-                                                <td>02/02/2023</td>
+                                                <td>{{$item['name']}}</td>
+                                                <td>{{ \Carbon\Carbon::parse($item['start_date'])->format('d/m/Y')}}</td>
+                                                <td>{{ \Carbon\Carbon::parse($item['end_date'])->format('d/m/Y')}}</td>
                                                 <td>
+                                                    @if($item['status']==1)
                                                     <span class="label gradient-1 btn-rounded">Active</span>
-                                                </td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="singleSale.html">View</a>
-                                                            <a class="dropdown-item text-warning" href="#">Edit</a>
-                                                            <a class="dropdown-item text-warning" href="#">Complete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Flock Name</td>
-                                                <td>01/02/2022</td>
-                                                <td>02/02/2023</td>
-                                                <td>
+                                                    @else
                                                     <span class="label gradient-2 btn-rounded">Completed</span>
+                                                    @endif
+
+
+
                                                 </td>
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
@@ -119,46 +108,9 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>Flock Name</td>
-                                                <td>01/02/2022</td>
-                                                <td>02/02/2023</td>
-                                                <td>
-                                                    <span class="label gradient-2 btn-rounded">Completed</span>
-                                                </td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="singleSale.html">View</a>
-                                                            <a class="dropdown-item text-warning" href="#">Edit</a>
-                                                            <a class="dropdown-item text-warning" href="#">Complete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Flock Name</td>
-                                                <td>01/02/2022</td>
-                                                <td>02/02/2023</td>
-                                                <td>
-                                                    <span class="label gradient-2 btn-rounded">Completed</span>
-                                                </td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="singleSale.html">View</a>
-                                                            <a class="dropdown-item text-warning" href="#">Edit</a>
-                                                            <a class="dropdown-item text-warning" href="#">Complete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+
+                                            @endforeach
+
                                         </tbody>
                                     </table>
                                 </div>
