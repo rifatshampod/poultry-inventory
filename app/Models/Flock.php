@@ -14,4 +14,9 @@ class Flock extends Model
     ];
 
     protected $guarded = ['id'];
+
+    public function chicken()
+    {
+    return $this->hasMany(Chicken::class);
+    }
 }

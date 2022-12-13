@@ -19,4 +19,10 @@ class Farm extends Model
     {
     return $this->hasMany(House::class);
     }
+
+    public function chicken()
+    {
+    return $this->hasMany(Chicken::class);
+    }
+
 }

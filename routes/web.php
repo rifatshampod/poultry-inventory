@@ -29,7 +29,7 @@ Route::get('add-chicken', [chickenController::class,'getAddChicken']);
 Route::get('daily-chicken', [chickenController::class,'getHouseChicken']);
 //DOC
 Route::get('all-doc', [chickenController::class,'getDoc']);
-Route::get('add-doc', [chickenController::class,'getAddChicken']);
+Route::post('add-doc', [chickenController::class,'addDoc']);
 
 
 //core HR

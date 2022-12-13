@@ -18,4 +18,9 @@ class House extends Model
     {
     return $this->belongsTo(Farm::class);
     }
+
+    public function chicken()
+    {
+    return $this->hasMany(Chicken::class);
+    }
 }

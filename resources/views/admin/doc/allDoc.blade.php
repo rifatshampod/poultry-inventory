@@ -83,23 +83,18 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($docList as $item)
                                             <tr>
-                                                <td>Flock 38</td>
-                                                <td>House 1</td>
-                                                <td>11/12/2022</td>
-                                                <td>6,500</td>
-                                                <td>Uttam Khan Hatchery</td>
-                                                <td>60</td>
-                                                <td>
-                                                    ND + IB(Live)
-                                                    NDS Yellow
-                                                    Transmune IBD
-                                                    Vectormune ND</td>
-
-                                                <td>45</td>
-                                                <td>12/12/2022</td>
-                                                <td>13/01/2023</td>
-
+                                                <td>{{$item->flock->name}}</td>
+                                                <td>{{$item->house->name}}</td>
+                                                <td>{{$item['date']}}</td>
+                                                <td>{{$item['sum_of_doc']}}</td>
+                                                <td>{{$item['hatchery']}}</td>
+                                                <td>{{$item['bird_in_case']}}</td>
+                                                <td>{{$item['vaccine']}}</td>
+                                                <td>{{$item['density']}}</td>
+                                                <td>{{$item['catching_start']}}</td>
+                                                <td>{{$item['catching_end']}}</td>
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
@@ -114,6 +109,9 @@
                                                     </div>
                                                 </td>
                                             </tr>
+
+                                            @endforeach
+
 
                                         </tbody>
                                     </table>
@@ -589,52 +587,52 @@
                         <div class="mb-4">
                             <h5 class="modal-title">Add Doc</h5>
                         </div>
-                        <form action="">
+                        <form action="add-doc" method="POST">
+                            @csrf
+
+                            <input type="hidden" name="flock_id" value="{{$flock->id}}">
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label> Date</label>
-                                        <input type="date" class="form-control input-default" placeholder="Input Default" />
+                                        <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>Farm:</label>
-                                        <select class="form-control input-default">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
+                                        <select class="form-control input-default" name="farm_id">
+                                            <option value="{{$farm1->id}}" selected>{{$farm1->name}}</option>
                                         </select>
+
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>House</label>
-                                        <select class="form-control input-default">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
+                                        <select class="form-control input-default" name="house_id">
+                                            @foreach ($house1 as $item)
+                                            <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label> Sum of Doc</label>
-                                        <input type="number" class="form-control input-default" placeholder="Total Doc" />
+                                        <input type="number" class="form-control input-default" name="sum_of_doc" placeholder="Total Doc" />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label> Hathery</label>
-                                        <input type="text" class="form-control input-default" placeholder="Hatchery Name" />
+                                        <label> Hatchery</label>
+                                        <input type="text" class="form-control input-default" name="hatchery" placeholder="Hatchery Name" />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label> Bird In Case</label>
-                                        <input type="number" class="form-control input-default" placeholder="Bird" />
+                                        <input type="number" class="form-control input-default" name="bird_in_case" placeholder="Bird" />
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-4">
@@ -645,25 +643,29 @@
                                         <div class="col-lg-3">
                                             <div class="form-check form-check-inline">
                                                 <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input" value="" />ND + IB(Live)</label>
+                                                    <input type="checkbox" class="form-check-input" name="vaccine[]" value="ND + IB(Live)" />ND + IB(Live)</label>
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
                                             <div class="form-check form-check-inline">
                                                 <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input" value="" />NDS Yellow</label>
+                                                    <input type="checkbox" class="form-check-input" name="vaccine[]" value="NDS Yellow" />NDS Yellow</label>
+
+
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
                                             <div class="form-check form-check-inline">
                                                 <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input" value="" />Transmune IBD</label>
+                                                    <input type="checkbox" class="form-check-input" name="vaccine[]" value="Transmune IBD" />Transmune IBD</label>
+
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
                                             <div class="form-check form-check-inline">
                                                 <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input" value="" />Vectormune ND</label>
+                                                    <input type="checkbox" class="form-check-input" name="vaccine[]" value="Vectormune ND" />Vectormune ND</label>
+
                                             </div>
                                         </div>
                                     </div>
@@ -671,19 +673,19 @@
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label> Density</label>
-                                        <input type="text" class="form-control input-default" placeholder="Density" />
+                                        <input type="number" class="form-control input-default" name="density" placeholder="Density" />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label> Catching Start Date</label>
-                                        <input type="date" class="form-control input-default" placeholder="" />
+                                        <input type="date" class="form-control input-default" name="catching_start" placeholder="" />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label> Catching End date</label>
-                                        <input type="date" class="form-control input-default" placeholder="" />
+                                        <input type="date" class="form-control input-default" name="catching_end" placeholder="" />
                                     </div>
                                 </div>
                             </div>
