@@ -14,11 +14,14 @@ use App\Models\Flock;
 class settingsController extends Controller
 {
     function getFlock(){
-        $flockList = Flock::all();
+        $flockList = Flock::orderBy('id','desc')
+        ->get();
 
         return view('admin/settings/flock')->with('flockList', $flockList);
     }
     function addFlock(Request $req){
+
+        Flock::query()->update(['status' => 0]);
 
         $data = new Flock;
         $data->name = $req->input('name');

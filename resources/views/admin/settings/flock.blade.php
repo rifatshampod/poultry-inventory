@@ -92,8 +92,6 @@
                                                     <span class="label gradient-2 btn-rounded">Completed</span>
                                                     @endif
 
-
-
                                                 </td>
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">

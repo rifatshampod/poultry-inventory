@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class chickenController extends Controller
 {
+    function getDoc(){
+        return view('admin/doc/allDoc');
+    }
+
     function getChicken(){
         return view('admin/chicken/allChicken');
     }
