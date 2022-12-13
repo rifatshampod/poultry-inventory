@@ -30,10 +30,16 @@ class chickenController extends Controller
         $flock = Flock::where('status',1)
         ->first();
 
-        $docList = Chicken::where('farm_id',1)
+        $docList1 = Chicken::where('farm_id',1)
+        ->get();
+        $docList2 = Chicken::where('farm_id',2)
+        ->get();
+        $docList3 = Chicken::where('farm_id',3)
+        ->get();
+        $docList4 = Chicken::where('farm_id',4)
         ->get();
 
-        return view('admin/doc/allDoc')->with('docList', $docList)->with('farm1',$farm1)->with('house1', $house1)->with('flock', $flock);
+        return view('admin/doc/allDoc')->with('docList1', $docList1)->with('docList2', $docList2)->with('docList3', $docList3)->with('docList4', $docList4)->with('farm1',$farm1)->with('house1', $house1)->with('flock', $flock);
     }
 
     function addDoc(Request $req){

@@ -83,7 +83,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($docList as $item)
+                                            @foreach ($docList1 as $item)
                                             <tr>
                                                 <td>{{$item->flock->name}}</td>
                                                 <td>{{$item->house->name}}</td>
@@ -137,37 +137,38 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
+                                                <th scope="col">Flock</th>
                                                 <th scope="col">House</th>
-                                                <th scope="col">Age</th>
-                                                <th scope="col">Total</th>
-                                                <th scope="col">Balance</th>
-                                                <th scope="col">Weight</th>
-                                                <th scope="col">FCR</th>
-                                                <th scope="col">Dead</th>
-                                                <th scope="col">Rejected</th>
-                                                <th scope="col">Sold</th>
+                                                <th scope="col">Start Date</th>
+                                                <th scope="col">Total DOC</th>
+                                                <th scope="col">Hatchery</th>
+                                                <th scope="col">Bird/Case</th>
+                                                <th scope="col">Vaccination</th>
+                                                <th scope="col">Density</th>
+                                                <th scope="col">Catching Start</th>
+                                                <th scope="col">Catching End</th>
                                                 <th class="" scope="col">
                                                     <span class="float-right">Action</span>
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($docList2 as $item)
                                             <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>5</td>
-                                                <td>
-                                                    4
-                                                </td>
-                                                <td>100</td>
+                                                <td>{{$item->flock->name}}</td>
+                                                <td>{{$item->house->name}}</td>
+                                                <td>{{$item['date']}}</td>
+                                                <td>{{$item['sum_of_doc']}}</td>
+                                                <td>{{$item['hatchery']}}</td>
+                                                <td>{{$item['bird_in_case']}}</td>
+                                                <td>{{$item['vaccine']}}</td>
+                                                <td>{{$item['density']}}</td>
+                                                <td>{{$item['catching_start']}}</td>
+                                                <td>{{$item['catching_end']}}</td>
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
+                                                            <i class="fa fa-ellipsis-v display-7 display-7"></i>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
@@ -178,112 +179,13 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>5</td>
-                                                <td>
-                                                    8
-                                                </td>
-                                                <td>100</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>5</td>
-                                                <td>
-                                                    5
-                                                </td>
-                                                <td>100</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>5</td>
-                                                <td>
-                                                    3
-                                                </td>
-                                                <td>100</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>5</td>
-                                                <td>
-                                                    7
-                                                </td>
-                                                <td>100</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+
+                                            @endforeach
+
+
                                         </tbody>
                                     </table>
+
                                 </div>
                             </div>
                         </div>
@@ -306,37 +208,38 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
+                                                <th scope="col">Flock</th>
                                                 <th scope="col">House</th>
-                                                <th scope="col">Age</th>
-                                                <th scope="col">Total</th>
-                                                <th scope="col">Balance</th>
-                                                <th scope="col">Weight</th>
-                                                <th scope="col">FCR</th>
-                                                <th scope="col">Dead</th>
-                                                <th scope="col">Rejected</th>
-                                                <th scope="col">Sold</th>
+                                                <th scope="col">Start Date</th>
+                                                <th scope="col">Total DOC</th>
+                                                <th scope="col">Hatchery</th>
+                                                <th scope="col">Bird/Case</th>
+                                                <th scope="col">Vaccination</th>
+                                                <th scope="col">Density</th>
+                                                <th scope="col">Catching Start</th>
+                                                <th scope="col">Catching End</th>
                                                 <th class="" scope="col">
                                                     <span class="float-right">Action</span>
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($docList3 as $item)
                                             <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>5</td>
-                                                <td>
-                                                    1
-                                                </td>
-                                                <td>100</td>
+                                                <td>{{$item->flock->name}}</td>
+                                                <td>{{$item->house->name}}</td>
+                                                <td>{{$item['date']}}</td>
+                                                <td>{{$item['sum_of_doc']}}</td>
+                                                <td>{{$item['hatchery']}}</td>
+                                                <td>{{$item['bird_in_case']}}</td>
+                                                <td>{{$item['vaccine']}}</td>
+                                                <td>{{$item['density']}}</td>
+                                                <td>{{$item['catching_start']}}</td>
+                                                <td>{{$item['catching_end']}}</td>
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
+                                                            <i class="fa fa-ellipsis-v display-7 display-7"></i>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
@@ -347,60 +250,13 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>5</td>
-                                                <td>
-                                                    6
-                                                </td>
-                                                <td>100</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>5</td>
-                                                <td>
-                                                    4
-                                                </td>
-                                                <td>100</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+
+                                            @endforeach
+
+
                                         </tbody>
                                     </table>
+
                                 </div>
                             </div>
                         </div>
@@ -423,37 +279,38 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
+                                                <th scope="col">Flock</th>
                                                 <th scope="col">House</th>
-                                                <th scope="col">Age</th>
-                                                <th scope="col">Total</th>
-                                                <th scope="col">Balance</th>
-                                                <th scope="col">Weight</th>
-                                                <th scope="col">FCR</th>
-                                                <th scope="col">Dead</th>
-                                                <th scope="col">Rejected</th>
-                                                <th scope="col">Sold</th>
+                                                <th scope="col">Start Date</th>
+                                                <th scope="col">Total DOC</th>
+                                                <th scope="col">Hatchery</th>
+                                                <th scope="col">Bird/Case</th>
+                                                <th scope="col">Vaccination</th>
+                                                <th scope="col">Density</th>
+                                                <th scope="col">Catching Start</th>
+                                                <th scope="col">Catching End</th>
                                                 <th class="" scope="col">
                                                     <span class="float-right">Action</span>
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($docList4 as $item)
                                             <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>5</td>
-                                                <td>
-                                                    16
-                                                </td>
-                                                <td>100</td>
+                                                <td>{{$item->flock->name}}</td>
+                                                <td>{{$item->house->name}}</td>
+                                                <td>{{$item['date']}}</td>
+                                                <td>{{$item['sum_of_doc']}}</td>
+                                                <td>{{$item['hatchery']}}</td>
+                                                <td>{{$item['bird_in_case']}}</td>
+                                                <td>{{$item['vaccine']}}</td>
+                                                <td>{{$item['density']}}</td>
+                                                <td>{{$item['catching_start']}}</td>
+                                                <td>{{$item['catching_end']}}</td>
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
+                                                            <i class="fa fa-ellipsis-v display-7 display-7"></i>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
@@ -464,112 +321,13 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>5</td>
-                                                <td>
-                                                    19
-                                                </td>
-                                                <td>100</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>5</td>
-                                                <td>
-                                                    12
-                                                </td>
-                                                <td>100</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>5</td>
-                                                <td>
-                                                    17
-                                                </td>
-                                                <td>100</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>5</td>
-                                                <td>
-                                                    23
-                                                </td>
-                                                <td>100</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+
+                                            @endforeach
+
+
                                         </tbody>
                                     </table>
+
                                 </div>
                             </div>
                         </div>
