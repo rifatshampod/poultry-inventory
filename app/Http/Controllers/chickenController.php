@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chicken;
+use App\Models\Daily_chicken;
 use Illuminate\Http\Request;
 use App\Models\Farm;
 use App\Models\House;
@@ -69,13 +70,21 @@ class chickenController extends Controller
     }
 
     function getChicken(){
-        $chickenList1 = Chicken::where('farm_id',1)
+        $chickenOnlyList1 = Chicken::with('dailyChicken')
+        ->where('farm_id',1)
         ->get();
-        return view('admin/chicken/allChicken')->with('chickenList1', $chickenList1);
+
+    //     $chickenList1 = Daily_chicken::with(['chickens'=>function($query){
+    // $query->where('farm_id',1);}])
+        // ->get();
+        
+        return view('admin/chicken/allChicken')->with('chickenList1', $chickenOnlyList1);
     }
 
     function getHouseChicken(){
-        return view('admin/chicken/dailyChicken');
+        $dailyList = Daily_chicken::where('status',1)
+        ->get();
+        return view('admin/chicken/dailyChicken')->with('dailyList', $dailyList);
     }
 
     // function addEmployee(Request $req){

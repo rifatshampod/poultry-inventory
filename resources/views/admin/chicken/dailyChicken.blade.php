@@ -41,6 +41,7 @@
                                                 <th scope="col">Date</th>
                                                 <th scope="col">House</th>
                                                 <th scope="col">F.C.</th>
+                                                <th scope="col">F.C.R</th>
                                                 <th scope="col">Weight 1</th>
                                                 <th scope="col">Weight 2</th>
                                                 <th scope="col">Weight 3</th>
@@ -50,50 +51,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($dailyList as $item)
                                             <tr>
-                                                <th>01-01-2023</th>
-                                                <td>Bakula</td>
-                                                <td>F.C</td>
-                                                <td>10Kg</td>
-                                                <td>15Kg</td>
-                                                <td>5Kg</td>
-                                                <td>160Kg</td>
-                                                <td>Demo</td>
-                                                <td>Rejected</td>
+                                                <th>{{$item['date']}}</th>
+                                                <td>{{$item->chicken->house->name}}</td>
+                                                <td>{{$item['feed_consumption']}}</td>
+                                                <td>{{$item['fcr']}}</td>
+                                                <td>{{$item['weight1']}}</td>
+                                                <td>{{$item['weight2']}}</td>
+                                                <td>{{$item['weight3']}}</td>
+                                                <td>{{$item['weight4']}}</td>
+                                                <td>{{$item['mortality']}}</td>
+                                                <td>{{$item['rejection']}}</td>
                                             </tr>
-                                            <tr>
-                                                <th>01-01-2023</th>
-                                                <td>Bakula</td>
-                                                <td>F.C</td>
-                                                <td>10Kg</td>
-                                                <td>15Kg</td>
-                                                <td>5Kg</td>
-                                                <td>160Kg</td>
-                                                <td>Demo</td>
-                                                <td>Rejected</td>
-                                            </tr>
-                                            <tr>
-                                                <th>01-01-2023</th>
-                                                <td>Bakula</td>
-                                                <td>F.C</td>
-                                                <td>10Kg</td>
-                                                <td>15Kg</td>
-                                                <td>5Kg</td>
-                                                <td>160Kg</td>
-                                                <td>Demo</td>
-                                                <td>Rejected</td>
-                                            </tr>
-                                            <tr>
-                                                <th>01-01-2023</th>
-                                                <td>Bakula</td>
-                                                <td>F.C</td>
-                                                <td>10Kg</td>
-                                                <td>15Kg</td>
-                                                <td>5Kg</td>
-                                                <td>160Kg</td>
-                                                <td>Demo</td>
-                                                <td>Rejected</td>
-                                            </tr>
+
+                                            @endforeach
+
+
                                         </tbody>
                                     </table>
                                 </div>

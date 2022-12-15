@@ -82,8 +82,8 @@
                                                 <td>{{$item->house->name}}</td>
                                                 <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())+2}} days</td>
                                                 <td>{{$item['sum_of_doc']}}</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
+                                                <td>{{$item['sum_of_doc'] - $item->dailyChicken->sum('mortality')}}</td>
+                                                <td>{{$item->dailyChicken->weight_avg}}</td>
                                                 <td>FCR</td>
                                                 <td>5</td>
                                                 <td>2</td>

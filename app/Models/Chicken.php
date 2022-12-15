@@ -29,4 +29,9 @@ class Chicken extends Model
     {
     return $this->belongsTo(Flock::class);
     }
+
+    public function dailyChicken()
+    {
+    return $this->hasMany(Daily_chicken::class);
+    }
 }

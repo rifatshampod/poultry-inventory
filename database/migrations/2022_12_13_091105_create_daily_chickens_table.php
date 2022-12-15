@@ -15,6 +15,19 @@ class CreateDailyChickensTable extends Migration
     {
         Schema::create('daily_chickens', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('chicken_id')->constrained();
+            $table->date('date')->nullable();
+            $table->float('feed_consumption',8,2)->nullable();
+            $table->float('fcr',8,2)->nullable();
+            $table->float('weight1',8,2)->nullable();
+            $table->float('weight2',8,2)->nullable();
+            $table->float('weight3',8,2)->nullable();
+            $table->float('weight4',8,2)->nullable();
+            $table->float('weight_avg',8,2)->nullable();
+            $table->integer('mortality')->nullable();
+            $table->integer('rejection')->nullable();
+            $table->boolean('status')->nullable();
             $table->timestamps();
         });
     }
