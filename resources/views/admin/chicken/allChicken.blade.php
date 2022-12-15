@@ -56,12 +56,7 @@
                                     <div>
                                         <h4 class="card-title">All Chicken</h4>
                                     </div>
-                                    <div>
-                                        <button type="button" class="btn mb-1 btn-primary" data-toggle="modal" data-target="#addDoc">
-                                            Add Doc
-                                            <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
-                                        </button>
-                                    </div>
+
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
@@ -74,7 +69,7 @@
                                                 <th scope="col">Weight</th>
                                                 <th scope="col">FCR</th>
                                                 <th scope="col">Dead</th>
-                                                <th scope="col">Rejected</th>displ
+                                                <th scope="col">Rejected</th>
                                                 <th scope="col">Sold</th>
                                                 <th class="" scope="col">
                                                     <span class="float-right">Action</span>
@@ -82,17 +77,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($chickenList1 as $item)
                                             <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
+                                                <td>{{$item->house->name}}</td>
+                                                <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())+2}} days</td>
+                                                <td>{{$item['sum_of_doc']}}</td>
                                                 <td>$500</td>
                                                 <td>5kg</td>
                                                 <td>FCR</td>
                                                 <td>5</td>
-                                                <td>
-                                                    2
-                                                </td>
+                                                <td>2</td>
                                                 <td>100</td>
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
@@ -108,136 +102,10 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>2</td>
-                                                <td>
-                                                    2
-                                                </td>
-                                                <td>100</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>5</td>
-                                                <td>
-                                                    5
-                                                </td>
-                                                <td>100</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>5</td>
-                                                <td>
-                                                    4
-                                                </td>
-                                                <td>100</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>5</td>
-                                                <td>
-                                                    8
-                                                </td>
-                                                <td>100</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>House 23</td>
-                                                <td>1 Month</td>
-                                                <td>100</td>
-                                                <td>$500</td>
-                                                <td>5kg</td>
-                                                <td>FCR</td>
-                                                <td>5</td>
-                                                <td>
-                                                    9
-                                                </td>
-                                                <td>100</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+
+                                            @endforeach
+
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -704,124 +572,7 @@
         </div>
 
         <!--------------------Modal Start----------------------->
-        <!------------------Add Doc Modal Start----------------->
-        <div class="modal fade" id="addDoc">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="mb-4">
-                            <h5 class="modal-title">Add Doc</h5>
-                        </div>
-                        <form action="">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label> Date</label>
-                                        <input type="date" class="form-control input-default" placeholder="Input Default" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label>Farm:</label>
-                                        <select class="form-control input-default">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label>House</label>
-                                        <select class="form-control input-default">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label> Sum of Doc</label>
-                                        <input type="number" class="form-control input-default" placeholder="Total Doc" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label> Hathery</label>
-                                        <input type="text" class="form-control input-default" placeholder="Hatchery Name" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label> Bird In Case</label>
-                                        <input type="number" class="form-control input-default" placeholder="Bird" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-4">
-                                    <div>
-                                        <label>Vaccination From Hacthery</label>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-3">
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input" value="" />ND + IB(Live)</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input" value="" />NDS Yellow</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input" value="" />Transmune IBD</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input" value="" />Vectormune ND</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label> Density</label>
-                                        <input type="text" class="form-control input-default" placeholder="Density" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label> Catching Start Date</label>
-                                        <input type="date" class="form-control input-default" placeholder="" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label> Catching End date</label>
-                                        <input type="date" class="form-control input-default" placeholder="" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center">
-                                <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">
-                                    Cancel
-                                </button>
-                                <button type="submit" class="btn btn-primary">Add doc</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-------------------Add Doc Modal End ------------------>
+
 
         <!-------------------Add Data Modal start ------------------->
         <div class="modal fade" id="addData">

@@ -12,19 +12,25 @@ class chickenController extends Controller
 {
     function getDoc(){
 
-        $farm1 = Farm::find(1)
+        $farm1 = Farm::where('id',1)
         ->first();
 
-        $farm2 = Farm::find(2)
-        ->get();
+        $farm2 = Farm::where('id',2)
+        ->first();
 
-        $farm3 = Farm::find(3)
-        ->get();
+        $farm3 = Farm::where('id',3)
+        ->first();
 
-        $farm4 = Farm::find(4)
-        ->get();
+        $farm4 = Farm::where('id',4)
+        ->first();
 
         $house1= House::where('farm_id',1)
+        ->get();
+        $house2= House::where('farm_id',2)
+        ->get();
+        $house3= House::where('farm_id',3)
+        ->get();
+        $house4= House::where('farm_id',4)
         ->get();
 
         $flock = Flock::where('status',1)
@@ -39,7 +45,7 @@ class chickenController extends Controller
         $docList4 = Chicken::where('farm_id',4)
         ->get();
 
-        return view('admin/doc/allDoc')->with('docList1', $docList1)->with('docList2', $docList2)->with('docList3', $docList3)->with('docList4', $docList4)->with('farm1',$farm1)->with('house1', $house1)->with('flock', $flock);
+        return view('admin/doc/allDoc')->with('docList1', $docList1)->with('docList2', $docList2)->with('docList3', $docList3)->with('docList4', $docList4)->with('farm1',$farm1)->with('house1', $house1)->with('farm2',$farm2)->with('house2', $house2)->with('farm3',$farm3)->with('house3', $house3)->with('farm4',$farm4)->with('house4', $house4)->with('flock', $flock);
     }
 
     function addDoc(Request $req){
@@ -63,7 +69,9 @@ class chickenController extends Controller
     }
 
     function getChicken(){
-        return view('admin/chicken/allChicken');
+        $chickenList1 = Chicken::where('farm_id',1)
+        ->get();
+        return view('admin/chicken/allChicken')->with('chickenList1', $chickenList1);
     }
 
     function getHouseChicken(){
