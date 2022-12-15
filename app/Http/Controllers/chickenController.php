@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Farm;
 use App\Models\House;
 use App\Models\Flock;
+use Illuminate\Support\Facades\DB;
 
 class chickenController extends Controller
 {
@@ -70,21 +71,76 @@ class chickenController extends Controller
     }
 
     function getChicken(){
-        $chickenOnlyList1 = Chicken::with('dailyChicken')
-        ->where('farm_id',1)
+
+        $chickenList1 = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
+        ->select('chickens.*',
+        DB::raw('SUM(daily_chickens.mortality) AS sum_of_mortality'),
+        DB::raw('MAX(daily_chickens.weight_avg) AS avg_weight'), 
+        DB::raw('AVG(daily_chickens.fcr) AS avg_fcr'),
+        DB::raw('SUM(daily_chickens.rejection) AS sum_of_rejection')
+        )
+        ->groupBy('chickens.id')
+        ->where('chickens.farm_id',1)
         ->get();
 
-    //     $chickenList1 = Daily_chicken::with(['chickens'=>function($query){
-    // $query->where('farm_id',1);}])
-        // ->get();
+        $chickenList2 = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
+        ->select('chickens.*',
+        DB::raw('SUM(daily_chickens.mortality) AS sum_of_mortality'),
+        DB::raw('AVG(daily_chickens.weight_avg) AS avg_weight'), 
+        DB::raw('AVG(daily_chickens.fcr) AS avg_fcr'),
+        DB::raw('SUM(daily_chickens.rejection) AS sum_of_rejection')
+        )
+        ->groupBy('chickens.id')
+        ->where('chickens.farm_id',2)
+        ->get();
+
+        $chickenList3 = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
+        ->select('chickens.*',
+        DB::raw('SUM(daily_chickens.mortality) AS sum_of_mortality'),
+        DB::raw('AVG(daily_chickens.weight_avg) AS avg_weight'), 
+        DB::raw('AVG(daily_chickens.fcr) AS avg_fcr'),
+        DB::raw('SUM(daily_chickens.rejection) AS sum_of_rejection')
+        )
+        ->groupBy('chickens.id')
+        ->where('chickens.farm_id',3)
+        ->get();
+
+        $chickenList4 = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
+        ->select('chickens.*',
+        DB::raw('SUM(daily_chickens.mortality) AS sum_of_mortality'),
+        DB::raw('AVG(daily_chickens.weight_avg) AS avg_weight'), 
+        DB::raw('AVG(daily_chickens.fcr) AS avg_fcr'),
+        DB::raw('SUM(daily_chickens.rejection) AS sum_of_rejection')
+        )
+        ->groupBy('chickens.id')
+        ->where('chickens.farm_id',4)
+        ->get();
         
-        return view('admin/chicken/allChicken')->with('chickenList1', $chickenOnlyList1);
+        return view('admin/chicken/allChicken')->with('chickenList1', $chickenList1)->with('chickenList2',      $chickenList2)->with('chickenList3', $chickenList3)->with('chickenList4', $chickenList4);
     }
 
     function getHouseChicken(){
-        $dailyList = Daily_chicken::where('status',1)
+        $dailyList1 = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
+        ->where('chickens.farm_id',1)
+        ->where('daily_chickens.status',1)
         ->get();
-        return view('admin/chicken/dailyChicken')->with('dailyList', $dailyList);
+
+        $dailyList2 = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
+        ->where('chickens.farm_id',2)
+        ->where('daily_chickens.status',1)
+        ->get();
+
+        $dailyList3 = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
+        ->where('chickens.farm_id',3)
+        ->where('daily_chickens.status',1)
+        ->get();
+
+        $dailyList4 = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
+        ->where('chickens.farm_id',4)
+        ->where('daily_chickens.status',1)
+        ->get();
+        
+        return view('admin/chicken/dailyChicken')->with('dailyList1', $dailyList1)->with('dailyList2', $dailyList2)->with('dailyList3', $dailyList3)->with('dailyList4', $dailyList4);
     }
 
     // function addEmployee(Request $req){
