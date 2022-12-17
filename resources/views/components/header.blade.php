@@ -110,7 +110,7 @@
                     <span class="nav-text">Feed</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="allFeed.html">All Feed (House)</a></li>
+                    <li><a href="all-feed">All Feed (House)</a></li>
                     <li>
                         <a href="feedDistribution.html">All Feed Distribution</a>
                     </li>

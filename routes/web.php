@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\settingsController;
 use App\Http\Controllers\hrController;
 use App\Http\Controllers\chickenController;
+use App\Http\Controllers\feedController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,9 @@ Route::get('daily-chicken', [chickenController::class,'getHouseChicken']);
 //DOC
 Route::get('all-doc', [chickenController::class,'getDoc']);
 Route::post('add-doc', [chickenController::class,'addDoc']);
+
+//Feed
+Route::get('all-feed', [feedController::class,'getFeed']);
 
 
 //core HR
