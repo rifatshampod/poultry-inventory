@@ -6,6 +6,7 @@ use App\Http\Controllers\settingsController;
 use App\Http\Controllers\hrController;
 use App\Http\Controllers\chickenController;
 use App\Http\Controllers\feedController;
+use App\Http\Controllers\accountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,13 @@ Route::post('add-doc', [chickenController::class,'addDoc']);
 Route::get('all-feed', [feedController::class,'getFeed']);
 Route::post('add-feed', [feedController::class,'addFeed']);
 Route::get('feed-restock', [feedController::class,'getRestockFeed']);
+
+//Account
+Route::get('add-expense', [accountController::class,'getAddExpense']);
+Route::get('all-expense', [accountController::class,'getExpense']);
+Route::post('add-expense-data', [accountController::class,'addFeed']);
+Route::get('patty-cash', [accountController::class,'getPattyCash']);
+Route::get('add-patty-cash', [accountController::class,'addPattyCash']);
 
 
 //core HR

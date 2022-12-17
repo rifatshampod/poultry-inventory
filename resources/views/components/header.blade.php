@@ -138,9 +138,15 @@
                 </ul>
             </li>
             <li>
-                <a href="allExpense.html" aria-expanded="false">
-                    <i class="icon-badge menu-icon"></i><span class="nav-text">Expenses</span>
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="icon-grid menu-icon"></i><span class="nav-text">Account & Expense</span>
                 </a>
+                <ul aria-expanded="false">
+                    <li><a href="add-expense">Add Expense</a></li>
+                    <li><a href="all-expense">All Expense</a></li>
+                    <li><a href="patty-cash">Patty Cash</a></li>
+                </ul>
+
             </li>
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
