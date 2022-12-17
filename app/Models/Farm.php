@@ -25,4 +25,9 @@ class Farm extends Model
     return $this->hasMany(Chicken::class);
     }
 
+    public function feed()
+    {
+    return $this->hasMany(Feed::class);
+    }
+
 }

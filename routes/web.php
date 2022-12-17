@@ -34,6 +34,8 @@ Route::post('add-doc', [chickenController::class,'addDoc']);
 
 //Feed
 Route::get('all-feed', [feedController::class,'getFeed']);
+Route::post('add-feed', [feedController::class,'addFeed']);
+Route::get('feed-restock', [feedController::class,'getRestockFeed']);
 
 
 //core HR
