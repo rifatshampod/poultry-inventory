@@ -94,7 +94,9 @@
                                                             <i class="fa fa-ellipsis-v display-7 display-7"></i>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
+                                                            <button value="{{$item['id']}}" class="dailyBtn dropdown-item text-primary">
+                                                                <i class="ti-plus mr-1"></i>Add Daily Data
+                                                            </button>
                                                             <a class="dropdown-item text-warning" href="#">Sale</a>
                                                             <a class="dropdown-item text-danger" href="#">View</a>
                                                             <a class="dropdown-item text-success" href="#">Edit</a>
@@ -161,7 +163,10 @@
                                                             <i class="fa fa-ellipsis-v display-7 display-7"></i>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
+                                                            <button value="{{$item['id']}}" class="dailyBtn dropdown-item text-primary">
+                                                                <i class="ti-plus mr-1"></i>Add Daily Data
+                                                            </button>
+
                                                             <a class="dropdown-item text-warning" href="#">Sale</a>
                                                             <a class="dropdown-item text-danger" href="#">View</a>
                                                             <a class="dropdown-item text-success" href="#">Edit</a>
@@ -230,7 +235,10 @@
                                                             <i class="fa fa-ellipsis-v display-7 display-7"></i>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
+                                                            <button value="{{$item['id']}}" class="dailyBtn dropdown-item text-primary">
+                                                                <i class="ti-plus mr-1"></i>Add Daily Data
+                                                            </button>
+
                                                             <a class="dropdown-item text-warning" href="#">Sale</a>
                                                             <a class="dropdown-item text-danger" href="#">View</a>
                                                             <a class="dropdown-item text-success" href="#">Edit</a>
@@ -299,7 +307,10 @@
                                                             <i class="fa fa-ellipsis-v display-7 display-7"></i>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#" data-toggle="modal" data-target="#addData">Add Data</a>
+                                                            <button value="{{$item['id']}}" class="dailyBtn dropdown-item text-primary">
+                                                                <i class="ti-plus mr-1"></i>Add Daily Data
+                                                            </button>
+
                                                             <a class="dropdown-item text-warning" href="#">Sale</a>
                                                             <a class="dropdown-item text-danger" href="#">View</a>
                                                             <a class="dropdown-item text-success" href="#">Edit</a>
@@ -323,8 +334,8 @@
 
 
         <!-------------------Add Data Modal start ------------------->
-        <div class="modal fade" id="addData">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal fade" id="addData" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="mb-4">
@@ -409,6 +420,11 @@
     <!--**********************************
         Scripts
     ***********************************-->
+    <script src="plugin/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- jquery vendor -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
     <script src="plugins/common/common.min.js"></script>
     <script src="js/custom.min.js"></script>
     <script src="js/settings.js"></script>
@@ -417,5 +433,31 @@
     <script src="./plugins/tables/js/jquery.dataTables.min.js"></script>
     <script src="./plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
     <script src="./plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
+
+    <script>
+        //daily production
+        $(document).ready(function() {
+            $(document).on('click', '.dailyBtn', function() {
+                var daily_id = $(this).val();
+                console.log(daily_id);
+                jQuery.noConflict();
+                $('#addData').modal('show');
+                // $.ajax({
+                //     url: '/edit-production' + daily_id
+                //     , type: "GET"
+                //     , success: function(response) {
+                //         console.log(response);
+                //         $('#target_daily').val(response.production.total_receive);
+                //         $('#total_production').val(response.production.total_production);
+                //         // $('#inhand').val(response.production.balance);
+                //         $('#daily_id').val(daily_id);
+                //     }
+                // });
+                // $('#daily_id').val(daily_id);
+
+            });
+        });
+
+    </script>
 </body>
 </html>
