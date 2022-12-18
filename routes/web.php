@@ -42,8 +42,8 @@ Route::get('feed-restock', [feedController::class,'getRestockFeed']);
 Route::get('add-expense', [accountController::class,'getAddExpense']);
 Route::get('all-expense', [accountController::class,'getExpense']);
 Route::post('add-expense-data', [accountController::class,'addExpense']);
-Route::get('patty-cash', [accountController::class,'getPattyCash']);
-Route::get('add-patty-cash', [accountController::class,'addPattyCash']);
+Route::get('petty-cash', [accountController::class,'getPettyCash']);
+Route::post('add-petty-cash', [accountController::class,'addPettyCash']);
 
 
 //core HR

@@ -35,5 +35,15 @@ class Farm extends Model
     return $this->hasMany(Expense::class);
     }
 
+    public function pettyCash()
+    {
+    return $this->hasMany(Pettycash::class);
+    }
+
+    public function totalCash()
+    {
+    return $this->hasMany(Total_cash::class);
+    }
+
 
 }

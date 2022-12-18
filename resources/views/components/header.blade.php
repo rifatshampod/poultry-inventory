@@ -144,7 +144,7 @@
                 <ul aria-expanded="false">
                     <li><a href="add-expense">Add Expense</a></li>
                     <li><a href="all-expense">All Expense</a></li>
-                    <li><a href="patty-cash">Patty Cash</a></li>
+                    <li><a href="petty-cash">Petty Cash</a></li>
                 </ul>
 
             </li>

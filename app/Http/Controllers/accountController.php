@@ -12,6 +12,8 @@ use App\Models\Farm;
 use App\Models\House;
 use App\Models\Flock;
 use App\Models\Feed;
+use App\Models\Pettycash;
+use App\Models\Total_cash;
 use Illuminate\Support\Facades\DB;
 
 class accountController extends Controller
@@ -58,6 +60,35 @@ class accountController extends Controller
         $data->save();
 
         $req->session()->flash('status','New Expense added successfully');
+        return redirect()->back();
+    }
+
+    function getPettyCash(){
+        
+        $farmList = Farm::all();
+
+        $pettyCash = Total_cash::all();
+        // $pettyCash = Pettycash::select('pettycashes.*',
+        // DB::raw('SUM(pettycashes.amount) AS sum_of_amount')
+        // )
+        // ->groupBy('pettycashes.farm_id')
+        // ->get();
+
+        return view('admin/account/pettyCash')->with('farmList', $farmList)->with('pettyCash',$pettyCash);
+    }
+
+    function addPettyCash(Request $req){
+        $data = new Pettycash;
+        $data->date = $req->input('date');
+        $data->farm_id=$req->input('farm_id');
+        $data->amount=$req->input('amount');
+        $data->save();
+
+        $total = Total_cash::where('farm_id', $req->input('farm_id'))->first();
+        $total->amount += $req->input('amount');
+        $total->save();
+
+        $req->session()->flash('status','New Petty Cash added successfully');
         return redirect()->back();
     }
 }
