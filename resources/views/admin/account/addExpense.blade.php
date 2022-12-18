@@ -28,7 +28,7 @@
                                 <form action="add-expense-data" method="POST">
                                     @csrf
                                     <div class="row">
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-4">
                                             <label>Farm Name</label>
                                             <select class="form-control input-default" name="farm_id">
                                                 <option value="" selected disabled hidden>Select Farm</option>
@@ -37,15 +37,23 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-4">
                                             <label>House Name</label>
-                                            <select class="form-control input-default" name="farm_id">
+                                            <select class="form-control input-default" name="house_id">
                                                 <option value="" selected disabled hidden>Select House</option>
                                                 @foreach ($houseList as $item)
                                                 <option value="{{$item['id']}}">{{$item['name']}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
+                                        <div class="form-group col-md-4">
+                                            <label>Flock</label>
+                                            <select class="form-control input-default" name="flock_id" readonly>
+                                                <option value="{{$flockList->id}}" selected>{{$flockList->name}}</option>
+
+                                            </select>
+                                        </div>
+
 
                                         <div class="form-group col-md-6">
                                             <label>Date</label>
@@ -53,7 +61,7 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Expense Sector</label>
-                                            <select class="form-control input-default" name="farm_id">
+                                            <select class="form-control input-default" name="expense_sector_id">
                                                 <option value="" selected disabled hidden>Select Expense Sector</option>
                                                 @foreach ($sectorList as $item)
                                                 <option value="{{$item['id']}}">{{$item['name']}}</option>
@@ -63,7 +71,7 @@
 
                                         <div class="form-group col-md-6">
                                             <label>Expense Type</label>
-                                            <select class="form-control input-default" name="farm_id">
+                                            <select class="form-control input-default" name="expense_type_id">
                                                 <option value="" selected disabled hidden>Select Expense Type</option>
                                                 @foreach ($typeList as $item)
                                                 <option value="{{$item['id']}}">{{$item['name']}}</option>
@@ -78,7 +86,7 @@
 
                                         <div class="form-group col-md-6">
                                             <label>Paid From</label>
-                                            <select class="form-control input-default" name="account">
+                                            <select class="form-control input-default" name="paid_from">
                                                 <option value="1" selected>Patty Cash</option>
                                                 <option value="2">Direct Payment by Head Office</option>
                                             </select>
@@ -86,7 +94,7 @@
 
                                         <div class="form-group col-md-6">
                                             <label>Approver</label>
-                                            <select class="form-control input-default" name="account">
+                                            <select class="form-control input-default" name="approver">
                                                 <option selected>Head Office</option>
                                                 <option> Farm Manager</option>
                                             </select>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Chicken;
 use App\Models\Daily_chicken;
+use App\Models\Expense;
 use App\Models\Expense_sector;
 use App\Models\Expense_type;
 use App\Models\Farm;
@@ -22,34 +23,35 @@ class accountController extends Controller
        $houseList = House::all();
        $sectorList = Expense_sector::all();
        $typeList = Expense_type::all();
-
-       $feedList = Feed::select('feeds.*',
-        DB::raw('SUM(feeds.amount) AS sum_of_amount')
-        )
-        ->groupBy('feeds.farm_id')
-        ->get();
+        $flockList = Flock::where('status',1)
+        ->first();
        
         return view('admin/account/addExpense')->with('farmList', $farmList)->with('houseList', $houseList)
-        ->with('sectorList', $sectorList)->with('typeList', $typeList);
+        ->with('sectorList', $sectorList)->with('typeList', $typeList)->with('flockList', $flockList);
     }
 
-    function getRestockFeed(){
+    function getExpense(){
 
        $feedList = Feed::all();
        
         return view('admin/Feed/feedRestock')->with('feedList', $feedList);
     }
 
-    function addFeed(Request $req){
-        $data = new Feed;
+    function addExpense(Request $req){
+        $data = new Expense;
         $data->date = $req->input('date');
         $data->farm_id=$req->input('farm_id');
+        $data->house_id=$req->input('house_id');
+        $data->flock_id=$req->input('flock_id');
+        $data->expense_sector_id=$req->input('expense_sector_id');
+        $data->expense_type_id=$req->input('expense_type_id');
         $data->amount=$req->input('amount');
-        $data->brand=$req->input('brand');
-        $data->price=$req->input('price');
+        $data->paid_from=$req->input('paid_from');
+        $data->approver=$req->input('approver');
+        $data->reference=$req->input('reference');
         $data->save();
 
-        $req->session()->flash('status','New Feed added successfully');
+        $req->session()->flash('status','New Expense added successfully');
         return redirect()->back();
     }
 }
