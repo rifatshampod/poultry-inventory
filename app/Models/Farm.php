@@ -45,5 +45,10 @@ class Farm extends Model
     return $this->hasMany(Total_cash::class);
     }
 
+    public function totalFeed()
+    {
+    return $this->hasMany(Total_feed::class);
+    }
+
 
 }

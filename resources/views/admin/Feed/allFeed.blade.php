@@ -106,7 +106,7 @@
                                             @foreach ($feedList as $item)
                                             <tr>
                                                 <td>{{$item->farm->name}}</td>
-                                                <td>{{$item['sum_of_amount']}}</td>
+                                                <td>{{$item['amount']}}</td>
 
                                                 <td>
                                                     <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>

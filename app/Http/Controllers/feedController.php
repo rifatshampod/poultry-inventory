@@ -9,6 +9,7 @@ use App\Models\Farm;
 use App\Models\House;
 use App\Models\Flock;
 use App\Models\Feed;
+use App\Models\Total_feed;
 use Illuminate\Support\Facades\DB;
 
 class feedController extends Controller
@@ -18,11 +19,13 @@ class feedController extends Controller
 
        $farmList = Farm::all();
 
-       $feedList = Feed::select('feeds.*',
+       $feedListCount = Feed::select('feeds.*',
         DB::raw('SUM(feeds.amount) AS sum_of_amount')
         )
         ->groupBy('feeds.farm_id')
         ->get();
+
+        $feedList = Total_feed::all();
        
         return view('admin/Feed/allFeed')->with('farmList', $farmList)->with('feedList', $feedList);
     }
