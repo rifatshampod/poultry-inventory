@@ -14,4 +14,9 @@ class Expense_type extends Model
     ];
 
     protected $guarded = ['id'];
+
+    public function expense()
+    {
+    return $this->hasMany(Expense::class);
+    }
 }

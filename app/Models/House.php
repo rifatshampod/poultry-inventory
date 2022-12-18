@@ -23,4 +23,8 @@ class House extends Model
     {
     return $this->hasMany(Chicken::class);
     }
+    public function expense()
+    {
+    return $this->hasMany(Expense::class);
+    }
 }

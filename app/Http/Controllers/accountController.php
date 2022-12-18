@@ -32,9 +32,15 @@ class accountController extends Controller
 
     function getExpense(){
 
-       $feedList = Feed::all();
+        $flock = Flock::where('status',1)
+        ->first();
+
+        $currentFlock = $flock['id'];
+
+       $expenseList = Expense::where('flock_id',$currentFlock)
+       ->get();
        
-        return view('admin/Feed/feedRestock')->with('feedList', $feedList);
+        return view('admin/account/allExpense')->with('expenseList', $expenseList)->with('flock',$flock);
     }
 
     function addExpense(Request $req){

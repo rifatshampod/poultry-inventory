@@ -30,4 +30,10 @@ class Farm extends Model
     return $this->hasMany(Feed::class);
     }
 
+    public function expense()
+    {
+    return $this->hasMany(Expense::class);
+    }
+
+
 }
