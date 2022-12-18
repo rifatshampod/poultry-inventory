@@ -80,7 +80,7 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Farm Wise Petty Cash</h4>
+                                <h3 class="pt-3 pb-5">Farm Wise Petty Cash Left</h3>
                                 <div class="table-responsive">
                                     <table class="table table-bordered verticle-middle">
                                         <thead>
@@ -117,6 +117,52 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Added Petty Cash</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered verticle-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Date (dd-mm-yyyy)</th>
+                                                <th scope="col">Farm</th>
+                                                <th scope="col">Cash Added</th>
+                                                <th class="" scope="col">
+                                                    <span class="float-right">Action</span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($singleCash as $item)
+                                            <tr>
+                                                <td>{{ \Carbon\Carbon::parse($item['date'])->format('d-m-Y')}}</td>
+
+                                                <td>{{$item->farm->name}}</td>
+                                                <td>{{$item['amount']}}</td>
+
+
+                                                <td>
+                                                    <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
+                                                        </a>
+                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
+                                                        </a>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 

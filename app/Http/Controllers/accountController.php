@@ -59,8 +59,14 @@ class accountController extends Controller
         $data->reference=$req->input('reference');
         $data->save();
 
+        if($req->input('paid_from')==1){
+             $total = Total_cash::where('farm_id', $req->input('farm_id'))->first();
+            $total->amount -= $req->input('amount');
+            $total->save();
+        }
+
         $req->session()->flash('status','New Expense added successfully');
-        return redirect()->back();
+        return redirect('all-expense');
     }
 
     function getPettyCash(){
@@ -68,13 +74,16 @@ class accountController extends Controller
         $farmList = Farm::all();
 
         $pettyCash = Total_cash::all();
+
+        $singleCash = Pettycash::orderBy('id','desc')
+        ->get();
         // $pettyCash = Pettycash::select('pettycashes.*',
         // DB::raw('SUM(pettycashes.amount) AS sum_of_amount')
         // )
         // ->groupBy('pettycashes.farm_id')
         // ->get();
 
-        return view('admin/account/pettyCash')->with('farmList', $farmList)->with('pettyCash',$pettyCash);
+        return view('admin/account/pettyCash')->with('farmList', $farmList)->with('pettyCash',$pettyCash)->with('singleCash',$singleCash);
     }
 
     function addPettyCash(Request $req){
