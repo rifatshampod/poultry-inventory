@@ -46,6 +46,10 @@ class feedController extends Controller
         $data->price=$req->input('price');
         $data->save();
 
+        $total = Total_feed::where('farm_id', $req->input('farm_id'))->first();
+            $total->amount += $req->input('amount');
+            $total->save();
+
         $req->session()->flash('status','New Feed added successfully');
         return redirect()->back();
     }

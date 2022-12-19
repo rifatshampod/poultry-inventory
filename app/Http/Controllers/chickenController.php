@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use App\Models\Farm;
 use App\Models\House;
 use App\Models\Flock;
+use App\Models\Total_feed;
 use Illuminate\Support\Facades\DB;
+
 
 class chickenController extends Controller
 {
@@ -248,7 +250,11 @@ class chickenController extends Controller
         $data->status = 1;
         $data->save();
 
-        $req->session()->flash('status','New DOC added successfully');
+        $total = Total_feed::where('farm_id', $req->input('farm_id'))->first();
+            $total->amount -= $req->input('feed_consumption');
+            $total->save();
+
+        $req->session()->flash('status','New Daily data added successfully');
         return redirect()->back();
     }
 }
