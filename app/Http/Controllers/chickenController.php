@@ -174,4 +174,81 @@ class chickenController extends Controller
     //     $req->session()->flash('status','New employee added successfully');
     //     return redirect()->back();
     // }
+
+    function getAddChickenData($slug){
+        $chicken=Chicken::find($slug);
+        return response()->json([
+            'status'=>200,
+            'chicken'=>$chicken,
+        ]);
+    }
+
+    function addDailyChicken(Request $req){
+
+        $validated = $req->validate([
+        'chicken_id' => 'required',
+        'feed_consumption' => 'required',
+        'weight1' => 'required',
+        'weight2' => 'required',
+        'weight3' => 'required',
+        'weight4' => 'required',
+        ]);
+
+        $chicken = $req->input('chicken_id');
+
+        $weight = ($req->input('weight1')+$req->input('weight2')+$req->input('weight3')+$req->input('weight4'))/48;
+
+        //retrive previous data
+        $chickenList = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
+        ->select('chickens.*',
+        DB::raw('SUM(daily_chickens.mortality) AS sum_of_mortality'),
+        DB::raw('MAX(daily_chickens.weight_avg) AS avg_weight'), 
+        DB::raw('AVG(daily_chickens.fcr) AS avg_fcr'),
+        DB::raw('SUM(daily_chickens.rejection) AS sum_of_rejection')
+        )
+        ->groupBy('chickens.id')
+        ->where('chickens.id',$chicken)
+        ->get()->first();
+
+        if($chickenList){
+            $weight_gain = $weight - $chickenList['avg_weight'];
+            $total_chicken = $chickenList['sum_of_doc']-$chickenList['sum_of_mortality']-$chickenList['sum_of_rejection'];
+            $fcr = ($req->input('feed_consumption')/$total_chicken)/$weight_gain;
+        }
+        else{
+            $weight_gain = 0;
+            $total_chicken = 0;
+            $fcr = 0;
+        }
+
+        // echo "chicken ID: ". $chicken;
+        // echo "<br>";
+        // echo "chicken Average Weight now: ". $weight;
+        // echo "<br>";
+        // echo "chicken Average Weight Last day: ". $chickenList['avg_weight'];
+        // echo "<br>";
+        // echo "Weight Gain: ". $weight_gain;
+        // echo "<br>";
+        // echo "Total Chicken left: ". $total_chicken;
+        // echo "<br>";
+        // echo "FCR: ". $fcr;
+
+        $data = new Daily_chicken;
+        $data->date = $req->input('date');
+        $data->chicken_id=$req->input('chicken_id');
+        $data->feed_consumption=$req->input('feed_consumption');
+        $data->fcr= $fcr;
+        $data->weight1=$req->input('weight1');
+        $data->weight2=$req->input('weight2');
+        $data->weight3=$req->input('weight3');
+        $data->weight4=$req->input('weight4');
+        $data->weight_avg= $weight;
+        $data->mortality=$req->input('mortality');
+        $data->rejection=$req->input('rejection');
+        $data->status = 1;
+        $data->save();
+
+        $req->session()->flash('status','New DOC added successfully');
+        return redirect()->back();
+    }
 }

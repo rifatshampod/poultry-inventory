@@ -29,6 +29,9 @@ Route::view('dashboard',"admin/dashboard");
 Route::get('all-chicken', [chickenController::class,'getChicken']);
 Route::get('add-chicken', [chickenController::class,'getAddChicken']);
 Route::get('daily-chicken', [chickenController::class,'getHouseChicken']);
+Route::post('add-daily-data', [chickenController::class,'addDailyChicken']);
+Route::get('getdata-add-chicken{slug}', [chickenController::class,'getAddChickenData']);
+
 //DOC
 Route::get('all-doc', [chickenController::class,'getDoc']);
 Route::post('add-doc', [chickenController::class,'addDoc']);

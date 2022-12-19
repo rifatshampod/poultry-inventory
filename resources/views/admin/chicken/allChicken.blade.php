@@ -82,7 +82,7 @@
                                                 <td>{{$item->house->name}}</td>
                                                 <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())+1}} days</td>
                                                 <td>{{$item['sum_of_doc']}}</td>
-                                                <td>{{$item['sum_of_doc'] - $item['sum_of_mortality']}}</td>
+                                                <td>{{$item['sum_of_doc'] - $item['sum_of_mortality']-$item['sum_of_rejection']}}</td>
                                                 <td>{{number_format($item['avg_weight'], 2, '.', ',')}} Kg</td>
                                                 <td>{{number_format($item['avg_fcr'], 2, '.', ',')}}</td>
                                                 <td>{{$item['sum_of_mortality']}}</td>
@@ -94,9 +94,7 @@
                                                             <i class="fa fa-ellipsis-v display-7 display-7"></i>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <button value="{{$item['id']}}" class="dailyBtn dropdown-item text-primary">
-                                                                <i class="ti-plus mr-1"></i>Add Daily Data
-                                                            </button>
+                                                            <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
                                                             <a class="dropdown-item text-warning" href="#">Sale</a>
                                                             <a class="dropdown-item text-danger" href="#">View</a>
                                                             <a class="dropdown-item text-success" href="#">Edit</a>
@@ -120,12 +118,7 @@
                                     <div>
                                         <h4 class="card-title">All Chicken</h4>
                                     </div>
-                                    <div>
-                                        <button type="button" class="btn mb-1 btn-primary" data-toggle="modal" data-target="#addDoc">
-                                            Add Doc
-                                            <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
-                                        </button>
-                                    </div>
+
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
@@ -163,10 +156,7 @@
                                                             <i class="fa fa-ellipsis-v display-7 display-7"></i>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <button value="{{$item['id']}}" class="dailyBtn dropdown-item text-primary">
-                                                                <i class="ti-plus mr-1"></i>Add Daily Data
-                                                            </button>
-
+                                                            <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
                                                             <a class="dropdown-item text-warning" href="#">Sale</a>
                                                             <a class="dropdown-item text-danger" href="#">View</a>
                                                             <a class="dropdown-item text-success" href="#">Edit</a>
@@ -189,12 +179,7 @@
                                     <div>
                                         <h4 class="card-title">All Chicken</h4>
                                     </div>
-                                    <div>
-                                        <button type="button" class="btn mb-1 btn-primary" data-toggle="modal" data-target="#addDoc">
-                                            Add Doc
-                                            <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
-                                        </button>
-                                    </div>
+
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
@@ -235,9 +220,7 @@
                                                             <i class="fa fa-ellipsis-v display-7 display-7"></i>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <button value="{{$item['id']}}" class="dailyBtn dropdown-item text-primary">
-                                                                <i class="ti-plus mr-1"></i>Add Daily Data
-                                                            </button>
+                                                            <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
 
                                                             <a class="dropdown-item text-warning" href="#">Sale</a>
                                                             <a class="dropdown-item text-danger" href="#">View</a>
@@ -264,12 +247,7 @@
                                     <div>
                                         <h4 class="card-title">All Chicken</h4>
                                     </div>
-                                    <div>
-                                        <button type="button" class="btn mb-1 btn-primary" data-toggle="modal" data-target="#addDoc">
-                                            Add Doc
-                                            <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
-                                        </button>
-                                    </div>
+
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
@@ -307,9 +285,7 @@
                                                             <i class="fa fa-ellipsis-v display-7 display-7"></i>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <button value="{{$item['id']}}" class="dailyBtn dropdown-item text-primary">
-                                                                <i class="ti-plus mr-1"></i>Add Daily Data
-                                                            </button>
+                                                            <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
 
                                                             <a class="dropdown-item text-warning" href="#">Sale</a>
                                                             <a class="dropdown-item text-danger" href="#">View</a>
@@ -339,50 +315,65 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="mb-4">
-                            <h5 class="modal-title">Add Data</h5>
+                            <h5 class="modal-title">Add Daily Data</h5>
                         </div>
-                        <form action="">
+                        <form action="add-daily-data" method="post">
+                            @csrf
                             <div class="row">
+
+                                <input type="hidden" class="form-control input-default" id="chickenId" name="chicken_id" />
+                                <input type="hidden" class="form-control input-default" id="farmId" name="farm_id" />
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label> Date</label>
+                                        <input type="date" name="date" class="form-control input-default" placeholder="Today's Date" />
+                                    </div>
+                                </div>
+
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label> Mortality</label>
-                                        <input type="number" class="form-control input-default" placeholder="Mortality" />
+                                        <input type="number" name="mortality" class="form-control input-default" placeholder="Mortality" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label> Rejection</label>
-                                        <input type="number" class="form-control input-default" placeholder="Rejection" />
+                                        <input type="number" name="rejection" class="form-control input-default" placeholder="Rejection" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label> Weight 1</label>
-                                        <input type="number" class="form-control input-default" placeholder="Weight 1" />
+                                        <label> Weight 1 (for 12 chicken in KG)</label>
+                                        <input type="number" name="weight1" class="form-control input-default" placeholder="Weight 1" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label> Weight 2</label>
-                                        <input type="number" class="form-control input-default" placeholder="Weight 2" />
+                                        <label> Weight 2 (for 12 chicken in KG)</label>
+
+                                        <input type="number" name="weight2" class="form-control input-default" placeholder="Weight 2" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label> Weight 3</label>
-                                        <input type="number" class="form-control input-default" placeholder="Weight 3" />
+                                        <label> Weight 3 (for 12 chicken in KG)</label>
+
+                                        <input type="number" name="weight3" class="form-control input-default" placeholder="Weight 3" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label> Weight 4</label>
-                                        <input type="number" class="form-control input-default" placeholder="Weight 4" />
+                                        <label> Weight 4 (for 12 chicken in KG)</label>
+
+                                        <input type="number" name="weight4" class="form-control input-default" placeholder="Weight 4" />
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label> Feed Consumption</label>
-                                        <input type="number" class="form-control input-default" placeholder="Feed Consumption" />
+                                        <label> Feed Consumption (Total in KG)</label>
+                                        <input type="number" name="feed_consumption" class="form-control input-default" placeholder="Feed Consumption" />
                                     </div>
                                 </div>
                             </div>
@@ -436,27 +427,21 @@
 
     <script>
         //daily production
-        $(document).ready(function() {
-            $(document).on('click', '.dailyBtn', function() {
-                var daily_id = $(this).val();
-                console.log(daily_id);
-                jQuery.noConflict();
-                $('#addData').modal('show');
-                // $.ajax({
-                //     url: '/edit-production' + daily_id
-                //     , type: "GET"
-                //     , success: function(response) {
-                //         console.log(response);
-                //         $('#target_daily').val(response.production.total_receive);
-                //         $('#total_production').val(response.production.total_production);
-                //         // $('#inhand').val(response.production.balance);
-                //         $('#daily_id').val(daily_id);
-                //     }
-                // });
-                // $('#daily_id').val(daily_id);
+        function openModal(clicked_id) {
+            $("#addData").modal("show");
+            console.log(clicked_id);
 
+
+            document.getElementById("chickenId").value = clicked_id;
+            $.ajax({
+                url: '/getdata-add-chicken' + clicked_id
+                , type: "GET"
+                , success: function(response) {
+                    console.log(response);
+                    $('#farmId').val(response.chicken.farm_id);
+                }
             });
-        });
+        }
 
     </script>
 </body>
