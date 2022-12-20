@@ -60,7 +60,7 @@ class accountController extends Controller
         $data->save();
 
         if($req->input('paid_from')==1){
-             $total = Total_cash::where('farm_id', $req->input('farm_id'))->first();
+            $total = Total_cash::where('farm_id', $req->input('farm_id'))->first();
             $total->amount -= $req->input('amount');
             $total->save();
         }

@@ -7,6 +7,7 @@ use App\Http\Controllers\hrController;
 use App\Http\Controllers\chickenController;
 use App\Http\Controllers\feedController;
 use App\Http\Controllers\accountController;
+use App\Http\Controllers\medicineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,11 @@ Route::post('add-doc', [chickenController::class,'addDoc']);
 Route::get('all-feed', [feedController::class,'getFeed']);
 Route::post('add-feed', [feedController::class,'addFeed']);
 Route::get('feed-restock', [feedController::class,'getRestockFeed']);
+
+//Medicine
+Route::get('all-medicine', [medicineController::class,'getMedicine']);
+Route::post('add-medicine', [medicineController::class,'addMedicine']);
+Route::get('distribute-medicine', [medicineController::class,'getDistribution']);
 
 //Account
 Route::get('add-expense', [accountController::class,'getAddExpense']);
