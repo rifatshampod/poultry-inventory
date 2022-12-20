@@ -16,14 +16,14 @@ class saleController extends Controller
     //
     function getAddSale(){
 
-    //    $farmList = Farm::all();
-    //    $houseList = House::all();
+       $farmList = Farm::all();
+       $houseList = House::all();
     //    $sectorList = Expense_sector::all();
     //    $typeList = Expense_type::all();
     //     $flockList = Flock::where('status',1)
     //     ->first();
        
-        return view('admin/sales/addSale');
+        return view('admin/sales/addSale')->with('farmList', $farmList)->with('houseList', $houseList);
     }
 
     function getSale(){
