@@ -29,21 +29,22 @@
             </div>
             <div class="container-fluid mt-3">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-5">
                         <div class="card">
                             <div class="card-body">
                                 <div class="mb-4">
                                     <h3>Add New Medicine</h3>
                                 </div>
-                                <form action="">
+                                <form action="add-medicine" method="POST">
+                                    @csrf
                                     <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label>Tupe Name</label>
-                                            <input type="text" class="form-control input-default" placeholder="Type Name" />
+                                        <div class="form-group col-md-12">
+                                            <label>Medicine Name</label>
+                                            <input type="text" name="name" class="form-control input-default" placeholder="Type Name" />
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Amount</label>
-                                            <input type="number" class="form-control input-default" placeholder="Amount" />
+                                        <div class="form-group col-md-12">
+                                            <label>Usages</label>
+                                            <input type="text" name="usages" class="form-control input-default" placeholder="Reason or usages of medicine" />
                                         </div>
                                         <div class="col-md-12">
                                             <div>
@@ -57,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-7">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">All Medicine</h4>
@@ -66,16 +67,18 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">Type</th>
-                                                <th scope="col">Amount</th>
+                                                <th scope="col">Usages</th>
                                                 <th class="" scope="col">
                                                     <span class="float-right">Action</span>
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($medicineList as $item)
                                             <tr>
-                                                <td>Vt-23</td>
-                                                <td>200</td>
+                                                <td>{{$item['name']}}</td>
+                                                <td>{{$item['usages']}}</td>
+
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
@@ -89,38 +92,10 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>Vt-23</td>
-                                                <td>200</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="singleMedicine.html">View</a>
-                                                            <a class="dropdown-item text-warning" href="#">ReStock</a>
-                                                            <a class="dropdown-item text-success" href="#">Distribution</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Vt-23</td>
-                                                <td>200</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="singleMedicine.html">View</a>
-                                                            <a class="dropdown-item text-warning" href="#">ReStock</a>
-                                                            <a class="dropdown-item text-success" href="#">Distribution</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+
+                                            @endforeach
+
+
                                         </tbody>
                                     </table>
                                 </div>

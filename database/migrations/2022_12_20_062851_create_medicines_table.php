@@ -16,7 +16,6 @@ class CreateMedicinesTable extends Migration
         Schema::create('medicines', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->float('amount',8,2)->nullable();
             $table->string('usages')->nullable();
             $table->timestamps();
         });

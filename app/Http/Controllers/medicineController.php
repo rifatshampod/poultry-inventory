@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medicine;
 use Illuminate\Http\Request;
 
 class medicineController extends Controller
@@ -10,33 +11,19 @@ class medicineController extends Controller
 
     function getMedicine(){
 
-    //    $farmList = Farm::all();
-
-    //    $feedListCount = Feed::select('feeds.*',
-    //     DB::raw('SUM(feeds.amount) AS sum_of_amount')
-    //     )
-    //     ->groupBy('feeds.farm_id')
-    //     ->get();
-
-    //     $feedList = Total_feed::all();
+    $medicineList = Medicine::all();
        
-        return view('admin/medicine/allMedicine');
+        return view('admin/medicine/allMedicine')->with('medicineList', $medicineList);
     }
 
     function addMedicine(Request $req){
-        // $data = new Feed;
-        // $data->date = $req->input('date');
-        // $data->farm_id=$req->input('farm_id');
-        // $data->amount=$req->input('amount');
-        // $data->brand=$req->input('brand');
-        // $data->price=$req->input('price');
-        // $data->save();
-
-        // $total = Total_feed::where('farm_id', $req->input('farm_id'))->first();
-        //     $total->amount += $req->input('amount');
-        //     $total->save();
-
-        $req->session()->flash('status','New Feed added successfully');
+        
+        $data = new Medicine;
+        $data->name = $req->input('name');
+        $data->usages=$req->input('usages');
+        $data->save();
+        
+        $req->session()->flash('status','New Medicine added successfully');
         return redirect()->back();
     }
 

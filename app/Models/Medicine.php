@@ -10,7 +10,7 @@ class Medicine extends Model
     use HasFactory;
 
      protected $fillable = [
-    'name' , 'amount' , 'usages',
+    'name' , 'usages',
     ];
 
     protected $guarded = ['id'];
