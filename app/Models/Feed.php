@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Feed extends Model
 {
     use HasFactory;
-     protected $fillable = [
+    protected $fillable = [
     'date' , 'farm_id' , 'amount' , 'brand' , 'price' ,
     ];
     protected $guarded = ['id'];

@@ -45,7 +45,8 @@ Route::get('feed-restock', [feedController::class,'getRestockFeed']);
 //Medicine
 Route::get('all-medicine', [medicineController::class,'getMedicine']);
 Route::post('add-medicine', [medicineController::class,'addMedicine']);
-Route::get('all-house-medicine', [medicineController::class,'getHouseMedicine']);
+Route::get('all-house-medicine={slug}', [medicineController::class,'getHouseMedicine']);
+Route::post('add-farm-medicine', [medicineController::class,'addFarmMedicine']);
 Route::get('distribute-medicine', [medicineController::class,'getDistribution']);
 
 //Account

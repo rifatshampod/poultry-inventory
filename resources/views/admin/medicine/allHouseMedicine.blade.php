@@ -33,9 +33,9 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="mb-4">
-                                    <h3>Add Feed Type</h3>
+                                    <h3>Add Medicine to Farm</h3>
                                 </div>
-                                <form action="add-feed" method="POST">
+                                <form action="add-farm-medicine" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="form-group col-md-12">
@@ -45,8 +45,16 @@
                                                 <option value="{{$item['id']}}">{{$item['name']}}</option>
                                                 @endforeach
                                             </select>
-
                                         </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Medicine Name</label>
+                                            <select class="form-control input-default" name="medicine_id">
+                                                @foreach ($medicineList as $item)
+                                                <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
                                         <div class="form-group col-md-6">
                                             <label>Date</label>
                                             <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" />
@@ -54,11 +62,6 @@
                                         <div class="form-group col-md-6">
                                             <label>Amount (KG)</label>
                                             <input type="number" class="form-control input-default" name="amount" placeholder="Input amount" />
-                                        </div>
-
-                                        <div class="form-group col-md-6">
-                                            <label>Brand</label>
-                                            <input type="text" class="form-control input-default" name="brand" placeholder="Input Brand" />
                                         </div>
 
                                         <div class="form-group col-md-6">
@@ -90,23 +93,24 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Feed Inventory</h4>
+                                <h4 class="card-title">Farm wise Medicine Inventory</h4>
                                 <div class="table-responsive">
                                     <table class="table table-bordered verticle-middle">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Farm</th>
-                                                <th scope="col">Feed In Stock</th>
+                                                <th scope="col">Medicine In Stock</th>
                                                 <th class="" scope="col">
                                                     <span class="float-right">Action</span>
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($feedList as $item)
+                                            @foreach ($farmMedicine as $item)
                                             <tr>
                                                 <td>{{$item->farm->name}}</td>
-                                                <td>{{$item['amount']}}</td>
+                                                <td>{{$item['sum_of_amount']}}</td>
+
 
                                                 <td>
                                                     <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>

@@ -122,7 +122,6 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="all-medicine">Medicine Type</a></li>
-                    <li><a href="all-house-medicine">All Medicine (Farm)</a></li>
                     <li>
                         <a href="distribute-medicine">All Medicine Distribution</a>
 

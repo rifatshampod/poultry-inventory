@@ -85,9 +85,8 @@
                                                             <i class="fa fa-ellipsis-v display-7"></i>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="singleMedicine.html">View</a>
-                                                            <a class="dropdown-item text-warning" href="#">ReStock</a>
-                                                            <a class="dropdown-item text-success" href="#">Distribution</a>
+                                                            <a class="dropdown-item text-primary" href="all-house-medicine={{$item['id']}}">View</a>
+                                                            <a class="dropdown-item text-warning" href="#">Edit</a>
                                                         </div>
                                                     </div>
                                                 </td>
