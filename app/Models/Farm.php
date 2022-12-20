@@ -55,5 +55,10 @@ class Farm extends Model
     return $this->hasMany(Farm_medicine::class);
     }
 
+    public function sale()
+    {
+    return $this->hasMany(Sale::class);
+    }
+
 
 }

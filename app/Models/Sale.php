@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class House extends Model
+class Sale extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-    'name' , 'farm_id' ,
+    'farm_id' , 'house_id' , 'date', 'total_birds','total_weight','avg_weight','total_price','avg_price','per_kg_price','customer','car_no','catching_slip','payment_method','branch', 'status',
     ];
     protected $guarded = ['id'];
 
@@ -19,18 +19,8 @@ class House extends Model
     return $this->belongsTo(Farm::class);
     }
 
-    public function chicken()
+    public function house()
     {
-    return $this->hasMany(Chicken::class);
+    return $this->belongsTo(House::class);
     }
-    public function expense()
-    {
-    return $this->hasMany(Expense::class);
-    }
-
-    public function sale()
-    {
-    return $this->hasMany(Sale::class);
-    }
-
 }

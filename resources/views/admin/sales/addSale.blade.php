@@ -26,7 +26,7 @@
                                     <h3>Sell Chicken</h3>
                                     <hr>
                                 </div>
-                                <form action="add-expense-data" method="POST">
+                                <form action="add-sale-data" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="form-group col-md-4">
@@ -54,15 +54,15 @@
 
                                         <div class="form-group col-md-4">
                                             <label>Number of Birds</label>
-                                            <input type="number" class="form-control input-default" name="amount" placeholder="Input amount" />
+                                            <input type="number" class="form-control input-default" name="total_birds" placeholder="Input amount of Birds" />
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Total Weight </label>
-                                            <input type="text" class="form-control input-default" name="reference" placeholder="Type Reference" />
+                                            <input type="text" class="form-control input-default" name="total_weight" placeholder="Total Weight Sold" />
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Total Price </label>
-                                            <input type="text" class="form-control input-default" name="reference" placeholder="Type Reference" />
+                                            <input type="text" class="form-control input-default" name="total_price" placeholder="Total Price Received" />
                                         </div>
 
 
@@ -73,28 +73,24 @@
 
                                         <div class="form-group col-md-6">
                                             <label>Customer Name </label>
-                                            <input type="text" class="form-control input-default" name="reference" placeholder="Type Reference" />
+                                            <input type="text" class="form-control input-default" name="customer" placeholder="Type Customer Name" />
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Car No. </label>
-                                            <input type="text" class="form-control input-default" name="reference" placeholder="Type Reference" />
+                                            <input type="text" class="form-control input-default" name="car_no" placeholder="Type Car No" />
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Catching Slip No. </label>
-                                            <input type="text" class="form-control input-default" name="reference" placeholder="Type Reference" />
+                                            <input type="text" class="form-control input-default" name="catching_slip" placeholder="Type Catching Slip" />
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Payment Method </label>
-                                            <input type="text" class="form-control input-default" name="reference" placeholder="Type Reference" />
+                                            <input type="text" class="form-control input-default" name="payment_method" placeholder="Type Payment Method" />
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Branch </label>
-                                            <input type="text" class="form-control input-default" name="reference" placeholder="Type Reference" />
+                                            <input type="text" class="form-control input-default" name="branch" placeholder="Type Branch Name/information" />
                                         </div>
-
-
-
-
 
                                         <div class="col-md-12 mt-4 text-center">
                                             <div>
