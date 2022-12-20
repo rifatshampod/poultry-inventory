@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Medicine;
+use App\Models\Farm;
 use Illuminate\Http\Request;
 
 class medicineController extends Controller
@@ -14,6 +15,14 @@ class medicineController extends Controller
     $medicineList = Medicine::all();
        
         return view('admin/medicine/allMedicine')->with('medicineList', $medicineList);
+    }
+
+    function getHouseMedicine(){
+
+    // $medicineList = Medicine::all();
+    $farmList = Farm::all();
+       
+        return view('admin/medicine/allHouseMedicine')->with('farmList', $farmList);
     }
 
     function addMedicine(Request $req){

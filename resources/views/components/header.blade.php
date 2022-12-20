@@ -121,7 +121,8 @@
                     <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Medicine/Vaccine</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="all-medicine">All Medicine (Type)</a></li>
+                    <li><a href="all-medicine">Medicine Type</a></li>
+                    <li><a href="all-house-medicine">All Medicine (Farm)</a></li>
                     <li>
                         <a href="distribute-medicine">All Medicine Distribution</a>
 

@@ -14,4 +14,9 @@ class Medicine extends Model
     ];
 
     protected $guarded = ['id'];
+
+    public function farmMedicine()
+    {
+    return $this->hasMany(Farm_medicine::class);
+    }
 }
