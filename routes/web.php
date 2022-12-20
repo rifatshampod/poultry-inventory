@@ -8,6 +8,7 @@ use App\Http\Controllers\chickenController;
 use App\Http\Controllers\feedController;
 use App\Http\Controllers\accountController;
 use App\Http\Controllers\medicineController;
+use App\Http\Controllers\saleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,12 @@ Route::get('all-expense', [accountController::class,'getExpense']);
 Route::post('add-expense-data', [accountController::class,'addExpense']);
 Route::get('petty-cash', [accountController::class,'getPettyCash']);
 Route::post('add-petty-cash', [accountController::class,'addPettyCash']);
+
+//Sell
+Route::get('add-sale', [saleController::class,'getAddSale']);
+Route::get('all-sale', [saleController::class,'getSale']);
+Route::get('all-daily-sale', [saleController::class,'getDailySale']);
+Route::post('add-sale-data', [saleController::class,'addSale']);
 
 
 //core HR

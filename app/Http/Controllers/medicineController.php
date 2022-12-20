@@ -45,12 +45,21 @@ class medicineController extends Controller
     }
 
     function addFarmMedicine(Request $req){
+
+        $amount = 0;
+
+        if($req->input('data_type')==2){
+            $amount = -($req->input('amount'));
+        }
+        else{
+            $amount = $req->input('amount');
+        }
         
         $data = new Farm_medicine;
         $data->medicine_id = $req->input('medicine_id');
         $data->farm_id=$req->input('farm_id');
         $data->date=$req->input('date');
-        $data->amount=$req->input('amount');
+        $data->amount=$amount;
         $data->price=$req->input('price');
         $data->save();
         
@@ -59,7 +68,8 @@ class medicineController extends Controller
     }
 
     function getDistribution(Request $req){
-        $medicineList = Farm_medicine::all();
+        $medicineList = Farm_medicine::orderBy('id','desc')
+        ->get();
        
         return view('admin/medicine/medicineDistribution')->with('medicineList', $medicineList);
     }

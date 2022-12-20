@@ -33,7 +33,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="mb-4">
-                                    <h3>Add Medicine to Farm</h3>
+                                    <h3>Add Medicine to Farm / Add Use Data</h3>
                                 </div>
                                 <form action="add-farm-medicine" method="POST">
                                     @csrf
@@ -68,6 +68,17 @@
                                             <label>Price</label>
                                             <input type="number" class="form-control input-default" name="price" placeholder="Input Price" />
                                         </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label>Data Type</label>
+                                            <select class="form-control input-default" name="data_type" required>
+                                                <option value="1">Adding New Medicine</option>
+                                                <option value="2">Reducing Medicine Use</option>
+
+                                            </select>
+                                        </div>
+
+
 
                                         <div class="col-md-12">
                                             <div>

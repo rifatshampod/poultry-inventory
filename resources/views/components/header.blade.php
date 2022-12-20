@@ -134,8 +134,9 @@
                     <span class="nav-text">Sales</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="allSale.html">All Sales (House)</a></li>
-                    <li><a href="dailySale.html">Daily Sales Data</a></li>
+                    <li><a href="add-sale">Add Sale</a></li>
+                    <li><a href="all-sale">All Sales (House)</a></li>
+                    <li><a href="all-daily-sale">Daily Sales Data</a></li>
                 </ul>
             </li>
             <li>
