@@ -21460,3 +21460,7 @@ html[dir="rtl"]
   border-radius: 5px;
   max-height: 15px;
 }
+
+#farmList {
+  display: none;
+}

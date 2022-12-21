@@ -36,43 +36,41 @@
                                 <div class="mb-4">
                                     <h3>Add User</h3>
                                 </div>
-                                <form action="">
+                                <form action="add-user" method="POST">
+                                    @csrf
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label>Name</label>
-                                            <input type="text" class="form-control input-default" placeholder="Name" />
+                                            <input type="text" name="name" class="form-control input-default" placeholder="Name" required />
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Email</label>
-                                            <input type="email" class="form-control input-default" placeholder="Email" />
+                                            <input type="email" name="email" class="form-control input-default" placeholder="Email" required />
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Password</label>
-                                            <input type="password" class="form-control input-default" placeholder="Password" />
+                                            <input type="password" name="password" class="form-control input-default" placeholder="Password" required />
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Phone</label>
-                                            <input type="number" class="form-control input-default" placeholder="Number" />
+                                            <input type="number" name="phone" class="form-control input-default" placeholder="Number" />
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Role</label>
-                                                <select class="form-control input-default">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
+                                                <select class="form-control input-default" name="role" onchange="showDiv(this)" required>
+                                                    <option value="1">Admin</option>
+                                                    <option value="2">Farm Manager</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-6" id="farmList">
                                             <div class="form-group">
                                                 <label>Farm</label>
-                                                <select class="form-control input-default">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
+                                                <select class="form-control input-default" name="farm_id">
+                                                    @foreach ($farmList as $item)
+                                                    <option value={{$item['id']}}>{{$item['name']}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -93,7 +91,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">All User</h4>
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered zero-configuration">
+                                    <table class="table table-bordered zero-configuration">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Name</th>
@@ -106,11 +104,19 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($userList as $item)
                                             <tr>
-                                                <td>Arif Bipu</td>
-                                                <td>arif@gmail.com</td>
-                                                <td>01887980841</td>
-                                                <td>Manager</td>
+                                                <td>{{$item['name']}}</td>
+                                                <td>{{$item['email']}}</td>
+
+                                                <td>{{$item['phone']}}</td>
+
+                                                @if($item['role']==1)
+
+                                                <td>Admin</td>
+                                                @else
+                                                <td>Farm Manager</td>
+                                                @endif
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
@@ -124,96 +130,10 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>Arif Bipu</td>
-                                                <td>arif@gmail.com</td>
-                                                <td>01887980841</td>
-                                                <td>Manager</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#">Edit</a>
-                                                            <a class="dropdown-item text-warning" href="#">Change Password</a>
-                                                            <a class="dropdown-item text-danger" href="#">Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Arif Bipu</td>
-                                                <td>arif@gmail.com</td>
-                                                <td>01887980841</td>
-                                                <td>Manager</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#">Edit</a>
-                                                            <a class="dropdown-item text-warning" href="#">Change Password</a>
-                                                            <a class="dropdown-item text-danger" href="#">Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Arif Bipu</td>
-                                                <td>arif@gmail.com</td>
-                                                <td>01887980841</td>
-                                                <td>Manager</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#">Edit</a>
-                                                            <a class="dropdown-item text-warning" href="#">Change Password</a>
-                                                            <a class="dropdown-item text-danger" href="#">Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Arif Bipu</td>
-                                                <td>arif@gmail.com</td>
-                                                <td>01887980841</td>
-                                                <td>Manager</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#">Edit</a>
-                                                            <a class="dropdown-item text-warning" href="#">Change Password</a>
-                                                            <a class="dropdown-item text-danger" href="#">Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Arif Bipu</td>
-                                                <td>arif@gmail.com</td>
-                                                <td>01887980841</td>
-                                                <td>Manager</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#">Edit</a>
-                                                            <a class="dropdown-item text-warning" href="#">Change Password</a>
-                                                            <a class="dropdown-item text-danger" href="#">Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+
+                                            @endforeach
+
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -223,6 +143,7 @@
                 </div>
             </div>
         </div>
+
         <!--**********************************
             Content body end
         ***********************************-->
@@ -244,5 +165,17 @@
     <script src="./plugins/tables/js/jquery.dataTables.min.js"></script>
     <script src="./plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
     <script src="./plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
+
+    <script>
+        function showDiv(select) {
+            if (select.value == 1) {
+                document.getElementById("farmList").style.display = "none";
+            } else {
+                document.getElementById("farmList").style.display = "block";
+            }
+        }
+
+    </script>
+
 </body>
 </html>

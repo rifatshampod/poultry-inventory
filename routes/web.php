@@ -73,6 +73,7 @@ Route::post('add-leave',[hrController::class,'addLeaveRequests']);
 
 //settings         ---------------------------------------------------
 Route::get('users',[settingsController::class,'getUser']);
+Route::post('add-user', [settingsController::class,'addUser']);
 
 Route::get('flock',[settingsController::class,'getFlock']);
 Route::post('add-flock', [settingsController::class,'addFlock']);

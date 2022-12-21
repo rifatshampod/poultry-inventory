@@ -10,6 +10,8 @@ use App\Models\Farm;
 use App\Models\House;
 use App\Models\Designation;
 use App\Models\Flock;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class settingsController extends Controller
 {
@@ -141,7 +143,33 @@ class settingsController extends Controller
     }
 
     function getUser(){
-        return view('admin/settings/user');
+
+        $userList = User::get();
+        $farmList = Farm::all();
+
+        return view('admin/settings/user')->with('userList', $userList)->with('farmList', $farmList);
+    }
+    
+    function addUser(Request $req){
+
+        $farm = 0;
+        if($req->input('role')==2){
+            $farm = $req->input('farm_id');
+        }
+
+        $data = new User();
+        $data->name = $req->input('name');
+        $data->email = $req->input('email');
+        $data->phone = $req->input('phone');
+        $data->role = $req->input('role');
+        $data->farm_id = $farm;
+        $data->password = Hash::make($req->input('password'));
+        $data->save();
+
+        
+
+        $req->session()->flash('status','New user added successfully');
+        return redirect()->back();
     }
 
     
