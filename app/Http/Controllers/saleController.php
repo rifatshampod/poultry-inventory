@@ -29,6 +29,18 @@ class saleController extends Controller
 
     function getSale(){
 
+        $saleList1 = Sale::select('sales.*',
+        DB::raw('SUM(sales.total_birds) AS sum_of_birds'),
+        DB::raw('SUM(sales.total_weight) AS sum_of_weight'),
+        DB::raw('SUM(sales.total_price) AS sum_of_price'),
+        DB::raw('AVG(sales.avg_weight) AS avg_of_weight'),
+        DB::raw('AVG(sales.avg_price) AS avg_of_price'),
+        DB::raw('AVG(sales.per_kg_price) AS avg_kg_price'),
+        )
+        ->where('farm_id',1)
+        ->groupBy('sales.farm_id')
+        ->get();
+
     //     $flock = Flock::where('status',1)
     //     ->first();
 
@@ -37,7 +49,7 @@ class saleController extends Controller
     //    $expenseList = Expense::where('flock_id',$currentFlock)
     //    ->get();
        
-        return view('admin/sales/allSale');
+        return view('admin/sales/allSale')->with('saleList1', $saleList1);
     }
 
     function getDailySale(){

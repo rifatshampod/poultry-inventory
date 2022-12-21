@@ -57,6 +57,7 @@ class chickenController extends Controller
         $data->date = $req->input('date');
         $data->farm_id=$req->input('farm_id');
         $data->house_id=$req->input('house_id');
+        $data->sum_of_doc=$req->input('first_doc');
         $data->sum_of_doc=$req->input('sum_of_doc');
         $data->hatchery=$req->input('hatchery');
         $data->bird_in_case=$req->input('bird_in_case');
@@ -118,7 +119,7 @@ class chickenController extends Controller
         ->where('chickens.farm_id',4)
         ->get();
         
-        return view('admin/chicken/allChicken')->with('chickenList1', $chickenList1)->with('chickenList2',      $chickenList2)->with('chickenList3', $chickenList3)->with('chickenList4', $chickenList4);
+        return view('admin/chicken/allChicken')->with('chickenList1', $chickenList1)->with('chickenList2', $chickenList2)->with('chickenList3', $chickenList3)->with('chickenList4', $chickenList4);
     }
 
     function getHouseChicken(){
@@ -145,37 +146,6 @@ class chickenController extends Controller
         return view('admin/chicken/dailyChicken')->with('dailyList1', $dailyList1)->with('dailyList2', $dailyList2)->with('dailyList3', $dailyList3)->with('dailyList4', $dailyList4);
     }
 
-    // function addEmployee(Request $req){
-
-    //     $data = new Employee;
-    //     $data->name = $req->input('name');
-    //     $data->address=$req->input('address');
-    //     $data->phone=$req->input('phone');
-    //     $data->designation_id=$req->input('designation_id');
-    //     $data->salary=$req->input('salary');
-    //     $data->nid=$req->input('nid');
-    //     $data->status=1;
-    //     $data->save();
-
-    //     if($req->file('image')){
-    //         $user_slug = $data->id;
-    //         $fileInfo = $req->file('image');
-
-    //         $name = $req->file('image')->getClientOriginalName();
-    //         $rawfile = $user_slug.$name;
-    //         $finalfile=str_replace([':', '\\', '/', '*', '#',' ','-'], '', $rawfile);
-    //         $folder = "images/employees";
-    //         $fileInfo->move($folder, $finalfile);
-    //         // $fileUrl = $folder .'/'. $finalfile;
-
-    //         $userImage = Employee::find($user_slug);
-    //         $userImage->image = $finalfile;
-    //         $userImage->save();
-    //     }
-
-    //     $req->session()->flash('status','New employee added successfully');
-    //     return redirect()->back();
-    // }
 
     function getAddChickenData($slug){
         $chicken=Chicken::find($slug);
@@ -222,18 +192,6 @@ class chickenController extends Controller
             $total_chicken = 0;
             $fcr = 0;
         }
-
-        // echo "chicken ID: ". $chicken;
-        // echo "<br>";
-        // echo "chicken Average Weight now: ". $weight;
-        // echo "<br>";
-        // echo "chicken Average Weight Last day: ". $chickenList['avg_weight'];
-        // echo "<br>";
-        // echo "Weight Gain: ". $weight_gain;
-        // echo "<br>";
-        // echo "Total Chicken left: ". $total_chicken;
-        // echo "<br>";
-        // echo "FCR: ". $fcr;
 
         $data = new Daily_chicken;
         $data->date = $req->input('date');

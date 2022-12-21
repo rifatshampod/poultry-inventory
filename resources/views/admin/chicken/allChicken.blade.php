@@ -87,7 +87,8 @@
                                                 <td>{{number_format($item['avg_fcr'], 2, '.', ',')}}</td>
                                                 <td>{{$item['sum_of_mortality']}}</td>
                                                 <td>{{$item['sum_of_rejection']}}</td>
-                                                <td>100</td>
+                                                <td>{{$item['first_doc'] - $item['sum_of_doc']}}</td>
+
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
@@ -150,7 +151,8 @@
                                                 <td>{{number_format($item['avg_fcr'], 2, '.', ',')}}</td>
                                                 <td>{{$item['sum_of_mortality']}}</td>
                                                 <td>{{$item['sum_of_rejection']}}</td>
-                                                <td>100</td>
+                                                <td>{{$item['first_doc'] - $item['sum_of_doc']}}</td>
+
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
@@ -215,7 +217,8 @@
                                                 <td>{{number_format($item['avg_fcr'], 2, '.', ',')}}</td>
                                                 <td>{{$item['sum_of_mortality']}}</td>
                                                 <td>{{$item['sum_of_rejection']}}</td>
-                                                <td>100</td>
+                                                <td>{{$item['first_doc'] - $item['sum_of_doc']}}</td>
+
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
@@ -280,7 +283,7 @@
                                                 <td>{{number_format($item['avg_fcr'], 2, '.', ',')}}</td>
                                                 <td>{{$item['sum_of_mortality']}}</td>
                                                 <td>{{$item['sum_of_rejection']}}</td>
-                                                <td>100</td>
+                                                <td>{{$item['first_doc'] - $item['sum_of_doc']}}</td>
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
