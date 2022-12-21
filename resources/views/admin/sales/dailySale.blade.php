@@ -49,39 +49,46 @@
                     <div id="farm-1" class="tab-pane active">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Show all daily input</h4>
+                                <h4 class="card-title">Show all daily Sales</h4>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Date</th>
                                                 <th scope="col">House</th>
-                                                <th scope="col">F.C.</th>
-                                                <th scope="col">F.C.R</th>
-                                                <th scope="col">Weight 1</th>
-                                                <th scope="col">Weight 2</th>
-                                                <th scope="col">Weight 3</th>
-                                                <th scope="col">Weight 4</th>
-                                                <th scope="col">Morality</th>
-                                                <th scope="col">Rejection</th>
+                                                <th scope="col">Birds sold</th>
+                                                <th scope="col">Weight</th>
+                                                <th scope="col">Avg Weight</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Avg Price</th>
+                                                <th scope="col">Price/KG</th>
+                                                <th scope="col">Customer</th>
+                                                <th scope="col">Car No</th>
+                                                <th scope="col">Catching Slip</th>
+                                                <th scope="col">Payment Method</th>
+                                                <th scope="col">Branch</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($dailyList1->isEmpty())
+                                            @if($soldList1->isEmpty())
                                             No data found
                                             @else
-                                            @foreach ($dailyList1 as $item)
+                                            @foreach ($soldList1 as $item)
                                             <tr>
                                                 <th>{{$item['date']}}</th>
-                                                <td>{{$item->chicken->house->name}}</td>
-                                                <td>{{$item['feed_consumption']}}</td>
-                                                <td>{{$item['fcr']}}</td>
-                                                <td>{{$item['weight1']}}</td>
-                                                <td>{{$item['weight2']}}</td>
-                                                <td>{{$item['weight3']}}</td>
-                                                <td>{{$item['weight4']}}</td>
-                                                <td>{{$item['mortality']}}</td>
-                                                <td>{{$item['rejection']}}</td>
+                                                <td>{{$item->house->name}}</td>
+                                                <td>{{$item['total_birds']}}</td>
+                                                <td>{{$item['total_weight']}}</td>
+                                                <td>{{$item['avg_weight']}}</td>
+                                                <td>{{$item['total_price']}}</td>
+                                                <td>{{$item['avg_price']}}</td>
+                                                <td>{{$item['per_kg_price']}}</td>
+                                                <td>{{$item['customer']}}</td>
+                                                <td>{{$item['car_no']}}</td>
+                                                <td>{{$item['catching_slip']}}</td>
+                                                <td>{{$item['payment_method']}}</td>
+                                                <td>{{$item['branch']}}</td>
                                             </tr>
                                             @endforeach
 
@@ -106,35 +113,42 @@
                                             <tr>
                                                 <th scope="col">Date</th>
                                                 <th scope="col">House</th>
-                                                <th scope="col">F.C.</th>
-                                                <th scope="col">F.C.R</th>
-                                                <th scope="col">Weight 1</th>
-                                                <th scope="col">Weight 2</th>
-                                                <th scope="col">Weight 3</th>
-                                                <th scope="col">Weight 4</th>
-                                                <th scope="col">Morality</th>
-                                                <th scope="col">Rejection</th>
+                                                <th scope="col">Birds sold</th>
+                                                <th scope="col">Weight</th>
+                                                <th scope="col">Avg Weight</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Avg Price</th>
+                                                <th scope="col">Price/KG</th>
+                                                <th scope="col">Customer</th>
+                                                <th scope="col">Car No</th>
+                                                <th scope="col">Catching Slip</th>
+                                                <th scope="col">Payment Method</th>
+                                                <th scope="col">Branch</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($dailyList2->isEmpty())
+                                            @if($soldList2->isEmpty())
                                             No data found
                                             @else
-                                            @foreach ($dailyList2 as $item)
+                                            @foreach ($soldList2 as $item)
                                             <tr>
                                                 <th>{{$item['date']}}</th>
-                                                <td>{{$item->chicken->house->name}}</td>
-                                                <td>{{$item['feed_consumption']}}</td>
-                                                <td>{{$item['fcr']}}</td>
-                                                <td>{{$item['weight1']}}</td>
-                                                <td>{{$item['weight2']}}</td>
-                                                <td>{{$item['weight3']}}</td>
-                                                <td>{{$item['weight4']}}</td>
-                                                <td>{{$item['mortality']}}</td>
-                                                <td>{{$item['rejection']}}</td>
+                                                <td>{{$item->house->name}}</td>
+                                                <td>{{$item['total_birds']}}</td>
+                                                <td>{{$item['total_weight']}}</td>
+                                                <td>{{$item['avg_weight']}}</td>
+                                                <td>{{$item['total_price']}}</td>
+                                                <td>{{$item['avg_price']}}</td>
+                                                <td>{{$item['per_kg_price']}}</td>
+                                                <td>{{$item['customer']}}</td>
+                                                <td>{{$item['car_no']}}</td>
+                                                <td>{{$item['catching_slip']}}</td>
+                                                <td>{{$item['payment_method']}}</td>
+                                                <td>{{$item['branch']}}</td>
                                             </tr>
-
                                             @endforeach
+
                                             @endif
 
 
@@ -142,10 +156,12 @@
                                         </tbody>
                                     </table>
                                 </div>
+
                             </div>
                         </div>
-
                     </div>
+
+
                     <div id="farm-3" class="tab-pane">
                         <div class="card">
                             <div class="card-body">
@@ -156,36 +172,42 @@
                                             <tr>
                                                 <th scope="col">Date</th>
                                                 <th scope="col">House</th>
-                                                <th scope="col">F.C.</th>
-                                                <th scope="col">F.C.R</th>
-                                                <th scope="col">Weight 1</th>
-                                                <th scope="col">Weight 2</th>
-                                                <th scope="col">Weight 3</th>
-                                                <th scope="col">Weight 4</th>
-                                                <th scope="col">Morality</th>
-                                                <th scope="col">Rejection</th>
+                                                <th scope="col">Birds sold</th>
+                                                <th scope="col">Weight</th>
+                                                <th scope="col">Avg Weight</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Avg Price</th>
+                                                <th scope="col">Price/KG</th>
+                                                <th scope="col">Customer</th>
+                                                <th scope="col">Car No</th>
+                                                <th scope="col">Catching Slip</th>
+                                                <th scope="col">Payment Method</th>
+                                                <th scope="col">Branch</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($dailyList3->isEmpty())
+                                            @if($soldList3->isEmpty())
                                             No data found
                                             @else
-
-                                            @foreach ($dailyList3 as $item)
+                                            @foreach ($soldList3 as $item)
                                             <tr>
                                                 <th>{{$item['date']}}</th>
-                                                <td>{{$item->chicken->house->name}}</td>
-                                                <td>{{$item['feed_consumption']}}</td>
-                                                <td>{{$item['fcr']}}</td>
-                                                <td>{{$item['weight1']}}</td>
-                                                <td>{{$item['weight2']}}</td>
-                                                <td>{{$item['weight3']}}</td>
-                                                <td>{{$item['weight4']}}</td>
-                                                <td>{{$item['mortality']}}</td>
-                                                <td>{{$item['rejection']}}</td>
+                                                <td>{{$item->house->name}}</td>
+                                                <td>{{$item['total_birds']}}</td>
+                                                <td>{{$item['total_weight']}}</td>
+                                                <td>{{$item['avg_weight']}}</td>
+                                                <td>{{$item['total_price']}}</td>
+                                                <td>{{$item['avg_price']}}</td>
+                                                <td>{{$item['per_kg_price']}}</td>
+                                                <td>{{$item['customer']}}</td>
+                                                <td>{{$item['car_no']}}</td>
+                                                <td>{{$item['catching_slip']}}</td>
+                                                <td>{{$item['payment_method']}}</td>
+                                                <td>{{$item['branch']}}</td>
                                             </tr>
-
                                             @endforeach
+
                                             @endif
 
 
@@ -193,10 +215,12 @@
                                         </tbody>
                                     </table>
                                 </div>
+
                             </div>
                         </div>
-
                     </div>
+
+
                     <div id="farm-4" class="tab-pane">
                         <div class="card">
                             <div class="card-body">
@@ -207,56 +231,71 @@
                                             <tr>
                                                 <th scope="col">Date</th>
                                                 <th scope="col">House</th>
-                                                <th scope="col">F.C.</th>
-                                                <th scope="col">F.C.R</th>
-                                                <th scope="col">Weight 1</th>
-                                                <th scope="col">Weight 2</th>
-                                                <th scope="col">Weight 3</th>
-                                                <th scope="col">Weight 4</th>
-                                                <th scope="col">Morality</th>
-                                                <th scope="col">Rejection</th>
+                                                <th scope="col">Birds sold</th>
+                                                <th scope="col">Weight</th>
+                                                <th scope="col">Avg Weight</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Avg Price</th>
+                                                <th scope="col">Price/KG</th>
+                                                <th scope="col">Customer</th>
+                                                <th scope="col">Car No</th>
+                                                <th scope="col">Catching Slip</th>
+                                                <th scope="col">Payment Method</th>
+                                                <th scope="col">Branch</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($dailyList4->isEmpty())
+                                            @if($soldList4->isEmpty())
                                             No data found
                                             @else
-                                            @foreach ($dailyList4 as $item)
+                                            @foreach ($soldList4 as $item)
                                             <tr>
                                                 <th>{{$item['date']}}</th>
-                                                <td>{{$item->chicken->house->name}}</td>
-                                                <td>{{$item['feed_consumption']}}</td>
-                                                <td>{{$item['fcr']}}</td>
-                                                <td>{{$item['weight1']}}</td>
-                                                <td>{{$item['weight2']}}</td>
-                                                <td>{{$item['weight3']}}</td>
-                                                <td>{{$item['weight4']}}</td>
-                                                <td>{{$item['mortality']}}</td>
-                                                <td>{{$item['rejection']}}</td>
+                                                <td>{{$item->house->name}}</td>
+                                                <td>{{$item['total_birds']}}</td>
+                                                <td>{{$item['total_weight']}}</td>
+                                                <td>{{$item['avg_weight']}}</td>
+                                                <td>{{$item['total_price']}}</td>
+                                                <td>{{$item['avg_price']}}</td>
+                                                <td>{{$item['per_kg_price']}}</td>
+                                                <td>{{$item['customer']}}</td>
+                                                <td>{{$item['car_no']}}</td>
+                                                <td>{{$item['catching_slip']}}</td>
+                                                <td>{{$item['payment_method']}}</td>
+                                                <td>{{$item['branch']}}</td>
                                             </tr>
                                             @endforeach
+
                                             @endif
+
+
+
                                         </tbody>
                                     </table>
                                 </div>
+
                             </div>
                         </div>
-
                     </div>
                 </div>
+
+
             </div>
-
         </div>
+    </div>
 
-        <!--**********************************
+    </div>
+
+    <!--**********************************
             Content body end
         ***********************************-->
 
-        <!--**********************************
+    <!--**********************************
             Footer start
         ***********************************-->
-        <x-footer />
-        <!--**********************************
+    <x-footer />
+    <!--**********************************
             Footer end
         ***********************************-->
     </div>

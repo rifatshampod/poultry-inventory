@@ -41,28 +41,54 @@ class saleController extends Controller
         ->groupBy('sales.farm_id')
         ->get();
 
-    //     $flock = Flock::where('status',1)
-    //     ->first();
+        $saleList2 = Sale::select('sales.*',
+        DB::raw('SUM(sales.total_birds) AS sum_of_birds'),
+        DB::raw('SUM(sales.total_weight) AS sum_of_weight'),
+        DB::raw('SUM(sales.total_price) AS sum_of_price'),
+        DB::raw('AVG(sales.avg_weight) AS avg_of_weight'),
+        DB::raw('AVG(sales.avg_price) AS avg_of_price'),
+        DB::raw('AVG(sales.per_kg_price) AS avg_kg_price'),
+        )
+        ->where('farm_id',2)
+        ->groupBy('sales.farm_id')
+        ->get();
 
-    //     $currentFlock = $flock['id'];
+        $saleList3 = Sale::select('sales.*',
+        DB::raw('SUM(sales.total_birds) AS sum_of_birds'),
+        DB::raw('SUM(sales.total_weight) AS sum_of_weight'),
+        DB::raw('SUM(sales.total_price) AS sum_of_price'),
+        DB::raw('AVG(sales.avg_weight) AS avg_of_weight'),
+        DB::raw('AVG(sales.avg_price) AS avg_of_price'),
+        DB::raw('AVG(sales.per_kg_price) AS avg_kg_price'),
+        )
+        ->where('farm_id',3)
+        ->groupBy('sales.farm_id')
+        ->get();
 
-    //    $expenseList = Expense::where('flock_id',$currentFlock)
-    //    ->get();
+        $saleList4 = Sale::select('sales.*',
+        DB::raw('SUM(sales.total_birds) AS sum_of_birds'),
+        DB::raw('SUM(sales.total_weight) AS sum_of_weight'),
+        DB::raw('SUM(sales.total_price) AS sum_of_price'),
+        DB::raw('AVG(sales.avg_weight) AS avg_of_weight'),
+        DB::raw('AVG(sales.avg_price) AS avg_of_price'),
+        DB::raw('AVG(sales.per_kg_price) AS avg_kg_price'),
+        )
+        ->where('farm_id',4)
+        ->groupBy('sales.farm_id')
+        ->get();
+
        
-        return view('admin/sales/allSale')->with('saleList1', $saleList1);
+        return view('admin/sales/allSale')->with('saleList1', $saleList1)->with('saleList2', $saleList2)->with('saleList3', $saleList3)->with('saleList4', $saleList4);
     }
 
     function getDailySale(){
 
-    //     $flock = Flock::where('status',1)
-    //     ->first();
-
-    //     $currentFlock = $flock['id'];
-
-    //    $expenseList = Expense::where('flock_id',$currentFlock)
-    //    ->get();
+        $soldList1 = Sale::where('farm_id',1)->get();
+        $soldList2 = Sale::where('farm_id',2)->get();
+        $soldList3 = Sale::where('farm_id',3)->get();
+        $soldList4 = Sale::where('farm_id',4)->get();
        
-        return view('admin/sales/dailySale');
+        return view('admin/sales/dailySale')->with('soldList1', $soldList1)->with('soldList2', $soldList2)->with('soldList3', $soldList3)->with('soldList4', $soldList4);
     }
 
     function addSale(Request $req){
