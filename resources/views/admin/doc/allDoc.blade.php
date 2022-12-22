@@ -35,16 +35,16 @@
                 <div>
                     <ul class="nav nav-pills mb-3">
                         <li class="nav-item">
-                            <a href="#farm-1" class="nav-link rounded active" data-toggle="tab" aria-expanded="false">Farm 1</a>
+                            <a href="#farm-1" class="nav-link rounded active px-5" data-toggle="tab" aria-expanded="false">Farm 1</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#farm-2" class="nav-link rounded" data-toggle="tab" aria-expanded="false">Farm 2</a>
+                            <a href="#farm-2" class="nav-link rounded  px-5" data-toggle="tab" aria-expanded="false">Farm 2</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#farm-3" class="nav-link rounded" data-toggle="tab" aria-expanded="true">Farm 3</a>
+                            <a href="#farm-3" class="nav-link rounded  px-5" data-toggle="tab" aria-expanded="true">Farm 3</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#farm-4" class="nav-link rounded" data-toggle="tab" aria-expanded="true">Farm 4</a>
+                            <a href="#farm-4" class="nav-link rounded  px-5" data-toggle="tab" aria-expanded="true">Farm 4</a>
                         </li>
                     </ul>
                 </div>
@@ -54,7 +54,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <h4 class="card-title">All Chicken</h4>
+                                        <h4 class="card-title">All DOC ( Farm: <span class="text-primary">{{$farm1->name}}</span>)</h4>
                                     </div>
                                     <div>
                                         <button type="button" class="btn mb-1 btn-primary" data-toggle="modal" data-target="#addDoc1">
@@ -124,7 +124,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <h4 class="card-title">All Chicken</h4>
+                                        <h4 class="card-title">All DOC ( Farm: <span class="text-primary">{{$farm2->name}}</span>)</h4>
                                     </div>
                                     <div>
                                         <button type="button" class="btn mb-1 btn-primary" data-toggle="modal" data-target="#addDoc2">
@@ -195,7 +195,8 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <h4 class="card-title">All Chicken</h4>
+                                        <h4 class="card-title">All DOC ( Farm: <span class="text-primary">{{$farm3->name}}</span>)</h4>
+
                                     </div>
                                     <div>
                                         <button type="button" class="btn mb-1 btn-primary" data-toggle="modal" data-target="#addDoc3">
@@ -266,7 +267,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <h4 class="card-title">All Chicken</h4>
+                                        <h4 class="card-title">All DOC ( Farm: <span class="text-primary">{{$farm4->name}}</span>)</h4>
                                     </div>
                                     <div>
                                         <button type="button" class="btn mb-1 btn-primary" data-toggle="modal" data-target="#addDoc4">
