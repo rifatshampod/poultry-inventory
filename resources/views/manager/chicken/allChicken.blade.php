@@ -32,22 +32,7 @@
                 </div>
             </div>
             <div class="container-fluid mt-3">
-                <div>
-                    <ul class="nav nav-pills mb-3">
-                        <li class="nav-item">
-                            <a href="#farm-1" class="nav-link rounded active" data-toggle="tab" aria-expanded="false">Farm 1</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#farm-2" class="nav-link rounded" data-toggle="tab" aria-expanded="false">Farm 2</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#farm-3" class="nav-link rounded" data-toggle="tab" aria-expanded="true">Farm 3</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#farm-4" class="nav-link rounded" data-toggle="tab" aria-expanded="true">Farm 4</a>
-                        </li>
-                    </ul>
-                </div>
+
                 <div class="tab-content br-n pn">
                     <div id="farm-1" class="tab-pane active">
                         <div class="card">
@@ -77,7 +62,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($chickenList1 as $item)
+                                            @foreach ($chickenList as $item)
                                             <tr>
                                                 <td>{{$item->house->name}}</td>
                                                 <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())+1}} days</td>
@@ -112,201 +97,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="farm-2" class="tab-pane">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h4 class="card-title">All Chicken</h4>
-                                    </div>
 
-                                </div>
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered zero-configuration">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">House</th>
-                                                <th scope="col">Age</th>
-                                                <th scope="col">Total</th>
-                                                <th scope="col">Balance</th>
-                                                <th scope="col">Weight</th>
-                                                <th scope="col">FCR</th>
-                                                <th scope="col">Dead</th>
-                                                <th scope="col">Rejected</th>
-                                                <th scope="col">Sold</th>
-                                                <th class="" scope="col">
-                                                    <span class="float-right">Action</span>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($chickenList2 as $item)
-                                            <tr>
-                                                <td>{{$item->house->name}}</td>
-                                                <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())+1}} days</td>
-                                                <td>{{$item['sum_of_doc']}}</td>
-                                                <td>{{$item['sum_of_doc'] - $item['sum_of_mortality']-$item['sum_of_rejection']}}</td>
-
-                                                <td>{{number_format($item['avg_weight'], 2, '.', ',')}} Kg</td>
-                                                <td>{{number_format($item['avg_fcr'], 2, '.', ',')}}</td>
-                                                <td>{{$item['sum_of_mortality']}}</td>
-                                                <td>{{$item['sum_of_rejection']}}</td>
-                                                <td>{{$item['first_doc'] - $item['sum_of_doc']}}</td>
-
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7 display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="farm-3" class="tab-pane">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h4 class="card-title">All Chicken</h4>
-                                    </div>
-
-                                </div>
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered zero-configuration">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">House</th>
-                                                <th scope="col">Age</th>
-                                                <th scope="col">Total</th>
-                                                <th scope="col">Balance</th>
-                                                <th scope="col">Weight</th>
-                                                <th scope="col">FCR</th>
-                                                <th scope="col">Dead</th>
-                                                <th scope="col">Rejected</th>
-                                                <th scope="col">Sold</th>
-                                                <th class="" scope="col">
-                                                    <span class="float-right">Action</span>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if($chickenList3->isEmpty())
-                                            No data
-                                            @else
-                                            @foreach ($chickenList3 as $item)
-                                            <tr>
-                                                {{-- <td>{{$item->house->name}}</td> --}}
-                                                <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())+1}} days</td>
-                                                <td>{{$item['sum_of_doc']}}</td>
-                                                <td>{{$item['sum_of_doc'] - $item['sum_of_mortality']-$item['sum_of_rejection']}}</td>
-
-                                                <td>{{number_format($item['avg_weight'], 2, '.', ',')}} Kg</td>
-                                                <td>{{number_format($item['avg_fcr'], 2, '.', ',')}}</td>
-                                                <td>{{$item['sum_of_mortality']}}</td>
-                                                <td>{{$item['sum_of_rejection']}}</td>
-                                                <td>{{$item['first_doc'] - $item['sum_of_doc']}}</td>
-
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7 display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
-
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-
-                                            @endif
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="farm-4" class="tab-pane">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h4 class="card-title">All Chicken</h4>
-                                    </div>
-
-                                </div>
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered zero-configuration">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">House</th>
-                                                <th scope="col">Age</th>
-                                                <th scope="col">Total</th>
-                                                <th scope="col">Balance</th>
-                                                <th scope="col">Weight</th>
-                                                <th scope="col">FCR</th>
-                                                <th scope="col">Dead</th>
-                                                <th scope="col">Rejected</th>
-                                                <th scope="col">Sold</th>
-                                                <th class="" scope="col">
-                                                    <span class="float-right">Action</span>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($chickenList4 as $item)
-                                            <tr>
-                                                <td>{{$item->house->name}}</td>
-                                                <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())+1}} days</td>
-                                                <td>{{$item['sum_of_doc']}}</td>
-                                                <td>{{$item['sum_of_doc'] - $item['sum_of_mortality']-$item['sum_of_rejection']}}</td>
-                                                <td>{{number_format($item['avg_weight'], 2, '.', ',')}} Kg</td>
-                                                <td>{{number_format($item['avg_fcr'], 2, '.', ',')}}</td>
-                                                <td>{{$item['sum_of_mortality']}}</td>
-                                                <td>{{$item['sum_of_rejection']}}</td>
-                                                <td>{{$item['first_doc'] - $item['sum_of_doc']}}</td>
-                                                <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7 display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
-
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

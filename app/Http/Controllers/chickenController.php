@@ -139,7 +139,25 @@ class chickenController extends Controller
         ->where('chickens.farm_id',4)
         ->get();
         
+        if(auth()->user()->role ==1){
         return view('admin/chicken/allChicken')->with('chickenList1', $chickenList1)->with('chickenList2', $chickenList2)->with('chickenList3', $chickenList3)->with('chickenList4', $chickenList4);
+        }
+        else{
+             if(auth()->user()->farm_id ==1){
+                return view('manager/chicken/allChicken')->with('chickenList', $chickenList1);
+             }
+             elseif(auth()->user()->farm_id ==2){
+                return view('manager/chicken/allChicken')->with('chickenList', $chickenList2);
+             }
+             elseif(auth()->user()->farm_id ==3){
+                return view('manager/chicken/allChicken')->with('chickenList', $chickenList3);
+             }
+             elseif(auth()->user()->farm_id ==4){
+                return view('manager/chicken/allChicken')->with('chickenList', $chickenList4);
+             }
+             
+
+        }
     }
 
     function getHouseChicken(){
