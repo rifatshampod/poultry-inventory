@@ -181,7 +181,23 @@ class chickenController extends Controller
         ->where('daily_chickens.status',1)
         ->get();
         
+        if(auth()->user()->role ==1){
         return view('admin/chicken/dailyChicken')->with('dailyList1', $dailyList1)->with('dailyList2', $dailyList2)->with('dailyList3', $dailyList3)->with('dailyList4', $dailyList4);
+        }
+        else{
+            if(auth()->user()->farm_id ==1){
+                return view('manager/chicken/dailyChicken')->with('dailyList', $dailyList1);
+             }
+             elseif(auth()->user()->farm_id ==2){
+                return view('manager/chicken/dailyChicken')->with('dailyList', $dailyList2);
+             }
+             elseif(auth()->user()->farm_id ==3){
+                return view('manager/chicken/dailyChicken')->with('dailyList', $dailyList3);
+             }
+             elseif(auth()->user()->farm_id ==4){
+                return view('manager/chicken/dailyChicken')->with('dailyList', $dailyList4);
+             }
+        }
     }
 
 
