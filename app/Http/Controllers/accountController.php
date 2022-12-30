@@ -46,13 +46,23 @@ class accountController extends Controller
 
     function getExpense(){
 
+        $loggedFarm = auth()->user()->farm_id ; 
+
         $flock = Flock::where('status',1)
         ->first();
 
         $currentFlock = $flock['id'];
 
-       $expenseList = Expense::where('flock_id',$currentFlock)
-       ->get();
+        if(auth()->user()->role ==1){
+            $expenseList = Expense::where('flock_id',$currentFlock)
+            ->get();
+        }
+        else{
+           $expenseList = Expense::where('flock_id',$currentFlock)
+           ->where('farm_id', $loggedFarm)
+            ->get();
+        }
+
        
         return view('admin/account/allExpense')->with('expenseList', $expenseList)->with('flock',$flock);
     }
