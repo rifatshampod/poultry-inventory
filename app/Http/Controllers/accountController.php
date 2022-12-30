@@ -21,10 +21,22 @@ class accountController extends Controller
     //
     function getAddExpense(){
 
-       $farmList = Farm::all();
-       $houseList = House::all();
-       $sectorList = Expense_sector::all();
-       $typeList = Expense_type::all();
+        $loggedFarm = auth()->user()->farm_id ; 
+
+        if(auth()->user()->role ==1){
+            $farmList = Farm::all();
+            $houseList = House::all();
+        }
+        else{
+            $farmList = Farm::where('id', $loggedFarm)
+            ->get();
+            $houseList = House::where('farm_id', $loggedFarm)
+            ->get();
+        }
+
+        
+        $sectorList = Expense_sector::all();
+        $typeList = Expense_type::all();
         $flockList = Flock::where('status',1)
         ->first();
        

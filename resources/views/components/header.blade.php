@@ -104,6 +104,8 @@
                     <li><a href="daily-chicken">Daily Chicken</a></li>
                 </ul>
             </li>
+            @if(Auth::user()->role==1)
+
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                     <i class="icon-envelope menu-icon"></i>
@@ -116,16 +118,18 @@
                     </li>
                 </ul>
             </li>
+            @endif
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                     <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Medicine/Vaccine</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="all-medicine">Medicine Type</a></li>
                     <li>
                         <a href="distribute-medicine">All Medicine Distribution</a>
 
                     </li>
+                    <li><a href="all-medicine">Medicine Type</a></li>
+
                 </ul>
             </li>
             <li>
