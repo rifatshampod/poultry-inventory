@@ -71,9 +71,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($soldList1->isEmpty())
-                                            No data found
-                                            @else
+
                                             @foreach ($soldList1 as $item)
                                             <tr>
                                                 <th>{{$item['date']}}</th>
@@ -91,11 +89,6 @@
                                                 <td>{{$item['branch']}}</td>
                                             </tr>
                                             @endforeach
-
-                                            @endif
-
-
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -128,9 +121,6 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($soldList2->isEmpty())
-                                            No data found
-                                            @else
                                             @foreach ($soldList2 as $item)
                                             <tr>
                                                 <th>{{$item['date']}}</th>
@@ -148,11 +138,6 @@
                                                 <td>{{$item['branch']}}</td>
                                             </tr>
                                             @endforeach
-
-                                            @endif
-
-
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -187,9 +172,6 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($soldList3->isEmpty())
-                                            No data found
-                                            @else
                                             @foreach ($soldList3 as $item)
                                             <tr>
                                                 <th>{{$item['date']}}</th>
@@ -207,11 +189,6 @@
                                                 <td>{{$item['branch']}}</td>
                                             </tr>
                                             @endforeach
-
-                                            @endif
-
-
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -246,9 +223,6 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($soldList4->isEmpty())
-                                            No data found
-                                            @else
                                             @foreach ($soldList4 as $item)
                                             <tr>
                                                 <th>{{$item['date']}}</th>
@@ -266,11 +240,6 @@
                                                 <td>{{$item['branch']}}</td>
                                             </tr>
                                             @endforeach
-
-                                            @endif
-
-
-
                                         </tbody>
                                     </table>
                                 </div>

@@ -29,22 +29,7 @@
             </div>
 
             <div class="container-fluid mt-3">
-                <div>
-                    <ul class="nav nav-pills mb-3">
-                        <li class="nav-item">
-                            <a href="#farm-1" class="nav-link rounded active" data-toggle="tab" aria-expanded="false">Farm 1</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#farm-2" class="nav-link rounded" data-toggle="tab" aria-expanded="false">Farm 2</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#farm-3" class="nav-link rounded" data-toggle="tab" aria-expanded="true">Farm 3</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#farm-4" class="nav-link rounded" data-toggle="tab" aria-expanded="true">Farm 4</a>
-                        </li>
-                    </ul>
-                </div>
+
                 <div class="tab-content br-n pn">
                     <div id="farm-1" class="tab-pane active">
                         <div class="card">
@@ -65,10 +50,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($saleList1->isEmpty())
-                                            No data found
-                                            @else
-                                            @foreach ($saleList1 as $item)
+
+                                            @foreach ($saleList as $item)
                                             <tr>
 
                                                 <td>{{$item->house->name}}</td>
@@ -80,11 +63,6 @@
                                                 <td>{{$item['avg_kg_price']}}</td>
                                             </tr>
                                             @endforeach
-
-                                            @endif
-
-
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -92,139 +70,7 @@
                         </div>
 
                     </div>
-                    <div id="farm-2" class="tab-pane">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Show all daily input</h4>
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered zero-configuration">
-                                        <thead>
-                                            <tr>
 
-                                                <th scope="col">House</th>
-                                                <th scope="col">Total Sold</th>
-                                                <th scope="col">Total Weight</th>
-                                                <th scope="col">Average Weight</th>
-                                                <th scope="col">Total Price</th>
-                                                <th scope="col">Avg Price/Bird</th>
-                                                <th scope="col">Avg price/KG</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if($saleList2->isEmpty())
-                                            No data found
-                                            @else
-                                            @foreach ($saleList2 as $item)
-                                            <tr>
-
-                                                <td>{{$item->house->name}}</td>
-                                                <td>{{$item['sum_of_birds']}}</td>
-                                                <td>{{$item['sum_of_weight']}}</td>
-                                                <td>{{$item['avg_of_weight']}}</td>
-                                                <td>{{$item['sum_of_price']}}</td>
-                                                <td>{{$item['avg_of_price']}}</td>
-                                                <td>{{$item['avg_kg_price']}}</td>
-                                            </tr>
-                                            @endforeach
-
-                                            @endif
-
-
-
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div id="farm-3" class="tab-pane">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Show all daily input</h4>
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered zero-configuration">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">House</th>
-                                                <th scope="col">Total Sold</th>
-                                                <th scope="col">Total Weight</th>
-                                                <th scope="col">Average Weight</th>
-                                                <th scope="col">Total Price</th>
-                                                <th scope="col">Avg Price/Bird</th>
-                                                <th scope="col">Avg price/KG</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if($saleList3->isEmpty())
-                                            No data found
-                                            @else
-                                            @foreach ($saleList3 as $item)
-                                            <tr>
-                                                <td>{{$item->house->name}}</td>
-                                                <td>{{$item['sum_of_birds']}}</td>
-                                                <td>{{$item['sum_of_weight']}}</td>
-                                                <td>{{$item['avg_of_weight']}}</td>
-                                                <td>{{$item['sum_of_price']}}</td>
-                                                <td>{{$item['avg_of_price']}}</td>
-                                                <td>{{$item['avg_kg_price']}}</td>
-                                            </tr>
-                                            @endforeach
-
-                                            @endif
-
-
-
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div id="farm-4" class="tab-pane">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Show all daily input</h4>
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered zero-configuration">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">House</th>
-                                                <th scope="col">Total Sold</th>
-                                                <th scope="col">Total Weight</th>
-                                                <th scope="col">Average Weight</th>
-                                                <th scope="col">Total Price</th>
-                                                <th scope="col">Avg Price/Bird</th>
-                                                <th scope="col">Avg price/KG</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if($saleList4->isEmpty())
-                                            No data found
-                                            @else
-                                            @foreach ($saleList4 as $item)
-                                            <tr>
-                                                <td>{{$item->house->name}}</td>
-                                                <td>{{$item['sum_of_birds']}}</td>
-                                                <td>{{$item['sum_of_weight']}}</td>
-                                                <td>{{$item['avg_of_weight']}}</td>
-                                                <td>{{$item['sum_of_price']}}</td>
-                                                <td>{{$item['avg_of_price']}}</td>
-                                                <td>{{$item['avg_kg_price']}}</td>
-                                            </tr>
-                                            @endforeach
-                                            @endif
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
             </div>
 

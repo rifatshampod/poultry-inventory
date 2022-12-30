@@ -17,12 +17,18 @@ class saleController extends Controller
     //
     function getAddSale(){
 
-       $farmList = Farm::all();
-       $houseList = House::all();
-    //    $sectorList = Expense_sector::all();
-    //    $typeList = Expense_type::all();
-    //     $flockList = Flock::where('status',1)
-    //     ->first();
+       $loggedFarm = auth()->user()->farm_id ; 
+
+        if(auth()->user()->role ==1){
+            $farmList = Farm::all();
+            $houseList = House::all();
+        }
+        else{
+            $farmList = Farm::where('id', $loggedFarm)
+            ->get();
+            $houseList = House::where('farm_id', $loggedFarm)
+            ->get();
+        }
        
         return view('admin/sales/addSale')->with('farmList', $farmList)->with('houseList', $houseList);
     }
@@ -77,8 +83,26 @@ class saleController extends Controller
         ->groupBy('sales.farm_id')
         ->get();
 
+        if(auth()->user()->role ==1){
+         return view('admin/sales/allSale')->with('saleList1', $saleList1)->with('saleList2', $saleList2)->with('saleList3', $saleList3)->with('saleList4', $saleList4);
+        }
+        else{
+            if(auth()->user()->farm_id ==1){
+                return view('manager/sales/allSale')->with('saleList', $saleList1);
+             }
+             elseif(auth()->user()->farm_id ==2){
+                return view('manager/sales/allSale')->with('saleList', $saleList2);
+             }
+             elseif(auth()->user()->farm_id ==3){
+                return view('manager/sales/allSale')->with('saleList', $saleList3);
+             }
+             elseif(auth()->user()->farm_id ==4){
+                return view('manager/sales/allSale')->with('saleList', $saleList4);
+             }
+        }
+
        
-        return view('admin/sales/allSale')->with('saleList1', $saleList1)->with('saleList2', $saleList2)->with('saleList3', $saleList3)->with('saleList4', $saleList4);
+       
     }
 
     function getDailySale(){
@@ -87,8 +111,26 @@ class saleController extends Controller
         $soldList2 = Sale::where('farm_id',2)->get();
         $soldList3 = Sale::where('farm_id',3)->get();
         $soldList4 = Sale::where('farm_id',4)->get();
+
+        if(auth()->user()->role ==1){
+         return view('admin/sales/dailySale')->with('soldList1', $soldList1)->with('soldList2', $soldList2)->with('soldList3', $soldList3)->with('soldList4', $soldList4);
+        }
+        else{
+            if(auth()->user()->farm_id ==1){
+                return view('manager/sales/dailySale')->with('soldList', $soldList1);
+             }
+             elseif(auth()->user()->farm_id ==2){
+                return view('manager/sales/dailySale')->with('soldList', $soldList2);
+             }
+             elseif(auth()->user()->farm_id ==3){
+                return view('manager/sales/dailySale')->with('soldList', $soldList3);
+             }
+             elseif(auth()->user()->farm_id ==4){
+                return view('manager/sales/dailySale')->with('soldList', $soldList4);
+             }
+        }
        
-        return view('admin/sales/dailySale')->with('soldList1', $soldList1)->with('soldList2', $soldList2)->with('soldList3', $soldList3)->with('soldList4', $soldList4);
+        
     }
 
     function addSale(Request $req){

@@ -29,22 +29,7 @@
             </div>
 
             <div class="container-fluid mt-3">
-                <div>
-                    <ul class="nav nav-pills mb-3">
-                        <li class="nav-item">
-                            <a href="#farm-1" class="nav-link rounded active" data-toggle="tab" aria-expanded="false">Farm 1</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#farm-2" class="nav-link rounded" data-toggle="tab" aria-expanded="false">Farm 2</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#farm-3" class="nav-link rounded" data-toggle="tab" aria-expanded="true">Farm 3</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#farm-4" class="nav-link rounded" data-toggle="tab" aria-expanded="true">Farm 4</a>
-                        </li>
-                    </ul>
-                </div>
+
                 <div class="tab-content br-n pn">
                     <div id="farm-1" class="tab-pane active">
                         <div class="card">
@@ -71,10 +56,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($soldList1->isEmpty())
-                                            No data found
-                                            @else
-                                            @foreach ($soldList1 as $item)
+
+                                            @foreach ($soldList as $item)
                                             <tr>
                                                 <th>{{$item['date']}}</th>
                                                 <td>{{$item->house->name}}</td>
@@ -91,192 +74,12 @@
                                                 <td>{{$item['branch']}}</td>
                                             </tr>
                                             @endforeach
-
-                                            @endif
-
-
-
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
 
-                    </div>
-                    <div id="farm-2" class="tab-pane">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Show all daily input</h4>
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered zero-configuration">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Date</th>
-                                                <th scope="col">House</th>
-                                                <th scope="col">Birds sold</th>
-                                                <th scope="col">Weight</th>
-                                                <th scope="col">Avg Weight</th>
-                                                <th scope="col">Price</th>
-                                                <th scope="col">Avg Price</th>
-                                                <th scope="col">Price/KG</th>
-                                                <th scope="col">Customer</th>
-                                                <th scope="col">Car No</th>
-                                                <th scope="col">Catching Slip</th>
-                                                <th scope="col">Payment Method</th>
-                                                <th scope="col">Branch</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if($soldList2->isEmpty())
-                                            No data found
-                                            @else
-                                            @foreach ($soldList2 as $item)
-                                            <tr>
-                                                <th>{{$item['date']}}</th>
-                                                <td>{{$item->house->name}}</td>
-                                                <td>{{$item['total_birds']}}</td>
-                                                <td>{{$item['total_weight']}}</td>
-                                                <td>{{$item['avg_weight']}}</td>
-                                                <td>{{$item['total_price']}}</td>
-                                                <td>{{$item['avg_price']}}</td>
-                                                <td>{{$item['per_kg_price']}}</td>
-                                                <td>{{$item['customer']}}</td>
-                                                <td>{{$item['car_no']}}</td>
-                                                <td>{{$item['catching_slip']}}</td>
-                                                <td>{{$item['payment_method']}}</td>
-                                                <td>{{$item['branch']}}</td>
-                                            </tr>
-                                            @endforeach
-
-                                            @endif
-
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div id="farm-3" class="tab-pane">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Show all daily input</h4>
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered zero-configuration">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Date</th>
-                                                <th scope="col">House</th>
-                                                <th scope="col">Birds sold</th>
-                                                <th scope="col">Weight</th>
-                                                <th scope="col">Avg Weight</th>
-                                                <th scope="col">Price</th>
-                                                <th scope="col">Avg Price</th>
-                                                <th scope="col">Price/KG</th>
-                                                <th scope="col">Customer</th>
-                                                <th scope="col">Car No</th>
-                                                <th scope="col">Catching Slip</th>
-                                                <th scope="col">Payment Method</th>
-                                                <th scope="col">Branch</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if($soldList3->isEmpty())
-                                            No data found
-                                            @else
-                                            @foreach ($soldList3 as $item)
-                                            <tr>
-                                                <th>{{$item['date']}}</th>
-                                                <td>{{$item->house->name}}</td>
-                                                <td>{{$item['total_birds']}}</td>
-                                                <td>{{$item['total_weight']}}</td>
-                                                <td>{{$item['avg_weight']}}</td>
-                                                <td>{{$item['total_price']}}</td>
-                                                <td>{{$item['avg_price']}}</td>
-                                                <td>{{$item['per_kg_price']}}</td>
-                                                <td>{{$item['customer']}}</td>
-                                                <td>{{$item['car_no']}}</td>
-                                                <td>{{$item['catching_slip']}}</td>
-                                                <td>{{$item['payment_method']}}</td>
-                                                <td>{{$item['branch']}}</td>
-                                            </tr>
-                                            @endforeach
-
-                                            @endif
-
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div id="farm-4" class="tab-pane">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Show all daily input</h4>
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered zero-configuration">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Date</th>
-                                                <th scope="col">House</th>
-                                                <th scope="col">Birds sold</th>
-                                                <th scope="col">Weight</th>
-                                                <th scope="col">Avg Weight</th>
-                                                <th scope="col">Price</th>
-                                                <th scope="col">Avg Price</th>
-                                                <th scope="col">Price/KG</th>
-                                                <th scope="col">Customer</th>
-                                                <th scope="col">Car No</th>
-                                                <th scope="col">Catching Slip</th>
-                                                <th scope="col">Payment Method</th>
-                                                <th scope="col">Branch</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if($soldList4->isEmpty())
-                                            No data found
-                                            @else
-                                            @foreach ($soldList4 as $item)
-                                            <tr>
-                                                <th>{{$item['date']}}</th>
-                                                <td>{{$item->house->name}}</td>
-                                                <td>{{$item['total_birds']}}</td>
-                                                <td>{{$item['total_weight']}}</td>
-                                                <td>{{$item['avg_weight']}}</td>
-                                                <td>{{$item['total_price']}}</td>
-                                                <td>{{$item['avg_price']}}</td>
-                                                <td>{{$item['per_kg_price']}}</td>
-                                                <td>{{$item['customer']}}</td>
-                                                <td>{{$item['car_no']}}</td>
-                                                <td>{{$item['catching_slip']}}</td>
-                                                <td>{{$item['payment_method']}}</td>
-                                                <td>{{$item['branch']}}</td>
-                                            </tr>
-                                            @endforeach
-
-                                            @endif
-
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
                 </div>
 

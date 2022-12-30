@@ -65,9 +65,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($saleList1->isEmpty())
-                                            No data found
-                                            @else
+
                                             @foreach ($saleList1 as $item)
                                             <tr>
 
@@ -80,11 +78,6 @@
                                                 <td>{{$item['avg_kg_price']}}</td>
                                             </tr>
                                             @endforeach
-
-                                            @endif
-
-
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -111,9 +104,6 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($saleList2->isEmpty())
-                                            No data found
-                                            @else
                                             @foreach ($saleList2 as $item)
                                             <tr>
 
@@ -126,11 +116,6 @@
                                                 <td>{{$item['avg_kg_price']}}</td>
                                             </tr>
                                             @endforeach
-
-                                            @endif
-
-
-
                                         </tbody>
                                     </table>
 
@@ -157,9 +142,6 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($saleList3->isEmpty())
-                                            No data found
-                                            @else
                                             @foreach ($saleList3 as $item)
                                             <tr>
                                                 <td>{{$item->house->name}}</td>
@@ -171,11 +153,6 @@
                                                 <td>{{$item['avg_kg_price']}}</td>
                                             </tr>
                                             @endforeach
-
-                                            @endif
-
-
-
                                         </tbody>
                                     </table>
 
@@ -202,9 +179,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($saleList4->isEmpty())
-                                            No data found
-                                            @else
+
                                             @foreach ($saleList4 as $item)
                                             <tr>
                                                 <td>{{$item->house->name}}</td>
@@ -216,7 +191,7 @@
                                                 <td>{{$item['avg_kg_price']}}</td>
                                             </tr>
                                             @endforeach
-                                            @endif
+
                                         </tbody>
                                     </table>
 
