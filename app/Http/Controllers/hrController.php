@@ -13,13 +13,17 @@ class hrController extends Controller
     function getEmployee(){
 
         $designationList = Designation::all();
-        $employeeList = Employee::all();
+        
         if(auth()->user()->role ==1){
         $farmList = Farm::all();
+        $employeeList = Employee::all();
         }
         else{
             $loggedFarm = auth()->user()->farm_id ; 
             $farmList = Farm::where('id', $loggedFarm)
+            ->get();
+
+            $employeeList = Employee::where('farm_id', $loggedFarm)
             ->get();
         }
 
@@ -63,8 +67,20 @@ class hrController extends Controller
 
     function getLeaveRequests(){
         
-        $employeeList = Employee::all();
-        $leaveList = Leave::all();
+        if(auth()->user()->role ==1){
+            $employeeList = Employee::all();
+            $leaveList = Leave::all();
+        }
+        else{
+            $loggedFarm = auth()->user()->farm_id ; 
+            $employeeList = Employee::where('farm_id', $loggedFarm)
+            ->get();
+
+            $leaveList = Leave::join('employees','employees.id','=','leaves.employee_id')
+            ->where('employees.farm_id','=',$loggedFarm)
+            ->get();
+        }
+        
         
         return view('admin/hr/allLeave')->with('employeeList', $employeeList)->with('leaveList', $leaveList);
         //return view('admin/hr/allLeave');
