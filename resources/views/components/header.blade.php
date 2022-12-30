@@ -161,6 +161,11 @@
                     <li><a href="payroll.html">Payroll</a></li>
                 </ul>
             </li>
+            @if(Auth::user()->role==1)
+
+
+
+            {{-- Report  --}}
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                     <i class="icon-note menu-icon"></i><span class="nav-text">Report</span>
@@ -174,6 +179,7 @@
                     <li><a href="leaveReport.html">Employee Leave Report</a></li>
                 </ul>
             </li>
+            {{-- Settings  --}}
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                     <i class="icon-menu menu-icon"></i><span class="nav-text">Settings</span>
@@ -206,6 +212,9 @@
                     </li>
                 </ul>
             </li>
+
+            @endif
+
         </ul>
     </div>
 </div>

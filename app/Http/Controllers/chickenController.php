@@ -49,7 +49,27 @@ class chickenController extends Controller
         $docList4 = Chicken::where('farm_id',4)
         ->get();
 
-        return view('admin/doc/allDoc')->with('docList1', $docList1)->with('docList2', $docList2)->with('docList3', $docList3)->with('docList4', $docList4)->with('farm1',$farm1)->with('house1', $house1)->with('farm2',$farm2)->with('house2', $house2)->with('farm3',$farm3)->with('house3', $house3)->with('farm4',$farm4)->with('house4', $house4)->with('flock', $flock);
+        if(auth()->user()->role ==1){
+            return view('admin/doc/allDoc')->with('docList1', $docList1)->with('docList2', $docList2)->with('docList3', $docList3)->with('docList4', $docList4)->with('farm1',$farm1)->with('house1', $house1)->with('farm2',$farm2)->with('house2', $house2)->with('farm3',$farm3)->with('house3', $house3)->with('farm4',$farm4)->with('house4', $house4)->with('flock', $flock);
+        }
+        else{
+            if(auth()->user()->farm_id ==1){
+                return view('manager/doc/allDoc')->with('docList', $docList1)->with('farm',$farm1)->with('house', $house1)->with('flock', $flock);
+            }
+            else if(auth()->user()->farm_id ==2){
+                return view('manager/doc/allDoc')->with('docList', $docList2)->with('farm',$farm2)->with('house', $house2)->with('flock', $flock);
+
+            }
+            else if(auth()->user()->farm_id ==3){
+                return view('manager/doc/allDoc')->with('docList', $docList3)->with('farm',$farm3)->with('house', $house3)->with('flock', $flock);
+
+            }
+            else if(auth()->user()->farm_id ==4){
+                return view('manager/doc/allDoc')->with('docList', $docList4)->with('farm',$farm4)->with('house', $house4)->with('flock', $flock);
+
+            }
+        }
+        
     }
 
     function addDoc(Request $req){
@@ -57,7 +77,7 @@ class chickenController extends Controller
         $data->date = $req->input('date');
         $data->farm_id=$req->input('farm_id');
         $data->house_id=$req->input('house_id');
-        $data->sum_of_doc=$req->input('first_doc');
+        $data->first_doc=$req->input('sum_of_doc');
         $data->sum_of_doc=$req->input('sum_of_doc');
         $data->hatchery=$req->input('hatchery');
         $data->bird_in_case=$req->input('bird_in_case');

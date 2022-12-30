@@ -21,6 +21,11 @@ use App\Http\Controllers\saleController;
 |
 */
 
+Auth::routes();
+Auth::routes(['register' => false]);  //auth routes call
+
+
+Route::group(['middleware' => ['web', 'auth']], function(){
 Route::get('/', function () {
     return view('admin/dashboard');
 });
@@ -97,6 +102,8 @@ Route::get('designation',[settingsController::class,'getDesignation']);
 Route::post('add-designation',[settingsController::class,'addDesignation']);
 //Settings ---------------------------------------------------------------------
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'admin/dashboard'])->name('home');
+
+});
