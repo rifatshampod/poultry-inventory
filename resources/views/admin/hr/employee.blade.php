@@ -52,6 +52,18 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label>Farm</label>
+                                                <select class="form-control input-default" name="farm_id">
+                                                    <!--    <option value="" selected disabled hidden>Select Employee Designation</option> -->
+                                                    @foreach ($farmList as $item)
+                                                    <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
                                                 <label>Designation</label>
                                                 <select class="form-control input-default" name="designation_id">
                                                     <!--    <option value="" selected disabled hidden>Select Employee Designation</option> -->

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Designation;
 use App\Models\Leave;
+use App\Models\Farm;
 
 class hrController extends Controller
 {
@@ -13,14 +14,23 @@ class hrController extends Controller
 
         $designationList = Designation::all();
         $employeeList = Employee::all();
+        if(auth()->user()->role ==1){
+        $farmList = Farm::all();
+        }
+        else{
+            $loggedFarm = auth()->user()->farm_id ; 
+            $farmList = Farm::where('id', $loggedFarm)
+            ->get();
+        }
 
-        return view('admin/hr/employee')->with('employeeList', $employeeList)->with('designationList',$designationList);
+        return view('admin/hr/employee')->with('employeeList', $employeeList)->with('designationList',$designationList)->with('farmList', $farmList);
     }
 
     function addEmployee(Request $req){
 
         $data = new Employee;
         $data->name = $req->input('name');
+        $data->farm_id = $req->input('farm_id');
         $data->address=$req->input('address');
         $data->phone=$req->input('phone');
         $data->designation_id=$req->input('designation_id');
