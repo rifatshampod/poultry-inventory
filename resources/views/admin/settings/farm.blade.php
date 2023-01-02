@@ -52,7 +52,8 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div>
-                                                <button type="submit" class="btn mb-1 btn-primary w-100">
+                                                <button onclick="disableFarmCreation()" id="mySubmit" class="btn mb-1 btn-primary w-100">
+
                                                     Submit
                                                 </button>
                                             </div>
@@ -139,5 +140,14 @@
     <script src="js/settings.js"></script>
     <script src="js/gleek.js"></script>
     <script src="js/styleSwitcher.js"></script>
+
+    <script>
+        function disableFarmCreation() {
+            document.getElementById("mySubmit").disabled = true;
+            alert('Creating new farm is disabled for inteegration purpose. Please contact the IT team to enable this feature.');
+        }
+
+    </script>
+
 </body>
 </html>
