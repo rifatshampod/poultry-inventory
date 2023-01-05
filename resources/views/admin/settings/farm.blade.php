@@ -96,9 +96,11 @@
                                                 <td>{{$item['phone']}}</td>
                                                 <td>
                                                     <span class="float-right"><a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i>
+
+
                                                         </a>
-                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
-                                                        </a>
+                                                        {{-- <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
+                                                        </a> --}}
                                                     </span>
                                                 </td>
                                             </tr>
@@ -198,6 +200,7 @@
     <script src="js/settings.js"></script>
     <script src="js/gleek.js"></script>
     <script src="js/styleSwitcher.js"></script>
+
 
     <script>
         function disableFarmCreation() {

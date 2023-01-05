@@ -30,7 +30,7 @@
             </div>
             <div class="container-fluid mt-3">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="card">
                             <div class="card-body">
                                 <div class="mb-4">
@@ -39,23 +39,23 @@
                                 <form action="add-user" method="POST">
                                     @csrf
                                     <div class="row">
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-12">
                                             <label>Name</label>
                                             <input type="text" name="name" class="form-control input-default" placeholder="Name" required />
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-12">
                                             <label>Email</label>
                                             <input type="email" name="email" class="form-control input-default" placeholder="Email" required />
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-12">
                                             <label>Password</label>
                                             <input type="password" name="password" class="form-control input-default" placeholder="Password" required />
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-12">
                                             <label>Phone</label>
                                             <input type="number" name="phone" class="form-control input-default" placeholder="Number" />
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Role</label>
                                                 <select class="form-control input-default" name="role" onchange="showDiv(this)" required>
@@ -64,7 +64,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6" id="farmList">
+                                        <div class="col-md-12" id="farmList">
                                             <div class="form-group">
                                                 <label>Farm</label>
                                                 <select class="form-control input-default" name="farm_id">
@@ -86,7 +86,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-8">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">All User</h4>
