@@ -54,7 +54,16 @@
                                     <a href="profile.html"><i class="icon-user"></i> <span>Profile</span></a>
                                 </li>
                                 <li>
-                                    <a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        <i class="icon-logout"></i>{{ __('Logout') }}
+
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+
                                 </li>
                             </ul>
                         </div>
@@ -179,10 +188,15 @@
                 <ul aria-expanded="false">
                     <li><a href="feedReport.html">Feed Report</a></li>
                     <li>
-                        <a href="chickenStockReport.html">Chicken Stock Report</a>
+                        <a href="chickenStockReport.html">DOC Report</a>
                     </li>
+                    <li><a href="leaveReport.html">Mortality Report</a></li>
+                    <li><a href="leaveReport.html">Rejection Report</a></li>
+                    <li><a href="leaveReport.html">Weight Progress Report</a></li>
                     <li><a href="salesReport.html">Sales Report</a></li>
                     <li><a href="leaveReport.html">Employee Leave Report</a></li>
+
+
                 </ul>
             </li>
             {{-- Settings  --}}

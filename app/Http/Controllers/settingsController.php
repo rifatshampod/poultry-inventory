@@ -52,6 +52,24 @@ class settingsController extends Controller
         $req->session()->flash('status','New farm added successfully');
         return redirect()->back();
     }
+    function editFarmData($id){
+        $farm=Farm::find($id);
+        return response()->json([
+            'status'=>200,
+            'farm'=>$farm,
+        ]);
+    }
+
+    function updateFarmData(Request $req){
+        $farm_id = $req->input('farm_id');
+        $farm = Farm::find($farm_id);
+        $farm->name = $req->input('farm_name');
+        $farm->address=$req->input('address');
+        $farm->phone=$req->input('phone');
+        $farm->update();
+
+        return redirect()->back();
+    }
 
     //House
     function getHouse(){

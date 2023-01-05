@@ -85,6 +85,8 @@ Route::post('add-flock', [settingsController::class,'addFlock']);
 
 Route::get('farm',[settingsController::class,'getFarm']);
 Route::post('add-farm', [settingsController::class,'addFarm']);
+Route::get('edit-farm{id}', [settingsController::class,'editFarmData']);
+Route::post('edit-farm-info', [settingsController::class,'updateFarmData']);
 
 Route::get('house',[settingsController::class,'getHouse']);
 Route::post('add-house', [settingsController::class,'addHouse']);
