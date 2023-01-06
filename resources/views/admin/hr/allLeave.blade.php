@@ -50,15 +50,18 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Leave From</label>
-                                            <input type="date" name="from" class="form-control input-default" placeholder="" />
+                                            <input type="date" name="from" class="form-control input-default" id="startDate" placeholder="" />
+
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Leave To</label>
-                                            <input type="date" name="to" class="form-control input-default" placeholder="" />
+                                            <input type="date" name="to" class="form-control input-default" id="endDate" onchange="getDateDifference()" placeholder="" />
+
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Duration (in Days)</label>
-                                            <input type="text" name="duration" class="form-control input-default" placeholder="Duration." />
+                                            <input type="text" name="duration" class="form-control input-default" placeholder="Duration." id="result" readonly />
+
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>Reason</label>
@@ -151,5 +154,27 @@
     <script src="js/settings.js"></script>
     <script src="js/gleek.js"></script>
     <script src="js/styleSwitcher.js"></script>
+
+    <script>
+        function getDateDifference() {
+            // Get the start and end date values
+            var startDate = document.getElementById('startDate').value;
+            var endDate = document.getElementById('endDate').value;
+
+            // Convert the strings to Date objects
+            var start = new Date(startDate);
+            var end = new Date(endDate);
+
+            // Calculate the difference in milliseconds
+            var difference = end - start;
+
+            // Convert the difference to days
+            var days = Math.round(difference / (1000 * 60 * 60 * 24));
+
+            // Set the value of the result field
+            document.getElementById('result').value = days + ' days';
+        }
+
+    </script>
 </body>
 </html>
