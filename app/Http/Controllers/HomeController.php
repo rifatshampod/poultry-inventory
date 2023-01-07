@@ -41,9 +41,11 @@ class HomeController extends Controller
         DB::raw('SUM(daily_chickens.mortality) AS sum_of_mortality'),
         DB::raw('MAX(daily_chickens.weight_avg) AS avg_weight'), 
         DB::raw('AVG(daily_chickens.fcr) AS avg_fcr'),
-        DB::raw('SUM(daily_chickens.rejection) AS sum_of_rejection')
+        DB::raw('SUM(daily_chickens.rejection) AS sum_of_rejection'),
+        DB::raw('SUM(chickens.sum_of_doc) AS sum_of_chicken')
         )
-        ->get()->first();
+        ->groupBy('chickens.farm_id')
+        ->get();
 
         $total = DB::table('chickens')
             ->sum('sum_of_doc');
@@ -65,7 +67,10 @@ class HomeController extends Controller
         $consumption = DB::table('daily_chickens')
             ->sum('feed_consumption');
 
-        return view ('admin/dashboard')->with('flock', $flock)->with('chicken',$total)->with('dead',$dead)->with('rejected',$rejected)->with('expense', $expense)->with('feed', $feed)->with('feedRestock', $feedRestock)->with('consumption', $consumption);
+        return view ('admin/dashboard')->with('flock', $flock)->with('chicken',$total)
+        ->with('dead',$dead)->with('rejected',$rejected)->with('expense', $expense)
+        ->with('feed', $feed)->with('feedRestock', $feedRestock)->with('consumption', $consumption)
+        ->with('chickenList', $chickenList);
 
         
     }
