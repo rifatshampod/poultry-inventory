@@ -7,6 +7,7 @@ use App\Http\Controllers\hrController;
 use App\Http\Controllers\chickenController;
 use App\Http\Controllers\feedController;
 use App\Http\Controllers\accountController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\medicineController;
 use App\Http\Controllers\saleController;
 
@@ -27,10 +28,10 @@ Auth::routes(['register' => false]);  //auth routes call
 
 Route::group(['middleware' => ['web', 'auth']], function(){
 Route::get('/', function () {
-    return view('admin/dashboard');
+    return redirect('dashboard');
 });
 
-Route::view('dashboard',"admin/dashboard");
+Route::get('dashboard',[HomeController::class, 'adminDashboard']);
 
 //Chicken
 Route::get('all-chicken', [chickenController::class,'getChicken']);
