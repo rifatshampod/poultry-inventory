@@ -160,6 +160,8 @@ class settingsController extends Controller
         return redirect()->back();
     }
 
+    //users
+
     function getUser(){
 
         $userList = User::get();
@@ -187,6 +189,27 @@ class settingsController extends Controller
         
 
         $req->session()->flash('status','New user added successfully');
+        return redirect()->back();
+    }
+
+    function editUserData($id){
+        $user=User::find($id);
+        return response()->json([
+            'status'=>200,
+            'user'=>$user,
+        ]);
+    }
+
+    function updateUserData(Request $req){
+        $user_id = $req->input('user_id');
+        $user = User::find($user_id);
+        $user->name = $req->input('name');
+        $user->email=$req->input('email');
+        $user->phone=$req->input('phone');
+        $user->role=$req->input('role');
+        $user->farm_id=$req->input('farm_id');
+        $user->update();
+
         return redirect()->back();
     }
 

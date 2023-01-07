@@ -123,7 +123,8 @@
                                                             <i class="fa fa-ellipsis-v"></i>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" href="#">Edit</a>
+                                                            <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)">Edit</a>
+
                                                             <a class="dropdown-item text-warning" href="#">Change Password</a>
                                                             <a class="dropdown-item text-danger" href="#">Delete</a>
                                                         </div>
@@ -153,6 +154,73 @@
     <!--**********************************
         Main wrapper end
     ***********************************-->
+    <!-------edit-Modal------>
+    <div class="modal fade bs-example-modal-center" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered " style="min-width:60%;">
+            <div class="modal-content">
+                <div class="modal-body p-5">
+                    <form action="edit-user-info" method="POST">
+                        @csrf
+                        <div class="row">
+
+                            <input type="hidden" name="user_id" id="userEditId">
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Name</label>
+                                    <input id="name" type="text" name="name" class="form-control input-default" placeholder="Name" />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Email</label>
+                                    <input id="email" type="email" name="email" class="form-control input-default" placeholder="Email" required />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Phone</label>
+                                    <input id="phone" type="number" name="phone" class="form-control input-default" placeholder="Number" />
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Role</label>
+                                        <select id="role" class="form-control input-default" name="role" onchange="showDiv2(this)" required>
+                                            <option value="1">Admin</option>
+                                            <option value="2">Farm Manager</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" id="farmList2">
+                                    <div class="form-group">
+                                        <label>Farm</label>
+                                        <select id="farm" class="form-control input-default" name="farm_id">
+                                            <option value="0">No Farm</option>
+                                            @foreach ($farmList as $item)
+                                            <option value={{$item['id']}}>{{$item['name']}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="d-flex justify-content-center">
+                                    <div>
+                                        <button type="submit" class="btn btn-primary px-5 mx-1">
+                                            Update Farm Information
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!---- End of edit modal ---->
+
 
     <!--**********************************
         Scripts
@@ -175,7 +243,36 @@
             }
         }
 
+        // function showDiv2(select) {
+        //     if (select.value == 1) {
+        //         document.getElementById("farmList2").style.display = "none";
+        //     } else {
+        //         document.getElementById("farmList2").style.display = "block";
+        //     }
+        // }
+
     </script>
+    <script>
+        function openModal(clicked_id) {
+            $("#largeModal").modal("show");
+            //document.getElementById("getId").value = clicked_id;
+            $.ajax({
+                url: '/edit-user' + clicked_id
+                , type: "GET"
+                , success: function(response) {
+                    console.log(response);
+                    $('#name').val(response.user.name);
+                    $('#email').val(response.user.email);
+                    $('#phone').val(response.user.phone);
+                    $('#role').val(response.user.role);
+                    $('#farm').val(response.user.farm_id);
+                    $('#userEditId').val(clicked_id);
+                }
+            });
+        }
+
+    </script>
+
 
 </body>
 </html>

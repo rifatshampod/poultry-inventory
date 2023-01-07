@@ -172,7 +172,7 @@
             var days = Math.round(difference / (1000 * 60 * 60 * 24));
 
             // Set the value of the result field
-            document.getElementById('result').value = days + ' days';
+            document.getElementById('result').value = days + 1;
         }
 
     </script>
