@@ -123,10 +123,15 @@
                                                             <i class="fa fa-ellipsis-v"></i>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)">Edit</a>
+                                                            <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openEditModal(this.id)">Edit</a>
 
-                                                            <a class="dropdown-item text-warning" href="#">Change Password</a>
-                                                            <a class="dropdown-item text-danger" href="#">Delete</a>
+                                                            <button class="dropdown-item text-warning" id="{{$item['id']}}" onclick="openPasswordModal(this.id)">Change Password</button>
+
+
+
+
+                                                            <a class="dropdown-item text-danger" id="{{$item['id']}}" onclick="openDeleteModal(this.id)">Delete</a>
+
                                                         </div>
                                                     </div>
                                                 </td>
@@ -192,7 +197,7 @@
                                     <div class="form-group">
                                         <label>Farm</label>
                                         <select id="farm" class="form-control input-default" name="farm_id">
-                                            <option value="0">No Farm</option>
+                                            <option value="0">All Farms</option>
                                             @foreach ($farmList as $item)
                                             <option value={{$item['id']}}>{{$item['name']}}</option>
                                             @endforeach
@@ -207,7 +212,7 @@
                                 <div class="d-flex justify-content-center">
                                     <div>
                                         <button type="submit" class="btn btn-primary px-5 mx-1">
-                                            Update Farm Information
+                                            Update User Information
                                         </button>
                                     </div>
                                 </div>
@@ -220,6 +225,89 @@
         <!-- /.modal-dialog -->
     </div>
     <!---- End of edit modal ---->
+
+    <!-------Delete-Modal------>
+    <div class="modal fade bs-example-modal-center" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+
+
+        <div class="modal-dialog modal-dialog-centered " style="min-width:60%;">
+            <div class="modal-content">
+                <div class="modal-body p-5">
+                    <form action="delete-user-info" method="POST">
+                        @csrf
+                        <div class="row">
+
+                            <input type="hidden" name="user_id" id="userDeleteId">
+
+                            <div class="row">
+                                Are you sure you want to delete?
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="d-flex justify-content-center">
+                                    <div>
+                                        <button type="cancel" class="btn btn-danger px-5 mx-1">
+                                            No, Cancel
+                                        </button>
+                                        <button type="submit" class="btn btn-danger px-5 mx-1">
+                                            Yes, Delete
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!---- End of delete modal ---->
+
+    <!-------password change -Modal------>
+    <div class="modal fade bs-example-modal-center" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+
+
+        <div class="modal-dialog modal-dialog-centered " style="min-width:60%;">
+            <div class="modal-content">
+                <div class="modal-body p-5">
+                    <form action="edit-password-info" method="POST">
+                        @csrf
+                        <div class="row">
+
+                            <input type="hidden" name="user_id" id="userPasswordId">
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Name</label>
+                                    <input id="name" type="text" name="name" class="form-control input-default" placeholder="Name" />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Email</label>
+                                    <input id="email" type="email" name="email" class="form-control input-default" placeholder="Email" required />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="d-flex justify-content-center">
+                                    <div>
+                                        <button type="submit" class="btn btn-primary px-5 mx-1">
+                                            Update Password
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!---- End of password change modal ---->
+
+
 
 
     <!--**********************************
@@ -253,7 +341,8 @@
 
     </script>
     <script>
-        function openModal(clicked_id) {
+        function openEditModal(clicked_id) {
+
             $("#largeModal").modal("show");
             //document.getElementById("getId").value = clicked_id;
             $.ajax({
@@ -269,6 +358,49 @@
                     $('#userEditId').val(clicked_id);
                 }
             });
+        }
+
+        function openPasswordModal(clicked_id2) {
+
+            console.log(clicked_id2);
+            $("#passwordModal").modal("show");
+            //document.getElementById("getId").value = clicked_id;
+
+
+            // $.ajax({
+            //     url: '/edit-user' + clicked_id2
+            //     , type: "GET"
+            //     , success: function(response) {
+            //         console.log(response);
+            //         $('#name').val(response.user.name);
+            //         $('#email').val(response.user.email);
+            //         $('#phone').val(response.user.phone);
+            //         $('#role').val(response.user.role);
+            //         $('#farm').val(response.user.farm_id);
+            //         $('#userEditId').val(clicked_id2);
+            //     }
+            // });
+        }
+
+        function openDeleteModal(clicked_id) {
+
+
+            $("#deleteModal").modal("show");
+            //document.getElementById("getId").value = clicked_id;
+
+            // $.ajax({
+            //     url: '/edit-user' + clicked_id
+            //     , type: "GET"
+            //     , success: function(response) {
+            //         console.log(response);
+            //         $('#name').val(response.user.name);
+            //         $('#email').val(response.user.email);
+            //         $('#phone').val(response.user.phone);
+            //         $('#role').val(response.user.role);
+            //         $('#farm').val(response.user.farm_id);
+            //         $('#userEditId').val(clicked_id);
+            //     }
+            // });
         }
 
     </script>

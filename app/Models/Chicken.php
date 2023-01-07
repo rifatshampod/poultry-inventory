@@ -10,7 +10,7 @@ class Chicken extends Model
     use HasFactory;
 
     protected $fillable = [
-    'farm_id' , 'house_id' , 'flock_id', 'date' , 'sum_of_doc' , 'hatchery', 'bird_in_case' , 'vaccine' , 'density', 'catching_start' , 'catching_end' , 'status',
+    'farm_id' , 'house_id' , 'flock_id', 'date' , 'first_doc' ,'sum_of_doc' , 'hatchery', 'bird_in_case' , 'vaccine' , 'density', 'catching_start' , 'catching_end' , 'status',
     ];
 
     protected $guarded = ['id'];

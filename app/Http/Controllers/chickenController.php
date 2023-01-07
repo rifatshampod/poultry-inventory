@@ -93,6 +93,41 @@ class chickenController extends Controller
         return redirect()->back();
     }
 
+    function getEditDoc($id){
+        $doc=Chicken::find($id);
+        return response()->json([
+            'status'=>200,
+            'chicken'=>$doc,
+        ]);
+    }
+
+    function updateDoc(Request $req){
+
+        $data = $req->validate([
+            'chicken_id' => 'required',
+            'sum_of_doc' => 'required',
+        ]);
+        $chicken_id = $req->input('chicken_id');
+
+        $oldSum = Chicken::where('id','=', $chicken_id)->get('first_doc')->first();
+        $sumDifference = $req->input('sum_of_doc') - $oldSum['first_doc'];
+
+
+            $doc = Chicken::find($chicken_id);
+            $doc->house_id = $req->input('house_id');
+            $doc->date=$req->input('date');
+            $doc->first_doc=$req->input('sum_of_doc');
+            $doc->sum_of_doc+=$sumDifference;
+            $doc->hatchery=$req->input('hatchery');
+            $doc->bird_in_case=$req->input('bird_in_case');
+            $doc->density=$req->input('density');
+            $doc->catching_start=$req->input('catching_start');
+            $doc->catching_end=$req->input('catching_end');
+            $doc->update();
+
+        return redirect()->back();
+    }
+
     function getChicken(){
 
         $chickenList1 = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')

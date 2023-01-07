@@ -42,6 +42,8 @@ Route::get('getdata-add-chicken{slug}', [chickenController::class,'getAddChicken
 //DOC
 Route::get('all-doc', [chickenController::class,'getDoc']);
 Route::post('add-doc', [chickenController::class,'addDoc']);
+Route::get('edit-doc{id}', [chickenController::class,'getEditDoc']);
+Route::post('edit-doc-info', [chickenController::class,'updateDoc']);
 
 //Feed
 Route::get('all-feed', [feedController::class,'getFeed']);
