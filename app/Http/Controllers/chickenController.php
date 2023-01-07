@@ -199,21 +199,25 @@ class chickenController extends Controller
         $dailyList1 = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
         ->where('chickens.farm_id',1)
         ->where('daily_chickens.status',1)
+        ->select('daily_chickens.*', 'chickens.house_id')
         ->get();
 
         $dailyList2 = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
         ->where('chickens.farm_id',2)
         ->where('daily_chickens.status',1)
+        ->select('daily_chickens.*', 'chickens.house_id')
         ->get();
 
         $dailyList3 = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
         ->where('chickens.farm_id',3)
         ->where('daily_chickens.status',1)
+        ->select('daily_chickens.*', 'chickens.house_id')
         ->get();
 
         $dailyList4 = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
         ->where('chickens.farm_id',4)
         ->where('daily_chickens.status',1)
+        ->select('daily_chickens.*', 'chickens.house_id')
         ->get();
         
         if(auth()->user()->role ==1){
@@ -302,6 +306,81 @@ class chickenController extends Controller
             $total->save();
 
         $req->session()->flash('status','New Daily data added successfully');
+        return redirect()->back();
+    }
+
+    //edit daily chicken data
+    function getEditDailyChicken($id){
+        $daily=Daily_chicken::find($id);
+        return response()->json([
+            'status'=>200,
+            'daily'=>$daily,
+        ]);
+    }
+
+    function updateDailyChicken(Request $req){
+
+        $validated = $req->validate([
+        'chicken_id' => 'required',
+        'feed_consumption' => 'required',
+        'weight1' => 'required',
+        'weight2' => 'required',
+        'weight3' => 'required',
+        'weight4' => 'required',
+        ]);
+
+        $chicken = $req->input('chicken_id');
+
+        $weight = ($req->input('weight1')+$req->input('weight2')+$req->input('weight3')+$req->input('weight4'))/48;
+
+        //retrive previous data
+        $chickenList = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
+        ->select('chickens.*', 'daily_chickens.feed_consumption as feedBefore',
+        DB::raw('SUM(daily_chickens.mortality) AS sum_of_mortality'),
+        DB::raw('MAX(daily_chickens.weight_avg) AS avg_weight'), 
+        DB::raw('AVG(daily_chickens.fcr) AS avg_fcr'),
+        DB::raw('SUM(daily_chickens.rejection) AS sum_of_rejection')
+        )
+        ->groupBy('chickens.id')
+        ->where('chickens.id',$chicken)
+        ->get()->first();
+
+        if($chickenList){
+            $weight_gain = $weight - $chickenList['avg_weight'];
+            $total_chicken = $chickenList['sum_of_doc']-$chickenList['sum_of_mortality']-$chickenList['sum_of_rejection'];
+            $fcr = ($req->input('feed_consumption')/$total_chicken)/$weight_gain;
+        }
+        else{
+            $weight_gain = 0;
+            $total_chicken = 0;
+            $fcr = 0;
+        }
+
+        $daily_id = $req->input('daily_id');
+
+        $data = Daily_chicken::find($daily_id);
+        $data->date = $req->input('date');
+        $data->chicken_id=$req->input('chicken_id');
+        $data->feed_consumption=$req->input('feed_consumption');
+        $data->fcr= $fcr;
+        $data->weight1=$req->input('weight1');
+        $data->weight2=$req->input('weight2');
+        $data->weight3=$req->input('weight3');
+        $data->weight4=$req->input('weight4');
+        $data->weight_avg= $weight;
+        $data->mortality=$req->input('mortality');
+        $data->rejection=$req->input('rejection');
+        $data->update();
+
+        //retrieve previous total
+
+        $farm = $chickenList['farm_id'];
+        $difference = $chickenList['feedBefore'] - $req->input('feed_consumption');
+        
+        $total = Total_feed::where('farm_id', $farm)->first();
+        $total->amount += $difference;
+        $total->save();
+
         return redirect()->back();
     }
 }

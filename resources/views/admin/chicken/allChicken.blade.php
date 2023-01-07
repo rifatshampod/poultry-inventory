@@ -81,7 +81,7 @@
                                             <tr>
                                                 <td>{{$item->house->name}}</td>
                                                 <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())+1}} days</td>
-                                                <td>{{$item['sum_of_doc']}}</td>
+                                                <td>{{$item['first_doc']}}</td>
                                                 <td>{{$item['sum_of_doc'] - $item['sum_of_mortality']-$item['sum_of_rejection']}}</td>
                                                 <td>{{number_format($item['avg_weight'], 2, '.', ',')}} Kg</td>
                                                 <td>{{number_format($item['avg_fcr'], 2, '.', ',')}}</td>
@@ -96,9 +96,7 @@
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
                                                             <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -160,10 +158,9 @@
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
                                                             <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
                                                         </div>
+
                                                     </div>
                                                 </td>
                                             </tr>
@@ -226,11 +223,9 @@
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
-
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
                                                             <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
                                                         </div>
+
                                                     </div>
                                                 </td>
                                             </tr>
@@ -291,11 +286,9 @@
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
-
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
                                                             <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
                                                         </div>
+
                                                     </div>
                                                 </td>
                                             </tr>
@@ -375,7 +368,7 @@
                                         <input type="number" name="weight4" class="form-control input-default" placeholder="Weight 4" />
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <div class="form-group">
                                         <label> Feed Consumption (Total in KG)</label>
                                         <input type="number" name="feed_consumption" class="form-control input-default" placeholder="Feed Consumption" />

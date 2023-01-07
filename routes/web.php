@@ -38,6 +38,8 @@ Route::get('add-chicken', [chickenController::class,'getAddChicken']);
 Route::get('daily-chicken', [chickenController::class,'getHouseChicken']);
 Route::post('add-daily-data', [chickenController::class,'addDailyChicken']);
 Route::get('getdata-add-chicken{slug}', [chickenController::class,'getAddChickenData']);
+Route::get('edit-dailyChicken{id}', [chickenController::class,'getEditDailyChicken']);
+Route::post('edit-daily-info', [chickenController::class,'updateDailyChicken']);
 
 //DOC
 Route::get('all-doc', [chickenController::class,'getDoc']);
