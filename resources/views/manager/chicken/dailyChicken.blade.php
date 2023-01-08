@@ -50,6 +50,8 @@
                                                 <th scope="col">Weight 4</th>
                                                 <th scope="col">Morality</th>
                                                 <th scope="col">Rejection</th>
+                                                <th scope="col">Action</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -68,6 +70,10 @@
                                                 <td>{{$item['weight4']}}</td>
                                                 <td>{{$item['mortality']}}</td>
                                                 <td>{{$item['rejection']}}</td>
+                                                <td>
+                                                    <span class="float-right"><a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a></span>
+                                                </td>
+
                                             </tr>
                                             @endforeach
 
@@ -102,6 +108,98 @@
     <!--**********************************
         Main wrapper end
     ***********************************-->
+    <!-------edit-Modal------>
+    <div class="modal fade bs-example-modal-center" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered " style="min-width:60%;">
+            <div class="modal-content">
+                <div class="modal-body p-5">
+                    <form action="edit-daily-info" method="POST">
+
+                        @csrf
+                        <div class="row">
+                            <input type="hidden" class="form-control input-default" id="edit_daily_id" name="daily_id" />
+                            <input type="hidden" class="form-control input-default" id="editChickenId" name="chicken_id" />
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label> Date</label>
+                                    <input type="date" id="editDate" name="date" class="form-control input-default" placeholder="Today's Date" />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label> Mortality</label>
+                                    <input type="number" id="editMortality" name="mortality" class="form-control input-default" placeholder="Mortality" />
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label> Rejection</label>
+                                    <input type="number" id="editRejection" name="rejection" class="form-control input-default" placeholder="Rejection" />
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label> Weight 1 (for 12 chicken in KG)</label>
+                                    <input type="number" id="editWeight1" name="weight1" class="form-control input-default" placeholder="Weight 1" />
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label> Weight 2 (for 12 chicken in KG)</label>
+
+                                    <input type="number" id="editWeight2" name="weight2" class="form-control input-default" placeholder="Weight 2" />
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label> Weight 3 (for 12 chicken in KG)</label>
+
+                                    <input type="number" id="editWeight3" name="weight3" class="form-control input-default" placeholder="Weight 3" />
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label> Weight 4 (for 12 chicken in KG)</label>
+
+                                    <input type="number" id="editWeight4" name="weight4" class="form-control input-default" placeholder="Weight 4" />
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label> Feed Consumption (Total in KG)</label>
+                                    <input type="number" id="editConsumption" name="feed_consumption" class="form-control input-default" placeholder="Feed Consumption" />
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-12">
+                            <div class="d-flex justify-content-center">
+                                <div>
+                                    <button type="submit" class="btn btn-primary px-5 mx-1">
+                                        Update daily Information
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!---- End of edit modal ---->
+
 
     <!--**********************************
         Scripts
@@ -114,5 +212,33 @@
     <script src="./plugins/tables/js/jquery.dataTables.min.js"></script>
     <script src="./plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
     <script src="./plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
+    <!-- Edit Modal functions -->
+    <script>
+        function openModal(clicked_id) {
+            $("#largeModal").modal("show");
+            console.log(clicked_id);
+            //document.getElementById("getId").value = clicked_id;
+            $.ajax({
+                url: '/edit-dailyChicken' + clicked_id
+                , type: "GET"
+                , success: function(response) {
+                    console.log(response);
+                    $('#editDate').val(response.daily.date);
+                    $('#editMortality').val(response.daily.mortality);
+                    $('#editRejection').val(response.daily.rejection);
+                    $('#editWeight1').val(response.daily.weight1);
+                    $('#editWeight2').val(response.daily.weight2);
+                    $('#editWeight3').val(response.daily.weight3);
+                    $('#editWeight4').val(response.daily.weight4);
+                    $('#editConsumption').val(response.daily.feed_consumption);
+                    $('#editChickenId').val(response.daily.chicken_id);
+
+                    $('#edit_daily_id').val(clicked_id);
+                }
+            });
+        }
+
+    </script>
+
 </body>
 </html>

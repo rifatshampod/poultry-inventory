@@ -112,6 +112,8 @@
                                                 <th scope="col">Weight 4</th>
                                                 <th scope="col">Morality</th>
                                                 <th scope="col">Rejection</th>
+                                                <th scope="col">Action</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -130,6 +132,10 @@
                                                 <td>{{$item['weight4']}}</td>
                                                 <td>{{$item['mortality']}}</td>
                                                 <td>{{$item['rejection']}}</td>
+                                                <td>
+                                                    <span class="float-right"><a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a></span>
+                                                </td>
+
                                             </tr>
 
                                             @endforeach
@@ -162,6 +168,8 @@
                                                 <th scope="col">Weight 4</th>
                                                 <th scope="col">Morality</th>
                                                 <th scope="col">Rejection</th>
+                                                <th scope="col">Action</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -181,6 +189,10 @@
                                                 <td>{{$item['weight4']}}</td>
                                                 <td>{{$item['mortality']}}</td>
                                                 <td>{{$item['rejection']}}</td>
+                                                <td>
+                                                    <span class="float-right"><a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a></span>
+                                                </td>
+
                                             </tr>
 
                                             @endforeach
@@ -213,6 +225,7 @@
                                                 <th scope="col">Weight 4</th>
                                                 <th scope="col">Morality</th>
                                                 <th scope="col">Rejection</th>
+                                                <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -231,6 +244,10 @@
                                                 <td>{{$item['weight4']}}</td>
                                                 <td>{{$item['mortality']}}</td>
                                                 <td>{{$item['rejection']}}</td>
+                                                <td>
+                                                    <span class="float-right"><a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a></span>
+                                                </td>
+
                                             </tr>
                                             @endforeach
                                             @endif

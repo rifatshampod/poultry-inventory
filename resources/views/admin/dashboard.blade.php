@@ -168,7 +168,8 @@
                                 <h4 class="card-title">FCR Summary</h4>
                                 <div class="table-responsive">
                                     <table class="table header-border table-hover verticle-middle">
-                                        <thead>
+                                        <thead style="background-color: rgb(0, 0, 0); color:#ffffff">
+
                                             <tr>
                                                 <th scope="col">#</th>
                                                 <th scope="col">Farm</th>
@@ -209,9 +210,10 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="card card-widget">
                             <div class="card-body">
-                                <h5 class="text-muted">Order Overview </h5>
+                                <h5 class="text-muted">Sales Overview </h5>
                                 <h2 class="mt-4">5680</h2>
                                 <span>Total Revenue</span>
+                                {{-- single farm  --}}
                                 <div class="mt-4">
                                     <h4>30</h4>
                                     <h6>Online Order <span class="pull-right">30%</span></h6>
@@ -220,6 +222,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{-- single farm  --}}
                                 <div class="mt-4">
                                     <h4>50</h4>
                                     <h6 class="m-t-10 text-muted">Offline Order <span class="pull-right">50%</span></h6>
@@ -228,6 +231,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{-- single farm  --}}
                                 <div class="mt-4">
                                     <h4>20</h4>
                                     <h6 class="m-t-10 text-muted">Cash On Develery <span class="pull-right">20%</span></h6>
