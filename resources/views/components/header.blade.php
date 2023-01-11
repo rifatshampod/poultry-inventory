@@ -186,15 +186,14 @@
                     <i class="icon-note menu-icon"></i><span class="nav-text">Report</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="feedReport.html">Feed Report</a></li>
+                    <li><a href="mortality-report">Mortality Report</a></li>
                     <li>
-                        <a href="chickenStockReport.html">DOC Report</a>
+                        <a href="rejection-report">Rejection Report</a>
                     </li>
-                    <li><a href="leaveReport.html">Mortality Report</a></li>
-                    <li><a href="leaveReport.html">Rejection Report</a></li>
-                    <li><a href="leaveReport.html">Weight Progress Report</a></li>
-                    <li><a href="salesReport.html">Sales Report</a></li>
-                    <li><a href="leaveReport.html">Employee Leave Report</a></li>
+                    <li><a href="weight-report">Weight Progress Report</a></li>
+                    <li><a href="feed-report">Feed Consumption Report</a></li>
+                    <li><a href="sales-report">Sales Report</a></li>
+                    <li><a href="expense-report">Expenses Report</a></li>
 
 
                 </ul>
