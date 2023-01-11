@@ -201,7 +201,7 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Order Summary</h4>
+                                <h4 class="card-title">Expense Summary</h4>
                                 <div id="morris-bar-chart"></div>
                             </div>
                         </div>
@@ -215,8 +215,8 @@
                                 <span>Total Revenue</span>
                                 {{-- single farm  --}}
                                 <div class="mt-4">
-                                    <h4>30</h4>
-                                    <h6>Online Order <span class="pull-right">30%</span></h6>
+                                    <h4>1289</h4>
+                                    <h6>Batajore <span class="pull-right">30%</span></h6>
                                     <div class="progress mb-3" style="height: 7px">
                                         <div class="progress-bar bg-primary" style="width: 30%;" role="progressbar"><span class="sr-only">30% Order</span>
                                         </div>
@@ -224,8 +224,9 @@
                                 </div>
                                 {{-- single farm  --}}
                                 <div class="mt-4">
-                                    <h4>50</h4>
-                                    <h6 class="m-t-10 text-muted">Offline Order <span class="pull-right">50%</span></h6>
+                                    <h4>5150</h4>
+                                    <h6 class="m-t-10 text-muted"> Narangi 1 <span class="pull-right">50%</span></h6>
+
                                     <div class="progress mb-3" style="height: 7px">
                                         <div class="progress-bar bg-success" style="width: 50%;" role="progressbar"><span class="sr-only">50% Order</span>
                                         </div>
@@ -233,8 +234,9 @@
                                 </div>
                                 {{-- single farm  --}}
                                 <div class="mt-4">
-                                    <h4>20</h4>
-                                    <h6 class="m-t-10 text-muted">Cash On Develery <span class="pull-right">20%</span></h6>
+                                    <h4>2120</h4>
+                                    <h6 class="m-t-10 text-muted">Farm 4 <span class="pull-right">20%</span></h6>
+
                                     <div class="progress mb-3" style="height: 7px">
                                         <div class="progress-bar bg-warning" style="width: 20%;" role="progressbar"><span class="sr-only">20% Order</span>
                                         </div>

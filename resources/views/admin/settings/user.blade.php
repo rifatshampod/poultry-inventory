@@ -125,12 +125,9 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openEditModal(this.id)">Edit</a>
 
-                                                            <button class="dropdown-item text-warning" id="{{$item['id']}}" onclick="openPasswordModal(this.id)">Change Password</button>
+                                                            <a class="dropdown-item text-warning" href="#" onclick="changePassModal()">Change Password</a>
 
-
-
-
-                                                            <a class="dropdown-item text-danger" id="{{$item['id']}}" onclick="openDeleteModal(this.id)">Delete</a>
+                                                            <a class="dropdown-item text-danger">Delete</a>
 
                                                         </div>
                                                     </div>
@@ -226,7 +223,7 @@
     </div>
     <!---- End of edit modal ---->
 
-    <!-------Delete-Modal------>
+    {{-- <!-------Delete-Modal------>
     <div class="modal fade bs-example-modal-center" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
 
 
@@ -305,7 +302,68 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-    <!---- End of password change modal ---->
+    <!---- End of password change modal ----> --}}
+
+    <!-----------------------Change Password Modal-------------->
+    <div class="modal fade" id="changePassword">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="mb-4">
+                        <h5 class="modal-title">Change Password</h5>
+                    </div>
+                    <form action="">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label> Current Password</label>
+                                    <input type="password" class="form-control input-default" placeholder="Current Password" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label> New Password</label>
+                                    <input type="password" class="form-control input-default" placeholder="New Password" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label> Confirm Password</label>
+                                    <input type="password" class="form-control input-default" placeholder="Confirm Password" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary">Edit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-----------------------Delete Modal-------------->
+    <div class="modal fade bd-example-modal-sm" id="deleteModal">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="mb-4">
+                        <h5 class="modal-title text-center">Are You Want To change</h5>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">
+                            No
+                        </button>
+                        <button type="button" class="btn btn-primary">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 
@@ -359,52 +417,57 @@
                 }
             });
         }
+        // function openPasswordModal(clicked_id2) {
 
-        function openPasswordModal(clicked_id2) {
-
-            console.log(clicked_id2);
-            $("#passwordModal").modal("show");
-            //document.getElementById("getId").value = clicked_id;
+        //     console.log(clicked_id2);
+        //     $("#passwordModal").modal("show");
+        //     //document.getElementById("getId").value = clicked_id;
 
 
-            // $.ajax({
-            //     url: '/edit-user' + clicked_id2
-            //     , type: "GET"
-            //     , success: function(response) {
-            //         console.log(response);
-            //         $('#name').val(response.user.name);
-            //         $('#email').val(response.user.email);
-            //         $('#phone').val(response.user.phone);
-            //         $('#role').val(response.user.role);
-            //         $('#farm').val(response.user.farm_id);
-            //         $('#userEditId').val(clicked_id2);
-            //     }
-            // });
+        //     // $.ajax({
+        //     //     url: '/edit-user' + clicked_id2
+        //     //     , type: "GET"
+        //     //     , success: function(response) {
+        //     //         console.log(response);
+        //     //         $('#name').val(response.user.name);
+        //     //         $('#email').val(response.user.email);
+        //     //         $('#phone').val(response.user.phone);
+        //     //         $('#role').val(response.user.role);
+        //     //         $('#farm').val(response.user.farm_id);
+        //     //         $('#userEditId').val(clicked_id2);
+        //     //     }
+        //     // });
+        // }
+
+        // function openDeleteModal(clicked_id) {
+
+
+        //     $("#deleteModal").modal("show");
+        //     //document.getElementById("getId").value = clicked_id;
+
+        //     // $.ajax({
+        //     //     url: '/edit-user' + clicked_id
+        //     //     , type: "GET"
+        //     //     , success: function(response) {
+        //     //         console.log(response);
+        //     //         $('#name').val(response.user.name);
+        //     //         $('#email').val(response.user.email);
+        //     //         $('#phone').val(response.user.phone);
+        //     //         $('#role').val(response.user.role);
+        //     //         $('#farm').val(response.user.farm_id);
+        //     //         $('#userEditId').val(clicked_id);
+        //     //     }
+        //     // });
+        // }
+
+        function changePassModal() {
+            $("#changePassword").modal("show");
         }
 
-        function openDeleteModal(clicked_id) {
-
-
+        function deleteModal() {
             $("#deleteModal").modal("show");
-            //document.getElementById("getId").value = clicked_id;
-
-            // $.ajax({
-            //     url: '/edit-user' + clicked_id
-            //     , type: "GET"
-            //     , success: function(response) {
-            //         console.log(response);
-            //         $('#name').val(response.user.name);
-            //         $('#email').val(response.user.email);
-            //         $('#phone').val(response.user.phone);
-            //         $('#role').val(response.user.role);
-            //         $('#farm').val(response.user.farm_id);
-            //         $('#userEditId').val(clicked_id);
-            //     }
-            // });
         }
 
     </script>
-
-
 </body>
 </html>

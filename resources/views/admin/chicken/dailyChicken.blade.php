@@ -102,8 +102,8 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Date</th>
-                                                <th scope="col">House</th>
+                                                <th scope="col" class="col-2">Date</th>
+                                                <th scope="col" class="col-2">House</th>
                                                 <th scope="col">F.C.</th>
                                                 <th scope="col">F.C.R</th>
                                                 <th scope="col">Weight 1</th>
@@ -158,8 +158,9 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Date</th>
-                                                <th scope="col">House</th>
+                                                <th scope="col" class="col-2">Date</th>
+                                                <th scope="col" class="col-2">House</th>
+
                                                 <th scope="col">F.C.</th>
                                                 <th scope="col">F.C.R</th>
                                                 <th scope="col">Weight 1</th>
@@ -215,8 +216,8 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Date</th>
-                                                <th scope="col">House</th>
+                                                <th scope="col" class="col-2">Date</th>
+                                                <th scope="col" class="col-2">House</th>
                                                 <th scope="col">F.C.</th>
                                                 <th scope="col">F.C.R</th>
                                                 <th scope="col">Weight 1</th>
