@@ -10,6 +10,7 @@ use App\Http\Controllers\accountController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\medicineController;
 use App\Http\Controllers\saleController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,6 +111,15 @@ Route::post('add-bonus-type',[settingsController::class,'addBonusType']);
 Route::get('designation',[settingsController::class,'getDesignation']);
 Route::post('add-designation',[settingsController::class,'addDesignation']);
 //Settings ---------------------------------------------------------------------
+
+//Report routes ----------------------------------------------------------------
+Route::get('mortality-report',[ReportController::class,'getMortality']);
+Route::get('rejection-report',[ReportController::class,'getMortality']);
+Route::get('weight-report',[ReportController::class,'getMortality']);
+Route::get('feed-report',[ReportController::class,'getMortality']);
+Route::get('sales-report',[ReportController::class,'getMortality']);
+Route::get('expense-report',[ReportController::class,'getMortality']);
+//Report routes ends -----------------------------------------------------------
 
 
 

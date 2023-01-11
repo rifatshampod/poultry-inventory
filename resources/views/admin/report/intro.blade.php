@@ -42,8 +42,9 @@
                                             <div class="form-group">
                                                 <label>FLock</label>
                                                 <select class="form-control input-default">
-                                                    <option value="0">FLock 1</option>
-                                                    <option value="1">FLock 1</option>
+                                                    @foreach ($flockList as $item)
+                                                    <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -51,10 +52,9 @@
                                             <div class="form-group">
                                                 <label>Farm Name</label>
                                                 <select class="form-control input-default">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
+                                                    @foreach ($farmList as $item)
+                                                    <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -84,10 +84,9 @@
                                             <div class="form-group">
                                                 <label>Farm Name</label>
                                                 <select class="form-control input-default">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
+                                                    @foreach ($farmList as $item)
+                                                    <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -129,10 +128,9 @@
                                             <div class="form-group">
                                                 <label>Farm Name</label>
                                                 <select class="form-control input-default">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
+                                                    @foreach ($farmList as $item)
+                                                    <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
