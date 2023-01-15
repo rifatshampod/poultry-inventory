@@ -48,33 +48,41 @@
                             <div class="my-2 text-center">
                                 <h3>Mortality Report</h3>
                             </div>
+                            <div class="mb-2 text-center">
+                                <h4>Flock : {{$flock->name}} </h4>
+                                <h4>Farm : {{$farm->name}}</h4>
+                            </div>
                             <div class="d-flex">
                                 <div class="table-responsive mr-2">
                                     <table class="table table-bordered text-dark">
                                         <tbody>
                                             <tr>
-                                                <td colspan="3">House 1</td>
+                                                <td colspan="3">{{$house1->house->name}}</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3">Total Started : 12211</td>
+                                                <td colspan="3">Total Started : {{$house1->first_doc}}</td>
                                             </tr>
-                                            <tr>
+                                            <tr class="bg-light">
                                                 <td>Date</td>
-                                                <td>Age</td>
-                                                <td>Dead</td>
+                                                <td class="text-center">Age (Day)</td>
+                                                <td class="text-right">Dead</td>
+
                                             </tr>
+                                            @foreach ($daily1 as $item)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{$item['date']}}</td>
+                                                <td class="text-center">{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($house1->date))+1}}</td>
+                                                <td class="text-right">{{$item['mortality']}}</td>
+
                                             </tr>
-                                            <tr>
+
+                                            @endforeach
+
+                                            <tr class="bg-light">
+
                                                 <td colspan="2">Total</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">Amount</td>
-                                                <td></td>
+                                                <td class="text-right"><strong>{{$sum1}}</strong></td>
+
                                             </tr>
                                         </tbody>
                                     </table>

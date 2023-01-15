@@ -114,11 +114,15 @@ Route::post('add-designation',[settingsController::class,'addDesignation']);
 
 //Report routes ----------------------------------------------------------------
 Route::get('mortality-report',[ReportController::class,'getMortality']);
-Route::get('rejection-report',[ReportController::class,'getMortality']);
-Route::get('weight-report',[ReportController::class,'getMortality']);
-Route::get('feed-report',[ReportController::class,'getMortality']);
-Route::get('sales-report',[ReportController::class,'getMortality']);
-Route::get('expense-report',[ReportController::class,'getMortality']);
+Route::post('flock-mortality-report',[ReportController::class,'fetchMortalityByFlock']);
+Route::post('farm-mortality-report',[ReportController::class,'fetchMortalityByFarm']);
+Route::post('date-mortality-report',[ReportController::class,'fetchMortalityByDate']);
+
+Route::get('rejection-report',[ReportController::class,'getRejection']);
+Route::get('weight-report',[ReportController::class,'getWeight']);
+Route::get('feed-report',[ReportController::class,'getFeed']);
+Route::get('sales-report',[ReportController::class,'getSales']);
+Route::get('expense-report',[ReportController::class,'getExpense']);
 //Report routes ends -----------------------------------------------------------
 
 
