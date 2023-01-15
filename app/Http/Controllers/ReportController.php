@@ -15,6 +15,6 @@ class ReportController extends Controller
         $flock = Flock::all();
         $farm = Farm::all();
 
-        return view ('admin/report/intro')->with('flockList', $flock)->with('farmList', $farm);
+        return view ('admin/report/introMortality')->with('flockList', $flock)->with('farmList', $farm);
     }
 }
