@@ -279,11 +279,13 @@ class chickenController extends Controller
             $weight_gain = $weight - $chickenList['avg_weight'];
             $total_chicken = $chickenList['sum_of_doc']-$chickenList['sum_of_mortality']-$chickenList['sum_of_rejection'];
             $fcr = ($req->input('feed_consumption')/$total_chicken)/$weight_gain;
+            $avg_gain = $weight_gain / $total_chicken ; 
         }
         else{
             $weight_gain = 0;
             $total_chicken = 0;
             $fcr = 0;
+            $avg_gain = 0;
         }
 
         $data = new Daily_chicken;
@@ -296,6 +298,7 @@ class chickenController extends Controller
         $data->weight3=$req->input('weight3');
         $data->weight4=$req->input('weight4');
         $data->weight_avg= $weight;
+        $data->weight_gain= $avg_gain;
         $data->mortality=$req->input('mortality');
         $data->rejection=$req->input('rejection');
         $data->status = 1;

@@ -36,12 +36,13 @@
                                     <h3>Search By Flock</h3>
                                     <span>Get report of complete flock. Only complete flock are available here</span>
                                 </div>
-                                <form action="">
+                                <form action="flock-weight-report" method="POST">
+                                    @csrf
                                     <div class="row justify-content-center">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>FLock</label>
-                                                <select class="form-control input-default">
+                                                <select name="flock_id" class="form-control input-default">
                                                     @foreach ($flockList as $item)
                                                     <option value="{{$item['id']}}">{{$item['name']}}</option>
                                                     @endforeach
@@ -51,7 +52,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Farm Name</label>
-                                                <select class="form-control input-default">
+                                                <select name="farm_id" class="form-control input-default">
                                                     @foreach ($farmList as $item)
                                                     <option value="{{$item['id']}}">{{$item['name']}}</option>
                                                     @endforeach

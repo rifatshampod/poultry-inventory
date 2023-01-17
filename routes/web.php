@@ -119,10 +119,30 @@ Route::post('farm-mortality-report',[ReportController::class,'fetchMortalityByFa
 Route::post('date-mortality-report',[ReportController::class,'fetchMortalityByDate']);
 
 Route::get('rejection-report',[ReportController::class,'getRejection']);
+Route::post('flock-mortality-report',[ReportController::class,'fetchMortalityByFlock']);
+Route::post('farm-mortality-report',[ReportController::class,'fetchMortalityByFarm']);
+Route::post('date-mortality-report',[ReportController::class,'fetchMortalityByDate']);
+
 Route::get('weight-report',[ReportController::class,'getWeight']);
+Route::post('flock-weight-report',[ReportController::class,'fetchWeightByFlock']);
+Route::post('farm-weight-report',[ReportController::class,'fetchWeightByFarm']);
+Route::post('date-weight-report',[ReportController::class,'fetchWeightByDate']);
+
 Route::get('feed-report',[ReportController::class,'getFeed']);
+Route::post('flock-mortality-report',[ReportController::class,'fetchMortalityByFlock']);
+Route::post('farm-mortality-report',[ReportController::class,'fetchMortalityByFarm']);
+Route::post('date-mortality-report',[ReportController::class,'fetchMortalityByDate']);
+
 Route::get('sales-report',[ReportController::class,'getSales']);
+Route::post('flock-mortality-report',[ReportController::class,'fetchMortalityByFlock']);
+Route::post('farm-mortality-report',[ReportController::class,'fetchMortalityByFarm']);
+Route::post('date-mortality-report',[ReportController::class,'fetchMortalityByDate']);
+
 Route::get('expense-report',[ReportController::class,'getExpense']);
+Route::post('flock-mortality-report',[ReportController::class,'fetchMortalityByFlock']);
+Route::post('farm-mortality-report',[ReportController::class,'fetchMortalityByFarm']);
+Route::post('date-mortality-report',[ReportController::class,'fetchMortalityByDate']);
+
 //Report routes ends -----------------------------------------------------------
 
 

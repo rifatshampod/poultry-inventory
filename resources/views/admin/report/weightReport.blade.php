@@ -49,6 +49,11 @@
                             <div class="my-2 text-center">
                                 <h3>Weight Progress Report</h3>
                             </div>
+                            <div class="mb-2 text-center">
+                                <h4>Flock : {{$flock->name}} </h4>
+                                <h4>Farm : {{$farm->name}}</h4>
+                            </div>
+
                             <div class="">
                                 <div class="table-responsive mr-2">
                                     <table class="table table-bordered text-dark">
@@ -56,30 +61,26 @@
                                             <tr>
                                                 <td>Date</td>
                                                 <td>House</td>
-                                                <td>Age</td>
+                                                <td>Age (days)</td>
                                                 <td>Standard Weight (gram)</td>
                                                 <td>Counted Weight (gram)</td>
                                                 <td>Standard Weight gain (gram)</td>
                                                 <td>Counted weight gain (gram)</td>
                                             </tr>
+                                            @foreach ($weightList as $item)
                                             <tr>
-                                                <td>12.10.22</td>
-                                                <td>House 1</td>
-                                                <td>4 day</td>
+                                                <td>{{$item['date']}}</td>
+                                                <td>{{$item->chicken->house->name}}</td>
+                                                <td>{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item->chicken->date))+1}}</td>
                                                 <td>109</td>
-                                                <td>110</td>
+                                                <td>{{$item['weight_avg']*1000}}</td>
                                                 <td>20</td>
-                                                <td>21</td>
+                                                <td>{{$item['weight_gain']*1000}}</td>
                                             </tr>
-                                            <tr>
-                                                <td>13.10.22</td>
-                                                <td>House 1</td>
-                                                <td>5 day</td>
-                                                <td>131</td>
-                                                <td>128</td>
-                                                <td>22</td>
-                                                <td>18</td>
-                                            </tr>
+
+                                            @endforeach
+
+
                                         </tbody>
                                     </table>
                                 </div>

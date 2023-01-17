@@ -71,6 +71,29 @@ class ReportController extends Controller
         return view ('admin/report/introWeight')->with('flockList', $flock)->with('farmList', $farm);
     }
 
+    function fetchWeightByFlock(Request $req){
+
+        $flockId = $req->input('flock_id');
+        $farmId = $req->input('farm_id');
+
+        $flock = Flock::find($flockId)->get()->first();
+        $farm = Farm::find($farmId)->get()->first();
+
+        $weightList = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
+                    ->where('chickens.farm_id', $farmId)
+                    ->where('chickens.flock_id', $flockId)
+                    ->get('daily_chickens.*', 'chicken.date as age_date');
+
+        return view ('admin/report/weightReport')->with('flock', $flock)->with('farm', $farm)
+        ->with('weightList', $weightList);
+    }
+    function fetchWeightByFarm(Request $req){
+        return view ('admin/report/mortalityReport');
+    }
+    function fetchWeightByDate(Request $req){
+        return view ('admin/report/mortalityReport');
+    }
+
     //Feed consumption report
     function getFeed(){
 
