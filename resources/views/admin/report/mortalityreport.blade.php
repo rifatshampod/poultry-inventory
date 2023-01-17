@@ -91,28 +91,32 @@
                                     <table class="table table-bordered text-dark">
                                         <tbody>
                                             <tr>
-                                                <td colspan="3">House 2</td>
+                                                <td colspan="3">{{$house2->house->name}}</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3">Total Started: 13213</td>
+                                                <td colspan="3">Total Started : {{$house2->first_doc}}</td>
                                             </tr>
-                                            <tr>
+                                            <tr class="bg-light">
                                                 <td>Date</td>
-                                                <td>Age</td>
-                                                <td>Dead</td>
+                                                <td class="text-center">Age (Day)</td>
+                                                <td class="text-right">Dead</td>
+
                                             </tr>
+                                            @foreach ($daily2 as $item)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{$item['date']}}</td>
+                                                <td class="text-center">{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($house2->date))+1}}</td>
+                                                <td class="text-right">{{$item['mortality']}}</td>
+
                                             </tr>
-                                            <tr>
+
+                                            @endforeach
+
+                                            <tr class="bg-light">
+
                                                 <td colspan="2">Total</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">Amount</td>
-                                                <td></td>
+                                                <td class="text-right"><strong>{{$sum2}}</strong></td>
+
                                             </tr>
                                         </tbody>
                                     </table>
@@ -121,28 +125,32 @@
                                     <table class="table table-bordered text-dark">
                                         <tbody>
                                             <tr>
-                                                <td colspan="3">House 3</td>
+                                                <td colspan="3">{{$house3->house->name}}</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3">Total Started : 143134</td>
+                                                <td colspan="3">Total Started : {{$house3->first_doc}}</td>
                                             </tr>
-                                            <tr>
+                                            <tr class="bg-light">
                                                 <td>Date</td>
-                                                <td>Age</td>
-                                                <td>Dead</td>
+                                                <td class="text-center">Age (Day)</td>
+                                                <td class="text-right">Dead</td>
+
                                             </tr>
+                                            @foreach ($daily3 as $item)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{$item['date']}}</td>
+                                                <td class="text-center">{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($house3->date))+1}}</td>
+                                                <td class="text-right">{{$item['mortality']}}</td>
+
                                             </tr>
-                                            <tr>
+
+                                            @endforeach
+
+                                            <tr class="bg-light">
+
                                                 <td colspan="2">Total</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">Amount</td>
-                                                <td></td>
+                                                <td class="text-right"><strong>{{$sum3}}</strong></td>
+
                                             </tr>
                                         </tbody>
                                     </table>
@@ -153,28 +161,32 @@
                                     <table class="table table-bordered text-dark">
                                         <tbody>
                                             <tr>
-                                                <td colspan="3">House 4</td>
+                                                <td colspan="3">{{$house4->house->name}}</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3">Total Started : 13123</td>
+                                                <td colspan="3">Total Started : {{$house4->first_doc}}</td>
                                             </tr>
-                                            <tr>
+                                            <tr class="bg-light">
                                                 <td>Date</td>
-                                                <td>Age</td>
-                                                <td>Dead</td>
+                                                <td class="text-center">Age (Day)</td>
+                                                <td class="text-right">Dead</td>
+
                                             </tr>
+                                            @foreach ($daily4 as $item)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{$item['date']}}</td>
+                                                <td class="text-center">{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($house4->date))+1}}</td>
+                                                <td class="text-right">{{$item['mortality']}}</td>
+
                                             </tr>
-                                            <tr>
+
+                                            @endforeach
+
+                                            <tr class="bg-light">
+
                                                 <td colspan="2">Total</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">Amount</td>
-                                                <td></td>
+                                                <td class="text-right"><strong>{{$sum4}}</strong></td>
+
                                             </tr>
                                         </tbody>
                                     </table>
@@ -183,28 +195,32 @@
                                     <table class="table table-bordered text-dark">
                                         <tbody>
                                             <tr>
-                                                <td colspan="3">House 5</td>
+                                                <td colspan="3">{{$house5->house->name}}</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3">Total Started : 9845</td>
+                                                <td colspan="3">Total Started : {{$house5->first_doc}}</td>
                                             </tr>
-                                            <tr>
+                                            <tr class="bg-light">
                                                 <td>Date</td>
-                                                <td>Age</td>
-                                                <td>Dead</td>
+                                                <td class="text-center">Age (Day)</td>
+                                                <td class="text-right">Dead</td>
+
                                             </tr>
+                                            @foreach ($daily5 as $item)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{$item['date']}}</td>
+                                                <td class="text-center">{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($house5->date))+1}}</td>
+                                                <td class="text-right">{{$item['mortality']}}</td>
+
                                             </tr>
-                                            <tr>
+
+                                            @endforeach
+
+                                            <tr class="bg-light">
+
                                                 <td colspan="2">Total</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">Amount</td>
-                                                <td></td>
+                                                <td class="text-right"><strong>{{$sum5}}</strong></td>
+
                                             </tr>
                                         </tbody>
                                     </table>
@@ -213,32 +229,37 @@
                                     <table class="table table-bordered text-dark">
                                         <tbody>
                                             <tr>
-                                                <td colspan="3">House 6</td>
+                                                <td colspan="3">{{$house6->house->name}}</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3">Total Started : 314314</td>
+                                                <td colspan="3">Total Started : {{$house6->first_doc}}</td>
                                             </tr>
-                                            <tr>
+                                            <tr class="bg-light">
                                                 <td>Date</td>
-                                                <td>Age</td>
-                                                <td>Dead</td>
+                                                <td class="text-center">Age (Day)</td>
+                                                <td class="text-right">Dead</td>
+
                                             </tr>
+                                            @foreach ($daily6 as $item)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{$item['date']}}</td>
+                                                <td class="text-center">{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($house6->date))+1}}</td>
+                                                <td class="text-right">{{$item['mortality']}}</td>
+
                                             </tr>
-                                            <tr>
+
+                                            @endforeach
+
+                                            <tr class="bg-light">
+
                                                 <td colspan="2">Total</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">Amount</td>
-                                                <td></td>
+                                                <td class="text-right"><strong>{{$sum6}}</strong></td>
+
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
+
                             </div>
                         </div>
                     </div>

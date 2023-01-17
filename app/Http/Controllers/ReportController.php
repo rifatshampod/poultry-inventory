@@ -29,6 +29,9 @@ class ReportController extends Controller
         $flock = Flock::find($flockId)->get()->first();
         $farm = Farm::find($farmId)->get()->first();
 
+        $house = House::where('farm_id',$farmId)->get();
+
+        //House 1
         $house1 = Chicken::where('farm_id', $farmId)
                     ->where('flock_id', $flockId)
                     ->where('house_id', 2)
