@@ -59,12 +59,13 @@
                                     <table class="table table-bordered text-dark">
                                         <tbody>
                                             <tr>
-                                                <td>Date</td>
-                                                <td>House</td>
+                                                <td class="col-2">Date </td>
+                                                <td class="col-2">House</td>
+
                                                 <td>Age (days)</td>
-                                                <td>Standard Weight (gram)</td>
+                                                <td>Std Weight (gram)</td>
                                                 <td>Counted Weight (gram)</td>
-                                                <td>Standard Weight gain (gram)</td>
+                                                <td>Std Weight gain (gram)</td>
                                                 <td>Counted weight gain (gram)</td>
                                             </tr>
                                             @foreach ($weightList as $item)
@@ -72,9 +73,19 @@
                                                 <td>{{$item['date']}}</td>
                                                 <td>{{$item->chicken->house->name}}</td>
                                                 <td>{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item->chicken->date))+1}}</td>
-                                                <td>109</td>
+                                                @foreach ($standardList as $std)
+                                                @if($std['id']==(Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item->chicken->date))+1))
+                                                <td>{{$std['weight']}}</td>
+                                                @endif
+                                                @endforeach
+
                                                 <td>{{$item['weight_avg']*1000}}</td>
-                                                <td>20</td>
+                                                @foreach ($standardList as $std)
+                                                @if($std['id']==(Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item->chicken->date))+1))
+                                                <td>{{$std['daily_gain']}}</td>
+                                                @endif
+                                                @endforeach
+
                                                 <td>{{$item['weight_gain']*1000}}</td>
                                             </tr>
 

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Farm;
 use App\Models\House;
 use App\Models\Flock;
+use App\Models\Standard;
 
 class ReportController extends Controller
 {
@@ -76,6 +77,8 @@ class ReportController extends Controller
         $flockId = $req->input('flock_id');
         $farmId = $req->input('farm_id');
 
+        $standard = Standard::all();
+
         $flock = Flock::find($flockId)->get()->first();
         $farm = Farm::find($farmId)->get()->first();
 
@@ -85,7 +88,7 @@ class ReportController extends Controller
                     ->get('daily_chickens.*', 'chicken.date as age_date');
 
         return view ('admin/report/weightReport')->with('flock', $flock)->with('farm', $farm)
-        ->with('weightList', $weightList);
+        ->with('weightList', $weightList)->with('standardList', $standard);
     }
     function fetchWeightByFarm(Request $req){
         return view ('admin/report/mortalityReport');
