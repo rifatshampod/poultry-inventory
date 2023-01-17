@@ -85,13 +85,30 @@ class ReportController extends Controller
         $weightList = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
                     ->where('chickens.farm_id', $farmId)
                     ->where('chickens.flock_id', $flockId)
+                    ->where('chickens.status', 0)
                     ->get('daily_chickens.*', 'chicken.date as age_date');
 
         return view ('admin/report/weightReport')->with('flock', $flock)->with('farm', $farm)
         ->with('weightList', $weightList)->with('standardList', $standard);
     }
     function fetchWeightByFarm(Request $req){
-        return view ('admin/report/mortalityReport');
+        
+        $farmId = $req->input('farm_id');
+
+        $standard = Standard::all();
+
+        $flock = Flock::where('status', 1)
+        ->get()->first();
+
+        $farm = Farm::find($farmId)->get()->first();
+
+        $weightList = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
+                    ->where('chickens.farm_id', $farmId)
+                    ->where('chickens.status', 1)
+                    ->get('daily_chickens.*', 'chicken.date as age_date');
+
+        return view ('admin/report/weightReport')->with('flock', $flock)->with('farm', $farm)
+        ->with('weightList', $weightList)->with('standardList', $standard);
     }
     function fetchWeightByDate(Request $req){
         return view ('admin/report/mortalityReport');

@@ -79,12 +79,14 @@
                                     <span>Get report of any farm for ongoing data. Only current flock are
                                         available</span>
                                 </div>
-                                <form action="">
+                                <form action="farm-weight-report" method="POST">
+                                    @csrf
+
                                     <div class="row justify-content-center">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Farm Name</label>
-                                                <select class="form-control input-default">
+                                                <select name="farm_id" class="form-control input-default">
                                                     @foreach ($farmList as $item)
                                                     <option value="{{$item['id']}}">{{$item['name']}}</option>
                                                     @endforeach
