@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Oasis</title>
+    <title>Oasis - Weight Report</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png" />
     <!-- Pignose Calender -->
@@ -50,7 +50,11 @@
                                 <h3>Weight Progress Report</h3>
                             </div>
                             <div class="mb-2 text-center">
+                                @if($flock)
                                 <h4>Flock : {{$flock->name}} </h4>
+                                {{-- @else
+                                <h4>Duration: {{$duration}}</h4> --}}
+                                @endif
                                 <h4>Farm : {{$farm->name}}</h4>
                             </div>
 

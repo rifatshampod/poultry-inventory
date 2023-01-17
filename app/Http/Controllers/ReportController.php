@@ -111,7 +111,25 @@ class ReportController extends Controller
         ->with('weightList', $weightList)->with('standardList', $standard);
     }
     function fetchWeightByDate(Request $req){
-        return view ('admin/report/mortalityReport');
+        $farmId = $req->input('farm_id');
+        $start = $req->input('start_date');
+        $end = $req->input('end_date');
+
+        $flock = null;
+
+        $duration = $start." to ".$end;
+
+        $standard = Standard::all();
+
+        $farm = Farm::find($farmId)->get()->first();
+
+        $weightList = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
+                    ->where('chickens.farm_id', $farmId)
+                    ->whereBetween('daily_chickens.date', [$start, $end])
+                    ->get('daily_chickens.*', 'chicken.date as age_date');
+
+        return view ('admin/report/weightReport')->with('farm', $farm)->with('flock', $flock)
+        ->with('weightList', $weightList)->with('standardList', $standard)->with('duration', $duration);
     }
 
     //Feed consumption report
