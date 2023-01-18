@@ -47,39 +47,55 @@
                     <div class="col-lg-9">
                         <div class="card p-3">
                             <div class="my-2 text-center">
-                                <h3>FCR Report</h3>
+                                <h3>Feed Consumption Report</h3>
                             </div>
+                            <div class="mb-2 text-center">
+                                @if($flock)
+                                <h4>Flock : {{$flock->name}} </h4>
+                                {{-- @else
+                                <h4>Duration: {{$duration}}</h4> --}}
+                                @endif
+                                <h4>Farm : {{$farm->name}}</h4>
+                            </div>
+
                             <div class="">
                                 <div class="table-responsive mr-2">
                                     <table class="table table-bordered text-dark">
                                         <tbody>
                                             <tr>
-                                                <td>Date</td>
-                                                <td>House</td>
-                                                <td>Age</td>
-                                                <td>Standard Feed Consumption (gram)</td>
-                                                <td>Counted Feed Consumption (gram)</td>
-                                                <td>Standard FCR </td>
-                                                <td>Counted FCR </td>
+                                                <td class="col-2">Date </td>
+                                                <td class="col-2">House</td>
+
+                                                <td>Age (days)</td>
+                                                <td>Std Consumption (gram)</td>
+                                                <td>Counted Consumption (gram)</td>
+                                                <td>Std FCR</td>
+                                                <td>Counted FCR</td>
                                             </tr>
+                                            @foreach ($feedList as $item)
                                             <tr>
-                                                <td>12.10.22</td>
-                                                <td>House 1</td>
-                                                <td>4 day</td>
-                                                <td>23</td>
-                                                <td>24</td>
-                                                <td>0.679</td>
-                                                <td>0.68</td>
+                                                <td>{{$item['date']}}</td>
+                                                <td>{{$item->chicken->house->name}}</td>
+                                                <td>{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item->chicken->date))+1}}</td>
+                                                @foreach ($standardList as $std)
+                                                @if($std['id']==(Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item->chicken->date))+1))
+                                                <td>{{$std['dfc']}}</td>
+                                                @endif
+                                                @endforeach
+
+                                                <td>{{$item['avg_feed_consumption']*1000}}</td>
+                                                @foreach ($standardList as $std)
+                                                @if($std['id']==(Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item->chicken->date))+1))
+                                                <td>{{$std['fcr']}}</td>
+                                                @endif
+                                                @endforeach
+
+                                                <td>{{$item['fcr']}}</td>
                                             </tr>
-                                            <tr>
-                                                <td>13.10.22</td>
-                                                <td>House 1</td>
-                                                <td>5 day</td>
-                                                <td>27</td>
-                                                <td>22</td>
-                                                <td>0.773</td>
-                                                <td>0.61</td>
-                                            </tr>
+
+                                            @endforeach
+
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -88,6 +104,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         <!--**********************************
             Footer end

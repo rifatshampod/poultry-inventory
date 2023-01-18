@@ -22,7 +22,7 @@
                             <a href="index.html">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item active">
-                            <a href="javascript:void(0)">Report</a>
+                            <a href="javascript:void(0)">Feed Report</a>
                         </li>
                     </ol>
                 </div>
@@ -36,12 +36,13 @@
                                     <h3>Search By Flock</h3>
                                     <span>Get report of complete flock. Only complete flock are available here</span>
                                 </div>
-                                <form action="">
+                                <form action="flock-feed-report" method="POST">
+                                    @csrf
                                     <div class="row justify-content-center">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>FLock</label>
-                                                <select class="form-control input-default">
+                                                <select name="flock_id" class="form-control input-default">
                                                     @foreach ($flockList as $item)
                                                     <option value="{{$item['id']}}">{{$item['name']}}</option>
                                                     @endforeach
@@ -51,7 +52,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Farm Name</label>
-                                                <select class="form-control input-default">
+                                                <select name="farm_id" class="form-control input-default">
                                                     @foreach ($farmList as $item)
                                                     <option value="{{$item['id']}}">{{$item['name']}}</option>
                                                     @endforeach
@@ -78,12 +79,14 @@
                                     <span>Get report of any farm for ongoing data. Only current flock are
                                         available</span>
                                 </div>
-                                <form action="">
+                                <form action="farm-feed-report" method="POST">
+                                    @csrf
+
                                     <div class="row justify-content-center">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Farm Name</label>
-                                                <select class="form-control input-default">
+                                                <select name="farm_id" class="form-control input-default">
                                                     @foreach ($farmList as $item)
                                                     <option value="{{$item['id']}}">{{$item['name']}}</option>
                                                     @endforeach
@@ -107,27 +110,29 @@
                             <div class="card-body">
                                 <div class="mb-4 text-center">
                                     <h3>Search By Date</h3>
-                                    <span>Get report of data of a specific duration. CUrrent and previous all data are
+                                    <span>Get report of data of a specific duration. Current and previous all data are
                                         available here</span>
                                 </div>
-                                <form action="">
+                                <form action="date-feed-report" method="POST">
+                                    @csrf
+
                                     <div class="row justify-content-center">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Start Date</label>
-                                                <input type="date" class="form-control input-default" placeholder="" />
+                                                <input type="date" name="start_date" class="form-control input-default" placeholder="" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>End Date</label>
-                                                <input type="date" class="form-control input-default" placeholder="" />
+                                                <input type="date" name="end_date" class="form-control input-default" placeholder="" />
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Farm Name</label>
-                                                <select class="form-control input-default">
+                                                <select name="farm_id" class="form-control input-default">
                                                     @foreach ($farmList as $item)
                                                     <option value="{{$item['id']}}">{{$item['name']}}</option>
                                                     @endforeach
@@ -149,6 +154,7 @@
                 </div>
             </div>
         </div>
+
 
         <!--**********************************
             Content body end
