@@ -51,6 +51,9 @@
                             </div>
                             <div class="my-2 text-center">
                                 <h4>Farm : {{$farm->name}}</h4>
+                                @if($duration)
+                                <h4>Duration : {{$duration}}</h4>
+                                @endif
                             </div>
 
                             <div class="">
