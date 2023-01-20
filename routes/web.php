@@ -140,9 +140,8 @@ Route::post('farm-mortality-report',[ReportController::class,'fetchMortalityByFa
 Route::post('date-mortality-report',[ReportController::class,'fetchMortalityByDate']);
 
 Route::get('expense-report',[ReportController::class,'getExpense']);
-Route::post('flock-mortality-report',[ReportController::class,'fetchMortalityByFlock']);
-Route::post('farm-mortality-report',[ReportController::class,'fetchMortalityByFarm']);
-Route::post('date-mortality-report',[ReportController::class,'fetchMortalityByDate']);
+Route::post('farm-expense-report',[ReportController::class,'fetchExpenseByFarm']);
+Route::post('date-expense-report',[ReportController::class,'fetchExpenseByDate']);
 
 //Report routes ends -----------------------------------------------------------
 

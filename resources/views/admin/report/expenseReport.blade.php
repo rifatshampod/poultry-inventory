@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Oasis</title>
+    <title>Oasis- Expense Report </title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png" />
     <!-- Pignose Calender -->
@@ -49,6 +49,10 @@
                             <div class="my-2 text-center">
                                 <h3>Expense Report</h3>
                             </div>
+                            <div class="my-2 text-center">
+                                <h4>Farm : {{$farm->name}}</h4>
+                            </div>
+
                             <div class="">
                                 <div class="table-responsive mr-2">
                                     <table class="table table-bordered text-dark">
@@ -62,15 +66,25 @@
                                                 <td>Reference</td>
                                                 <td>Amount</td>
                                             </tr>
+                                            @foreach ($expenseList as $item)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{$item['date']}}</td>
+                                                <td>{{$item->house->name}}</td>
+                                                <td>{{$item->expenseType->name}}</td>
+                                                <td>{{$item->expenseSector->name}}</td>
+                                                <td>
+                                                    @if($item['paid_from']==1)
+                                                    Petty Cash
+                                                    @else
+                                                    Direct Payment by Head Office
+                                                    @endif
+                                                </td>
+                                                <td>{{$item['reference']}}</td>
+                                                <td>{{$item['amount']}}</td>
                                             </tr>
+
+                                            @endforeach
+
                                         </tbody>
                                     </table>
                                 </div>

@@ -9,6 +9,7 @@ use App\Models\Farm;
 use App\Models\House;
 use App\Models\Flock;
 use App\Models\Standard;
+use App\Models\Expense;
 
 class ReportController extends Controller
 {
@@ -216,5 +217,38 @@ class ReportController extends Controller
         $farm = Farm::all();
 
         return view ('admin/report/introExpense')->with('flockList', $flock)->with('farmList', $farm);
+    }
+    function fetchExpenseByFarm(Request $req){
+        
+        $farmId = $req->input('farm_id');
+
+        
+        $farm = Farm::where('id',$farmId)->get()->first();
+
+        $expenseList=Expense::where('farm_id', $farmId)->get();
+
+        return view ('admin/report/expenseReport')->with('farm', $farm)
+        ->with('expenseList', $expenseList);
+    }
+    function fetchExpenseByDate(Request $req){
+        $farmId = $req->input('farm_id');
+        $start = $req->input('start_date');
+        $end = $req->input('end_date');
+
+        $flock = null;
+
+        $duration = $start." to ".$end;
+
+        $standard = Standard::all();
+
+        $farm = Farm::where('id',$farmId)->get()->first();
+
+        $feedList = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
+                    ->where('chickens.farm_id', $farmId)
+                    ->whereBetween('daily_chickens.date', [$start, $end])
+                    ->get('daily_chickens.*', 'chicken.date as age_date');
+
+        return view ('admin/report/expenseReport')->with('farm', $farm)->with('flock', $flock)
+        ->with('feedList', $feedList)->with('standardList', $standard)->with('duration', $duration);
     }
 }
