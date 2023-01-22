@@ -11,6 +11,7 @@ use App\Models\House;
 use App\Models\Designation;
 use App\Models\Flock;
 use App\Models\User;
+use App\Models\Standard;
 use Illuminate\Support\Facades\Hash;
 
 class settingsController extends Controller
@@ -210,6 +211,36 @@ class settingsController extends Controller
         $user->farm_id=$req->input('farm_id');
         $user->update();
 
+        return redirect()->back();
+    }
+
+    //Standards
+    function getStandard(){
+
+        $standardList = Standard::get();
+
+        return view('admin/settings/standard')->with('standardList', $standardList);
+    }
+    
+    function addStandard(Request $req){
+
+        $farm = 0;
+        if($req->input('role')==2){
+            $farm = $req->input('farm_id');
+        }
+
+        $data = new User();
+        $data->name = $req->input('name');
+        $data->email = $req->input('email');
+        $data->phone = $req->input('phone');
+        $data->role = $req->input('role');
+        $data->farm_id = $farm;
+        $data->password = Hash::make($req->input('password'));
+        $data->save();
+
+        
+
+        $req->session()->flash('status','New user added successfully');
         return redirect()->back();
     }
 

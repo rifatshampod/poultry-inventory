@@ -214,6 +214,10 @@
                         <a href="house" aria-expanded="false">Houses</a>
                     </li>
                     <li>
+                        <a href="standards" aria-expanded="false">Standard Values</a>
+                    </li>
+
+                    <li>
                         <a href="expense-type" aria-expanded="false">Expense Types</a>
                     </li>
                     <li>

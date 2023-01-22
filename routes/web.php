@@ -110,6 +110,11 @@ Route::post('add-bonus-type',[settingsController::class,'addBonusType']);
 
 Route::get('designation',[settingsController::class,'getDesignation']);
 Route::post('add-designation',[settingsController::class,'addDesignation']);
+
+Route::get('standards',[settingsController::class,'getStandard']);
+Route::post('add-standard',[settingsController::class,'addStandard']);
+
+
 //Settings ---------------------------------------------------------------------
 
 //Report routes ----------------------------------------------------------------

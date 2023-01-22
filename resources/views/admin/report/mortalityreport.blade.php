@@ -53,6 +53,7 @@
                                 <h4>Farm : {{$farm->name}}</h4>
                             </div>
                             <div class="d-flex">
+                                @if($house1)
                                 <div class="table-responsive mr-2">
                                     <table class="table table-bordered text-dark">
                                         <tbody>
@@ -87,6 +88,10 @@
                                         </tbody>
                                     </table>
                                 </div>
+
+                                @endif
+
+                                @if($house2)
                                 <div class="table-responsive mr-2">
                                     <table class="table table-bordered text-dark">
                                         <tbody>
@@ -121,6 +126,11 @@
                                         </tbody>
                                     </table>
                                 </div>
+
+                                @endif
+
+
+                                @if($house3)
                                 <div class="table-responsive mr-2">
                                     <table class="table table-bordered text-dark">
                                         <tbody>
@@ -155,8 +165,12 @@
                                         </tbody>
                                     </table>
                                 </div>
+
+                                @endif
+
                             </div>
                             <div class="d-flex">
+                                @if($house4)
                                 <div class="table-responsive mr-2">
                                     <table class="table table-bordered text-dark">
                                         <tbody>
@@ -191,6 +205,10 @@
                                         </tbody>
                                     </table>
                                 </div>
+
+                                @endif
+
+                                @if($house5)
                                 <div class="table-responsive mr-2">
                                     <table class="table table-bordered text-dark">
                                         <tbody>
@@ -225,6 +243,11 @@
                                         </tbody>
                                     </table>
                                 </div>
+
+                                @endif
+
+
+                                @if($house6)
                                 <div class="table-responsive mr-2">
                                     <table class="table table-bordered text-dark">
                                         <tbody>
@@ -259,6 +282,10 @@
                                         </tbody>
                                     </table>
                                 </div>
+
+                                @endif
+
+
 
                             </div>
                         </div>

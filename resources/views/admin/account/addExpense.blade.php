@@ -87,7 +87,7 @@
                                         <div class="form-group col-md-6">
                                             <label>Paid From</label>
                                             <select class="form-control input-default" name="paid_from">
-                                                <option value="1" selected>Patty Cash</option>
+                                                <option value="1" selected>Petty Cash</option>
                                                 <option value="2">Direct Payment by Head Office</option>
                                             </select>
                                         </div>
