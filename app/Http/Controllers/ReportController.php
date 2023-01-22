@@ -156,7 +156,7 @@ class ReportController extends Controller
                     ->where('chickens.farm_id', $farmId)
                     ->where('chickens.flock_id', $flockId)
                     ->where('chickens.status', 0)
-                    ->get('daily_chickens.*', 'chicken.date as age_date');
+                    ->get('daily_chickens.*', 'chickens.date as age_date');
 
         return view ('admin/report/fcrReport')->with('flock', $flock)->with('farm', $farm)
         ->with('feedList', $feedList)->with('standardList', $standard);
@@ -175,7 +175,7 @@ class ReportController extends Controller
         $feedList = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
                     ->where('chickens.farm_id', $farmId)
                     ->where('chickens.status', 1)
-                    ->get('daily_chickens.*', 'chicken.date as age_date');
+                    ->get('daily_chickens.*', 'chickens.date as age_date');
 
         return view ('admin/report/fcrReport')->with('flock', $flock)->with('farm', $farm)
         ->with('feedList', $feedList)->with('standardList', $standard);
@@ -196,7 +196,7 @@ class ReportController extends Controller
         $feedList = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
                     ->where('chickens.farm_id', $farmId)
                     ->whereBetween('daily_chickens.date', [$start, $end])
-                    ->get('daily_chickens.*', 'chicken.date as age_date');
+                    ->get('daily_chickens.*', 'chickens.date as age_date');
 
         return view ('admin/report/fcrReport')->with('farm', $farm)->with('flock', $flock)
         ->with('feedList', $feedList)->with('standardList', $standard)->with('duration', $duration);
@@ -220,13 +220,16 @@ class ReportController extends Controller
         $flock = Flock::where('id',$flockId)->get()->first();
         $farm = Farm::where('id',$farmId)->get()->first();
 
-        $feedList = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
-                    ->where('chickens.farm_id', $farmId)
-                    ->where('chickens.flock_id', $flockId)
+        // $feedList = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
+        //             ->where('chickens.farm_id', $farmId)
+        //             ->where('chickens.flock_id', $flockId)
+        //             ->where('chickens.status', 0)
+        //             ->get('daily_chickens.*', 'chicken.date as age_date');
+        $saleList = Sale::join('chickens','chickens.house_id','=','sales.house_id')
+                    ->where('sales.flock_id', $flockId)
+                    ->where('sales.farm_id', $farmId)
                     ->where('chickens.status', 0)
-                    ->get('daily_chickens.*', 'chicken.date as age_date');
-        $saleList = Sale::where('flock_id', $flockId)
-                    ->where('farm_id', $farmId)
+                    ->select('sales.*', 'chickens.date as age_date')
                     ->get();
 
         return view ('admin/report/salesReport')->with('flock', $flock)->with('farm', $farm)
@@ -240,16 +243,16 @@ class ReportController extends Controller
 
         $flock = Flock::where('status', 1)
         ->get()->first();
-
         $farm = Farm::where('id',$farmId)->get()->first();
 
-        $feedList = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
-                    ->where('chickens.farm_id', $farmId)
+        $saleList = Sale::join('chickens','chickens.house_id','=','sales.house_id')
+                    ->where('sales.farm_id', $farmId)
                     ->where('chickens.status', 1)
-                    ->get('daily_chickens.*', 'chicken.date as age_date');
+                    ->select('sales.*', 'chickens.date as age_date')
+                    ->get();
 
-        return view ('admin/report/fcrReport')->with('flock', $flock)->with('farm', $farm)
-        ->with('feedList', $feedList)->with('standardList', $standard);
+        return view ('admin/report/salesReport')->with('flock', $flock)->with('farm', $farm)
+        ->with('saleList', $saleList)->with('standardList', $standard);
     }
     function fetchSalesByDate(Request $req){
         $farmId = $req->input('farm_id');
@@ -264,13 +267,19 @@ class ReportController extends Controller
 
         $farm = Farm::where('id',$farmId)->get()->first();
 
-        $feedList = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
-                    ->where('chickens.farm_id', $farmId)
-                    ->whereBetween('daily_chickens.date', [$start, $end])
-                    ->get('daily_chickens.*', 'chicken.date as age_date');
+        // $feedList = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
+        //             ->where('chickens.farm_id', $farmId)
+        //             ->whereBetween('daily_chickens.date', [$start, $end])
+        //             ->get('daily_chickens.*', 'chicken.date as age_date');
 
-        return view ('admin/report/fcrReport')->with('farm', $farm)->with('flock', $flock)
-        ->with('feedList', $feedList)->with('standardList', $standard)->with('duration', $duration);
+        $saleList = Sale::join('chickens','chickens.house_id','=','sales.house_id')
+                    ->where('sales.farm_id', $farmId)
+                    ->whereBetween('sales.date', [$start, $end])
+                    ->select('sales.*', 'chickens.date as age_date')
+                    ->get();
+
+        return view ('admin/report/salesReport')->with('farm', $farm)->with('flock', $flock)
+        ->with('saleList', $saleList)->with('standardList', $standard)->with('duration', $duration);
     }
 
     //Expense Report

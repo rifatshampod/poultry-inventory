@@ -51,7 +51,11 @@
                             </div>
                             <div class="my-2 text-center">
                                 <h4>Farm : {{$farm->name}}</h4>
-                                <h4>Farm : {{$flock->name}}</h4>
+                                @if($flock)
+                                <h4>Flock : {{$flock->name}} </h4>
+                                @else
+                                <h4>Duration: {{$duration}}</h4>
+                                @endif
 
                             </div>
 
@@ -85,12 +89,18 @@
 
                                                 <td>{{$item['customer']}}</td>
 
-                                                <td>-</td>
+                                                <td>{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item['age_date']))+1}}</td>
+
                                                 <td>{{$item['total_birds']}}</td>
 
                                                 <td>{{$item['total_weight']}}</td>
 
-                                                <td>//standard</td>
+                                                @foreach ($standardList as $std)
+                                                @if($std['id']==(Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item['age_date']))+1))
+                                                <td>{{$std['weight']}}</td>
+                                                @endif
+                                                @endforeach
+
 
                                                 <td>{{$item['avg_weight']}}</td>
 
