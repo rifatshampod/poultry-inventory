@@ -43,7 +43,7 @@
                                             <select class="form-control input-default" name="house_id">
                                                 <option value="" selected disabled hidden>Select House</option>
                                                 @foreach ($houseList as $item)
-                                                <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                                <option value="{{$item['id']}}">{{$item['name']}} ({{$item->farm->name}})</option>
                                                 @endforeach
                                             </select>
                                         </div>
