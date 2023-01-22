@@ -23,4 +23,8 @@ class Flock extends Model
     {
     return $this->hasMany(Expense::class);
     }
+    public function sale()
+    {
+    return $this->hasMany(Sale::class);
+    }
 }

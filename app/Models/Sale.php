@@ -23,4 +23,8 @@ class Sale extends Model
     {
     return $this->belongsTo(House::class);
     }
+    public function flock()
+    {
+    return $this->belongsTo(Flock::class);
+    }
 }

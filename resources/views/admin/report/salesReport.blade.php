@@ -49,12 +49,18 @@
                             <div class="my-2 text-center">
                                 <h3>Sales Report</h3>
                             </div>
+                            <div class="my-2 text-center">
+                                <h4>Farm : {{$farm->name}}</h4>
+                                <h4>Farm : {{$flock->name}}</h4>
+
+                            </div>
+
                             <div class="">
                                 <div class="table-responsive mr-2">
                                     <table class="table table-bordered text-dark">
                                         <tbody>
                                             <tr>
-                                                <td>Date</td>
+                                                <td class="col-2">Date</td>
                                                 <td>House</td>
                                                 <td>Car</td>
                                                 <td>Catching Slip No</td>
@@ -68,21 +74,34 @@
                                                 <td>Price/kg</td>
                                                 <td>Total Price</td>
                                             </tr>
+                                            @foreach ($saleList as $item)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{$item['date']}}</td>
+                                                <td>{{$item->house->name}}</td>
+                                                <td>{{$item['car_no']}}</td>
+                                                <td>{{$item['catching_slip']}}</td>
+
+                                                <td>{{$item['payment_method']}}</td>
+
+                                                <td>{{$item['customer']}}</td>
+
+                                                <td>-</td>
+                                                <td>{{$item['total_birds']}}</td>
+
+                                                <td>{{$item['total_weight']}}</td>
+
+                                                <td>//standard</td>
+
+                                                <td>{{$item['avg_weight']}}</td>
+
+                                                <td>{{$item['per_kg_price']}}</td>
+
+                                                <td>{{$item['total_price']}}</td>
+
                                             </tr>
+
+                                            @endforeach
+
                                         </tbody>
                                     </table>
                                 </div>

@@ -10,6 +10,7 @@ use App\Models\House;
 use App\Models\Flock;
 use App\Models\Standard;
 use App\Models\Expense;
+use App\Models\Sale;
 
 class ReportController extends Controller
 {
@@ -224,9 +225,12 @@ class ReportController extends Controller
                     ->where('chickens.flock_id', $flockId)
                     ->where('chickens.status', 0)
                     ->get('daily_chickens.*', 'chicken.date as age_date');
+        $saleList = Sale::where('flock_id', $flockId)
+                    ->where('farm_id', $farmId)
+                    ->get();
 
         return view ('admin/report/salesReport')->with('flock', $flock)->with('farm', $farm)
-        ->with('feedList', $feedList)->with('standardList', $standard);
+        ->with('saleList', $saleList)->with('standardList', $standard);
     }
     function fetchSalesByFarm(Request $req){
         
