@@ -49,7 +49,9 @@
                                 <h3>Mortality Report</h3>
                             </div>
                             <div class="mb-2 text-center">
+                                @if($flock)
                                 <h4>Flock : {{$flock->name}} </h4>
+                                @endif
                                 <h4>Farm : {{$farm->name}}</h4>
                             </div>
                             <div class="d-flex">
