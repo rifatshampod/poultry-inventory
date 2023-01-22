@@ -22,7 +22,7 @@
                             <a href="index.html">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item active">
-                            <a href="javascript:void(0)">Report</a>
+                            <a href="javascript:void(0)">Mortality Report</a>
                         </li>
                     </ol>
                 </div>

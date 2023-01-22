@@ -399,6 +399,372 @@ class ReportController extends Controller
         return view ('admin/report/introRejection')->with('flockList', $flock)->with('farmList', $farm);
     }
 
+    function fetchRejectionByFlock(Request $req){
+
+        $flockId = $req->input('flock_id');
+        $farmId = $req->input('farm_id');
+
+        $flock = Flock::where('id',$flockId)->get()->first();
+        $farm = Farm::where('id',$farmId)->get()->first();
+
+        $houseList = House::where('farm_id',$farmId)->pluck('id')->toArray();
+
+        //House 1
+        $house1 = Chicken::where('farm_id', $farmId)
+                    ->where('flock_id', $flockId)
+                    ->where('house_id', $houseList[0])
+                    -> get()->first();
+        if($house1){
+            $daily1 = Daily_chicken::where('chicken_id', $house1['id'])
+                    -> get();
+        
+        $sum1 = Daily_chicken::where('chicken_id', $house1['id'])
+                    -> sum('rejection');
+        }
+        else{
+            $daily1 = "";
+            $sum1 = "";
+        }
+        
+
+        //House 2
+        $house2 = Chicken::where('farm_id', $farmId)
+                    ->where('flock_id', $flockId)
+                    ->where('house_id', $houseList[1])
+                    -> get()->first();
+        
+        if($house2){
+            $daily2 = Daily_chicken::where('chicken_id', $house2['id'])
+                    -> get();
+        
+            $sum2 = Daily_chicken::where('chicken_id', $house2['id'])
+                    -> sum('rejection');
+        }
+        else{
+            $daily2 = "";
+            $sum2 = "";
+        }
+
+        //House 3
+        $house3 = Chicken::where('farm_id', $farmId)
+                    ->where('flock_id', $flockId)
+                    ->where('house_id', $houseList[2])
+                    -> get()->first();
+        
+        if($house3){
+            $daily3 = Daily_chicken::where('chicken_id', $house3['id'])
+                    -> get();
+        
+            $sum3 = Daily_chicken::where('chicken_id', $house3['id'])
+                    -> sum('rejection');
+        }
+        else{
+            $daily3 = "";
+            $sum3 = "";
+        }
+
+        //House 4
+        $house4 = Chicken::where('farm_id', $farmId)
+                    ->where('flock_id', $flockId)
+                    ->where('house_id', $houseList[3])
+                    -> get()->first();
+        
+        if($house4){
+            $daily4 = Daily_chicken::where('chicken_id', $house4['id'])
+                    -> get();
+        
+            $sum4 = Daily_chicken::where('chicken_id', $house4['id'])
+                    -> sum('rejection');
+        }
+        else{
+            $daily4 = "";
+            $sum4 = "";
+        }
+
+        //House 5
+        $house5 = Chicken::where('farm_id', $farmId)
+                    ->where('flock_id', $flockId)
+                    ->where('house_id', $houseList[4])
+                    -> get()->first();
+        
+        if($house5){
+            $daily5 = Daily_chicken::where('chicken_id', $house5['id'])
+                    -> get();
+        
+            $sum5 = Daily_chicken::where('chicken_id', $house5['id'])
+                    -> sum('rejection');
+        }
+        else{
+            $daily5 = "";
+            $sum5 = "";
+        }
+
+        //House 6
+        $house6 = Chicken::where('farm_id', $farmId)
+                    ->where('flock_id', $flockId)
+                    ->where('house_id', $houseList[5])
+                    -> get()->first();
+        
+        if($house6){
+            $daily6 = Daily_chicken::where('chicken_id', $house6['id'])
+                    -> get();
+        
+            $sum6 = Daily_chicken::where('chicken_id', $house6['id'])
+                    -> sum('rejection');
+        }
+        else{
+            $daily6 = ""; 
+            $sum6 = "";
+        }
+
+        return view ('admin/report/rejectionReport')->with('flock', $flock)->with('farm', $farm)
+        ->with('house1', $house1)->with('daily1', $daily1)->with('sum1', $sum1)
+        ->with('house2', $house2)->with('daily2', $daily2)->with('sum2', $sum2)
+        ->with('house3', $house3)->with('daily3', $daily3)->with('sum3', $sum3)
+        ->with('house4', $house4)->with('daily4', $daily4)->with('sum4', $sum4)
+        ->with('house5', $house5)->with('daily5', $daily5)->with('sum5', $sum5)
+        ->with('house6', $house6)->with('daily6', $daily6)->with('sum6', $sum6);
+    }
+    function fetchRejectionByFarm(Request $req){
+        $farmId = $req->input('farm_id');
+
+        $flock = "";
+        $farm = Farm::where('id',$farmId)->get()->first();
+
+        $houseList = House::where('farm_id',$farmId)->pluck('id')->toArray();
+
+        //House 1
+        $house1 = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseList[0])
+                    -> get()->first();
+        if($house1){
+            $daily1 = Daily_chicken::where('chicken_id', $house1['id'])
+                    -> get();
+        
+        $sum1 = Daily_chicken::where('chicken_id', $house1['id'])
+                    -> sum('rejection');
+        }
+        else{
+            $daily1 = "";
+            $sum1 = "";
+        }
+        
+
+        //House 2
+        $house2 = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseList[1])
+                    -> get()->first();
+        
+        if($house2){
+            $daily2 = Daily_chicken::where('chicken_id', $house2['id'])
+                    -> get();
+        
+            $sum2 = Daily_chicken::where('chicken_id', $house2['id'])
+                    -> sum('rejection');
+        }
+        else{
+            $daily2 = "";
+            $sum2 = "";
+        }
+
+        //House 3
+        $house3 = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseList[2])
+                    -> get()->first();
+        
+        if($house3){
+            $daily3 = Daily_chicken::where('chicken_id', $house3['id'])
+                    -> get();
+        
+            $sum3 = Daily_chicken::where('chicken_id', $house3['id'])
+                    -> sum('rejection');
+        }
+        else{
+            $daily3 = "";
+            $sum3 = "";
+        }
+
+        //House 4
+        $house4 = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseList[3])
+                    -> get()->first();
+        
+        if($house4){
+            $daily4 = Daily_chicken::where('chicken_id', $house4['id'])
+                    -> get();
+        
+            $sum4 = Daily_chicken::where('chicken_id', $house4['id'])
+                    -> sum('rejection');
+        }
+        else{
+            $daily4 = "";
+            $sum4 = "";
+        }
+
+        //House 5
+        $house5 = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseList[4])
+                    -> get()->first();
+        
+        if($house5){
+            $daily5 = Daily_chicken::where('chicken_id', $house5['id'])
+                    -> get();
+        
+            $sum5 = Daily_chicken::where('chicken_id', $house5['id'])
+                    -> sum('rejection');
+        }
+        else{
+            $daily5 = "";
+            $sum5 = "";
+        }
+
+        //House 6
+        $house6 = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseList[5])
+                    -> get()->first();
+        
+        if($house6){
+            $daily6 = Daily_chicken::where('chicken_id', $house6['id'])
+                    -> get();
+        
+            $sum6 = Daily_chicken::where('chicken_id', $house6['id'])
+                    -> sum('rejection');
+        }
+        else{
+            $daily6 = ""; 
+            $sum6 = "";
+        }
+
+        return view ('admin/report/rejectionReport')->with('flock', $flock)->with('farm', $farm)
+        ->with('house1', $house1)->with('daily1', $daily1)->with('sum1', $sum1)
+        ->with('house2', $house2)->with('daily2', $daily2)->with('sum2', $sum2)
+        ->with('house3', $house3)->with('daily3', $daily3)->with('sum3', $sum3)
+        ->with('house4', $house4)->with('daily4', $daily4)->with('sum4', $sum4)
+        ->with('house5', $house5)->with('daily5', $daily5)->with('sum5', $sum5)
+        ->with('house6', $house6)->with('daily6', $daily6)->with('sum6', $sum6);
+    }
+    function fetchRejectionByDate(Request $req){
+         $farmId = $req->input('farm_id');
+
+        $flock = "";
+        $farm = Farm::where('id',$farmId)->get()->first();
+        $start = $req->input('start_date');
+        $end = $req->input('end_date');
+
+        $houseList = House::where('farm_id',$farmId)->pluck('id')->toArray();
+
+        //House 1
+        $house1 = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseList[0])
+                    -> get()->first();
+        if($house1){
+            $daily1 = Daily_chicken::where('chicken_id', $house1['id'])
+                    ->whereBetween('date', [$start, $end])
+                    -> get();
+        
+        $sum1 = Daily_chicken::where('chicken_id', $house1['id'])
+                    ->whereBetween('date', [$start, $end])-> sum('rejection');
+        }
+        else{
+            $daily1 = "";
+            $sum1 = "";
+        }
+        
+
+        //House 2
+        $house2 = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseList[1])
+                    -> get()->first();
+        
+        if($house2){
+            $daily2 = Daily_chicken::where('chicken_id', $house2['id'])
+                    ->whereBetween('date', [$start, $end])-> get();
+        
+            $sum2 = Daily_chicken::where('chicken_id', $house2['id'])
+                    ->whereBetween('date', [$start, $end])-> sum('rejection');
+        }
+        else{
+            $daily2 = "";
+            $sum2 = "";
+        }
+
+        //House 3
+        $house3 = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseList[2])
+                    -> get()->first();
+        
+        if($house3){
+            $daily3 = Daily_chicken::where('chicken_id', $house3['id'])
+                    ->whereBetween('date', [$start, $end])-> get();
+        
+            $sum3 = Daily_chicken::where('chicken_id', $house3['id'])
+                    ->whereBetween('date', [$start, $end])-> sum('rejection');
+        }
+        else{
+            $daily3 = "";
+            $sum3 = "";
+        }
+
+        //House 4
+        $house4 = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseList[3])
+                    -> get()->first();
+        
+        if($house4){
+            $daily4 = Daily_chicken::where('chicken_id', $house4['id'])
+                    ->whereBetween('date', [$start, $end])-> get();
+        
+            $sum4 = Daily_chicken::where('chicken_id', $house4['id'])
+                    ->whereBetween('date', [$start, $end])-> sum('rejection');
+        }
+        else{
+            $daily4 = "";
+            $sum4 = "";
+        }
+
+        //House 5
+        $house5 = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseList[4])
+                    -> get()->first();
+        
+        if($house5){
+            $daily5 = Daily_chicken::where('chicken_id', $house5['id'])
+                    ->whereBetween('date', [$start, $end])-> get();
+        
+            $sum5 = Daily_chicken::where('chicken_id', $house5['id'])
+                    ->whereBetween('date', [$start, $end])-> sum('rejection');
+        }
+        else{
+            $daily5 = "";
+            $sum5 = "";
+        }
+
+        //House 6
+        $house6 = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseList[5])
+                    -> get()->first();
+        
+        if($house6){
+            $daily6 = Daily_chicken::where('chicken_id', $house6['id'])
+                    ->whereBetween('date', [$start, $end])-> get();
+        
+            $sum6 = Daily_chicken::where('chicken_id', $house6['id'])
+                    ->whereBetween('date', [$start, $end])-> sum('rejection');
+        }
+        else{
+            $daily6 = ""; 
+            $sum6 = "";
+        }
+
+        return view ('admin/report/rejectionReport')->with('flock', $flock)->with('farm', $farm)
+        ->with('house1', $house1)->with('daily1', $daily1)->with('sum1', $sum1)
+        ->with('house2', $house2)->with('daily2', $daily2)->with('sum2', $sum2)
+        ->with('house3', $house3)->with('daily3', $daily3)->with('sum3', $sum3)
+        ->with('house4', $house4)->with('daily4', $daily4)->with('sum4', $sum4)
+        ->with('house5', $house5)->with('daily5', $daily5)->with('sum5', $sum5)
+        ->with('house6', $house6)->with('daily6', $daily6)->with('sum6', $sum6);
+    }
+
     //Weight report
     function getWeight(){
 

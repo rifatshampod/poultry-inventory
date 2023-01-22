@@ -125,9 +125,9 @@ Route::post('farm-mortality-report',[ReportController::class,'fetchMortalityByFa
 Route::post('date-mortality-report',[ReportController::class,'fetchMortalityByDate']);
 //Rejection reports
 Route::get('rejection-report',[ReportController::class,'getRejection']);
-Route::post('flock-mortality-report',[ReportController::class,'fetchMortalityByFlock']);
-Route::post('farm-mortality-report',[ReportController::class,'fetchMortalityByFarm']);
-Route::post('date-mortality-report',[ReportController::class,'fetchMortalityByDate']);
+Route::post('flock-rejection-report',[ReportController::class,'fetchRejectionByFlock']);
+Route::post('farm-rejection-report',[ReportController::class,'fetchRejectionByFarm']);
+Route::post('date-rejection-report',[ReportController::class,'fetchRejectionByDate']);
 //weight reports 
 Route::get('weight-report',[ReportController::class,'getWeight']);
 Route::post('flock-weight-report',[ReportController::class,'fetchWeightByFlock']);
