@@ -38,6 +38,7 @@ class ReportController extends Controller
         $house1 = Chicken::where('farm_id', $farmId)
                     ->where('flock_id', $flockId)
                     ->where('house_id', $houseList[0])
+                    ->where('status',0)
                     -> get()->first();
         if($house1){
             $daily1 = Daily_chicken::where('chicken_id', $house1['id'])
@@ -56,6 +57,7 @@ class ReportController extends Controller
         $house2 = Chicken::where('farm_id', $farmId)
                     ->where('flock_id', $flockId)
                     ->where('house_id', $houseList[1])
+                    ->where('status',0)
                     -> get()->first();
         
         if($house2){
@@ -74,6 +76,7 @@ class ReportController extends Controller
         $house3 = Chicken::where('farm_id', $farmId)
                     ->where('flock_id', $flockId)
                     ->where('house_id', $houseList[2])
+                    ->where('status',0)
                     -> get()->first();
         
         if($house3){
@@ -92,6 +95,7 @@ class ReportController extends Controller
         $house4 = Chicken::where('farm_id', $farmId)
                     ->where('flock_id', $flockId)
                     ->where('house_id', $houseList[3])
+                    ->where('status',0)
                     -> get()->first();
         
         if($house4){
@@ -110,6 +114,7 @@ class ReportController extends Controller
         $house5 = Chicken::where('farm_id', $farmId)
                     ->where('flock_id', $flockId)
                     ->where('house_id', $houseList[4])
+                    ->where('status',0)
                     -> get()->first();
         
         if($house5){
@@ -128,6 +133,7 @@ class ReportController extends Controller
         $house6 = Chicken::where('farm_id', $farmId)
                     ->where('flock_id', $flockId)
                     ->where('house_id', $houseList[5])
+                    ->where('status',0)
                     -> get()->first();
         
         if($house6){
@@ -161,6 +167,7 @@ class ReportController extends Controller
         //House 1
         $house1 = Chicken::where('farm_id', $farmId)
                     ->where('house_id', $houseList[0])
+                    ->where('status',1)
                     -> get()->first();
         if($house1){
             $daily1 = Daily_chicken::where('chicken_id', $house1['id'])
@@ -178,6 +185,7 @@ class ReportController extends Controller
         //House 2
         $house2 = Chicken::where('farm_id', $farmId)
                     ->where('house_id', $houseList[1])
+                    ->where('status',1)
                     -> get()->first();
         
         if($house2){
@@ -195,6 +203,7 @@ class ReportController extends Controller
         //House 3
         $house3 = Chicken::where('farm_id', $farmId)
                     ->where('house_id', $houseList[2])
+                    ->where('status',1)
                     -> get()->first();
         
         if($house3){
@@ -212,6 +221,7 @@ class ReportController extends Controller
         //House 4
         $house4 = Chicken::where('farm_id', $farmId)
                     ->where('house_id', $houseList[3])
+                    ->where('status',1)
                     -> get()->first();
         
         if($house4){
@@ -229,6 +239,7 @@ class ReportController extends Controller
         //House 5
         $house5 = Chicken::where('farm_id', $farmId)
                     ->where('house_id', $houseList[4])
+                    ->where('status',1)
                     -> get()->first();
         
         if($house5){
@@ -246,6 +257,7 @@ class ReportController extends Controller
         //House 6
         $house6 = Chicken::where('farm_id', $farmId)
                     ->where('house_id', $houseList[5])
+                    ->where('status',1)
                     -> get()->first();
         
         if($house6){
@@ -413,6 +425,7 @@ class ReportController extends Controller
         $house1 = Chicken::where('farm_id', $farmId)
                     ->where('flock_id', $flockId)
                     ->where('house_id', $houseList[0])
+                    ->where('status',0)
                     -> get()->first();
         if($house1){
             $daily1 = Daily_chicken::where('chicken_id', $house1['id'])
@@ -431,6 +444,7 @@ class ReportController extends Controller
         $house2 = Chicken::where('farm_id', $farmId)
                     ->where('flock_id', $flockId)
                     ->where('house_id', $houseList[1])
+                    ->where('status',0)
                     -> get()->first();
         
         if($house2){
@@ -449,6 +463,7 @@ class ReportController extends Controller
         $house3 = Chicken::where('farm_id', $farmId)
                     ->where('flock_id', $flockId)
                     ->where('house_id', $houseList[2])
+                    ->where('status',0)
                     -> get()->first();
         
         if($house3){
@@ -467,6 +482,7 @@ class ReportController extends Controller
         $house4 = Chicken::where('farm_id', $farmId)
                     ->where('flock_id', $flockId)
                     ->where('house_id', $houseList[3])
+                    ->where('status',0)
                     -> get()->first();
         
         if($house4){
@@ -485,6 +501,7 @@ class ReportController extends Controller
         $house5 = Chicken::where('farm_id', $farmId)
                     ->where('flock_id', $flockId)
                     ->where('house_id', $houseList[4])
+                    ->where('status',0)
                     -> get()->first();
         
         if($house5){
@@ -503,6 +520,7 @@ class ReportController extends Controller
         $house6 = Chicken::where('farm_id', $farmId)
                     ->where('flock_id', $flockId)
                     ->where('house_id', $houseList[5])
+                    ->where('status',0)
                     -> get()->first();
         
         if($house6){
@@ -536,6 +554,7 @@ class ReportController extends Controller
         //House 1
         $house1 = Chicken::where('farm_id', $farmId)
                     ->where('house_id', $houseList[0])
+                    ->where('status',1)
                     -> get()->first();
         if($house1){
             $daily1 = Daily_chicken::where('chicken_id', $house1['id'])
@@ -553,6 +572,7 @@ class ReportController extends Controller
         //House 2
         $house2 = Chicken::where('farm_id', $farmId)
                     ->where('house_id', $houseList[1])
+                    ->where('status',1)
                     -> get()->first();
         
         if($house2){
@@ -570,6 +590,7 @@ class ReportController extends Controller
         //House 3
         $house3 = Chicken::where('farm_id', $farmId)
                     ->where('house_id', $houseList[2])
+                    ->where('status',1)
                     -> get()->first();
         
         if($house3){
@@ -587,6 +608,7 @@ class ReportController extends Controller
         //House 4
         $house4 = Chicken::where('farm_id', $farmId)
                     ->where('house_id', $houseList[3])
+                    ->where('status',1)
                     -> get()->first();
         
         if($house4){
@@ -604,6 +626,7 @@ class ReportController extends Controller
         //House 5
         $house5 = Chicken::where('farm_id', $farmId)
                     ->where('house_id', $houseList[4])
+                    ->where('status',1)
                     -> get()->first();
         
         if($house5){
@@ -621,6 +644,7 @@ class ReportController extends Controller
         //House 6
         $house6 = Chicken::where('farm_id', $farmId)
                     ->where('house_id', $houseList[5])
+                    ->where('status',1)
                     -> get()->first();
         
         if($house6){
