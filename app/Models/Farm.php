@@ -60,5 +60,10 @@ class Farm extends Model
     return $this->hasMany(Sale::class);
     }
 
+    public function user()
+    {
+    return $this->hasMany(User::class);
+    }
+
 
 }

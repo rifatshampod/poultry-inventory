@@ -33,7 +33,11 @@ Route::get('/', function () {
 });
 
 Route::get('dashboard',[HomeController::class, 'adminDashboard']);
+
+//Profile
 Route::get('profile',[HomeController::class, 'profile']);
+Route::post('update-profile',[HomeController::class, 'profileUpdate']);
+Route::post('update-profile-password',[HomeController::class, 'passwordUpdate']);
 
 //Chicken
 Route::get('all-chicken', [chickenController::class,'getChicken']);

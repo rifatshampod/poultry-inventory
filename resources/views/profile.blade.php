@@ -29,17 +29,36 @@
             </div>
             <div class="container-fluid mt-3">
                 <div class="row">
+
+
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
+
                                 <div class="mb-4">
+                                    @if (Session::get('status'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{Session::get('status')}}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    @endif
+
+
+
                                     <h3>Personal Information</h3>
                                 </div>
                                 <div>
-                                    <p>Name: Ariful Islam</p>
-                                    <p>Email: arifbipu@gmail.com</p>
-                                    <p>Contact: +8801758871249</p>
-                                    <p>Role: Admin (FarmHouse)</p>
+                                    <p>Name: {{Auth::user()->name}}</p>
+                                    <p>Email: {{Auth::user()->email}}</p>
+                                    <p>Contact: {{Auth::user()->phone}}</p>
+                                    @if(Auth::user()->role==1)
+                                    <p>Role: Admin</p>
+                                    @else
+                                    <p>Role: Farm Manager ({{Auth::user()->farm->name}})</p>
+                                    @endif
+
                                 </div>
                             </div>
                         </div>
@@ -50,20 +69,23 @@
                                 <div class="mb-4">
                                     <h3>Edit Information</h3>
                                 </div>
-                                <form action="">
+                                <form action="update-profile" method="post">
+                                    @csrf
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label>Name</label>
-                                            <input type="text" class="form-control input-default" placeholder="Name" />
+                                            <input type="text" name="name" class="form-control input-default" placeholder="Name" value="{{Auth::user()->name}}" />
+
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Contact</label>
-                                            <input type="number" class="form-control input-default" placeholder="Contact" />
+                                            <label>Contact Number</label>
+                                            <input type="number" name="phone" class="form-control input-default" placeholder="Contact" value="{{Auth::user()->phone}}" />
+
                                         </div>
                                         <div class="col-md-12">
                                             <div>
                                                 <button type="submit" class="btn mb-1 btn-primary w-100">
-                                                    Submit
+                                                    Update
                                                 </button>
                                             </div>
                                         </div>
@@ -72,15 +94,25 @@
                                 <div class="my-4">
                                     <h3>Edit Password</h3>
                                 </div>
-                                <form action="">
+                                @if (Session::get('error'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{Session::get('error')}}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @endif
+
+                                <form action="update-profile-password" method="POST">
+                                    @csrf
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label>Current Password</label>
-                                            <input type="password" class="form-control input-default" placeholder="Current Password" />
+                                            <input type="password" name="oldPassword" class="form-control input-default" placeholder="Current Password" required />
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>New Password</label>
-                                            <input type="password" class="form-control input-default" placeholder="New Password" />
+                                            <input type="password" name="newPassword" class="form-control input-default" placeholder="New Password" required />
                                         </div>
                                         <div class="col-md-12">
                                             <div>

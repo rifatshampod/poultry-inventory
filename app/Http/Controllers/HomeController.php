@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Daily_chicken;
 use App\Models\Flock;
 use App\Models\Chicken;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Laravel\Ui\Presets\React;
 
 class HomeController extends Controller
 {
@@ -78,5 +81,38 @@ class HomeController extends Controller
     public function profile(){
 
         return view('profile');
+    }
+
+    public function profileUpdate(Request $req){
+        $profile_id = $req->user()->id;
+        $profile = User::find($profile_id);
+        $profile->name = $req->input('name');
+        $profile->phone=$req->input('phone');
+        $profile->update();
+
+         $req->session()->flash('status','Information updated successfully');
+        return redirect()->back();
+    }
+
+    public function passwordUpdate(Request $req){
+
+        $validated = $req->validate([
+        'oldPassword' => 'required',
+        ]);
+        
+        $user = auth()->user();
+
+        if (!Hash::check($req->input('oldPassword'), $user->password)) {
+            return redirect()->back()->with('error', 'The old password is incorrect.');
+        }
+
+        $profile_id = $req->user()->id;
+        $profile = User::find($profile_id);
+        $profile->password=Hash::make($req->input('newPassword'));
+        $profile->update();
+
+        return redirect()->back()->with('status', 'Password updated successfully!');
+        
+        
     }
 }
