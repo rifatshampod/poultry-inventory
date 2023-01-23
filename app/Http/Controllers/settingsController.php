@@ -223,24 +223,16 @@ class settingsController extends Controller
     }
     
     function addStandard(Request $req){
+        $standard = new Standard();
+        $standard->weight = $req->input('weight');
+        $standard->daily_gain=$req->input('daily_gain');
+        $standard->fcr=$req->input('fcr');
+        $standard->dfc=$req->input('dfc');
+        $standard->cfc=$req->input('cfc');
+        $standard->save();
 
-        $farm = 0;
-        if($req->input('role')==2){
-            $farm = $req->input('farm_id');
-        }
 
-        $data = new User();
-        $data->name = $req->input('name');
-        $data->email = $req->input('email');
-        $data->phone = $req->input('phone');
-        $data->role = $req->input('role');
-        $data->farm_id = $farm;
-        $data->password = Hash::make($req->input('password'));
-        $data->save();
-
-        
-
-        $req->session()->flash('status','New user added successfully');
+        $req->session()->flash('status','New standard added successfully');
         return redirect()->back();
     }
 
@@ -253,14 +245,14 @@ class settingsController extends Controller
     }
 
     function updateStandardData(Request $req){
-        $user_id = $req->input('user_id');
-        $user = User::find($user_id);
-        $user->name = $req->input('name');
-        $user->email=$req->input('email');
-        $user->phone=$req->input('phone');
-        $user->role=$req->input('role');
-        $user->farm_id=$req->input('farm_id');
-        $user->update();
+        $standard_id = $req->input('id');
+        $standard = Standard::find($standard_id);
+        $standard->weight = $req->input('weight');
+        $standard->daily_gain=$req->input('daily_gain');
+        $standard->fcr=$req->input('fcr');
+        $standard->dfc=$req->input('dfc');
+        $standard->cfc=$req->input('cfc');
+        $standard->update();
 
         return redirect()->back();
     }

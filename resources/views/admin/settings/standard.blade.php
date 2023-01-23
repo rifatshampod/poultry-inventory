@@ -49,7 +49,8 @@
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>fcr</label>
-                                            <input type="number" name="fcr" class="form-control input-default" placeholder="fcr value" required />
+                                            <input type="number" name="fcr" step="0.001" class="form-control input-default" placeholder="fcr value" required />
+
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>Daily Feed Consumption (gram)</label>
@@ -82,8 +83,8 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">Age (day)</th>
+                                                <th scope="col" class="col-2">Weight</th>
                                                 <th scope="col" class="col-2">Daily Gain</th>
-
                                                 <th scope="col" class="col-2">FCR</th>
                                                 <th scope="col">Daily Feed Consumption</th>
                                                 <th scope="col">Cumulative Feed Consumption</th>
@@ -94,6 +95,7 @@
                                             @foreach ($standardList as $item)
                                             <tr>
                                                 <td>{{$item['id']}}</td>
+                                                <td>{{$item['weight']}}</td>
                                                 <td>{{$item['daily_gain']}}</td>
                                                 <td>{{$item['fcr']}}</td>
                                                 <td>{{$item['dfc']}}</td>
@@ -137,49 +139,47 @@
         <div class="modal-dialog modal-dialog-centered " style="min-width:60%;">
             <div class="modal-content">
                 <div class="modal-body p-5">
-                    <form action="edit-user-info" method="POST">
+                    <form action="edit-standard-info" method="POST">
                         @csrf
                         <div class="row">
+                            <div class="form-group col-md-12">
+                                <label>Age (day)</label>
+                                <input type="number" name="id" class="form-control input-default" id="edit_age" readonly />
+                            </div>
 
-                            <input type="hidden" name="user_id" id="userEditId">
+                            <div class="form-group col-md-12">
+                                <label>weight (gram)</label>
+                                <input type="number" name="weight" class="form-control input-default" id="edit_weight" />
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Daily gain (gram)</label>
+                                <input type="number" name="daily_gain" class="form-control input-default" id="edit_daily_gain" />
 
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label>Name</label>
-                                    <input id="name" type="text" name="name" class="form-control input-default" placeholder="Name" />
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Email</label>
-                                    <input id="email" type="email" name="email" class="form-control input-default" placeholder="Email" required />
-                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>fcr</label>
+                                <input type="number" name="fcr" step="0.001" class="form-control input-default" id="edit_fcr" />
 
-                                <div class="form-group col-md-6">
-                                    <label>Phone</label>
-                                    <input id="phone" type="number" name="phone" class="form-control input-default" placeholder="Number" />
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Role</label>
-                                        <select id="role" class="form-control input-default" name="role" onchange="showDiv2(this)" required>
-                                            <option value="1">Admin</option>
-                                            <option value="2">Farm Manager</option>
-                                        </select>
-                                    </div>
-                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Daily Feed Consumption (gram)</label>
+                                <input type="number" name="dfc" class="form-control input-default" id="edit_dfc" />
 
-
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Cumulative Feed Consumption (gram)</label>
+                                <input type="number" name="cfc" class="form-control input-default" id="edit_cfc" />
 
                             </div>
 
-                            <div class="col-lg-12">
-                                <div class="d-flex justify-content-center">
-                                    <div>
-                                        <button type="submit" class="btn btn-primary px-5 mx-1">
-                                            Update User Information
-                                        </button>
-                                    </div>
+                            <div class="col-md-12">
+                                <div>
+                                    <button type="submit" class="btn mb-1 btn-primary w-100">
+                                        Submit
+                                    </button>
                                 </div>
                             </div>
+
                     </form>
                 </div>
             </div>
@@ -196,6 +196,8 @@
     <script src="js/settings.js"></script>
     <script src="js/gleek.js"></script>
     <script src="js/styleSwitcher.js"></script>
+    <script src="./plugins/tables/js/jquery.dataTables.min.js"></script>
+
 
 
     <script>
@@ -208,12 +210,12 @@
                 , type: "GET"
                 , success: function(response) {
                     console.log(response);
-                    $('#name').val(response.standard.name);
-                    $('#email').val(response.standard.email);
-                    $('#phone').val(response.standard.phone);
-                    $('#role').val(response.standard.role);
-                    $('#farm').val(response.standard.farm_id);
-                    $('#userEditId').val(clicked_id);
+                    $('#edit_weight').val(response.standard.weight);
+                    $('#edit_daily_gain').val(response.standard.daily_gain);
+                    $('#edit_fcr').val(response.standard.fcr);
+                    $('#edit_dfc').val(response.standard.dfc);
+                    $('#edit_cfc').val(response.standard.cfc);
+                    $('#edit_age').val(clicked_id);
                 }
             });
         }
