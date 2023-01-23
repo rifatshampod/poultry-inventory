@@ -51,7 +51,7 @@
                         <div class="dropdown-content-body">
                             <ul>
                                 <li>
-                                    <a href="profile.html"><i class="icon-user"></i> <span>Profile</span></a>
+                                    <a href="profile"><i class="icon-user"></i> <span>Profile</span></a>
                                 </li>
                                 <li>
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();

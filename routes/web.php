@@ -33,6 +33,7 @@ Route::get('/', function () {
 });
 
 Route::get('dashboard',[HomeController::class, 'adminDashboard']);
+Route::get('profile',[HomeController::class, 'profile']);
 
 //Chicken
 Route::get('all-chicken', [chickenController::class,'getChicken']);
