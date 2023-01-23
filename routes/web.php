@@ -113,6 +113,8 @@ Route::post('add-designation',[settingsController::class,'addDesignation']);
 
 Route::get('standards',[settingsController::class,'getStandard']);
 Route::post('add-standard',[settingsController::class,'addStandard']);
+Route::get('edit-standard{id}', [settingsController::class,'editStandardData']);
+Route::post('edit-standard-info', [settingsController::class,'updateStandardData']);
 
 
 //Settings ---------------------------------------------------------------------

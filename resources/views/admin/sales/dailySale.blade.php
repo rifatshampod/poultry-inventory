@@ -67,6 +67,7 @@
                                                 <th scope="col">Catching Slip</th>
                                                 <th scope="col">Payment Method</th>
                                                 <th scope="col">Branch</th>
+                                                <th scope="col">Action</th>
 
                                             </tr>
                                         </thead>
@@ -87,6 +88,10 @@
                                                 <td>{{$item['catching_slip']}}</td>
                                                 <td>{{$item['payment_method']}}</td>
                                                 <td>{{$item['branch']}}</td>
+                                                <td>
+                                                    <span class="float-right"><a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a></span>
+                                                </td>
+
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -117,6 +122,8 @@
                                                 <th scope="col">Catching Slip</th>
                                                 <th scope="col">Payment Method</th>
                                                 <th scope="col">Branch</th>
+                                                <th scope="col">Action</th>
+
 
                                             </tr>
                                         </thead>
@@ -136,6 +143,10 @@
                                                 <td>{{$item['catching_slip']}}</td>
                                                 <td>{{$item['payment_method']}}</td>
                                                 <td>{{$item['branch']}}</td>
+                                                <td>
+                                                    <span class="float-right"><a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a></span>
+                                                </td>
+
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -168,6 +179,8 @@
                                                 <th scope="col">Catching Slip</th>
                                                 <th scope="col">Payment Method</th>
                                                 <th scope="col">Branch</th>
+                                                <th scope="col">Action</th>
+
 
                                             </tr>
                                         </thead>
@@ -187,6 +200,10 @@
                                                 <td>{{$item['catching_slip']}}</td>
                                                 <td>{{$item['payment_method']}}</td>
                                                 <td>{{$item['branch']}}</td>
+                                                <td>
+                                                    <span class="float-right"><a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a></span>
+                                                </td>
+
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -219,6 +236,8 @@
                                                 <th scope="col">Catching Slip</th>
                                                 <th scope="col">Payment Method</th>
                                                 <th scope="col">Branch</th>
+                                                <th scope="col">Action</th>
+
 
                                             </tr>
                                         </thead>
@@ -238,6 +257,10 @@
                                                 <td>{{$item['catching_slip']}}</td>
                                                 <td>{{$item['payment_method']}}</td>
                                                 <td>{{$item['branch']}}</td>
+                                                <td>
+                                                    <span class="float-right"><a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a></span>
+                                                </td>
+
                                             </tr>
                                             @endforeach
                                         </tbody>

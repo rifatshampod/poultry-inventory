@@ -98,8 +98,8 @@
                                                 <td>
                                                     <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
                                                         </a>
-                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
-                                                        </a>
+                                                        {{-- <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
+                                                        </a> --}}
                                                     </span>
                                                 </td>
                                             </tr>

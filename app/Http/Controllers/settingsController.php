@@ -244,5 +244,26 @@ class settingsController extends Controller
         return redirect()->back();
     }
 
+    function editStandardData($id){
+        $standard=Standard::find($id);
+        return response()->json([
+            'status'=>200,
+            'standard'=>$standard,
+        ]);
+    }
+
+    function updateStandardData(Request $req){
+        $user_id = $req->input('user_id');
+        $user = User::find($user_id);
+        $user->name = $req->input('name');
+        $user->email=$req->input('email');
+        $user->phone=$req->input('phone');
+        $user->role=$req->input('role');
+        $user->farm_id=$req->input('farm_id');
+        $user->update();
+
+        return redirect()->back();
+    }
+
     
 }

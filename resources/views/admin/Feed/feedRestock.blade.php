@@ -22,7 +22,7 @@
                             <a href="index.html">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item active">
-                            <a href="javascript:void(0)">All Feed</a>
+                            <a href="javascript:void(0)">All Feed Restock</a>
                         </li>
                     </ol>
                 </div>
@@ -30,25 +30,7 @@
             <div class="container-fluid mt-3">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <h4 class="card-title">Total in Stock : 50</h4>
-                            </div>
-                            <div class="d-flex">
-                                <div class=" mr-2 ">
-                                    <button type="button" class="btn mb-1 btn-primary">
-                                        Add New
-                                        <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
-                                    </button>
-                                </div>
-                                <div>
-                                    <button type="button" class="btn mb-1 btn-primary">
-                                        Restock
-                                        <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered zero-configuration">
                                 <thead>
@@ -79,7 +61,6 @@
                                                 </div>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <a class="dropdown-item text-danger" href="#">Edit</a>
-                                                    <a class="dropdown-item text-success" href="#">View</a>
                                                 </div>
                                             </div>
                                         </td>
