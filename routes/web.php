@@ -80,12 +80,14 @@ Route::get('all-daily-sale', [saleController::class,'getDailySale']);
 Route::post('add-sale-data', [saleController::class,'addSale']);
 
 
-//core HR
+//core HR------------
 Route::get('active-employee',[hrController::class,'getEmployee']);
 Route::post('add-employee',[hrController::class,'addEmployee']);
 //leave
 Route::get('all-leave',[hrController::class,'getLeaveRequests']);
 Route::post('add-leave',[hrController::class,'addLeaveRequests']);
+//payroll
+Route::get('payroll',[hrController::class,'getPayroll']);
 
 //settings         ---------------------------------------------------
 Route::get('users',[settingsController::class,'getUser']);

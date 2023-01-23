@@ -99,4 +99,10 @@ class hrController extends Controller
          $req->session()->flash('status','New leave added successfully');
         return redirect()->back();
     }
+
+    //payroll
+    function getPayroll(){
+
+        return view('admin/hr/payroll');
+    }
 }

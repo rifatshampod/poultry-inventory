@@ -18,11 +18,12 @@
         ***********************************-->
 <div class="nav-header">
     <div class="brand-logo">
-        <a href="index.html">
-            <b class="logo-abbr"><img src="images/logo.png" alt="" /> </b>
-            <span class="logo-compact"><img src="./images/logo-compact.png" alt="" /></span>
+        <a href="dashboard">
+            <b class="logo-abbr"><img src="images/oasisfav.png" alt="" height="30" width="60" /> </b>
+            <span class="logo-compact"><img src="./images/oasisagro.png" alt="" /></span>
+
             <span class="brand-title">
-                <img src="images/logo-text.png" alt="" />
+                <img src="images/oasisagro.png" alt="" />
             </span>
         </a>
     </div>
@@ -171,9 +172,8 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="active-employee">Active Employee</a></li>
-                    {{-- <li><a href="addEmployee.html">Add Employee</a></li> --}}
                     <li><a href="all-leave">Leave Request</a></li>
-                    <li><a href="payroll.html">Payroll</a></li>
+                    <li><a href="payroll">Payroll</a></li>
                 </ul>
             </li>
             @if(Auth::user()->role==1)
