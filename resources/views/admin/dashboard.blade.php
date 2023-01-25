@@ -17,6 +17,7 @@
         <div class="content-body">
             <div class="container-fluid mt-3">
                 <div class="row">
+                    @if($flock)
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-1">
                             <div class="card-body">
@@ -24,14 +25,14 @@
                                 <div class="d-inline-block">
                                     <h2 class="text-white">{{$flock->name}}</h2>
                                     <p class="text-white mb-0">{{date('M j, Y', strtotime($flock->start_date))}} - {{date('M j, Y', strtotime($flock->end_date))}}</p>
-
-
-
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
                             </div>
                         </div>
                     </div>
+
+                    @endif
+
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-3">
                             <div class="card-body">
