@@ -70,10 +70,7 @@
                                 <h3 class="card-title text-white">Feed in Stock</h3>
                                 <div class="d-inline-block">
                                     <h2 class="text-white">{{$feed}} KG</h2>
-
                                     <p class="text-white mb-0">In: {{$feedRestock}} | Consumed: {{$consumption}}</p>
-
-
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
                             </div>
