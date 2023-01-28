@@ -124,9 +124,7 @@
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openEditModal(this.id)">Edit</a>
-
-                                                            <a class="dropdown-item text-warning" href="#" onclick="changePassModal()">Change Password</a>
-
+                                                            <a class="dropdown-item text-warning" href="userpassword-edit{{$item['id']}}">Change Password</a>
                                                             <a class="dropdown-item text-danger">Delete</a>
 
                                                         </div>
@@ -389,14 +387,6 @@
             }
         }
 
-        // function showDiv2(select) {
-        //     if (select.value == 1) {
-        //         document.getElementById("farmList2").style.display = "none";
-        //     } else {
-        //         document.getElementById("farmList2").style.display = "block";
-        //     }
-        // }
-
     </script>
     <script>
         function openEditModal(clicked_id) {
@@ -416,56 +406,6 @@
                     $('#userEditId').val(clicked_id);
                 }
             });
-        }
-        // function openPasswordModal(clicked_id2) {
-
-        //     console.log(clicked_id2);
-        //     $("#passwordModal").modal("show");
-        //     //document.getElementById("getId").value = clicked_id;
-
-
-        //     // $.ajax({
-        //     //     url: '/edit-user' + clicked_id2
-        //     //     , type: "GET"
-        //     //     , success: function(response) {
-        //     //         console.log(response);
-        //     //         $('#name').val(response.user.name);
-        //     //         $('#email').val(response.user.email);
-        //     //         $('#phone').val(response.user.phone);
-        //     //         $('#role').val(response.user.role);
-        //     //         $('#farm').val(response.user.farm_id);
-        //     //         $('#userEditId').val(clicked_id2);
-        //     //     }
-        //     // });
-        // }
-
-        // function openDeleteModal(clicked_id) {
-
-
-        //     $("#deleteModal").modal("show");
-        //     //document.getElementById("getId").value = clicked_id;
-
-        //     // $.ajax({
-        //     //     url: '/edit-user' + clicked_id
-        //     //     , type: "GET"
-        //     //     , success: function(response) {
-        //     //         console.log(response);
-        //     //         $('#name').val(response.user.name);
-        //     //         $('#email').val(response.user.email);
-        //     //         $('#phone').val(response.user.phone);
-        //     //         $('#role').val(response.user.role);
-        //     //         $('#farm').val(response.user.farm_id);
-        //     //         $('#userEditId').val(clicked_id);
-        //     //     }
-        //     // });
-        // }
-
-        function changePassModal() {
-            $("#changePassword").modal("show");
-        }
-
-        function deleteModal() {
-            $("#deleteModal").modal("show");
         }
 
     </script>

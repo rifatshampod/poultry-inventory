@@ -214,6 +214,15 @@ class settingsController extends Controller
         return redirect()->back();
     }
 
+    function editUserPasswordData($id){
+
+        return view('admin/settings/changePassword');
+    }
+
+    function deleteUserData($id){
+        return view('admin/settings/deleteUser');
+    }
+
     //Standards
     function getStandard(){
 
