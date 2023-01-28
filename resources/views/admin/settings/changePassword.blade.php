@@ -33,29 +33,61 @@
             <div class="container-fluid mt-3">
                 <div class="row justify-content-center align-items-center" style="height: 65vh">
                     <div class="col-lg-6">
+
+
                         <div class="card p-3">
                             <div class="">
+
+
                                 <div class="mb-4">
                                     <h5 class="modal-title">Change Password</h5>
+                                    @if (Session::get('error'))
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        {{Session::get('error')}}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    @endif
+
                                 </div>
-                                <form action="">
+                                <form action="edit-user-password" method="POST">
+                                    @csrf
+
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
+                                                <label> User Name</label>
+                                                <input type="text" class="form-control input-default" value="{{$userData->name}}" readonly />
+                                            </div>
+                                        </div>
+                                        <div class=" col-lg-6">
+                                            <div class="form-group">
+                                                <label> Email Address</label>
+                                                <input type="text" class="form-control input-default" value="{{$userData->email}}" readonly />
+
+                                            </div>
+                                        </div>
+
+                                        <input type="hidden" name="user_id" value="{{$userData->id}}" readonly>
+
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
                                                 <label> New Password</label>
-                                                <input id="newPass" type="password" class="form-control input-default" placeholder="New Password" />
+                                                <input id="newPass" name="password" type="password" class="form-control input-default" placeholder="New Password" />
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label> Confirm Password</label>
-                                                <input id="confirmPass" type="password" class="form-control input-default" placeholder="Confirm Password" onchange="validatePassword()" />
+                                                <input id="confirmPass" name="password_confirmation" type="password" class="form-control input-default" placeholder="Confirm Password" onchange="validatePassword()" />
+
                                             </div>
                                         </div>
                                     </div>
                                     <p id="message" class="text-danger text-center"></p>
                                     <div class="d-flex justify-content-center">
-                                        <button type="button" class="btn btn-danger mr-2" onclick="location.href='user.html'">
+                                        <button type="button" class="btn btn-danger mr-2" onclick="location.href='/users'">
                                             Cancel
                                         </button>
                                         <button type="submit" class="btn btn-primary">
@@ -99,7 +131,7 @@
     <script src="./plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
     <script src="./plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
 
-    <script>
+    {{-- <script>
         function validatePassword() {
             var password = document.getElementById("newPass").value;
             var confirmPassword = document.getElementById("confirmPass").value;
@@ -113,7 +145,7 @@
         } <
         /scri
 
-    </script>
+    </script> --}}
 
 </body>
 </html>

@@ -187,8 +187,6 @@ class settingsController extends Controller
         $data->password = Hash::make($req->input('password'));
         $data->save();
 
-        
-
         $req->session()->flash('status','New user added successfully');
         return redirect()->back();
     }
@@ -216,7 +214,34 @@ class settingsController extends Controller
 
     function editUserPasswordData($id){
 
-        return view('admin/settings/changePassword');
+        $userData = User::where('id', $id)
+                    ->get()->first();
+
+        return view('admin/settings/changePassword')->with('userData', $userData);
+    }
+
+    function updateUserPassword(Request $req){
+
+        $this->validate($req, [
+        'password' => 'confirmed|min:6',
+        ]);
+        
+        $user_id = $req->input('user_id');
+        $user = User::find($user_id);
+        $user->password=Hash::make($req->input('password'));
+        $user->update();
+
+        if($user){
+             $req->session()->flash('status','User password changed successfully');
+             return redirect('users');
+        }
+        else{
+            $req->session()->flash('error','Password Change unsuccessfull');
+            return redirect()->back();
+        }
+       
+        
+
     }
 
     function deleteUserData($id){
