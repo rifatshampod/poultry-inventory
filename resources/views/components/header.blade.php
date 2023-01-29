@@ -87,12 +87,13 @@
             <li class="nav-label">Menu</li>
             <li>
                 <a href="dashboard" aria-expanded="false">
-                    <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Dashboard</span>
+                    <i class="icon-grid menu-icon"></i><span class="nav-text">Dashboard</span>
+
                 </a>
             </li>
             <li>
                 <a href="all-doc" aria-expanded="false">
-                    <i class="icon-globe-alt menu-icon"></i><span class="nav-text">All DOC</span>
+                    <i class="icon-truck menu-icon"></i><span class="nav-text">All DOC</span>
                 </a>
             </li>
 
@@ -107,7 +108,7 @@
 
             <li class="">
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Chicken</span>
+                    <i class="icon-twitter menu-icon"></i><span class="nav-text">Chicken</span>
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="all-chicken">All Chicken (House Wise)</a></li>
@@ -118,7 +119,7 @@
 
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-envelope menu-icon"></i>
+                    <i class="icon-beaker menu-icon"></i>
                     <span class="nav-text">Feed</span>
                 </a>
                 <ul aria-expanded="false">
@@ -131,7 +132,7 @@
             @endif
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Medicine/Vaccine</span>
+                    <i class="icon-magic menu-icon"></i><span class="nav-text">Medicine/Vaccine</span>
                 </a>
                 <ul aria-expanded="false">
                     <li>
@@ -155,7 +156,7 @@
             </li>
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-grid menu-icon"></i><span class="nav-text">Account & Expense</span>
+                    <i class="icon-money menu-icon"></i><span class="nav-text">Account & Expense</span>
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="add-expense">Add Expense</a></li>
@@ -168,7 +169,7 @@
             </li>
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-grid menu-icon"></i><span class="nav-text">Core HR</span>
+                    <i class="icon-sitemap menu-icon"></i><span class="nav-text">Core HR</span>
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="active-employee">Active Employee</a></li>
@@ -183,7 +184,7 @@
             {{-- Report  --}}
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-note menu-icon"></i><span class="nav-text">Report</span>
+                    <i class="icon-print menu-icon"></i><span class="nav-text">Report</span>
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="mortality-report">Mortality Report</a></li>
@@ -201,7 +202,7 @@
             {{-- Settings  --}}
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-menu menu-icon"></i><span class="nav-text">Settings</span>
+                    <i class="icon-cogs"></i><span class="nav-text">Settings</span>
                 </a>
                 <ul aria-expanded="false">
                     <li>

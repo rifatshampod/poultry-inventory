@@ -38,7 +38,6 @@
                         <div class="card p-3">
                             <div class="">
 
-
                                 <div class="mb-4">
                                     <h5 class="modal-title">Change Password</h5>
                                     @if (Session::get('error'))
