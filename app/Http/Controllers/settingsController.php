@@ -152,12 +152,12 @@ class settingsController extends Controller
     }
     function addDesignation(Request $req){
 
-        $data = new Bonus_type();
+        $data = new Designation();
         $data->name = $req->input('name');
-        $data->description = $req->input('description');
+        $data->responsibility = $req->input('responsibility');
         $data->save();
 
-        $req->session()->flash('status','New bonus type added successfully');
+        $req->session()->flash('status','New Designation added successfully');
         return redirect()->back();
     }
 

@@ -44,7 +44,7 @@
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>Description of Responsibilities</label>
-                                            <textarea class="form-control input-default" name="description" id="" cols="" rows="6" placeholder="Responsibilities"></textarea>
+                                            <textarea class="form-control input-default" name="responsibility" id="" cols="" rows="6" placeholder="Responsibilities"></textarea>
                                         </div>
                                         <div class="col-md-12">
                                             <div>
@@ -70,13 +70,13 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">All Bonus Type</h4>
+                                <h4 class="card-title">All Designations</h4>
                                 <div class="table-responsive">
                                     <table class="table table-bordered verticle-middle">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Bonus Type</th>
-                                                <th scope="col">Description</th>
+                                                <th scope="col">Designation Name</th>
+                                                <th scope="col">Responsibility</th>
                                                 <th class="" scope="col">
                                                     <span class="float-right">Action</span>
                                                 </th>
