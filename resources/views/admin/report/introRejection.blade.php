@@ -42,7 +42,7 @@
                                     <div class="row justify-content-center">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>FLock</label>
+                                                <label>Flock</label>
                                                 <select name="flock_id" class="form-control input-default" required>
                                                     @foreach ($flockList as $item)
                                                     <option value="{{$item['id']}}">{{$item['name']}}</option>
@@ -112,7 +112,7 @@
                             <div class="card-body">
                                 <div class="mb-4 text-center">
                                     <h3>Search By Date</h3>
-                                    <span>Get report of data of a specific duration. CUrrent and previous all data are
+                                    <span>Get report of data of a specific duration. Current and previous all data are
                                         available here</span>
                                 </div>
                                 <form action="date-rejection-report" method="POST">

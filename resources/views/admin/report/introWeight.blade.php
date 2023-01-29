@@ -41,7 +41,7 @@
                                     <div class="row justify-content-center">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>FLock</label>
+                                                <label>Flock</label>
                                                 <select name="flock_id" class="form-control input-default">
                                                     @foreach ($flockList as $item)
                                                     <option value="{{$item['id']}}">{{$item['name']}}</option>

@@ -63,7 +63,7 @@
                                                 <th scope="col">Weight 2</th>
                                                 <th scope="col">Weight 3</th>
                                                 <th scope="col">Weight 4</th>
-                                                <th scope="col">Morality</th>
+                                                <th scope="col">Mortality</th>
                                                 <th scope="col">Rejection</th>
                                                 <th scope="col">Action</th>
                                             </tr>
@@ -110,7 +110,7 @@
                                                 <th scope="col">Weight 2</th>
                                                 <th scope="col">Weight 3</th>
                                                 <th scope="col">Weight 4</th>
-                                                <th scope="col">Morality</th>
+                                                <th scope="col">Mortality</th>
                                                 <th scope="col">Rejection</th>
                                                 <th scope="col">Action</th>
 
@@ -167,7 +167,7 @@
                                                 <th scope="col">Weight 2</th>
                                                 <th scope="col">Weight 3</th>
                                                 <th scope="col">Weight 4</th>
-                                                <th scope="col">Morality</th>
+                                                <th scope="col">Mortality</th>
                                                 <th scope="col">Rejection</th>
                                                 <th scope="col">Action</th>
 
@@ -224,7 +224,7 @@
                                                 <th scope="col">Weight 2</th>
                                                 <th scope="col">Weight 3</th>
                                                 <th scope="col">Weight 4</th>
-                                                <th scope="col">Morality</th>
+                                                <th scope="col">Mortality</th>
                                                 <th scope="col">Rejection</th>
                                                 <th scope="col">Action</th>
                                             </tr>

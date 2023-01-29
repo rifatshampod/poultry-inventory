@@ -34,14 +34,14 @@
                             <div class="card-body">
                                 <div class="mb-4 text-center">
                                     <h3>Search By Flock</h3>
-                                    <span>Get report of complete flock. Only complete flock are available here</span>
+                                    <span>Get report of complete flock. Only completed flocks are available here</span>
                                 </div>
                                 <form action="flock-feed-report" method="POST">
                                     @csrf
                                     <div class="row justify-content-center">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>FLock</label>
+                                                <label>Flock</label>
                                                 <select name="flock_id" class="form-control input-default">
                                                     @foreach ($flockList as $item)
                                                     <option value="{{$item['id']}}">{{$item['name']}}</option>

@@ -69,7 +69,7 @@
                             <div class="card-body">
                                 <div class="mb-4 text-center">
                                     <h3>Search By Date</h3>
-                                    <span>Get report of data of a specific duration. Current and previous all data are
+                                    <span>Get report of data of a specific duration. Current and previous all flock data are
                                         available here</span>
                                 </div>
                                 <form action="date-expense-report" method="POST">

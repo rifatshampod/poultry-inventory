@@ -60,7 +60,9 @@
                                         <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                                         <div class="col-md-6">
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                            <input id="passwordInput" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                            <span class="show-password" id="eyeButton" style="cursor: pointer;">👁️</span>
 
                                             @error('password')
                                             <span class="invalid-feedback" role="alert">
@@ -114,5 +116,22 @@
     <script src="js/settings.js"></script>
     <script src="js/gleek.js"></script>
     <script src="js/styleSwitcher.js"></script>
+
+    <script>
+        const passwordInput = document.getElementById("passwordInput");
+        const eyeButton = document.getElementById("eyeButton");
+
+        eyeButton.addEventListener("click", function() {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeButton.textContent = "🙈";
+            } else {
+                passwordInput.type = "password";
+                eyeButton.textContent = "👁️";
+            }
+        });
+
+    </script>
+
 </body>
 </html>
