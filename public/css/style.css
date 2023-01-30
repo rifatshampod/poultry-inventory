@@ -386,6 +386,7 @@ button::-moz-focus-inner,
 input[type="radio"],
 input[type="checkbox"] {
   box-sizing: border-box;
+  border-color: #000;
   padding: 0;
 }
 
@@ -2147,6 +2148,7 @@ textarea.form-control {
 }
 .form-check-input:disabled ~ .form-check-label {
   color: #8898aa;
+  
 }
 
 .form-check-label {
@@ -14502,7 +14504,7 @@ input[type="checkbox"]:after {
   height: 1.2rem;
   margin-top: -3px;
   margin-left: -3px;
-  border: 1px solid #eeeeee;
+  border: 2px solid #bbbbbb;
   border-radius: 0px;
   background: #fff;
   line-height: 1.3;

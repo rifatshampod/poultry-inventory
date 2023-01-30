@@ -81,7 +81,9 @@ class chickenController extends Controller
         $data->sum_of_doc=$req->input('sum_of_doc');
         $data->hatchery=$req->input('hatchery');
         $data->bird_in_case=$req->input('bird_in_case');
-        $data->vaccine=implode(",", $req->input('vaccine'));
+        if($req->input('vaccine')){         //validation
+            $data->vaccine=implode(",", $req->input('vaccine'));
+        }
         $data->density=$req->input('density');
         $data->catching_start=$req->input('catching_start');
         $data->catching_end=$req->input('catching_end');

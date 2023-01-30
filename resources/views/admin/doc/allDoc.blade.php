@@ -339,7 +339,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="mb-4">
-                            <h5 class="modal-title">Add Doc</h5>
+                            <h5 class="modal-title">Add Doc (* marks are mandatory)</h5>
                         </div>
                         <form action="add-doc" method="POST">
                             @csrf
@@ -348,14 +348,15 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label> Date</label>
-                                        <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" />
+                                        <label> Date <span class="text-danger">*</span></label>
+                                        <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label>Farm:</label>
-                                        <select class="form-control input-default" name="farm_id">
+                                        <label>Farm <span class="text-danger">*</span></label>
+
+                                        <select class="form-control input-default" name="farm_id" required>
                                             <option value="{{$farm1->id}}" selected>{{$farm1->name}}</option>
                                         </select>
 
@@ -363,8 +364,9 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label>House</label>
-                                        <select class="form-control input-default" name="house_id">
+                                        <label>House <span class="text-danger">*</span></label>
+
+                                        <select class="form-control input-default" name="house_id" required>
                                             @foreach ($house1 as $item)
                                             <option value="{{$item['id']}}">{{$item['name']}}</option>
                                             @endforeach
@@ -373,8 +375,9 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label> Sum of Doc</label>
-                                        <input type="number" class="form-control input-default" name="sum_of_doc" placeholder="Total Doc" />
+                                        <label> Sum of Doc <span class="text-danger">*</span></label>
+
+                                        <input type="number" class="form-control input-default" name="sum_of_doc" placeholder="Total Doc" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -461,7 +464,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="mb-4">
-                            <h5 class="modal-title">Add Doc</h5>
+                            <h5 class="modal-title">Add Doc (* marks are mandatory)</h5>
                         </div>
                         <form action="add-doc" method="POST">
                             @csrf
@@ -470,14 +473,16 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label> Date</label>
-                                        <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" />
+                                        <label> Date <span class="text-danger">*</span></label>
+
+                                        <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label>Farm:</label>
-                                        <select class="form-control input-default" name="farm_id">
+                                        <label>Farm <span class="text-danger">*</span></label>
+
+                                        <select class="form-control input-default" name="farm_id" required>
                                             <option value="{{$farm2->id}}" selected>{{$farm2->name}}</option>
                                         </select>
 
@@ -485,8 +490,9 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label>House</label>
-                                        <select class="form-control input-default" name="house_id">
+                                        <label>House <span class="text-danger">*</span></label>
+
+                                        <select class="form-control input-default" name="house_id" required>
                                             @foreach ($house2 as $item)
                                             <option value="{{$item['id']}}">{{$item['name']}}</option>
                                             @endforeach
@@ -495,8 +501,9 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label> Sum of Doc</label>
-                                        <input type="number" class="form-control input-default" name="sum_of_doc" placeholder="Total Doc" />
+                                        <label> Sum of Doc <span class="text-danger">*</span></label>
+
+                                        <input type="number" class="form-control input-default" name="sum_of_doc" placeholder="Total Doc" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -584,7 +591,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="mb-4">
-                            <h5 class="modal-title">Add Doc</h5>
+                            <h5 class="modal-title">Add Doc (* marks are mandatory)</h5>
                         </div>
                         <form action="add-doc" method="POST">
                             @csrf
@@ -593,14 +600,16 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label> Date</label>
-                                        <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" />
+                                        <label> Date <span class="text-danger">*</span></label>
+
+                                        <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label>Farm:</label>
-                                        <select class="form-control input-default" name="farm_id">
+                                        <label>Farm <span class="text-danger">*</span></label>
+
+                                        <select class="form-control input-default" name="farm_id" required>
                                             <option value="{{$farm3->id}}" selected>{{$farm3->name}}</option>
                                         </select>
 
@@ -608,8 +617,9 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label>House</label>
-                                        <select class="form-control input-default" name="house_id">
+                                        <label>House <span class="text-danger">*</span></label>
+
+                                        <select class="form-control input-default" name="house_id" required>
                                             @foreach ($house3 as $item)
                                             <option value="{{$item['id']}}">{{$item['name']}}</option>
                                             @endforeach
@@ -618,8 +628,9 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label> Sum of Doc</label>
-                                        <input type="number" class="form-control input-default" name="sum_of_doc" placeholder="Total Doc" />
+                                        <label> Sum of Doc <span class="text-danger">*</span></label>
+
+                                        <input type="number" class="form-control input-default" name="sum_of_doc" placeholder="Total Doc" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -707,7 +718,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="mb-4">
-                            <h5 class="modal-title">Add Doc</h5>
+                            <h5 class="modal-title">Add Doc (* marks are mandatory)</h5>
                         </div>
                         <form action="add-doc" method="POST">
                             @csrf
@@ -716,14 +727,16 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label> Date</label>
-                                        <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" />
+                                        <label> Date <span class="text-danger">*</span></label>
+
+                                        <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label>Farm:</label>
-                                        <select class="form-control input-default" name="farm_id">
+                                        <label>Farm <span class="text-danger">*</span></label>
+
+                                        <select class="form-control input-default" name="farm_id" required>
                                             <option value="{{$farm4->id}}" selected>{{$farm4->name}}</option>
                                         </select>
 
@@ -731,8 +744,9 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label>House</label>
-                                        <select class="form-control input-default" name="house_id">
+                                        <label>House <span class="text-danger">*</span></label>
+
+                                        <select class="form-control input-default" name="house_id" required>
                                             @foreach ($house4 as $item)
                                             <option value="{{$item['id']}}">{{$item['name']}}</option>
                                             @endforeach
@@ -741,8 +755,9 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label> Sum of Doc</label>
-                                        <input type="number" class="form-control input-default" name="sum_of_doc" placeholder="Total Doc" />
+                                        <label> Sum of Doc <span class="text-danger">*</span></label>
+
+                                        <input type="number" class="form-control input-default" name="sum_of_doc" placeholder="Total Doc" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
