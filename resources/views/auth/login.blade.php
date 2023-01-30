@@ -59,10 +59,11 @@
                                     <div class="row mb-3">
                                         <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
-                                        <div class="col-md-6">
-                                            <input id="passwordInput" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                        <div class="col-md-6" style="position:relative;">
+                                            <input id="passwordInput" type="password" class="form-control 
+                                            @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
-                                            <span class="show-password" id="eyeButton" style="cursor: pointer;">👁️</span>
+                                            <span class="show-password" id="eyeButton" style="cursor: pointer; position:absolute; top:30%; right:10%;">👁️</span>
 
                                             @error('password')
                                             <span class="invalid-feedback" role="alert">
@@ -124,7 +125,8 @@
         eyeButton.addEventListener("click", function() {
             if (passwordInput.type === "password") {
                 passwordInput.type = "text";
-                eyeButton.textContent = "🙈";
+                eyeButton.textContent = "👁‍🗨";
+
             } else {
                 passwordInput.type = "password";
                 eyeButton.textContent = "👁️";
