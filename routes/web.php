@@ -97,6 +97,7 @@ Route::post('edit-user-info', [settingsController::class,'updateUserData']);
 Route::get('userpassword-edit{id}', [settingsController::class,'editUserPasswordData']);
 Route::post('edit-user-password', [settingsController::class,'updateUserPassword']);
 Route::get('delete-user{id}', [settingsController::class,'deleteUserData']);
+Route::post('delete-userdata', [settingsController::class,'deleteUser']);
 
 Route::get('flock',[settingsController::class,'getFlock']);
 Route::post('add-flock', [settingsController::class,'addFlock']);

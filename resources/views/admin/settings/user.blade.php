@@ -134,7 +134,8 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openEditModal(this.id)">Edit</a>
                                                             <a class="dropdown-item text-warning" href="userpassword-edit{{$item['id']}}">Change Password</a>
-                                                            <a class="dropdown-item text-danger">Delete</a>
+                                                            <a class="dropdown-item text-danger" href="delete-user{{$item['id']}}">Delete User</a>
+
 
                                                         </div>
                                                     </div>

@@ -239,13 +239,27 @@ class settingsController extends Controller
             $req->session()->flash('error','Password Change unsuccessfull');
             return redirect()->back();
         }
-       
-        
-
+    
     }
 
     function deleteUserData($id){
-        return view('admin/settings/deleteUser');
+
+        $userData = User::where('id', $id)
+                    ->get()->first();
+
+        return view('admin/settings/deleteUser')->with('userData', $userData);
+    }
+
+    function deleteUser(Request $req){
+
+        $user_id = $req->input('user_id');
+
+        $user = User::find($user_id);
+        $user->delete();
+
+        $req->session()->flash('status','User deleted successfully');
+             return redirect('users');
+
     }
 
     //Standards

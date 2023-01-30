@@ -35,40 +35,55 @@
                     <div class="col-lg-6">
                         <div class="card p-4">
                             <div class="">
-                                <div class="d-flex justify-content-between mb-4">
-                                    <div>
-                                        <h4>Name : Arif Bipu</h4>
+                                <form action="delete-userdata" method="POST">
+                                    @csrf
+
+                                    <div class=" mb-4">
+                                        <div class="text-center mb-4">
+                                            <h4>User Information</h4>
+                                        </div>
+                                        <div>
+                                            Name : {{$userData->name}}
+                                        </div>
+                                        <div>
+                                            Email : {{$userData->email}}
+
+                                        </div>
+                                        <div>
+                                            @if($userData->role==1)
+                                            Role : Admin
+                                            @else
+                                            Role : Farm Manager
+                                            @endif
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h4>Email : arif@gmail.com</h4>
-                                    </div>
-                                    <div>
-                                        <h4>Role : Manager</h4>
-                                    </div>
-                                </div>
-                                <div class="mb-4">
-                                    <h5 class="modal-title text-warning text-center mb-4">
-                                        Are You sure you Want To delete this user? if yes please
-                                        write
-                                        <span class="text-danger" style="font-weight: 600">confirm-permanently</span>
-                                        to this input field which is given below !
-                                    </h5>
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-8">
-                                            <div class="form-group">
-                                                <input id="newPass" type="password" class="form-control input-default" placeholder="Enter confirm-permanently" required />
+                                    <div class="mb-4">
+                                        <h5 class="modal-title text-center mb-4">
+                                            Are You sure you Want To delete this user? <br>
+                                            If yes please
+                                            write
+                                            <span class="text-danger" style="font-weight: 600">confirm</span>
+                                            to this input field which is given below !
+                                        </h5>
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-8">
+                                                <input type="hidden" name="user_id" value="{{$userData->id}}">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control input-default" placeholder="Enter confirm to delete" required />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    <button type="button" class="btn btn-danger mr-2" onclick="location.href='user.html'">
-                                        Cancel
-                                    </button>
-                                    <button type="button" class="btn btn-primary">
-                                        Delete
-                                    </button>
-                                </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button" class="btn btn-danger mr-2" onclick="location.href='users'">
+                                            Cancel
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>
