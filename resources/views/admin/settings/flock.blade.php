@@ -43,6 +43,16 @@
                                             <input type="text" name="name" class="form-control input-default" placeholder="Flock Name" />
                                         </div>
                                         <div class="form-group col-md-6">
+                                            <label>Farm Name <span class="text-danger">*</span></label>
+                                            <select name="farm_id" class="form-control input-default" required>
+                                                @foreach ($farmList as $item)
+                                                <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                                @endforeach
+                                            </select>
+
+                                        </div>
+
+                                        <div class="form-group col-md-6">
                                             <label>Start Date</label>
                                             <input type="date" name="start_date" class="form-control input-default" placeholder="date" />
                                         </div>
@@ -71,6 +81,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">Flock</th>
+                                                <th scope="col">Farm</th>
                                                 <th scope="col">Start</th>
                                                 <th scope="col">End</th>
                                                 <th scope="col">Status</th>
@@ -83,6 +94,8 @@
                                             @foreach ($flockList as $item)
                                             <tr>
                                                 <td>{{$item['name']}}</td>
+                                                <td>{{$item->farm->name}}</td>
+
                                                 <td>{{ \Carbon\Carbon::parse($item['start_date'])->format('d/m/Y')}}</td>
                                                 <td>{{ \Carbon\Carbon::parse($item['end_date'])->format('d/m/Y')}}</td>
                                                 <td>

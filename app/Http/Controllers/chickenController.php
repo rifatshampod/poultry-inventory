@@ -37,8 +37,18 @@ class chickenController extends Controller
         $house4= House::where('farm_id',4)
         ->get();
 
-        $flock = Flock::where('status',1)
-        ->first();
+        $flock1 = Flock::where('status',1)
+        ->where('farm_id', 1)
+        ->get();
+        $flock2 = Flock::where('status',1)
+        ->where('farm_id', 2)
+        ->get();
+        $flock3 = Flock::where('status',1)
+        ->where('farm_id', 3)
+        ->get();
+        $flock4 = Flock::where('status',1)
+        ->where('farm_id', 4)
+        ->get();
 
         $docList1 = Chicken::where('farm_id',1)
         ->get();
@@ -50,22 +60,22 @@ class chickenController extends Controller
         ->get();
 
         if(auth()->user()->role ==1){
-            return view('admin/doc/allDoc')->with('docList1', $docList1)->with('docList2', $docList2)->with('docList3', $docList3)->with('docList4', $docList4)->with('farm1',$farm1)->with('house1', $house1)->with('farm2',$farm2)->with('house2', $house2)->with('farm3',$farm3)->with('house3', $house3)->with('farm4',$farm4)->with('house4', $house4)->with('flock', $flock);
+            return view('admin/doc/allDoc')->with('docList1', $docList1)->with('docList2', $docList2)->with('docList3', $docList3)->with('docList4', $docList4)->with('farm1',$farm1)->with('house1', $house1)->with('farm2',$farm2)->with('house2', $house2)->with('farm3',$farm3)->with('house3', $house3)->with('farm4',$farm4)->with('house4', $house4)->with('flock1', $flock1)->with('flock2', $flock2)->with('flock3', $flock3)->with('flock4', $flock4);
         }
         else{
             if(auth()->user()->farm_id ==1){
-                return view('manager/doc/allDoc')->with('docList', $docList1)->with('farm',$farm1)->with('house', $house1)->with('flock', $flock);
+                return view('manager/doc/allDoc')->with('docList', $docList1)->with('farm',$farm1)->with('house', $house1)->with('flock', $flock1);
             }
             else if(auth()->user()->farm_id ==2){
-                return view('manager/doc/allDoc')->with('docList', $docList2)->with('farm',$farm2)->with('house', $house2)->with('flock', $flock);
+                return view('manager/doc/allDoc')->with('docList', $docList2)->with('farm',$farm2)->with('house', $house2)->with('flock', $flock2);
 
             }
             else if(auth()->user()->farm_id ==3){
-                return view('manager/doc/allDoc')->with('docList', $docList3)->with('farm',$farm3)->with('house', $house3)->with('flock', $flock);
+                return view('manager/doc/allDoc')->with('docList', $docList3)->with('farm',$farm3)->with('house', $house3)->with('flock', $flock3);
 
             }
             else if(auth()->user()->farm_id ==4){
-                return view('manager/doc/allDoc')->with('docList', $docList4)->with('farm',$farm4)->with('house', $house4)->with('flock', $flock);
+                return view('manager/doc/allDoc')->with('docList', $docList4)->with('farm',$farm4)->with('house', $house4)->with('flock', $flock4);
 
             }
         }

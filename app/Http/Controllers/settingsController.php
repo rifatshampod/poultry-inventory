@@ -19,15 +19,17 @@ class settingsController extends Controller
     function getFlock(){
         $flockList = Flock::orderBy('id','desc')
         ->get();
+        $farmList = Farm::get();
 
-        return view('admin/settings/flock')->with('flockList', $flockList);
+        return view('admin/settings/flock')->with('flockList', $flockList)->with('farmList', $farmList);
     }
     function addFlock(Request $req){
 
-        Flock::query()->update(['status' => 0]);
+        //Flock::query()->update(['status' => 0]);
 
         $data = new Flock;
         $data->name = $req->input('name');
+        $data->farm_id = $req->input('farm_id');
         $data->start_date=$req->input('start_date');
         $data->end_date=$req->input('end_date');
         $data->status = 1;
@@ -36,7 +38,8 @@ class settingsController extends Controller
         $req->session()->flash('status','New flock added successfully');
         return redirect()->back();
     }
-    //Farm 
+
+    //Farm --------------------------------------------------------------
     function getFarm(){
         $farmList = Farm::all();
 

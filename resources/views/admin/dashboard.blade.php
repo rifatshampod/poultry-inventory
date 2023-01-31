@@ -24,7 +24,7 @@
                                 <h3 class="card-title text-white">Current Flock</h3>
                                 <div class="d-inline-block">
                                     <h2 class="text-white">{{$flock->name}}</h2>
-                                    <p class="text-white mb-0">{{date('M j, Y', strtotime($flock->start_date))}} - {{date('M j, Y', strtotime($flock->end_date))}}</p>
+                                    <p class="text-white mb-0">{{date('M j, y', strtotime($flock->start_date))}} - {{date('M j, y', strtotime($flock->end_date))}}</p>
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
                             </div>
@@ -40,7 +40,8 @@
                                 <div class="d-inline-block">
                                     <h2 class="text-white">{{$chicken - $dead - $rejected}}</h2>
 
-                                    <p class="text-white mb-0">Jan - March 2019</p>
+                                    <p class="text-white mb-0">{{date('M j, y', strtotime($flock->start_date))}} - {{date('M j, y', strtotime($flock->end_date))}}</p>
+
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
                             </div>

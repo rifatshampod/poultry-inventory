@@ -165,6 +165,6 @@ Route::post('date-expense-report',[ReportController::class,'fetchExpenseByDate']
 
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'admin/dashboard'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'adminDashboard'])->name('home');
 
 });

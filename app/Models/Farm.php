@@ -65,5 +65,10 @@ class Farm extends Model
     return $this->hasMany(User::class);
     }
 
+    public function flock()
+    {
+    return $this->hasMany(Flock::class);
+    }
+
 
 }

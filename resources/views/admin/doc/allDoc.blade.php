@@ -344,7 +344,7 @@
                         <form action="add-doc" method="POST">
                             @csrf
 
-                            <input type="hidden" name="flock_id" value="{{$flock->id}}">
+                            {{-- <input type="hidden" name="flock_id" value="{{$flock->id}}"> --}}
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
@@ -352,6 +352,17 @@
                                         <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" required />
                                     </div>
                                 </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Flock <span class="text-danger">*</span></label>
+                                        <select class="form-control input-default" name="flock_id" required>
+                                            @foreach ($flock1 as $item)
+                                            <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>Farm <span class="text-danger">*</span></label>
@@ -469,7 +480,7 @@
                         <form action="add-doc" method="POST">
                             @csrf
 
-                            <input type="hidden" name="flock_id" value="{{$flock->id}}">
+                            {{-- <input type="hidden" name="flock_id" value="{{$flock->id}}"> --}}
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
@@ -478,6 +489,17 @@
                                         <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" required />
                                     </div>
                                 </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Flock <span class="text-danger">*</span></label>
+                                        <select class="form-control input-default" name="flock_id" required>
+                                            @foreach ($flock2 as $item)
+                                            <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>Farm <span class="text-danger">*</span></label>
@@ -596,7 +618,7 @@
                         <form action="add-doc" method="POST">
                             @csrf
 
-                            <input type="hidden" name="flock_id" value="{{$flock->id}}">
+                            {{-- <input type="hidden" name="flock_id" value="{{$flock->id}}"> --}}
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
@@ -605,6 +627,17 @@
                                         <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" required />
                                     </div>
                                 </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Flock <span class="text-danger">*</span></label>
+                                        <select class="form-control input-default" name="flock_id" required>
+                                            @foreach ($flock3 as $item)
+                                            <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>Farm <span class="text-danger">*</span></label>
@@ -723,7 +756,7 @@
                         <form action="add-doc" method="POST">
                             @csrf
 
-                            <input type="hidden" name="flock_id" value="{{$flock->id}}">
+                            {{-- <input type="hidden" name="flock_id" value="{{$flock->id}}"> --}}
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
@@ -734,6 +767,17 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
+                                        <label>Flock <span class="text-danger">*</span></label>
+                                        <select class="form-control input-default" name="flock_id" required>
+                                            @foreach ($flock4 as $item)
+                                            <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
                                         <label>Farm <span class="text-danger">*</span></label>
 
                                         <select class="form-control input-default" name="farm_id" required>
@@ -742,6 +786,8 @@
 
                                     </div>
                                 </div>
+
+
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>House <span class="text-danger">*</span></label>
