@@ -143,7 +143,7 @@ class saleController extends Controller
         $avgPrice = $totalPrice/$totalBirds;
         $perkgPrice = $totalPrice/$totalWeight;
 
-        $flockId = Flock::where('status',1)->get()->first();
+        $flockId = Flock::where('status',1)->where('farm_id',$req->input('farm_id'))->get()->first();
 
         $data = new Sale;
         $data->date = $req->input('date');
