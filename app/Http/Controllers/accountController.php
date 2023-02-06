@@ -48,7 +48,7 @@ class accountController extends Controller
         ->with('sectorList', $sectorList)->with('typeList', $typeList)->with('flockList', $flockList);
     }
 
-    public function houses(Request $request, $id) {
+    public function getHouses(Request $request, $id) {
     if ($request->ajax()) {
         return response()->json([
             'houses' => House::where('farm_id', $id)->get()

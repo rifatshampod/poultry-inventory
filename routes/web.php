@@ -7,6 +7,7 @@ use App\Http\Controllers\hrController;
 use App\Http\Controllers\chickenController;
 use App\Http\Controllers\feedController;
 use App\Http\Controllers\accountController;
+use App\Http\Controllers\farmDependency;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\medicineController;
 use App\Http\Controllers\saleController;
@@ -69,7 +70,8 @@ Route::get('distribute-medicine', [medicineController::class,'getDistribution'])
 //Account
 Route::get('add-expense', [accountController::class,'getAddExpense']);
 Route::get('all-expense', [accountController::class,'getExpense']);
-Route::get('get-house{id}', [accountController::class,'getHouses']);
+Route::get('get-house={id}', [accountController::class,'getHouses']);
+Route::post('fetch-houses', [farmDependency::class, 'fetchHouse']);
 Route::post('add-expense-data', [accountController::class,'addExpense']);
 Route::get('petty-cash', [accountController::class,'getPettyCash']);
 Route::post('add-petty-cash', [accountController::class,'addPettyCash']);

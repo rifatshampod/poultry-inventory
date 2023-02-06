@@ -30,7 +30,8 @@
                                     <div class="row">
                                         <div class="form-group col-md-4">
                                             <label>Farm Name</label>
-                                            <select class="form-control input-default" name="farm_id" id="department">
+                                            <select class="form-control input-default" name="farm_id" id="country-dropdown">
+
 
                                                 <option value="" selected disabled hidden>Select Farm</option>
                                                 @foreach ($farmList as $item)
@@ -40,7 +41,8 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>House Name</label>
-                                            <select class="form-control input-default" name="house_id" id="user">
+                                            <select class="form-control input-default" name="house_id" id="state-dropdown">
+
 
                                                 <option value="" selected disabled hidden>Select House</option>
                                                 @foreach ($houseList as $item)
@@ -50,7 +52,8 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Flock</label>
-                                            <select class="form-control input-default" name="flock_id">
+                                            <select class="form-control input-default" name="flock_id" id="flock-dropdown">
+
                                                 @foreach($flockList as $flockList)
                                                 <option value="{{$flockList->id}}" selected>{{$flockList->name}} ({{$flockList->farm->name}})</option>
                                                 @endforeach
@@ -149,6 +152,8 @@
     <script src="js/settings.js"></script>
     <script src="js/gleek.js"></script>
     <script src="js/styleSwitcher.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script>
         $('#department').on('change', e => {
             $('#user').empty()
@@ -164,6 +169,45 @@
         })
 
     </script>
+    <script>
+        $(document).ready(function() {
+
+            /*------------------------------------------
+            --------------------------------------------
+            Country Dropdown Change Event
+            --------------------------------------------
+            --------------------------------------------*/
+            $('#country-dropdown').on('change', function() {
+                var idCountry = this.value;
+                $("#state-dropdown").html('');
+                $.ajax({
+                    url: "{{url('fetch-houses')}}"
+                    , type: "POST"
+                    , data: {
+                        farm_id: idCountry
+                        , _token: '{{csrf_token()}}'
+                    }
+                    , dataType: 'json'
+                    , success: function(result) {
+                        $('#state-dropdown').html('<option value="">-- Select House --</option>');
+                        $.each(result.houses, function(key, value) {
+                            $("#state-dropdown").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                        $('#flock-dropdown').html('<option value="">-- Select Flock --</option>');
+                        $.each(result.flocks, function(key, value) {
+                            $("#flock-dropdown").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                        //console.log(result);
+                    }
+                });
+            });
+
+        });
+
+    </script>
+
 
 </body>
 </html>
