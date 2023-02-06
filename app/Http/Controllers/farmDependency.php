@@ -14,7 +14,7 @@ class farmDependency extends Controller
         $data['houses'] = House::where("farm_id", $request->farm_id)
                                 ->get(["name", "id"]);
         
-        $data['flocks'] = Flock::where("farm_id", $request->farm_id)
+        $data['flocks'] = Flock::where("farm_id", $request->farm_id)->where('status', 1)
                                 ->get(["name", "id"]);
   
         return response()->json($data);

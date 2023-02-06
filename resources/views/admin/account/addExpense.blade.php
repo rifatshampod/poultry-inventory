@@ -30,7 +30,7 @@
                                     <div class="row">
                                         <div class="form-group col-md-4">
                                             <label>Farm Name</label>
-                                            <select class="form-control input-default" name="farm_id" id="country-dropdown">
+                                            <select class="form-control input-default" name="farm_id" id="farm-dropdown" required>
 
 
                                                 <option value="" selected disabled hidden>Select Farm</option>
@@ -41,7 +41,7 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>House Name</label>
-                                            <select class="form-control input-default" name="house_id" id="state-dropdown">
+                                            <select class="form-control input-default" name="house_id" id="house-dropdown" required>
 
 
                                                 <option value="" selected disabled hidden>Select House</option>
@@ -52,7 +52,7 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Flock</label>
-                                            <select class="form-control input-default" name="flock_id" id="flock-dropdown">
+                                            <select class="form-control input-default" name="flock_id" id="flock-dropdown" required>
 
                                                 @foreach($flockList as $flockList)
                                                 <option value="{{$flockList->id}}" selected>{{$flockList->name}} ({{$flockList->farm->name}})</option>
@@ -177,9 +177,9 @@
             Country Dropdown Change Event
             --------------------------------------------
             --------------------------------------------*/
-            $('#country-dropdown').on('change', function() {
+            $('#farm-dropdown').on('change', function() {
                 var idCountry = this.value;
-                $("#state-dropdown").html('');
+                $("#house-dropdown").html('');
                 $.ajax({
                     url: "{{url('fetch-houses')}}"
                     , type: "POST"
@@ -189,9 +189,9 @@
                     }
                     , dataType: 'json'
                     , success: function(result) {
-                        $('#state-dropdown').html('<option value="">-- Select House --</option>');
+                        $('#house-dropdown').html('<option value="">-- Select House --</option>');
                         $.each(result.houses, function(key, value) {
-                            $("#state-dropdown").append('<option value="' + value
+                            $("#house-dropdown").append('<option value="' + value
                                 .id + '">' + value.name + '</option>');
                         });
                         $('#flock-dropdown').html('<option value="">-- Select Flock --</option>');
