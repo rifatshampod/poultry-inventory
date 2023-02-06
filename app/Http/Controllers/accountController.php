@@ -26,23 +26,35 @@ class accountController extends Controller
         if(auth()->user()->role ==1){
             $farmList = Farm::all();
             $houseList = House::all();
+            $flockList = Flock::where('status',1)
+            ->get();
         }
         else{
             $farmList = Farm::where('id', $loggedFarm)
             ->get();
             $houseList = House::where('farm_id', $loggedFarm)
             ->get();
+            $flockList = Flock::where('status',1)
+            ->where('farm_id', $loggedFarm)
+            ->get();
         }
 
         
         $sectorList = Expense_sector::all();
         $typeList = Expense_type::all();
-        $flockList = Flock::where('status',1)
-        ->first();
+        
        
         return view('admin/account/addExpense')->with('farmList', $farmList)->with('houseList', $houseList)
         ->with('sectorList', $sectorList)->with('typeList', $typeList)->with('flockList', $flockList);
     }
+
+    public function houses(Request $request, $id) {
+    if ($request->ajax()) {
+        return response()->json([
+            'houses' => House::where('farm_id', $id)->get()
+        ]);
+    }
+}
 
     function getExpense(){
 

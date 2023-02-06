@@ -30,7 +30,8 @@
                                     <div class="row">
                                         <div class="form-group col-md-4">
                                             <label>Farm Name</label>
-                                            <select class="form-control input-default" name="farm_id">
+                                            <select class="form-control input-default" name="farm_id" id="department">
+
                                                 <option value="" selected disabled hidden>Select Farm</option>
                                                 @foreach ($farmList as $item)
                                                 <option value="{{$item['id']}}">{{$item['name']}}</option>
@@ -39,18 +40,20 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>House Name</label>
-                                            <select class="form-control input-default" name="house_id">
+                                            <select class="form-control input-default" name="house_id" id="user">
+
                                                 <option value="" selected disabled hidden>Select House</option>
                                                 @foreach ($houseList as $item)
-                                                <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                                <option value="{{$item['id']}}">{{$item['name']}} ({{$item->farm->name}})</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Flock</label>
-                                            <select class="form-control input-default" name="flock_id" readonly>
-                                                <option value="{{$flockList->id}}" selected>{{$flockList->name}}</option>
-
+                                            <select class="form-control input-default" name="flock_id">
+                                                @foreach($flockList as $flockList)
+                                                <option value="{{$flockList->id}}" selected>{{$flockList->name}} ({{$flockList->farm->name}})</option>
+                                                @endforeach
                                             </select>
                                         </div>
 
@@ -146,5 +149,21 @@
     <script src="js/settings.js"></script>
     <script src="js/gleek.js"></script>
     <script src="js/styleSwitcher.js"></script>
+    <script>
+        $('#department').on('change', e => {
+            $('#user').empty()
+            $.ajax({
+                url: `get-house=${e.value}`
+
+                , success: data => {
+                    data.users.forEach(user =>
+                        $('#user').append(`<option value="${houses.id}">${houses.name}</option>`)
+                    )
+                }
+            })
+        })
+
+    </script>
+
 </body>
 </html>

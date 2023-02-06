@@ -69,6 +69,7 @@ Route::get('distribute-medicine', [medicineController::class,'getDistribution'])
 //Account
 Route::get('add-expense', [accountController::class,'getAddExpense']);
 Route::get('all-expense', [accountController::class,'getExpense']);
+Route::get('get-house{id}', [accountController::class,'getHouses']);
 Route::post('add-expense-data', [accountController::class,'addExpense']);
 Route::get('petty-cash', [accountController::class,'getPettyCash']);
 Route::post('add-petty-cash', [accountController::class,'addPettyCash']);
@@ -162,7 +163,6 @@ Route::post('farm-expense-report',[ReportController::class,'fetchExpenseByFarm']
 Route::post('date-expense-report',[ReportController::class,'fetchExpenseByDate']);
 
 //Report routes ends -----------------------------------------------------------
-
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'adminDashboard'])->name('home');
