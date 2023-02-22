@@ -182,9 +182,6 @@
                 </ul>
             </li>
             @if(Auth::user()->role==1)
-
-
-
             {{-- Report  --}}
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -243,6 +240,20 @@
                 </ul>
             </li>
 
+            @else
+
+            {{-- Settings  --}}
+            <li>
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="fa-solid fa-cogs"></i><span class="nav-text">Settings</span>
+
+                </a>
+                <ul aria-expanded="false">
+                    <li>
+                        <a href="flock" aria-expanded="false">Flocks</a>
+                    </li>
+                </ul>
+            </li>
             @endif
 
         </ul>
