@@ -153,22 +153,6 @@
     <script src="js/gleek.js"></script>
     <script src="js/styleSwitcher.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script>
-        $('#department').on('change', e => {
-            $('#user').empty()
-            $.ajax({
-                url: `get-house=${e.value}`
-
-                , success: data => {
-                    data.users.forEach(user =>
-                        $('#user').append(`<option value="${houses.id}">${houses.name}</option>`)
-                    )
-                }
-            })
-        })
-
-    </script>
     <script>
         $(document).ready(function() {
 

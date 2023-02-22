@@ -27,6 +27,10 @@
                     </ol>
                 </div>
             </div>
+            <div class="text-center">
+                <h3>Mortality Report</h3>
+            </div>
+
             <div class="container-fluid mt-3">
                 <div class="row">
                     <div class="col-lg-6">

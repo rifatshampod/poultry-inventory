@@ -26,10 +26,14 @@
                         </li>
                     </ol>
                 </div>
+
             </div>
+            <div class="text-center">
+                <h3>Expense Report</h3>
+            </div>
+
             <div class="container-fluid mt-3">
                 <div class="row">
-
                     <div class="col-lg-6">
                         <div class="card">
                             <div class="card-body">
