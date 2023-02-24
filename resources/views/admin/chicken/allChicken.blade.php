@@ -98,7 +98,7 @@
                                             @foreach ($chickenList1 as $item)
                                             <tr>
                                                 <td>{{$item->house->name}}</td>
-                                                <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())+1}} days</td>
+                                                <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())}} days</td>
                                                 <td>{{$item['first_doc']}}</td>
                                                 <td>{{$item['sum_of_doc'] - $item['sum_of_mortality']-$item['sum_of_rejection']}}</td>
                                                 <td>{{number_format($item['avg_weight'], 2, '.', ',')}} Kg</td>
@@ -152,7 +152,7 @@
                                             @foreach ($chickenList2 as $item)
                                             <tr>
                                                 <td>{{$item->house->name}}</td>
-                                                <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())+1}} days</td>
+                                                <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())}} days</td>
                                                 <td>{{$item['sum_of_doc']}}</td>
                                                 <td>{{$item['sum_of_doc'] - $item['sum_of_mortality']-$item['sum_of_rejection']}}</td>
 
@@ -209,7 +209,7 @@
                                             @foreach ($chickenList3 as $item)
                                             <tr>
                                                 <td>{{$item->house->name}}</td>
-                                                <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())+1}} days</td>
+                                                <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())}} days</td>
                                                 <td>{{$item['sum_of_doc']}}</td>
                                                 <td>{{$item['sum_of_doc'] - $item['sum_of_mortality']-$item['sum_of_rejection']}}</td>
                                                 <td>{{number_format($item['avg_weight'], 2, '.', ',')}} Kg</td>
@@ -265,7 +265,7 @@
                                             @foreach ($chickenList4 as $item)
                                             <tr>
                                                 <td>{{$item->house->name}}</td>
-                                                <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())+1}} days</td>
+                                                <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())}} days</td>
                                                 <td>{{$item['sum_of_doc']}}</td>
                                                 <td>{{$item['sum_of_doc'] - $item['sum_of_mortality']-$item['sum_of_rejection']}}</td>
                                                 <td>{{number_format($item['avg_weight'], 2, '.', ',')}} Kg</td>

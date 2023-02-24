@@ -38,12 +38,19 @@ class feedController extends Controller
     }
 
     function addFeed(Request $req){
+
+        $totalPrice = 0;
+        if($req->input('price')){
+            $totalPrice = $req->input('amount') * $req->input('price');
+        }
+        
+
         $data = new Feed;
         $data->date = $req->input('date');
         $data->farm_id=$req->input('farm_id');
         $data->amount=$req->input('amount');
         $data->brand=$req->input('brand');
-        $data->price=$req->input('price');
+        $data->price=$totalPrice;
         $data->save();
 
         $total = Total_feed::where('farm_id', $req->input('farm_id'))->first();

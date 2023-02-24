@@ -33,7 +33,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="mb-4">
-                                    <h3>Add Feed Type</h3>
+                                    <h3>Add Feed</h3>
                                 </div>
                                 <form action="add-feed" method="POST">
                                     @csrf
@@ -62,7 +62,7 @@
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label>Price</label>
+                                            <label>Price/ KG</label>
                                             <input type="number" class="form-control input-default" name="price" placeholder="Input Price" />
                                         </div>
 
