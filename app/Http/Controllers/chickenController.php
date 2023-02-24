@@ -307,33 +307,35 @@ class chickenController extends Controller
         }
 
         $total = Total_feed::where('farm_id', $req->input('farm_id'))->first();
-            $total->amount -= $req->input('feed_consumption');
-            $total->save();
+            
         
         if($total){
 
-            $data = new Daily_chicken;
-        $data->date = $req->input('date');
-        $data->chicken_id=$req->input('chicken_id');
-        $data->feed_consumption=$req->input('feed_consumption');
-        $data->avg_feed_consumption=$avg_feed_consumption;
-        $data->fcr= $fcr;
-        $data->weight1=$req->input('weight1');
-        $data->weight2=$req->input('weight2');
-        $data->weight3=$req->input('weight3');
-        $data->weight4=$req->input('weight4');
-        $data->weight_avg= $weight;
-        $data->weight_gain= $avg_gain;
-        $data->mortality=$req->input('mortality');
-        $data->rejection=$req->input('rejection');
-        $data->status = 1;
-        $data->save();
+            $total->amount -= $req->input('feed_consumption');
+            $total->save();
 
-        $req->session()->flash('status','New Daily data added successfully');
+            $data = new Daily_chicken;
+            $data->date = $req->input('date');
+            $data->chicken_id=$req->input('chicken_id');
+            $data->feed_consumption=$req->input('feed_consumption');
+            $data->avg_feed_consumption=$avg_feed_consumption;
+            $data->fcr= $fcr;
+            $data->weight1=$req->input('weight1');
+            $data->weight2=$req->input('weight2');
+            $data->weight3=$req->input('weight3');
+            $data->weight4=$req->input('weight4');
+            $data->weight_avg= $weight;
+            $data->weight_gain= $avg_gain;
+            $data->mortality=$req->input('mortality');
+            $data->rejection=$req->input('rejection');
+            $data->status = 1;
+            $data->save();
+
+            $req->session()->flash('status','New Daily data added successfully');
 
         }
         else{
-            $req->session()->flash('error','No Feed added in this farm. Please add feed amount first.');
+            $req->session()->flash('error','No Feed added for this farm. Please add feed amount first.');
         }
         return redirect()->back();
     }

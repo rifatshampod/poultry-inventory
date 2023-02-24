@@ -223,11 +223,10 @@
                                             @else
                                             @foreach ($chickenList3 as $item)
                                             <tr>
-                                                {{-- <td>{{$item->house->name}}</td> --}}
+                                                <td>{{$item->house->name}}</td>
                                                 <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())+1}} days</td>
                                                 <td>{{$item['sum_of_doc']}}</td>
                                                 <td>{{$item['sum_of_doc'] - $item['sum_of_mortality']-$item['sum_of_rejection']}}</td>
-
                                                 <td>{{number_format($item['avg_weight'], 2, '.', ',')}} Kg</td>
                                                 <td>{{number_format($item['avg_fcr'], 2, '.', ',')}}</td>
                                                 <td>{{$item['sum_of_mortality']}}</td>
