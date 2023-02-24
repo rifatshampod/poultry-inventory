@@ -108,15 +108,8 @@
                                                 <td>{{$item['first_doc'] - $item['sum_of_doc']}}</td>
 
                                                 <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7 display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                        </div>
-                                                    </div>
+                                                    <a class="cursor text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
+
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -170,16 +163,8 @@
                                                 <td>{{$item['first_doc'] - $item['sum_of_doc']}}</td>
 
                                                 <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7 display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                        </div>
+                                                    <a class="cursor text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
 
-                                                    </div>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -234,16 +219,8 @@
                                                 <td>{{$item['first_doc'] - $item['sum_of_doc']}}</td>
 
                                                 <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7 display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                        </div>
+                                                    <a class="cursor text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
 
-                                                    </div>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -297,16 +274,9 @@
                                                 <td>{{$item['sum_of_rejection']}}</td>
                                                 <td>{{$item['first_doc'] - $item['sum_of_doc']}}</td>
                                                 <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7 display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                        </div>
 
-                                                    </div>
+                                                    <a class="cursor text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
+
                                                 </td>
                                             </tr>
                                             @endforeach
