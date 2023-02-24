@@ -32,6 +32,24 @@
                 </div>
             </div>
             <div class="container-fluid mt-3">
+                @if (Session::get('status'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{Session::get('status')}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+                @if (Session::get('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{Session::get('error')}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+
+
                 <div>
                     <ul class="nav nav-pills mb-3">
                         <li class="nav-item">

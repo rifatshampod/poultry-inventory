@@ -306,7 +306,13 @@ class chickenController extends Controller
             $avg_feed_consumption = $req->input('feed_consumption')/$total_chicken;
         }
 
-        $data = new Daily_chicken;
+        $total = Total_feed::where('farm_id', $req->input('farm_id'))->first();
+            $total->amount -= $req->input('feed_consumption');
+            $total->save();
+        
+        if($total){
+
+            $data = new Daily_chicken;
         $data->date = $req->input('date');
         $data->chicken_id=$req->input('chicken_id');
         $data->feed_consumption=$req->input('feed_consumption');
@@ -323,11 +329,12 @@ class chickenController extends Controller
         $data->status = 1;
         $data->save();
 
-        $total = Total_feed::where('farm_id', $req->input('farm_id'))->first();
-            $total->amount -= $req->input('feed_consumption');
-            $total->save();
-
         $req->session()->flash('status','New Daily data added successfully');
+
+        }
+        else{
+            $req->session()->flash('error','No Feed added in this farm. Please add feed amount first.');
+        }
         return redirect()->back();
     }
 
