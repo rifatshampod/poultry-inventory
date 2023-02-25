@@ -95,10 +95,8 @@
                                                 <td>{{$item['address']}}</td>
                                                 <td>{{$item['phone']}}</td>
                                                 <td>
-                                                    <span class="float-right"><a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i>
-
-
-                                                        </a>
+                                                    <span class="float-right">
+                                                        <a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a>
                                                         {{-- <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
                                                         </a> --}}
                                                     </span>

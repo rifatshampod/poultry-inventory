@@ -19,9 +19,10 @@ class ReportController extends Controller
     function getMortality(){
 
         $flock = Flock::all();
+        $houseList = House::all();
         $farm = Farm::all();
 
-        return view ('admin/report/introMortality')->with('flockList', $flock)->with('farmList', $farm);
+        return view ('admin/report/introMortality')->with('flockList', $flock)->with('farmList', $farm)->with('houseList', $houseList);
     }
 
     function fetchMortalityByFlock(Request $req){

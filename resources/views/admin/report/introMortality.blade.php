@@ -114,6 +114,58 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="mb-4 text-center">
+                                    <h3>Search By House</h3>
+                                    <span>Get report of a specific house of current flock. Only current flock are available here</span>
+                                </div>
+                                <form action="house-mortality-report" method="POST">
+                                    @csrf
+
+                                    <div class="row justify-content-center">
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Farm Name</label>
+                                                <select class="form-control input-default" name="farm_id" id="farm-dropdown" required>
+                                                    <option value="" selected disabled hidden>Select Farm</option>
+                                                    @foreach ($farmList as $item)
+                                                    <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                                    @endforeach
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>House Name</label>
+                                                <select class="form-control input-default" name="house_id" id="house-dropdown" required>
+
+
+                                                    <option value="" selected disabled hidden>Select House</option>
+                                                    @foreach ($houseList as $item)
+                                                    <option value="{{$item['id']}}">{{$item['name']}} ({{$item->farm->name}})</option>
+                                                    @endforeach
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div>
+                                                <button type="submit" class="btn mb-1 btn-primary w-100">
+                                                    Generate Report
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="mb-4 text-center">
                                     <h3>Search By Date</h3>
                                     <span>Get report of data of a specific duration. Current and previous all data are
                                         available here</span>
@@ -187,6 +239,46 @@
     <script src="./plugins/tables/js/jquery.dataTables.min.js"></script>
     <script src="./plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
     <script src="./plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            /*------------------------------------------
+            --------------------------------------------
+            Country Dropdown Change Event
+            --------------------------------------------
+            --------------------------------------------*/
+            $('#farm-dropdown').on('change', function() {
+                var idCountry = this.value;
+                $("#house-dropdown").html('');
+                $.ajax({
+                    url: "{{url('fetch-houses')}}"
+                    , type: "POST"
+                    , data: {
+                        farm_id: idCountry
+                        , _token: '{{csrf_token()}}'
+                    }
+                    , dataType: 'json'
+                    , success: function(result) {
+                        $('#house-dropdown').html('<option value="">-- Select House --</option>');
+                        $.each(result.houses, function(key, value) {
+                            $("#house-dropdown").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                        $('#flock-dropdown').html('<option value="">-- Select Flock --</option>');
+                        $.each(result.flocks, function(key, value) {
+                            $("#flock-dropdown").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                        //console.log(result);
+                    }
+                });
+            });
+
+        });
+
+    </script>
+
 
 </body>
 </html>
