@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bonus_type;
+use App\Models\Chicken;
 use App\Models\Expense_sector;
 use App\Models\Expense_type;
 use Illuminate\Http\Request;
@@ -54,6 +55,13 @@ class settingsController extends Controller
         $flock->end_date=$req->input('end_date');
         $flock->status=$req->input('status');
         $flock->update();
+
+        if($req->input('status')==0){
+            $chicken = Chicken::where('flock_id', $flock_id)
+                                ->update([
+                            'status' => 0
+                            ]);
+        }
 
         return redirect()->back();
     }

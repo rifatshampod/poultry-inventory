@@ -223,9 +223,6 @@
                     $('#contact_number').val(response.farm.phone);
                     $('#address').val(response.farm.address);
                     $('#farmEditId').val(clicked_id);
-
-
-
                 }
             });
         }

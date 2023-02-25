@@ -51,12 +51,16 @@ class chickenController extends Controller
         ->get();
 
         $docList1 = Chicken::where('farm_id',1)
+        ->where('status', 1)
         ->get();
         $docList2 = Chicken::where('farm_id',2)
+        ->where('status', 1)
         ->get();
         $docList3 = Chicken::where('farm_id',3)
+        ->where('status', 1)
         ->get();
         $docList4 = Chicken::where('farm_id',4)
+        ->where('status', 1)
         ->get();
 
         if(auth()->user()->role ==1){
@@ -151,6 +155,7 @@ class chickenController extends Controller
         )
         ->groupBy('chickens.id')
         ->where('chickens.farm_id',1)
+        ->where('chickens.status', 1)
         ->get();
 
         $chickenList2 = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
@@ -162,6 +167,7 @@ class chickenController extends Controller
         )
         ->groupBy('chickens.id')
         ->where('chickens.farm_id',2)
+        ->where('chickens.status', 1)
         ->get();
 
         $chickenList3 = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
@@ -173,6 +179,7 @@ class chickenController extends Controller
         )
         ->groupBy('chickens.id')
         ->where('chickens.farm_id',3)
+        ->where('chickens.status', 1)
         ->get();
 
         $chickenList4 = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
@@ -184,6 +191,7 @@ class chickenController extends Controller
         )
         ->groupBy('chickens.id')
         ->where('chickens.farm_id',4)
+        ->where('chickens.status', 1)
         ->get();
         
         if(auth()->user()->role ==1){
@@ -210,6 +218,7 @@ class chickenController extends Controller
     function getHouseChicken(){
         $dailyList1 = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
         ->where('chickens.farm_id',1)
+        ->where('chickens.status', 1)
         ->where('daily_chickens.status',1)
         ->orderBy('daily_chickens.id','DESC')
         ->select('daily_chickens.*', 'chickens.house_id')
@@ -217,6 +226,7 @@ class chickenController extends Controller
 
         $dailyList2 = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
         ->where('chickens.farm_id',2)
+        ->where('chickens.status', 1)
         ->where('daily_chickens.status',1)
         ->select('daily_chickens.*', 'chickens.house_id')
         ->orderBy('daily_chickens.id','DESC')
@@ -224,6 +234,7 @@ class chickenController extends Controller
 
         $dailyList3 = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
         ->where('chickens.farm_id',3)
+        ->where('chickens.status', 1)
         ->where('daily_chickens.status',1)
         ->select('daily_chickens.*', 'chickens.house_id')
         ->orderBy('daily_chickens.id','DESC')
@@ -231,6 +242,7 @@ class chickenController extends Controller
 
         $dailyList4 = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
         ->where('chickens.farm_id',4)
+        ->where('chickens.status', 1)
         ->where('daily_chickens.status',1)
         ->select('daily_chickens.*', 'chickens.house_id')
         ->orderBy('daily_chickens.id','DESC')
