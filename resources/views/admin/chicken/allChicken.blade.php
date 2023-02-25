@@ -80,6 +80,7 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
+                                                <th scope="col">Flock</th>
                                                 <th scope="col">House</th>
                                                 <th scope="col">Age</th>
                                                 <th scope="col">Total</th>
@@ -97,6 +98,7 @@
                                         <tbody>
                                             @foreach ($chickenList1 as $item)
                                             <tr>
+                                                <td>{{$item->flock->name}}</td>
                                                 <td>{{$item->house->name}}</td>
                                                 <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())}} days</td>
                                                 <td>{{$item['first_doc']}}</td>
@@ -134,6 +136,7 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
+                                                <th scope="col">Flock</th>
                                                 <th scope="col">House</th>
                                                 <th scope="col">Age</th>
                                                 <th scope="col">Total</th>
@@ -151,6 +154,7 @@
                                         <tbody>
                                             @foreach ($chickenList2 as $item)
                                             <tr>
+                                                <td>{{$item->flock->name}}</td>
                                                 <td>{{$item->house->name}}</td>
                                                 <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())}} days</td>
                                                 <td>{{$item['sum_of_doc']}}</td>
@@ -188,6 +192,7 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
+                                                <th scope="col">Flock</th>
                                                 <th scope="col">House</th>
                                                 <th scope="col">Age</th>
                                                 <th scope="col">Total</th>
@@ -208,6 +213,7 @@
                                             @else
                                             @foreach ($chickenList3 as $item)
                                             <tr>
+                                                <td>{{$item->flock->name}}</td>
                                                 <td>{{$item->house->name}}</td>
                                                 <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())}} days</td>
                                                 <td>{{$item['sum_of_doc']}}</td>
@@ -247,6 +253,7 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
+                                                <th scope="col">Flock</th>
                                                 <th scope="col">House</th>
                                                 <th scope="col">Age</th>
                                                 <th scope="col">Total</th>
@@ -264,6 +271,7 @@
                                         <tbody>
                                             @foreach ($chickenList4 as $item)
                                             <tr>
+                                                <td>{{$item->flock->name}}</td>
                                                 <td>{{$item->house->name}}</td>
                                                 <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())}} days</td>
                                                 <td>{{$item['sum_of_doc']}}</td>

@@ -166,6 +166,7 @@ class saleController extends Controller
 
         //reduce amount from total chicken
             $total = Chicken::where('farm_id', $req->input('farm_id'))
+            ->where('status', 1)
             ->where('house_id', $req->input('house_id'))->first();
             $total->sum_of_doc -= $req->input('total_birds');
             $total->save();
