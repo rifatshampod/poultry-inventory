@@ -60,46 +60,71 @@ class accountController extends Controller
 
         $loggedFarm = auth()->user()->farm_id ; 
 
-        $flock = Flock::where('status',1)
-        ->first();
+        // $flock = Flock::where('status',1)
+        // ->first();
 
-        $currentFlock = $flock['id'];
+        //$currentFlock = $flock['id'];
 
         if(auth()->user()->role ==1){
-            $expenseList = Expense::where('flock_id',$currentFlock)
+            $expenseList = Expense::orderBy('id', 'desc')
             ->get();
         }
         else{
-           $expenseList = Expense::where('flock_id',$currentFlock)
-           ->where('farm_id', $loggedFarm)
+           $expenseList = Expense::where('farm_id', $loggedFarm)
             ->get();
         }
 
        
-        return view('admin/account/allExpense')->with('expenseList', $expenseList)->with('flock',$flock);
+        return view('admin/account/allExpense')->with('expenseList', $expenseList);
     }
 
     function addExpense(Request $req){
-        $data = new Expense;
-        $data->date = $req->input('date');
-        $data->farm_id=$req->input('farm_id');
-        $data->house_id=$req->input('house_id');
-        $data->flock_id=$req->input('flock_id');
-        $data->expense_sector_id=$req->input('expense_sector_id');
-        $data->expense_type_id=$req->input('expense_type_id');
-        $data->amount=$req->input('amount');
-        $data->paid_from=$req->input('paid_from');
-        $data->approver=$req->input('approver');
-        $data->reference=$req->input('reference');
-        $data->save();
+        
 
         if($req->input('paid_from')==1){
             $total = Total_cash::where('farm_id', $req->input('farm_id'))->first();
-            $total->amount -= $req->input('amount');
-            $total->save();
+            if($total){
+                $data = new Expense;
+                $data->date = $req->input('date');
+                $data->farm_id=$req->input('farm_id');
+                $data->house_id=$req->input('house_id');
+                $data->flock_id=$req->input('flock_id');
+                $data->expense_sector_id=$req->input('expense_sector_id');
+                $data->expense_type_id=$req->input('expense_type_id');
+                $data->amount=$req->input('amount');
+                $data->paid_from=$req->input('paid_from');
+                $data->approver=$req->input('approver');
+                $data->reference=$req->input('reference');
+                $data->save();
+
+                $total->amount -= $req->input('amount');
+                $total->save();
+
+                $req->session()->flash('status','New Expense added successfully');
+            }
+            else{
+                $req->session()->flash('error','No Petty cash available for this farm. Please add Petty cash first.');
+            }
+            
+        }
+        else{
+            $data = new Expense;
+                $data->date = $req->input('date');
+                $data->farm_id=$req->input('farm_id');
+                $data->house_id=$req->input('house_id');
+                $data->flock_id=$req->input('flock_id');
+                $data->expense_sector_id=$req->input('expense_sector_id');
+                $data->expense_type_id=$req->input('expense_type_id');
+                $data->amount=$req->input('amount');
+                $data->paid_from=$req->input('paid_from');
+                $data->approver=$req->input('approver');
+                $data->reference=$req->input('reference');
+                $data->save();
+
+                $req->session()->flash('status','New Expense added successfully');
         }
 
-        $req->session()->flash('status','New Expense added successfully');
+        
         return redirect('all-expense');
     }
 
@@ -111,11 +136,6 @@ class accountController extends Controller
 
         $singleCash = Pettycash::orderBy('id','desc')
         ->get();
-        // $pettyCash = Pettycash::select('pettycashes.*',
-        // DB::raw('SUM(pettycashes.amount) AS sum_of_amount')
-        // )
-        // ->groupBy('pettycashes.farm_id')
-        // ->get();
 
         return view('admin/account/pettyCash')->with('farmList', $farmList)->with('pettyCash',$pettyCash)->with('singleCash',$singleCash);
     }
@@ -128,8 +148,16 @@ class accountController extends Controller
         $data->save();
 
         $total = Total_cash::where('farm_id', $req->input('farm_id'))->first();
-        $total->amount += $req->input('amount');
-        $total->save();
+        if($total){
+            $total->amount += $req->input('amount');
+            $total->save();
+        }
+        else{
+            $feedTotal = new Total_cash;
+            $feedTotal->farm_id = $req->input('farm_id');
+            $feedTotal->amount = $req->input('amount');
+            $feedTotal->save();
+        }
 
         $req->session()->flash('status','New Petty Cash added successfully');
         return redirect()->back();

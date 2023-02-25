@@ -44,7 +44,6 @@ class feedController extends Controller
             $totalPrice = $req->input('amount') * $req->input('price');
         }
         
-
         $data = new Feed;
         $data->date = $req->input('date');
         $data->farm_id=$req->input('farm_id');

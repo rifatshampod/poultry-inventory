@@ -28,9 +28,26 @@
                 </div>
             </div>
             <div class="container-fluid mt-3">
+                @if (Session::get('status'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{Session::get('status')}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+                @if (Session::get('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{Session::get('error')}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">All Expense (Flock: <span class="text-primary">{{$flock->name}}</span>)</h4>
+                        <h4 class="card-title">All Expense</h4>
 
 
                         <div class="table-responsive">
@@ -40,6 +57,7 @@
                                         <th scope="col">Date</th>
                                         <th scope="col">Farm</th>
                                         <th scope="col">House</th>
+                                        <th scope="col">Flock</th>
                                         <th scope="col">Expense Type</th>
                                         <th scope="col">Expense Sector</th>
                                         <th scope="col">Paid From</th>
@@ -57,12 +75,13 @@
                                         <td>{{$item['date']}}</td>
                                         <td>{{$item->farm->name}}</td>
                                         <td>{{$item->house->name}}</td>
+                                        <td>{{$item->flock->name}}</td>
                                         <td>{{$item->expenseType->name}}</td>
                                         <td>{{$item->expenseSector->name}}</td>
                                         @if($item['paid_from']==1)
                                         <td>Petty Cash</td>
                                         @elseif($item['paid_from']==2)
-                                        Head Office
+                                        <td>Head Office</td>
                                         @endif
                                         <td>{{$item['approver']}}</td>
                                         <td>{{$item['reference']}}</td>
