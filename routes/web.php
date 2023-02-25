@@ -104,6 +104,8 @@ Route::post('delete-userdata', [settingsController::class,'deleteUser']);
 
 Route::get('flock',[settingsController::class,'getFlock']);
 Route::post('add-flock', [settingsController::class,'addFlock']);
+Route::get('edit-flock{id}', [settingsController::class,'editFlockData']);
+Route::post('edit-flock-info', [settingsController::class,'updateFlockData']);
 
 Route::get('farm',[settingsController::class,'getFarm']);
 Route::post('add-farm', [settingsController::class,'addFarm']);

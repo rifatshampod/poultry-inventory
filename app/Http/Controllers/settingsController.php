@@ -38,6 +38,25 @@ class settingsController extends Controller
         $req->session()->flash('status','New flock added successfully');
         return redirect()->back();
     }
+    function editFlockData($id){
+        $data=Flock::find($id);
+        return response()->json([
+            'status'=>200,
+            'data'=>$data,
+        ]);
+    }
+
+    function updateFlockData(Request $req){
+        $flock_id = $req->input('flock_id');
+        $flock = Flock::find($flock_id);
+        $flock->name = $req->input('name');
+        $flock->start_date=$req->input('start_date');
+        $flock->end_date=$req->input('end_date');
+        $flock->status=$req->input('status');
+        $flock->update();
+
+        return redirect()->back();
+    }
 
     //Farm --------------------------------------------------------------
     function getFarm(){
