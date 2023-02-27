@@ -39,6 +39,13 @@
                                             <img class="w-100" src="images/Oasis.png" alt="" />
                                         </a>
                                     </div>
+                                    <div class="loginImg pb-4">
+                                        <a class="" href="index.html">
+                                            <img class="w-80 p-4" src="images/fav.png" alt="" />
+                                        </a>
+                                    </div>
+
+
                                 </div>
                                 <form class="my-3 login-input" method="POST" action="{{ route('login') }}">
                                     @csrf
