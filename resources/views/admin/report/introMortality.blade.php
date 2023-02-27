@@ -138,8 +138,6 @@
                                             <div class="form-group">
                                                 <label>House Name</label>
                                                 <select class="form-control input-default" name="house_id" id="house-dropdown" required>
-
-
                                                     <option value="" selected disabled hidden>Select House</option>
                                                     @foreach ($houseList as $item)
                                                     <option value="{{$item['id']}}">{{$item['name']}} ({{$item->farm->name}})</option>

@@ -31,8 +31,6 @@
                                         <div class="form-group col-md-4">
                                             <label>Farm Name</label>
                                             <select class="form-control input-default" name="farm_id" id="farm-dropdown" required>
-
-
                                                 <option value="" selected disabled hidden>Select Farm</option>
                                                 @foreach ($farmList as $item)
                                                 <option value="{{$item['id']}}">{{$item['name']}}</option>
