@@ -53,16 +53,24 @@
                 <div>
                     <ul class="nav nav-pills mb-3">
                         <li class="nav-item">
-                            <a href="#farm-1" class="nav-link rounded active" data-toggle="tab" aria-expanded="false">Farm 1</a>
+                            <a href="#farm-1" class="nav-link rounded active px-5" data-toggle="tab" aria-expanded="false">{{$farm1->name}} Farm</a>
+
+
                         </li>
                         <li class="nav-item">
-                            <a href="#farm-2" class="nav-link rounded" data-toggle="tab" aria-expanded="false">Farm 2</a>
+                            <a href="#farm-2" class="nav-link rounded px-5" data-toggle="tab" aria-expanded="false">{{$farm2->name}} Farm</a>
+
+
                         </li>
                         <li class="nav-item">
-                            <a href="#farm-3" class="nav-link rounded" data-toggle="tab" aria-expanded="true">Farm 3</a>
+                            <a href="#farm-3" class="nav-link rounded px-5" data-toggle="tab" aria-expanded="true">{{$farm3->name}} Farm</a>
+
+
                         </li>
                         <li class="nav-item">
-                            <a href="#farm-4" class="nav-link rounded" data-toggle="tab" aria-expanded="true">Farm 4</a>
+                            <a href="#farm-4" class="nav-link rounded px-5" data-toggle="tab" aria-expanded="true">{{$farm4->name}} Farm</a>
+
+
                         </li>
                     </ul>
                 </div>

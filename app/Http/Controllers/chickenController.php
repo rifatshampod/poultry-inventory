@@ -145,6 +145,17 @@ class chickenController extends Controller
     }
 
     function getChicken(){
+        $farm1 = Farm::where('id',1)
+        ->first();
+
+        $farm2 = Farm::where('id',2)
+        ->first();
+
+        $farm3 = Farm::where('id',3)
+        ->first();
+
+        $farm4 = Farm::where('id',4)
+        ->first();
 
         $chickenList1 = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
         ->select('chickens.*',
@@ -195,7 +206,7 @@ class chickenController extends Controller
         ->get();
         
         if(auth()->user()->role ==1){
-        return view('admin/chicken/allChicken')->with('chickenList1', $chickenList1)->with('chickenList2', $chickenList2)->with('chickenList3', $chickenList3)->with('chickenList4', $chickenList4);
+        return view('admin/chicken/allChicken')->with('chickenList1', $chickenList1)->with('chickenList2', $chickenList2)->with('chickenList3', $chickenList3)->with('chickenList4', $chickenList4)->with('farm1', $farm1)->with('farm2', $farm2)->with('farm3', $farm3)->with('farm4', $farm4);
         }
         else{
              if(auth()->user()->farm_id ==1){
@@ -216,6 +227,19 @@ class chickenController extends Controller
     }
 
     function getHouseChicken(){
+
+        $farm1 = Farm::where('id',1)
+        ->first();
+
+        $farm2 = Farm::where('id',2)
+        ->first();
+
+        $farm3 = Farm::where('id',3)
+        ->first();
+
+        $farm4 = Farm::where('id',4)
+        ->first();
+        
         $dailyList1 = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
         ->where('chickens.farm_id',1)
         ->where('chickens.status', 1)
@@ -249,7 +273,7 @@ class chickenController extends Controller
         ->get();
         
         if(auth()->user()->role ==1){
-        return view('admin/chicken/dailyChicken')->with('dailyList1', $dailyList1)->with('dailyList2', $dailyList2)->with('dailyList3', $dailyList3)->with('dailyList4', $dailyList4);
+        return view('admin/chicken/dailyChicken')->with('dailyList1', $dailyList1)->with('dailyList2', $dailyList2)->with('dailyList3', $dailyList3)->with('dailyList4', $dailyList4)->with('farm1', $farm1)->with('farm2', $farm2)->with('farm3', $farm3)->with('farm4', $farm4);
         }
         else{
             if(auth()->user()->farm_id ==1){
