@@ -59,6 +59,8 @@ Route::post('edit-doc-info', [chickenController::class,'updateDoc']);
 Route::get('all-feed', [feedController::class,'getFeed']);
 Route::post('add-feed', [feedController::class,'addFeed']);
 Route::get('feed-restock', [feedController::class,'getRestockFeed']);
+Route::get('edit-feed{id}', [feedController::class,'getEditFeed']);
+Route::post('edit-feed-info', [feedController::class,'updateFeed']);
 
 //Medicine
 Route::get('all-medicine', [medicineController::class,'getMedicine']);

@@ -921,35 +921,35 @@
                                     <input type="date" id="edit_date" class="form-control input-default" name="date" placeholder="Input Start Date" />
                                 </div>
                             </div>
-                            {{-- <div class="col-lg-4">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>House</label>
                                     <select class="form-control input-default" name="house_id" id="edit_house">
                                         @foreach ($house1 as $item)
                                         <option value="{{$item['id']}}">{{$item['name']}}</option>
-                            @endforeach
-                            </select>
-                        </div>
-                </div> --}}
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label> Sum of Doc</label>
-                        <input type="number" id="edit_sum" class="form-control input-default" name="sum_of_doc" placeholder="Total Doc" />
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label> Hatchery</label>
-                        <input type="text" id="edit_hatchery" class="form-control input-default" name="hatchery" placeholder="Hatchery Name" />
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label> Bird In Case</label>
-                        <input type="number" id="edit_birdincase" class="form-control input-default" name="bird_in_case" placeholder="Bird" />
-                    </div>
-                </div>
-                {{-- <div class="col-lg-12 mb-4">
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label> Sum of Doc</label>
+                                    <input type="number" id="edit_sum" class="form-control input-default" name="sum_of_doc" placeholder="Total Doc" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label> Hatchery</label>
+                                    <input type="text" id="edit_hatchery" class="form-control input-default" name="hatchery" placeholder="Hatchery Name" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label> Bird In Case</label>
+                                    <input type="number" id="edit_birdincase" class="form-control input-default" name="bird_in_case" placeholder="Bird" />
+                                </div>
+                            </div>
+                            {{-- <div class="col-lg-12 mb-4">
                                 <div>
                                     <label>Vaccination From Hacthery</label>
                                 </div>
@@ -984,40 +984,40 @@
                                     </div>
                                 </div>
                             </div> --}}
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label> Density</label>
-                        <input type="number" id="edit_density" class="form-control input-default" name="density" placeholder="Density" />
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label> Catching Start Date</label>
-                        <input type="date" id="edit_catchingStart" class="form-control input-default" name="catching_start" placeholder="" />
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label> Catching End date</label>
-                        <input type="date" id="edit_catchingEnd" class="form-control input-default" name="catching_end" placeholder="" />
-                    </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label> Density</label>
+                                    <input type="number" id="edit_density" class="form-control input-default" name="density" placeholder="Density" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label> Catching Start Date</label>
+                                    <input type="date" id="edit_catchingStart" class="form-control input-default" name="catching_start" placeholder="" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label> Catching End date</label>
+                                    <input type="date" id="edit_catchingEnd" class="form-control input-default" name="catching_end" placeholder="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="d-flex justify-content-center">
+                                <div>
+                                    <button type="submit" class="btn btn-primary px-5 mx-1">
+                                        Update DOC Information
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="col-lg-12">
-                <div class="d-flex justify-content-center">
-                    <div>
-                        <button type="submit" class="btn btn-primary px-5 mx-1">
-                            Update DOC Information
-                        </button>
-                    </div>
-                </div>
-            </div>
-            </form>
+            <!-- /.modal-content -->
         </div>
-    </div>
-    <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
+        <!-- /.modal-dialog -->
     </div>
     <!---- End of edit modal ---->
 
