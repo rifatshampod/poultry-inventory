@@ -49,33 +49,49 @@ class accountController extends Controller
     }
 
     public function getHouses(Request $request, $id) {
-    if ($request->ajax()) {
-        return response()->json([
-            'houses' => House::where('farm_id', $id)->get()
-        ]);
+        if ($request->ajax()) {
+            return response()->json([
+                'houses' => House::where('farm_id', $id)->get()
+            ]);
+        }
     }
-}
 
     function getExpense(){
 
         $loggedFarm = auth()->user()->farm_id ; 
-
+          
         // $flock = Flock::where('status',1)
         // ->first();
 
         //$currentFlock = $flock['id'];
 
+        $sectorList = Expense_sector::all();
+        $typeList = Expense_type::all();
+
         if(auth()->user()->role ==1){
             $expenseList = Expense::orderBy('id', 'desc')
+            ->get();
+            $farmList = Farm::all();
+            $houseList = House::all();
+            $flockList = Flock::where('status',1)
             ->get();
         }
         else{
            $expenseList = Expense::where('farm_id', $loggedFarm)
             ->get();
+              $farmList = Farm::where('id', $loggedFarm)
+            ->get();
+            $houseList = House::where('farm_id', $loggedFarm)
+            ->get();
+            $flockList = Flock::where('status',1)
+            ->where('farm_id', $loggedFarm)
+            ->get();
         }
-
-       
-        return view('admin/account/allExpense')->with('expenseList', $expenseList);
+        
+        return view('admin/account/allExpense')->with('expenseList', $expenseList)
+        ->with('farmList', $farmList)->with('houseList', $houseList)
+        ->with('flockList', $flockList) ->with('sectorList', $sectorList)
+        ->with('typeList', $typeList);
     }
 
     function addExpense(Request $req){
@@ -126,6 +142,49 @@ class accountController extends Controller
 
         
         return redirect('all-expense');
+    }
+
+    //edit Expense
+    function getEditExpense($id){
+        $data=Expense::find($id);
+        return response()->json([
+            'status'=>200,
+            'data'=>$data,
+        ]);
+    }
+
+    function updateExpense(Request $req){
+
+       
+        $expense = $req->input('expense_id');
+        
+
+        //Retrieve previous data
+
+        $data = Expense::find($expense);
+        $data->date = $req->input('date');
+        $data->farm_id=$req->input('farm_id');
+        $data->house_id=$req->input('house_id');
+        $data->flock_id=$req->input('flock_id');
+        $data->expense_sector_id=$req->input('expense_sector_id');
+        $data->expense_type_id=$req->input('expense_type_id');
+        $data->amount=$req->input('amount');
+        $data->paid_from=$req->input('paid_from');
+        $data->approver=$req->input('approver');
+        $data->reference=$req->input('reference');
+        $data->update();
+
+        //Change total
+
+        $difference = $req->input('amount')-$req->input('previous_amount');
+        $farm = $req->input('farm_id');
+
+        $total = Total_cash::where('farm_id', $farm)->first();
+        $total->amount -= $difference;
+        $total->save();
+
+        $req->session()->flash('status', 'Expense data updated successfully.');
+        return redirect()->back();
     }
 
     function getPettyCash(){

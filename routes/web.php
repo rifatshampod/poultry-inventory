@@ -73,6 +73,9 @@ Route::get('all-expense', [accountController::class,'getExpense']);
 Route::get('get-house={id}', [accountController::class,'getHouses']);
 Route::post('fetch-houses', [farmDependency::class, 'fetchHouse']);
 Route::post('add-expense-data', [accountController::class,'addExpense']);
+Route::get('edit-expense{id}', [accountController::class,'getEditExpense']);
+Route::post('edit-expense-info', [accountController::class,'updateExpense']);
+
 Route::get('petty-cash', [accountController::class,'getPettyCash']);
 Route::post('add-petty-cash', [accountController::class,'addPettyCash']);
 
