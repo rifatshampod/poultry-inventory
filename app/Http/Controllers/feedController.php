@@ -32,9 +32,28 @@ class feedController extends Controller
 
     function getRestockFeed(){
 
+        $loggedFarm = auth()->user()->farm_id ; 
+
+        if(auth()->user()->role ==1){
+            $farmList = Farm::all();
+            $houseList = House::all();
+            $flockList = Flock::where('status',1)
+            ->get();
+        }
+        else{
+            $farmList = Farm::where('id', $loggedFarm)
+            ->get();
+            $houseList = House::where('farm_id', $loggedFarm)
+            ->get();
+            $flockList = Flock::where('status',1)
+            ->where('farm_id', $loggedFarm)
+            ->get();
+        }
+
        $feedList = Feed::all();
        
-        return view('admin/Feed/feedRestock')->with('feedList', $feedList);
+        return view('admin/Feed/feedRestock')->with('feedList', $feedList)->with('farmList', $farmList)
+        ->with('flockList', $flockList);
     }
 
     function addFeed(Request $req){
@@ -65,6 +84,44 @@ class feedController extends Controller
         }
             
         $req->session()->flash('status','New Feed added successfully');
+        return redirect()->back();
+    }
+
+    //edit feed restock
+    function getEditFeed($id){
+        $data=Feed::find($id);
+        return response()->json([
+            'status'=>200,
+            'data'=>$data,
+        ]);
+    }
+
+    function updateFeed(Request $req){
+
+       
+        $feed = $req->input('feed_id');
+        
+
+        //Retrieve previous data
+
+        $data = Feed::find($feed);
+        $data->date = $req->input('date');
+        $data->farm_id=$req->input('farm_id');
+        $data->amount=$req->input('amount');
+        $data->brand=$req->input('brand');
+        $data->price=$req->input('price');
+        $data->update();
+
+        //Change total
+
+        $difference = $req->input('amount')-$req->input('previous_amount');
+        $farm = $req->input('farm_id');
+
+        $total = Total_feed::where('farm_id', $farm)->first();
+        $total->amount += $difference;
+        $total->save();
+
+        $req->session()->flash('status', 'Feed restock data updated successfully.');
         return redirect()->back();
     }
 
