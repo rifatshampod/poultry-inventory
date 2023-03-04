@@ -83,8 +83,21 @@ class saleController extends Controller
         ->groupBy('sales.farm_id')
         ->get();
 
+
+        $farm1 = Farm::where('id',1)
+        ->first();
+
+        $farm2 = Farm::where('id',2)
+        ->first();
+
+        $farm3 = Farm::where('id',3)
+        ->first();
+
+        $farm4 = Farm::where('id',4)
+        ->first();
+
         if(auth()->user()->role ==1){
-         return view('admin/sales/allSale')->with('saleList1', $saleList1)->with('saleList2', $saleList2)->with('saleList3', $saleList3)->with('saleList4', $saleList4);
+         return view('admin/sales/allSale')->with('farm1',$farm1)->with('farm2',$farm2)->with('farm3',$farm3)->with('farm4',$farm4)->with('saleList1', $saleList1)->with('saleList2', $saleList2)->with('saleList3', $saleList3)->with('saleList4', $saleList4);
         }
         else{
             if(auth()->user()->farm_id ==1){
@@ -112,8 +125,20 @@ class saleController extends Controller
         $soldList3 = Sale::where('farm_id',3)->get();
         $soldList4 = Sale::where('farm_id',4)->get();
 
+        $farm1 = Farm::where('id',1)
+        ->first();
+
+        $farm2 = Farm::where('id',2)
+        ->first();
+
+        $farm3 = Farm::where('id',3)
+        ->first();
+
+        $farm4 = Farm::where('id',4)
+        ->first();
+
         if(auth()->user()->role ==1){
-         return view('admin/sales/dailySale')->with('soldList1', $soldList1)->with('soldList2', $soldList2)->with('soldList3', $soldList3)->with('soldList4', $soldList4);
+         return view('admin/sales/dailySale')->with('farm1',$farm1)->with('farm2',$farm2)->with('farm3',$farm3)->with('farm4',$farm4)->with('soldList1', $soldList1)->with('soldList2', $soldList2)->with('soldList3', $soldList3)->with('soldList4', $soldList4);
         }
         else{
             if(auth()->user()->farm_id ==1){

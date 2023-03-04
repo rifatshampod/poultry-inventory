@@ -66,7 +66,7 @@
                                 <tbody>
                                     @foreach ($medicineList as $item)
                                     <tr>
-                                        <td>{{$item['date']}}</td>
+                                        <td>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
                                         <td>{{$item->farm->name}}</td>
                                         <td>{{$item->medicine->name}}</td>
                                         <td>{{$item['amount']}}</td>

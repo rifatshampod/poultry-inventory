@@ -95,8 +95,8 @@
                                                 <td>{{$item['name']}}</td>
                                                 <td>{{$item->farm->name}}</td>
 
-                                                <td>{{ \Carbon\Carbon::parse($item['start_date'])->format('d/m/Y')}}</td>
-                                                <td>{{ \Carbon\Carbon::parse($item['end_date'])->format('d/m/Y')}}</td>
+                                                <td>{{ \Carbon\Carbon::parse($item['start_date'])->format('m/d/Y')}}</td>
+                                                <td>{{ \Carbon\Carbon::parse($item['end_date'])->format('m/d/Y')}}</td>
                                                 <td>
                                                     @if($item['status']==1)
                                                     <span class="label gradient-1 btn-rounded">Active</span>

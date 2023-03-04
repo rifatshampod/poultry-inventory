@@ -116,7 +116,7 @@
                                     <table class="table table-bordered verticle-middle">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Date (dd-mm-yyyy)</th>
+                                                <th scope="col">Date (mm/dd/yyyy)</th>
                                                 <th scope="col">Farm</th>
                                                 <th scope="col">Cash Added</th>
                                                 <th class="" scope="col">
@@ -127,7 +127,7 @@
                                         <tbody>
                                             @foreach ($singleCash as $item)
                                             <tr>
-                                                <td>{{ \Carbon\Carbon::parse($item['date'])->format('d-m-Y')}}</td>
+                                                <td>{{ \Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
 
                                                 <td>{{$item->farm->name}}</td>
                                                 <td>{{$item['amount']}}</td>

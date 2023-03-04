@@ -100,8 +100,10 @@
                                             @foreach ($leaveList as $item)
                                             <tr>
                                                 <td>{{$item->employee->name}}</td>
-                                                <td>{{$item['from']}}</td>
-                                                <td>{{$item['to']}}</td>
+                                                <td>{{ \Carbon\Carbon::parse($item['from'])->format('m/d/Y')}}</td>
+
+                                                <td>{{ \Carbon\Carbon::parse($item['to'])->format('m/d/Y')}}</td>
+
                                                 <td>{{$item['duration']}} days</td>
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">

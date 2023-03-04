@@ -80,7 +80,7 @@
 
                                             @foreach ($dailyList1 as $item)
                                             <tr>
-                                                <th>{{$item['date']}}</th>
+                                                <th>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</th>
                                                 <td>{{$item->chicken->house->name}}</td>
                                                 <td>{{$item['feed_consumption']}}</td>
                                                 <td>{{$item['fcr']}}</td>
@@ -130,7 +130,7 @@
                                             @else
                                             @foreach ($dailyList2 as $item)
                                             <tr>
-                                                <th>{{$item['date']}}</th>
+                                                <th>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</th>
                                                 <td>{{$item->chicken->house->name}}</td>
                                                 <td>{{$item['feed_consumption']}}</td>
                                                 <td>{{$item['fcr']}}</td>
@@ -188,7 +188,7 @@
 
                                             @foreach ($dailyList3 as $item)
                                             <tr>
-                                                <th>{{$item['date']}}</th>
+                                                <th>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</th>
                                                 <td>{{$item->chicken->house->name}}</td>
                                                 <td>{{$item['feed_consumption']}}</td>
                                                 <td>{{$item['fcr']}}</td>
@@ -243,7 +243,7 @@
                                             @else
                                             @foreach ($dailyList4 as $item)
                                             <tr>
-                                                <th>{{$item['date']}}</th>
+                                                <th>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</th>
                                                 <td>{{$item->chicken->house->name}}</td>
                                                 <td>{{$item['feed_consumption']}}</td>
                                                 <td>{{$item['fcr']}}</td>

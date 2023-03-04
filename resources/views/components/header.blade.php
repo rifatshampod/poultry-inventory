@@ -178,7 +178,7 @@
                 <ul aria-expanded="false">
                     <li><a href="active-employee">Active Employee</a></li>
                     <li><a href="all-leave">Leave Request</a></li>
-                    <li><a href="payroll">Payroll</a></li>
+                    {{-- <li><a href="payroll">Payroll</a></li> --}}
                 </ul>
             </li>
             @if(Auth::user()->role==1)

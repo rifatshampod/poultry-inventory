@@ -74,7 +74,7 @@
                                             </tr>
                                             @foreach ($feedList as $item)
                                             <tr>
-                                                <td>{{$item['date']}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
                                                 <td>{{$item->chicken->house->name}}</td>
                                                 <td>{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item->chicken->date))+1}}</td>
                                                 @foreach ($standardList as $std)

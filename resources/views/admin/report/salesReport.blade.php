@@ -80,7 +80,7 @@
                                             </tr>
                                             @foreach ($saleList as $item)
                                             <tr>
-                                                <td>{{$item['date']}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
                                                 <td>{{$item->house->name}}</td>
                                                 <td>{{$item['car_no']}}</td>
                                                 <td>{{$item['catching_slip']}}</td>

@@ -91,14 +91,14 @@
                                             <tr>
                                                 <td>{{$item->flock->name}}</td>
                                                 <td>{{$item->house->name}}</td>
-                                                <td>{{$item['date']}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
                                                 <td>{{$item['sum_of_doc']}}</td>
                                                 <td>{{$item['hatchery']}}</td>
                                                 <td>{{$item['bird_in_case']}}</td>
                                                 <td>{{$item['vaccine']}}</td>
                                                 <td>{{$item['density']}}</td>
-                                                <td>{{$item['catching_start']}}</td>
-                                                <td>{{$item['catching_end']}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['catching_start'])->format('m/d/Y')}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['catching_end'])->format('m/d/Y')}}</td>
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
@@ -159,14 +159,14 @@
                                             <tr>
                                                 <td>{{$item->flock->name}}</td>
                                                 <td>{{$item->house->name}}</td>
-                                                <td>{{$item['date']}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
                                                 <td>{{$item['sum_of_doc']}}</td>
                                                 <td>{{$item['hatchery']}}</td>
                                                 <td>{{$item['bird_in_case']}}</td>
                                                 <td>{{$item['vaccine']}}</td>
                                                 <td>{{$item['density']}}</td>
-                                                <td>{{$item['catching_start']}}</td>
-                                                <td>{{$item['catching_end']}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['catching_start'])->format('m/d/Y')}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['catching_end'])->format('m/d/Y')}}</td>
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
@@ -230,14 +230,14 @@
                                             <tr>
                                                 <td>{{$item->flock->name}}</td>
                                                 <td>{{$item->house->name}}</td>
-                                                <td>{{$item['date']}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
                                                 <td>{{$item['sum_of_doc']}}</td>
                                                 <td>{{$item['hatchery']}}</td>
                                                 <td>{{$item['bird_in_case']}}</td>
                                                 <td>{{$item['vaccine']}}</td>
                                                 <td>{{$item['density']}}</td>
-                                                <td>{{$item['catching_start']}}</td>
-                                                <td>{{$item['catching_end']}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['catching_start'])->format('m/d/Y')}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['catching_end'])->format('m/d/Y')}}</td>
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
@@ -300,14 +300,14 @@
                                             <tr>
                                                 <td>{{$item->flock->name}}</td>
                                                 <td>{{$item->house->name}}</td>
-                                                <td>{{$item['date']}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
                                                 <td>{{$item['sum_of_doc']}}</td>
                                                 <td>{{$item['hatchery']}}</td>
                                                 <td>{{$item['bird_in_case']}}</td>
                                                 <td>{{$item['vaccine']}}</td>
                                                 <td>{{$item['density']}}</td>
-                                                <td>{{$item['catching_start']}}</td>
-                                                <td>{{$item['catching_end']}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['catching_start'])->format('m/d/Y')}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['catching_end'])->format('m/d/Y')}}</td>
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">

@@ -48,7 +48,7 @@
                                 <tbody>
                                     @foreach ($feedList as $item)
                                     <tr>
-                                        <td>{{$item['date']}}</td>
+                                        <td>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
                                         <td>{{$item->farm->name}}</td>
                                         <td>{{$item['amount']}}</td>
                                         <td>{{$item['brand']}}</td>
