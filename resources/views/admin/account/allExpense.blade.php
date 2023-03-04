@@ -72,7 +72,9 @@
                                 <tbody>
                                     @foreach ($expenseList as $item)
                                     <tr>
-                                        <td>{{$item['date']}}</td>
+                                        <td>{{\Carbon\Carbon::parse($item['date'])->format('d/m/Y')}}</td>
+
+
                                         <td>{{$item->farm->name}}</td>
                                         <td>{{$item->house->name}}</td>
                                         <td>{{$item->flock->name}}</td>
