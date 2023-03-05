@@ -73,15 +73,12 @@
                                         <td>{{$item['price']}}</td>
 
                                         <td>
-                                            <div class="dropdown custom-dropdown float-right cursor">
-                                                <div data-toggle="dropdown">
-                                                    <i class="fa fa-ellipsis-v display-7"></i>
-                                                </div>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item text-danger" href="#">Edit</a>
-                                                    <a class="dropdown-item text-success" href="#">View</a>
-                                                </div>
-                                            </div>
+                                            <span class="float-right">
+                                                <a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a>
+                                                {{-- <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
+                                                        </a> --}}
+                                            </span>
+
                                         </td>
                                     </tr>
 
@@ -111,6 +108,64 @@
     <!--**********************************
         Main wrapper end
     ***********************************-->
+    <!-------edit-Modal------>
+    <div class="modal fade bs-example-modal-center" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered " style="min-width:60%;">
+            <div class="modal-content">
+                <div class="modal-body p-5">
+                    <form action="edit-farm-info" method="POST">
+                        @csrf
+                        <div class="row">
+
+                            <input type="hidden" name="farm_id" id="farmEditId">
+
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Farm Name</label>
+                                    <input id="farm_name" type="text" name="farm_name" class="form-control" />
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="">
+                                    <label class="" for="groosSalary">Contact Number</label>
+                                    <div class="input-group">
+                                        <div class="input-group-text"><i class="icon-phone"></i></div>
+                                        <input id="contact_number" type="number" name="phone" class="form-control" id="groosSalary" placeholder="Contact number" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Address
+                                        <i class="las la-question-circle tooltip-icon mx-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Remarks" rel="tooltip"></i>
+                                    </label>
+                                    <input id="address" class="form-control" name="address" rows="1" placeholder="Enter Address" />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="d-flex justify-content-center">
+                                <div>
+                                    <button type="submit" class="btn btn-primary px-5 mx-1">
+                                        Update Farm Information
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!---- End of edit modal ---->
+
 
     <!--**********************************
         Scripts
@@ -123,6 +178,28 @@
     <script src="./plugins/tables/js/jquery.dataTables.min.js"></script>
     <script src="./plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
     <script src="./plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
+
+    <!-- Edit Modal functions -->
+    <script>
+        function openModal(clicked_id) {
+            $("#largeModal").modal("show");
+            //document.getElementById("getId").value = clicked_id;
+            $.ajax({
+                url: '/edit-farm' + clicked_id
+                , type: "GET"
+                , success: function(response) {
+                    console.log(response);
+                    $('#farm_name').val(response.farm.name);
+                    $('#contact_number').val(response.farm.phone);
+                    $('#address').val(response.farm.address);
+                    $('#farmEditId').val(clicked_id);
+                }
+            });
+        }
+
+    </script>
+
+
 
 </body>
 </html>

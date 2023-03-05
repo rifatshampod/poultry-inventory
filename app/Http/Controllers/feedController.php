@@ -101,7 +101,6 @@ class feedController extends Controller
        
         $feed = $req->input('feed_id');
         
-
         //Retrieve previous data
 
         $data = Feed::find($feed);
