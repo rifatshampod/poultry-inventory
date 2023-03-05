@@ -113,51 +113,58 @@
         <div class="modal-dialog modal-dialog-centered " style="min-width:60%;">
             <div class="modal-content">
                 <div class="modal-body p-5">
-                    <form action="edit-farm-info" method="POST">
+                    <form action="edit-medicine-distribution-info" method="POST">
                         @csrf
+
+                        <input type="hidden" class="form-control input-default" id="edit_distribution_id" name="distribution_id" />
+
                         <div class="row">
-
-                            <input type="hidden" name="farm_id" id="farmEditId">
-
-                            <div class="col-lg-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Farm Name</label>
-                                    <input id="farm_name" type="text" name="farm_name" class="form-control" />
-
-                                </div>
+                            <div class="form-group col-md-4">
+                                <label>Farm Name</label>
+                                <select class="form-control input-default" name="farm_id" id="edit_farm_id" required>
+                                    <option value="" selected disabled hidden>Select Farm</option>
+                                    @foreach ($farmList as $item)
+                                    <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>House Name</label>
+                                <select class="form-control input-default" name="medicine_id" id="edit_medicine_id" required>
+                                    <option value="" selected disabled hidden>Select Medicine</option>
+                                    @foreach ($medicineTypeList as $item)
+                                    <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
-                            <div class="col-lg-6">
-                                <div class="">
-                                    <label class="" for="groosSalary">Contact Number</label>
-                                    <div class="input-group">
-                                        <div class="input-group-text"><i class="icon-phone"></i></div>
-                                        <input id="contact_number" type="number" name="phone" class="form-control" id="groosSalary" placeholder="Contact number" required />
-                                    </div>
-                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Date</label>
+                                <input type="date" class="form-control input-default" id="edit_date" name="date" placeholder="Input Start Date" />
                             </div>
 
-                            <div class="col-lg-12">
-                                <div class="mb-3">
-                                    <label class="form-label">Address
-                                        <i class="las la-question-circle tooltip-icon mx-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Remarks" rel="tooltip"></i>
-                                    </label>
-                                    <input id="address" class="form-control" name="address" rows="1" placeholder="Enter Address" />
-                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Amount</label>
+                                <input type="number" class="form-control input-default" name="amount" id="edit_amount" placeholder="Input amount" />
+                                <input type="hidden" class="form-control input-default" name="previous_amount" id="edit_previous_amount" placeholder="Input amount" />
+
                             </div>
 
-                        </div>
+                            <div class="form-group col-md-6">
+                                <label>Price </label>
+                                <input type="number" class="form-control input-default" name="price" id="edit_price" placeholder="Type Reference" />
+                            </div>
 
-                        <div class="col-lg-12">
-                            <div class="d-flex justify-content-center">
+                            <div class="col-md-12 mt-4 text-center">
                                 <div>
-                                    <button type="submit" class="btn btn-primary px-5 mx-1">
-                                        Update Farm Information
+                                    <button type="submit" class="btn mb-1 btn-primary w-50">
+                                        Submit
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </form>
+
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -165,6 +172,7 @@
         <!-- /.modal-dialog -->
     </div>
     <!---- End of edit modal ---->
+
 
 
     <!--**********************************
@@ -185,14 +193,17 @@
             $("#largeModal").modal("show");
             //document.getElementById("getId").value = clicked_id;
             $.ajax({
-                url: '/edit-farm' + clicked_id
+                url: '/edit-medicinedistribution' + clicked_id
                 , type: "GET"
                 , success: function(response) {
                     console.log(response);
-                    $('#farm_name').val(response.farm.name);
-                    $('#contact_number').val(response.farm.phone);
-                    $('#address').val(response.farm.address);
-                    $('#farmEditId').val(clicked_id);
+                    $('#edit_farm_id').val(response.data.farm_id);
+                    $('#edit_medicine_id').val(response.data.medicine_id);
+                    $('#edit_date').val(response.data.date);
+                    $('#edit_amount').val(response.data.amount);
+                    $('#edit_previous_amount').val(response.data.amount);
+                    $('#edit_price').val(response.data.price);
+                    $('#edit_distribution_id').val(clicked_id);
                 }
             });
         }
