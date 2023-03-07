@@ -76,16 +76,16 @@
                                             <tr>
                                                 <td>{{ \Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
                                                 <td>{{$item->chicken->house->name}}</td>
-                                                <td>{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item->chicken->date))+1}}</td>
+                                                <td>{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item->chicken->date))}}</td>
                                                 @foreach ($standardList as $std)
-                                                @if($std['id']==(Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item->chicken->date))+1))
+                                                @if($std['id']==(Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item->chicken->date))))
                                                 <td>{{$std['weight']}}</td>
                                                 @endif
                                                 @endforeach
 
                                                 <td>{{$item['weight_avg']*1000}}</td>
                                                 @foreach ($standardList as $std)
-                                                @if($std['id']==(Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item->chicken->date))+1))
+                                                @if($std['id']==(Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item->chicken->date))))
                                                 <td>{{$std['daily_gain']}}</td>
                                                 @endif
                                                 @endforeach

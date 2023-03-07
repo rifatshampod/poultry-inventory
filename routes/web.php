@@ -162,7 +162,8 @@ Route::get('weight-report',[ReportController::class,'getWeight']);
 Route::post('flock-weight-report',[ReportController::class,'fetchWeightByFlock']);
 Route::post('farm-weight-report',[ReportController::class,'fetchWeightByFarm']);
 Route::post('date-weight-report',[ReportController::class,'fetchWeightByDate']);
-Route::post('house-mortality-report',[ReportController::class,'fetchMortalityByHouse']);
+Route::post('house-weight-report',[ReportController::class,'fetchWeightByHouse']);
+
 //Feed reports
 Route::get('feed-report',[ReportController::class,'getFeed']);
 Route::post('flock-feed-report',[ReportController::class,'fetchFeedByFlock']);
