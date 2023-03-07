@@ -155,25 +155,31 @@ Route::get('rejection-report',[ReportController::class,'getRejection']);
 Route::post('flock-rejection-report',[ReportController::class,'fetchRejectionByFlock']);
 Route::post('farm-rejection-report',[ReportController::class,'fetchRejectionByFarm']);
 Route::post('date-rejection-report',[ReportController::class,'fetchRejectionByDate']);
+Route::post('house-rejection-report',[ReportController::class,'fetchRejectionByHouse']);
+
 //weight reports 
 Route::get('weight-report',[ReportController::class,'getWeight']);
 Route::post('flock-weight-report',[ReportController::class,'fetchWeightByFlock']);
 Route::post('farm-weight-report',[ReportController::class,'fetchWeightByFarm']);
 Route::post('date-weight-report',[ReportController::class,'fetchWeightByDate']);
+Route::post('house-mortality-report',[ReportController::class,'fetchMortalityByHouse']);
 //Feed reports
 Route::get('feed-report',[ReportController::class,'getFeed']);
 Route::post('flock-feed-report',[ReportController::class,'fetchFeedByFlock']);
 Route::post('farm-feed-report',[ReportController::class,'fetchFeedByFarm']);
 Route::post('date-feed-report',[ReportController::class,'fetchFeedByDate']);
+Route::post('house-mortality-report',[ReportController::class,'fetchMortalityByHouse']);
 //Sales Reports
 Route::get('sales-report',[ReportController::class,'getSales']);
 Route::post('flock-sales-report',[ReportController::class,'fetchSalesByFlock']);
 Route::post('farm-sales-report',[ReportController::class,'fetchSalesByFarm']);
 Route::post('date-sales-report',[ReportController::class,'fetchSalesByDate']);
+Route::post('house-mortality-report',[ReportController::class,'fetchMortalityByHouse']);
 //Expense Reports
 Route::get('expense-report',[ReportController::class,'getExpense']);
 Route::post('farm-expense-report',[ReportController::class,'fetchExpenseByFarm']);
 Route::post('date-expense-report',[ReportController::class,'fetchExpenseByDate']);
+Route::post('house-mortality-report',[ReportController::class,'fetchMortalityByHouse']);
 
 //Report routes ends -----------------------------------------------------------
 

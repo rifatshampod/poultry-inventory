@@ -432,8 +432,9 @@ class ReportController extends Controller
 
         $flock = Flock::all();
         $farm = Farm::all();
+        $houseList = House::all();
 
-        return view ('admin/report/introRejection')->with('flockList', $flock)->with('farmList', $farm);
+        return view ('admin/report/introRejection')->with('flockList', $flock)->with('farmList', $farm)->with('houseList', $houseList);
     }
 
     function fetchRejectionByFlock(Request $req){
@@ -692,6 +693,28 @@ class ReportController extends Controller
         ->with('house5', $house5)->with('daily5', $daily5)->with('sum5', $sum5)
         ->with('house6', $house6)->with('daily6', $daily6)->with('sum6', $sum6);
     }
+    function fetchREjectionByHouse(Request $req){
+        $farmId = $req->input('farm_id');
+        $houseId = $req->input('house_id');
+        $flock = "";
+        $farm = Farm::where('id',$farmId)->get()->first();
+
+        //House 
+        $chicken = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseId)
+                    ->where('status',1)
+                    ->get()->first();
+
+            $daily1 = Daily_chicken::where('chicken_id', $chicken['id'])
+                    ->get();
+        
+        $sum1 = Daily_chicken::where('chicken_id', $chicken['id'])
+                    ->sum('rejection');
+
+        
+        return view ('admin/report/rejectionReportHouse')->with('flock', $flock)->with('farm', $farm)
+        ->with('house1', $chicken)->with('daily1', $daily1)->with('sum1', $sum1);
+    }
     function fetchRejectionByDate(Request $req){
          $farmId = $req->input('farm_id');
 
@@ -819,8 +842,9 @@ class ReportController extends Controller
 
         $flock = Flock::all();
         $farm = Farm::all();
+        $houseList = House::all();
 
-        return view ('admin/report/introWeight')->with('flockList', $flock)->with('farmList', $farm);
+        return view ('admin/report/introWeight')->with('flockList', $flock)->with('farmList', $farm)->with('houseList', $houseList);
     }
 
     function fetchWeightByFlock(Request $req){
@@ -861,6 +885,30 @@ class ReportController extends Controller
         return view ('admin/report/weightReport')->with('flock', $flock)->with('farm', $farm)
         ->with('weightList', $weightList)->with('standardList', $standard);
     }
+    function fetchWeightByHouse(Request $req){
+        $farmId = $req->input('farm_id');
+        $houseId = $req->input('house_id');
+        $flock = "";
+        $farm = Farm::where('id',$farmId)->get()->first();
+
+        
+
+        //House 
+        $chicken = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseId)
+                    ->where('status',1)
+                    ->get()->first();
+
+            $daily1 = Daily_chicken::where('chicken_id', $chicken['id'])
+                    ->get();
+        
+        $sum1 = Daily_chicken::where('chicken_id', $chicken['id'])
+                    ->sum('mortality');
+
+        
+        return view ('admin/report/mortalityReportHouse')->with('flock', $flock)->with('farm', $farm)
+        ->with('house1', $chicken)->with('daily1', $daily1)->with('sum1', $sum1);
+    }
     function fetchWeightByDate(Request $req){
         $farmId = $req->input('farm_id');
         $start = $req->input('start_date');
@@ -888,8 +936,9 @@ class ReportController extends Controller
 
         $flock = Flock::all();
         $farm = Farm::all();
+        $houseList = House::all();
 
-        return view ('admin/report/introFeed')->with('flockList', $flock)->with('farmList', $farm);
+        return view ('admin/report/introFeed')->with('flockList', $flock)->with('farmList', $farm)->with('houseList', $houseList);
     }
     function fetchFeedByFlock(Request $req){
 
@@ -929,6 +978,30 @@ class ReportController extends Controller
         return view ('admin/report/fcrReport')->with('flock', $flock)->with('farm', $farm)
         ->with('feedList', $feedList)->with('standardList', $standard);
     }
+    function fetchFeedByHouse(Request $req){
+        $farmId = $req->input('farm_id');
+        $houseId = $req->input('house_id');
+        $flock = "";
+        $farm = Farm::where('id',$farmId)->get()->first();
+
+        
+
+        //House 
+        $chicken = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseId)
+                    ->where('status',1)
+                    ->get()->first();
+
+            $daily1 = Daily_chicken::where('chicken_id', $chicken['id'])
+                    ->get();
+        
+        $sum1 = Daily_chicken::where('chicken_id', $chicken['id'])
+                    ->sum('mortality');
+
+        
+        return view ('admin/report/mortalityReportHouse')->with('flock', $flock)->with('farm', $farm)
+        ->with('house1', $chicken)->with('daily1', $daily1)->with('sum1', $sum1);
+    }
     function fetchFeedByDate(Request $req){
         $farmId = $req->input('farm_id');
         $start = $req->input('start_date');
@@ -956,8 +1029,9 @@ class ReportController extends Controller
 
         $flock = Flock::all();
         $farm = Farm::all();
+        $houseList = House::all();
 
-        return view ('admin/report/introSales')->with('flockList', $flock)->with('farmList', $farm);
+        return view ('admin/report/introSales')->with('flockList', $flock)->with('farmList', $farm)->with('houseList', $houseList);
     }
     function fetchSalesByFlock(Request $req){
 
@@ -1003,6 +1077,30 @@ class ReportController extends Controller
         return view ('admin/report/salesReport')->with('flock', $flock)->with('farm', $farm)
         ->with('saleList', $saleList)->with('standardList', $standard);
     }
+    function fetchSalesByHouse(Request $req){
+        $farmId = $req->input('farm_id');
+        $houseId = $req->input('house_id');
+        $flock = "";
+        $farm = Farm::where('id',$farmId)->get()->first();
+
+        
+
+        //House 
+        $chicken = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseId)
+                    ->where('status',1)
+                    ->get()->first();
+
+            $daily1 = Daily_chicken::where('chicken_id', $chicken['id'])
+                    ->get();
+        
+        $sum1 = Daily_chicken::where('chicken_id', $chicken['id'])
+                    ->sum('mortality');
+
+        
+        return view ('admin/report/mortalityReportHouse')->with('flock', $flock)->with('farm', $farm)
+        ->with('house1', $chicken)->with('daily1', $daily1)->with('sum1', $sum1);
+    }
     function fetchSalesByDate(Request $req){
         $farmId = $req->input('farm_id');
         $start = $req->input('start_date');
@@ -1036,8 +1134,9 @@ class ReportController extends Controller
 
         $flock = Flock::all();
         $farm = Farm::all();
+        $houseList = House::all();
 
-        return view ('admin/report/introExpense')->with('flockList', $flock)->with('farmList', $farm);
+        return view ('admin/report/introExpense')->with('flockList', $flock)->with('farmList', $farm)->with('houseList', $houseList);
     }
     function fetchExpenseByFarm(Request $req){
         
@@ -1050,6 +1149,30 @@ class ReportController extends Controller
 
         return view ('admin/report/expenseReport')->with('farm', $farm)
         ->with('expenseList', $expenseList)->with('duration', $duration);
+    }
+    function fetchExpenseByHouse(Request $req){
+        $farmId = $req->input('farm_id');
+        $houseId = $req->input('house_id');
+        $flock = "";
+        $farm = Farm::where('id',$farmId)->get()->first();
+
+        
+
+        //House 
+        $chicken = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseId)
+                    ->where('status',1)
+                    ->get()->first();
+
+            $daily1 = Daily_chicken::where('chicken_id', $chicken['id'])
+                    ->get();
+        
+        $sum1 = Daily_chicken::where('chicken_id', $chicken['id'])
+                    ->sum('mortality');
+
+        
+        return view ('admin/report/mortalityReportHouse')->with('flock', $flock)->with('farm', $farm)
+        ->with('house1', $chicken)->with('daily1', $daily1)->with('sum1', $sum1);
     }
     function fetchExpenseByDate(Request $req){
         $farmId = $req->input('farm_id');

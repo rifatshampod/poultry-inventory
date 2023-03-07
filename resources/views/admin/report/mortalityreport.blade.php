@@ -74,7 +74,7 @@
                                             @foreach ($daily1 as $item)
                                             <tr>
                                                 <td>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
-                                                <td class="text-center">{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($house1->date))+1}}</td>
+                                                <td class="text-center">{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($house1->date))}}</td>
                                                 <td class="text-right">{{$item['mortality']}}</td>
 
                                             </tr>

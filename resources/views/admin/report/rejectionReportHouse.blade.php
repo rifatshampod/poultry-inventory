@@ -46,7 +46,7 @@
                     <div class="col-lg-9">
                         <div class="card p-3">
                             <div class="my-2 text-center">
-                                <h3>Mortality Report</h3>
+                                <h3>Rejection Report</h3>
                             </div>
                             <div class="mb-2 text-center">
                                 @if($flock)
@@ -69,14 +69,14 @@
                                             <tr class="bg-light">
                                                 <td>Date</td>
                                                 <td class="text-center">Age (Day)</td>
-                                                <td class="text-right">Dead</td>
+                                                <td class="text-right">Rejected</td>
 
                                             </tr>
                                             @foreach ($daily1 as $item)
                                             <tr>
                                                 <td>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
                                                 <td class="text-center">{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($house1->date))}}</td>
-                                                <td class="text-right">{{$item['mortality']}}</td>
+                                                <td class="text-right">{{$item['rejection']}}</td>
 
                                             </tr>
 
