@@ -129,7 +129,7 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
-                                <label>House Name</label>
+                                <label>Medicine Name</label>
                                 <select class="form-control input-default" name="medicine_id" id="edit_medicine_id" required>
                                     <option value="" selected disabled hidden>Select Medicine</option>
                                     @foreach ($medicineTypeList as $item)

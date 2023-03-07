@@ -221,4 +221,40 @@ class accountController extends Controller
         $req->session()->flash('status','New Petty Cash added successfully');
         return redirect()->back();
     }
+
+    //edit petty cash
+    //edit Expense
+    function getEditPettyCash($id){
+        $data=Pettycash::find($id);
+        return response()->json([
+            'status'=>200,
+            'data'=>$data,
+        ]);
+    }
+
+    function updatePettyCash(Request $req){
+
+       
+        $pettyCash = $req->input('pettycash_id');
+        
+        //Retrieve previous data
+
+        $data = Pettycash::find($pettyCash);
+        $data->date = $req->input('date');
+        $data->farm_id=$req->input('farm_id');
+        $data->amount=$req->input('amount');
+        $data->update();
+
+        //Change total
+
+        $difference = $req->input('amount')-$req->input('previous_amount');
+        $farm = $req->input('farm_id');
+
+        $total = Total_cash::where('farm_id', $farm)->first();
+        $total->amount += $difference;
+        $total->save();
+
+        $req->session()->flash('status', 'Petty Cash data updated successfully.');
+        return redirect()->back();
+    }
 }

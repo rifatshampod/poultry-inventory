@@ -82,6 +82,8 @@ Route::post('edit-expense-info', [accountController::class,'updateExpense']);
 
 Route::get('petty-cash', [accountController::class,'getPettyCash']);
 Route::post('add-petty-cash', [accountController::class,'addPettyCash']);
+Route::get('edit-pettycash{id}', [accountController::class,'getEditPettyCash']);
+Route::post('edit-pettycash-info', [accountController::class,'updatePettyCash']);
 
 //Sell
 Route::get('add-sale', [saleController::class,'getAddSale']);
