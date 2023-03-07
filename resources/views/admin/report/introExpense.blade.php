@@ -75,7 +75,7 @@
                                     <h3>Search By House</h3>
                                     <span>Get report of a specific house of current flock. Only <b>current flock</b> datas are available here</span>
                                 </div>
-                                <form action="house-mortality-report" method="POST">
+                                <form action="house-expense-report" method="POST">
                                     @csrf
 
                                     <div class="row justify-content-center">

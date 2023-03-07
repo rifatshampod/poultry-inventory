@@ -176,12 +176,13 @@ Route::get('sales-report',[ReportController::class,'getSales']);
 Route::post('flock-sales-report',[ReportController::class,'fetchSalesByFlock']);
 Route::post('farm-sales-report',[ReportController::class,'fetchSalesByFarm']);
 Route::post('date-sales-report',[ReportController::class,'fetchSalesByDate']);
-Route::post('house-mortality-report',[ReportController::class,'fetchMortalityByHouse']);
+Route::post('house-sales-report',[ReportController::class,'fetchSalesByHouse']);
+
 //Expense Reports
 Route::get('expense-report',[ReportController::class,'getExpense']);
 Route::post('farm-expense-report',[ReportController::class,'fetchExpenseByFarm']);
 Route::post('date-expense-report',[ReportController::class,'fetchExpenseByDate']);
-Route::post('house-mortality-report',[ReportController::class,'fetchMortalityByHouse']);
+Route::post('house-expense-report',[ReportController::class,'fetchExpenseByHouse']);
 
 //Report routes ends -----------------------------------------------------------
 

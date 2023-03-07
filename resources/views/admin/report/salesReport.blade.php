@@ -89,14 +89,14 @@
 
                                                 <td>{{$item['customer']}}</td>
 
-                                                <td>{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item['age_date']))+1}}</td>
+                                                <td>{{Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item['age_date']))}}</td>
 
                                                 <td>{{$item['total_birds']}}</td>
 
                                                 <td>{{$item['total_weight']}}</td>
 
                                                 @foreach ($standardList as $std)
-                                                @if($std['id']==(Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item['age_date']))+1))
+                                                @if($std['id']==(Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item['age_date']))))
                                                 <td>{{$std['weight']}}</td>
                                                 @endif
                                                 @endforeach
