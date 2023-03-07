@@ -872,7 +872,7 @@ class ReportController extends Controller
 
         $standard = Standard::all();
 
-        $flock = Flock::where('status', 1)
+        $flock = Flock::where('status', 1)->where('farm_id', $farmId)
         ->get()->first();
 
         $farm = Farm::where('id',$farmId)->get()->first();
@@ -891,7 +891,7 @@ class ReportController extends Controller
 
         $standard = Standard::all();
 
-        $flock = Flock::where('status', 1)
+        $flock = Flock::where('status', 1)->where('farm_id', $farmId)
         ->get()->first();
 
         $farm = Farm::where('id',$farmId)->get()->first();
@@ -961,7 +961,7 @@ class ReportController extends Controller
 
         $standard = Standard::all();
 
-        $flock = Flock::where('status', 1)
+        $flock = Flock::where('status', 1)->where('farm_id', $farmId)
         ->get()->first();
 
         $farm = Farm::where('id',$farmId)->get()->first();
@@ -977,26 +977,22 @@ class ReportController extends Controller
     function fetchFeedByHouse(Request $req){
         $farmId = $req->input('farm_id');
         $houseId = $req->input('house_id');
-        $flock = "";
+
+        $standard = Standard::all();
+
+        $flock = Flock::where('status', 1)->where('farm_id', $farmId)
+        ->get()->first();
+
         $farm = Farm::where('id',$farmId)->get()->first();
 
-        
+        $feedList = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
+                    ->where('chickens.farm_id', $farmId)
+                    ->where('chickens.house_id', $houseId)
+                    ->where('chickens.status', 1)
+                    ->get('daily_chickens.*', 'chickens.date as age_date');
 
-        //House 
-        $chicken = Chicken::where('farm_id', $farmId)
-                    ->where('house_id', $houseId)
-                    ->where('status',1)
-                    ->get()->first();
-
-            $daily1 = Daily_chicken::where('chicken_id', $chicken['id'])
-                    ->get();
-        
-        $sum1 = Daily_chicken::where('chicken_id', $chicken['id'])
-                    ->sum('mortality');
-
-        
-        return view ('admin/report/mortalityReportHouse')->with('flock', $flock)->with('farm', $farm)
-        ->with('house1', $chicken)->with('daily1', $daily1)->with('sum1', $sum1);
+        return view ('admin/report/fcrReport')->with('flock', $flock)->with('farm', $farm)
+        ->with('feedList', $feedList)->with('standardList', $standard);
     }
     function fetchFeedByDate(Request $req){
         $farmId = $req->input('farm_id');
@@ -1060,7 +1056,7 @@ class ReportController extends Controller
 
         $standard = Standard::all();
 
-        $flock = Flock::where('status', 1)
+        $flock = Flock::where('status', 1)->where('farm_id', $farmId)
         ->get()->first();
         $farm = Farm::where('id',$farmId)->get()->first();
 

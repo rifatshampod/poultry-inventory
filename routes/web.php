@@ -169,7 +169,8 @@ Route::get('feed-report',[ReportController::class,'getFeed']);
 Route::post('flock-feed-report',[ReportController::class,'fetchFeedByFlock']);
 Route::post('farm-feed-report',[ReportController::class,'fetchFeedByFarm']);
 Route::post('date-feed-report',[ReportController::class,'fetchFeedByDate']);
-Route::post('house-mortality-report',[ReportController::class,'fetchMortalityByHouse']);
+Route::post('house-feed-report',[ReportController::class,'fetchFeedByHouse']);
+
 //Sales Reports
 Route::get('sales-report',[ReportController::class,'getSales']);
 Route::post('flock-sales-report',[ReportController::class,'fetchSalesByFlock']);
