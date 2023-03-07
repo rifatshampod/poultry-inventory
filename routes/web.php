@@ -140,8 +140,6 @@ Route::get('standards',[settingsController::class,'getStandard']);
 Route::post('add-standard',[settingsController::class,'addStandard']);
 Route::get('edit-standard{id}', [settingsController::class,'editStandardData']);
 Route::post('edit-standard-info', [settingsController::class,'updateStandardData']);
-
-
 //Settings ---------------------------------------------------------------------
 
 //Report routes ----------------------------------------------------------------
@@ -150,6 +148,8 @@ Route::get('mortality-report',[ReportController::class,'getMortality']);
 Route::post('flock-mortality-report',[ReportController::class,'fetchMortalityByFlock']);
 Route::post('farm-mortality-report',[ReportController::class,'fetchMortalityByFarm']);
 Route::post('date-mortality-report',[ReportController::class,'fetchMortalityByDate']);
+Route::post('house-mortality-report',[ReportController::class,'fetchMortalityByHouse']);
+
 //Rejection reports
 Route::get('rejection-report',[ReportController::class,'getRejection']);
 Route::post('flock-rejection-report',[ReportController::class,'fetchRejectionByFlock']);

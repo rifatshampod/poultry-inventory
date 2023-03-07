@@ -281,6 +281,30 @@ class ReportController extends Controller
         ->with('house5', $house5)->with('daily5', $daily5)->with('sum5', $sum5)
         ->with('house6', $house6)->with('daily6', $daily6)->with('sum6', $sum6);
     }
+    function fetchMortalityByHouse(Request $req){
+        $farmId = $req->input('farm_id');
+        $houseId = $req->input('house_id');
+        $flock = "";
+        $farm = Farm::where('id',$farmId)->get()->first();
+
+        
+
+        //House 
+        $chicken = Chicken::where('farm_id', $farmId)
+                    ->where('house_id', $houseId)
+                    ->where('status',1)
+                    ->get()->first();
+
+            $daily1 = Daily_chicken::where('chicken_id', $chicken['id'])
+                    ->get();
+        
+        $sum1 = Daily_chicken::where('chicken_id', $chicken['id'])
+                    ->sum('mortality');
+
+        
+        return view ('admin/report/mortalityReportHouse')->with('flock', $flock)->with('farm', $farm)
+        ->with('house1', $chicken)->with('daily1', $daily1)->with('sum1', $sum1);
+    }
     function fetchMortalityByDate(Request $req){
          $farmId = $req->input('farm_id');
 

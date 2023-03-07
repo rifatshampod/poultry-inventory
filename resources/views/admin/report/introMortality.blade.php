@@ -115,7 +115,7 @@
                             <div class="card-body">
                                 <div class="mb-4 text-center">
                                     <h3>Search By House</h3>
-                                    <span>Get report of a specific house of current flock. Only current flock are available here</span>
+                                    <span>Get report of a specific house of current flock. Only <b>current flock</b> datas are available here</span>
                                 </div>
                                 <form action="house-mortality-report" method="POST">
                                     @csrf
@@ -260,8 +260,7 @@
                     , success: function(result) {
                         $('#house-dropdown').html('<option value="">-- Select House --</option>');
                         $.each(result.houses, function(key, value) {
-                            $("#house-dropdown").append('<option value="' + value
-                                .id + '">' + value.name + '</option>');
+                            $("#house-dropdown").append('<option value="' + value.id + '">' + value.name + '</option>');
                         });
                         $('#flock-dropdown').html('<option value="">-- Select Flock --</option>');
                         $.each(result.flocks, function(key, value) {
