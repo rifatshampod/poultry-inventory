@@ -30,7 +30,7 @@
             </div>
             <div class="container-fluid mt-3">
                 <div class="row">
-                    <div class="col-lg-4">
+                    {{-- <div class="col-lg-4">
                         <div class="card">
                             <div class="card-body">
                                 <div class="mb-4">
@@ -72,7 +72,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-lg-8">
                         <div class="card">
                             <div class="card-body">
@@ -94,7 +94,7 @@
                                         <tbody>
                                             @foreach ($standardList as $item)
                                             <tr>
-                                                <td>{{$item['id']}}</td>
+                                                <td>{{$item['age']}}</td>
                                                 <td>{{$item['weight']}}</td>
                                                 <td>{{$item['daily_gain']}}</td>
                                                 <td>{{$item['fcr']}}</td>

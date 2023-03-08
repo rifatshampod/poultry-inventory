@@ -96,7 +96,7 @@
                                                 <td>{{$item['total_weight']}}</td>
 
                                                 @foreach ($standardList as $std)
-                                                @if($std['id']==(Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item['age_date']))))
+                                                @if($std['age']==(Carbon\Carbon::parse($item['date'])->diffInDays(Carbon\Carbon::parse($item['age_date']))))
                                                 <td>{{$std['weight']}}</td>
                                                 @endif
                                                 @endforeach

@@ -315,6 +315,8 @@ class chickenController extends Controller
         'weight4' => 'required',
         ]);
 
+        $fcr = 0;
+
         $chicken = $req->input('chicken_id');
 
         $weight = ($req->input('weight1')+$req->input('weight2')+$req->input('weight3')+$req->input('weight4'))/48;
@@ -324,6 +326,7 @@ class chickenController extends Controller
         ->select('chickens.*',
         DB::raw('SUM(daily_chickens.mortality) AS sum_of_mortality'),
         DB::raw('MAX(daily_chickens.weight_avg) AS avg_weight'), 
+        DB::raw('MAX(daily_chickens.cfc) AS last_cfc'), 
         DB::raw('AVG(daily_chickens.fcr) AS avg_fcr'),
         DB::raw('SUM(daily_chickens.rejection) AS sum_of_rejection')
         )
@@ -334,14 +337,18 @@ class chickenController extends Controller
         if($chickenList){
             $weight_gain = $weight - $chickenList['avg_weight'];
             $total_chicken = $chickenList['sum_of_doc']-$chickenList['sum_of_mortality']-$chickenList['sum_of_rejection'];
-            $fcr = ($req->input('feed_consumption')/$total_chicken)/$weight_gain;
+            //$fcr += ($req->input('feed_consumption')/$total_chicken)/$weight_gain;
             $avg_gain = $weight_gain / $total_chicken ; 
             $avg_feed_consumption = $req->input('feed_consumption')/$total_chicken;
+            $cfc = $chickenList['last_cfc'] + $avg_feed_consumption ; 
+            $fcr = $cfc/$weight;
+            $fc = ($req->input('feed_consumption')/$total_chicken)/$weight_gain;
         }
         else{
             $weight_gain = 0;
             $total_chicken = 0;
             $fcr = 0;
+            $fc = 0;
             $avg_gain = 0;
             $avg_feed_consumption = $req->input('feed_consumption')/$total_chicken;
         }
@@ -359,19 +366,21 @@ class chickenController extends Controller
             $data->chicken_id=$req->input('chicken_id');
             $data->feed_consumption=$req->input('feed_consumption');
             $data->avg_feed_consumption=$avg_feed_consumption;
+            $data->cfc= $cfc;
             $data->fcr= $fcr;
+            $data->fc= $fc;
             $data->weight1=$req->input('weight1');
             $data->weight2=$req->input('weight2');
             $data->weight3=$req->input('weight3');
             $data->weight4=$req->input('weight4');
             $data->weight_avg= $weight;
-            $data->weight_gain= $avg_gain;
+            $data->weight_gain= $weight_gain;
             $data->mortality=$req->input('mortality');
             $data->rejection=$req->input('rejection');
             $data->status = 1;
             $data->save();
 
-            $req->session()->flash('status','New Daily data added successfully');
+            $req->session()->flash('status','New Daily data added successfully. FCR value= '.$fcr.' and cfc value = '.$cfc.' and previous weight gain = '.$weight_gain);
 
         }
         else{
