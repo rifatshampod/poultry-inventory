@@ -160,6 +160,7 @@ class chickenController extends Controller
         $chickenList1 = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
         ->select('chickens.*',
         DB::raw('SUM(daily_chickens.mortality) AS sum_of_mortality'),
+        DB::raw('AVG(daily_chickens.mortality) AS avg_of_mortality'),
         DB::raw('MAX(daily_chickens.weight_avg) AS avg_weight'), 
         DB::raw('AVG(daily_chickens.fcr) AS avg_fcr'),
         DB::raw('SUM(daily_chickens.rejection) AS sum_of_rejection')
@@ -172,6 +173,7 @@ class chickenController extends Controller
         $chickenList2 = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
         ->select('chickens.*',
         DB::raw('SUM(daily_chickens.mortality) AS sum_of_mortality'),
+        DB::raw('AVG(daily_chickens.mortality) AS avg_of_mortality'),
         DB::raw('AVG(daily_chickens.weight_avg) AS avg_weight'), 
         DB::raw('AVG(daily_chickens.fcr) AS avg_fcr'),
         DB::raw('SUM(daily_chickens.rejection) AS sum_of_rejection')
@@ -184,6 +186,7 @@ class chickenController extends Controller
         $chickenList3 = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
         ->select('chickens.*',
         DB::raw('SUM(daily_chickens.mortality) AS sum_of_mortality'),
+        DB::raw('AVG(daily_chickens.mortality) AS avg_of_mortality'),
         DB::raw('AVG(daily_chickens.weight_avg) AS avg_weight'), 
         DB::raw('AVG(daily_chickens.fcr) AS avg_fcr'),
         DB::raw('SUM(daily_chickens.rejection) AS sum_of_rejection')
@@ -196,6 +199,7 @@ class chickenController extends Controller
         $chickenList4 = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
         ->select('chickens.*',
         DB::raw('SUM(daily_chickens.mortality) AS sum_of_mortality'),
+        DB::raw('AVG(daily_chickens.mortality) AS avg_of_mortality'),
         DB::raw('AVG(daily_chickens.weight_avg) AS avg_weight'), 
         DB::raw('AVG(daily_chickens.fcr) AS avg_fcr'),
         DB::raw('SUM(daily_chickens.rejection) AS sum_of_rejection')

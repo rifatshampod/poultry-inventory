@@ -96,6 +96,7 @@
                                                 <th scope="col">Weight</th>
                                                 <th scope="col">FCR</th>
                                                 <th scope="col">Dead</th>
+                                                <th scope="col">Avg Dead</th>
                                                 <th scope="col">Rejected</th>
                                                 <th scope="col">Sold</th>
                                                 <th class="" scope="col">
@@ -114,6 +115,7 @@
                                                 <td>{{number_format($item['avg_weight'], 2, '.', ',')}} Kg</td>
                                                 <td>{{number_format($item['avg_fcr'], 2, '.', ',')}}</td>
                                                 <td>{{$item['sum_of_mortality']}}</td>
+                                                <td>{{round($item['avg_of_mortality'])}}</td>
                                                 <td>{{$item['sum_of_rejection']}}</td>
                                                 <td>{{$item['first_doc'] - $item['sum_of_doc']}}</td>
 
@@ -152,6 +154,8 @@
                                                 <th scope="col">Weight</th>
                                                 <th scope="col">FCR</th>
                                                 <th scope="col">Dead</th>
+                                                <th scope="col">Avg Dead</th>
+
                                                 <th scope="col">Rejected</th>
                                                 <th scope="col">Sold</th>
                                                 <th class="" scope="col">
@@ -171,6 +175,7 @@
                                                 <td>{{number_format($item['avg_weight'], 2, '.', ',')}} Kg</td>
                                                 <td>{{number_format($item['avg_fcr'], 2, '.', ',')}}</td>
                                                 <td>{{$item['sum_of_mortality']}}</td>
+                                                <td>{{round($item['avg_of_mortality'])}}</td>
                                                 <td>{{$item['sum_of_rejection']}}</td>
                                                 <td>{{$item['first_doc'] - $item['sum_of_doc']}}</td>
 
@@ -208,6 +213,8 @@
                                                 <th scope="col">Weight</th>
                                                 <th scope="col">FCR</th>
                                                 <th scope="col">Dead</th>
+                                                <th scope="col">Avg Dead</th>
+
                                                 <th scope="col">Rejected</th>
                                                 <th scope="col">Sold</th>
                                                 <th class="" scope="col">
@@ -229,6 +236,8 @@
                                                 <td>{{number_format($item['avg_weight'], 2, '.', ',')}} Kg</td>
                                                 <td>{{number_format($item['avg_fcr'], 2, '.', ',')}}</td>
                                                 <td>{{$item['sum_of_mortality']}}</td>
+                                                <td>{{round($item['avg_of_mortality'])}}</td>
+
                                                 <td>{{$item['sum_of_rejection']}}</td>
                                                 <td>{{$item['first_doc'] - $item['sum_of_doc']}}</td>
 
@@ -269,6 +278,8 @@
                                                 <th scope="col">Weight</th>
                                                 <th scope="col">FCR</th>
                                                 <th scope="col">Dead</th>
+                                                <th scope="col">Avg Dead</th>
+
                                                 <th scope="col">Rejected</th>
                                                 <th scope="col">Sold</th>
                                                 <th class="" scope="col">
@@ -287,6 +298,8 @@
                                                 <td>{{number_format($item['avg_weight'], 2, '.', ',')}} Kg</td>
                                                 <td>{{number_format($item['avg_fcr'], 2, '.', ',')}}</td>
                                                 <td>{{$item['sum_of_mortality']}}</td>
+                                                <td>{{round($item['avg_of_mortality'])}}</td>
+
                                                 <td>{{$item['sum_of_rejection']}}</td>
                                                 <td>{{$item['first_doc'] - $item['sum_of_doc']}}</td>
                                                 <td>
