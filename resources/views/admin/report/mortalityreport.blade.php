@@ -82,11 +82,14 @@
                                             @endforeach
 
                                             <tr class="bg-light">
-
                                                 <td colspan="2">Total</td>
                                                 <td class="text-right"><strong>{{$sum1}}</strong></td>
-
                                             </tr>
+                                            <tr class="bg-light">
+                                                <td colspan="2">Average Dead per day</td>
+                                                <td class="text-right"><strong>{{round($avg1)}}</strong></td>
+                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -125,6 +128,13 @@
                                                 <td class="text-right"><strong>{{$sum2}}</strong></td>
 
                                             </tr>
+                                            <tr class="bg-light">
+                                                <td colspan="2">Average Dead per day</td>
+                                                <td class="text-right"><strong>{{round($avg2)}}</strong></td>
+                                            </tr>
+
+
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -164,6 +174,11 @@
                                                 <td class="text-right"><strong>{{$sum3}}</strong></td>
 
                                             </tr>
+                                            <tr class="bg-light">
+                                                <td colspan="2">Average Dead per day</td>
+                                                <td class="text-right"><strong>{{round($avg3)}}</strong></td>
+                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -204,6 +219,11 @@
                                                 <td class="text-right"><strong>{{$sum4}}</strong></td>
 
                                             </tr>
+                                            <tr class="bg-light">
+                                                <td colspan="2">Average Dead per day</td>
+                                                <td class="text-right"><strong>{{round($avg4)}}</strong></td>
+                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -242,6 +262,11 @@
                                                 <td class="text-right"><strong>{{$sum5}}</strong></td>
 
                                             </tr>
+                                            <tr class="bg-light">
+                                                <td colspan="2">Average Dead per day</td>
+                                                <td class="text-right"><strong>{{round($avg5)}}</strong></td>
+                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -281,6 +306,11 @@
                                                 <td class="text-right"><strong>{{$sum6}}</strong></td>
 
                                             </tr>
+                                            <tr class="bg-light">
+                                                <td colspan="2">Average Dead per day</td>
+                                                <td class="text-right"><strong>{{round($avg6)}}</strong></td>
+                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>

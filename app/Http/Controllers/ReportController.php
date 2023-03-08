@@ -47,10 +47,13 @@ class ReportController extends Controller
         
         $sum1 = Daily_chicken::where('chicken_id', $house1['id'])
                     -> sum('mortality');
+                    $avg1 = Daily_chicken::where('chicken_id', $house1['id'])
+                    -> avg('mortality');
         }
         else{
             $daily1 = "";
             $sum1 = "";
+            $avg1 = "";
         }
         
 
@@ -67,10 +70,13 @@ class ReportController extends Controller
         
             $sum2 = Daily_chicken::where('chicken_id', $house2['id'])
                     -> sum('mortality');
+                    $avg2 = Daily_chicken::where('chicken_id', $house2['id'])
+                    -> avg('mortality');
         }
         else{
             $daily2 = "";
             $sum2 = "";
+            $avg2 = "";
         }
 
         //House 3
@@ -86,10 +92,14 @@ class ReportController extends Controller
         
             $sum3 = Daily_chicken::where('chicken_id', $house3['id'])
                     -> sum('mortality');
+            
+            $avg3 = Daily_chicken::where('chicken_id', $house3['id'])
+                    -> avg('mortality');
         }
         else{
             $daily3 = "";
             $sum3 = "";
+            $avg3 = "";
         }
 
         //House 4
@@ -105,10 +115,14 @@ class ReportController extends Controller
         
             $sum4 = Daily_chicken::where('chicken_id', $house4['id'])
                     -> sum('mortality');
+
+            $avg4 = Daily_chicken::where('chicken_id', $house4['id'])
+                    -> avg('mortality');
         }
         else{
             $daily4 = "";
             $sum4 = "";
+            $avg4 = "";
         }
 
         //House 5
@@ -124,10 +138,14 @@ class ReportController extends Controller
         
             $sum5 = Daily_chicken::where('chicken_id', $house5['id'])
                     -> sum('mortality');
+
+            $avg5 = Daily_chicken::where('chicken_id', $house5['id'])
+                    -> avg('mortality');
         }
         else{
             $daily5 = "";
             $sum5 = "";
+            $avg5 = "";
         }
 
         //House 6
@@ -143,19 +161,23 @@ class ReportController extends Controller
         
             $sum6 = Daily_chicken::where('chicken_id', $house6['id'])
                     -> sum('mortality');
+
+            $avg6 = Daily_chicken::where('chicken_id', $house6['id'])
+                    -> avg('mortality');
         }
         else{
             $daily6 = ""; 
             $sum6 = "";
+            $avg6 = "";
         }
 
         return view ('admin/report/mortalityReport')->with('flock', $flock)->with('farm', $farm)
-        ->with('house1', $house1)->with('daily1', $daily1)->with('sum1', $sum1)
-        ->with('house2', $house2)->with('daily2', $daily2)->with('sum2', $sum2)
-        ->with('house3', $house3)->with('daily3', $daily3)->with('sum3', $sum3)
-        ->with('house4', $house4)->with('daily4', $daily4)->with('sum4', $sum4)
-        ->with('house5', $house5)->with('daily5', $daily5)->with('sum5', $sum5)
-        ->with('house6', $house6)->with('daily6', $daily6)->with('sum6', $sum6);
+        ->with('house1', $house1)->with('daily1', $daily1)->with('sum1', $sum1)->with('avg1', $avg1)
+        ->with('house2', $house2)->with('daily2', $daily2)->with('sum2', $sum2)->with('avg2', $avg2)
+        ->with('house3', $house3)->with('daily3', $daily3)->with('sum3', $sum3)->with('avg3', $avg3)
+        ->with('house4', $house4)->with('daily4', $daily4)->with('sum4', $sum4)->with('avg4', $avg4)
+        ->with('house5', $house5)->with('daily5', $daily5)->with('sum5', $sum5)->with('avg5', $avg5)
+        ->with('house6', $house6)->with('daily6', $daily6)->with('sum6', $sum6)->with('avg6', $avg6);
     }
     function fetchMortalityByFarm(Request $req){
         $farmId = $req->input('farm_id');
@@ -169,17 +191,21 @@ class ReportController extends Controller
         $house1 = Chicken::where('farm_id', $farmId)
                     ->where('house_id', $houseList[0])
                     ->where('status',1)
-                    -> get()->first();
+                    ->get()->first();
         if($house1){
             $daily1 = Daily_chicken::where('chicken_id', $house1['id'])
                     -> get();
         
-        $sum1 = Daily_chicken::where('chicken_id', $house1['id'])
+            $sum1 = Daily_chicken::where('chicken_id', $house1['id'])
                     -> sum('mortality');
+            
+            $avg1 = Daily_chicken::where('chicken_id', $house1['id'])
+                    -> avg('mortality');
         }
         else{
             $daily1 = "";
             $sum1 = "";
+            $avg1 = "";
         }
         
 
@@ -195,10 +221,13 @@ class ReportController extends Controller
         
             $sum2 = Daily_chicken::where('chicken_id', $house2['id'])
                     -> sum('mortality');
+            $avg2 = Daily_chicken::where('chicken_id', $house2['id'])
+                    -> avg('mortality');
         }
         else{
             $daily2 = "";
             $sum2 = "";
+            $avg2 = "";
         }
 
         //House 3
@@ -213,10 +242,14 @@ class ReportController extends Controller
         
             $sum3 = Daily_chicken::where('chicken_id', $house3['id'])
                     -> sum('mortality');
+
+            $avg3 = Daily_chicken::where('chicken_id', $house3['id'])
+                    -> avg('mortality');
         }
         else{
             $daily3 = "";
             $sum3 = "";
+            $avg3 = "";
         }
 
         //House 4
@@ -231,10 +264,14 @@ class ReportController extends Controller
         
             $sum4 = Daily_chicken::where('chicken_id', $house4['id'])
                     -> sum('mortality');
+
+            $avg4 = Daily_chicken::where('chicken_id', $house4['id'])
+                    -> avg('mortality');
         }
         else{
             $daily4 = "";
             $sum4 = "";
+            $avg4 = "";
         }
 
         //House 5
@@ -249,10 +286,14 @@ class ReportController extends Controller
         
             $sum5 = Daily_chicken::where('chicken_id', $house5['id'])
                     -> sum('mortality');
+
+            $avg5 = Daily_chicken::where('chicken_id', $house5['id'])
+                    -> avg('mortality');
         }
         else{
             $daily5 = "";
             $sum5 = "";
+            $avg5 = "";
         }
 
         //House 6
@@ -267,19 +308,23 @@ class ReportController extends Controller
         
             $sum6 = Daily_chicken::where('chicken_id', $house6['id'])
                     -> sum('mortality');
+
+            $avg6 = Daily_chicken::where('chicken_id', $house6['id'])
+                    -> avg('mortality');
         }
         else{
             $daily6 = ""; 
             $sum6 = "";
+            $avg6 = "";
         }
 
         return view ('admin/report/mortalityReport')->with('flock', $flock)->with('farm', $farm)
-        ->with('house1', $house1)->with('daily1', $daily1)->with('sum1', $sum1)
-        ->with('house2', $house2)->with('daily2', $daily2)->with('sum2', $sum2)
-        ->with('house3', $house3)->with('daily3', $daily3)->with('sum3', $sum3)
-        ->with('house4', $house4)->with('daily4', $daily4)->with('sum4', $sum4)
-        ->with('house5', $house5)->with('daily5', $daily5)->with('sum5', $sum5)
-        ->with('house6', $house6)->with('daily6', $daily6)->with('sum6', $sum6);
+        ->with('house1', $house1)->with('daily1', $daily1)->with('sum1', $sum1)->with('avg1', $avg1)
+        ->with('house2', $house2)->with('daily2', $daily2)->with('sum2', $sum2)->with('avg2', $avg2)
+        ->with('house3', $house3)->with('daily3', $daily3)->with('sum3', $sum3)->with('avg3', $avg3)
+        ->with('house4', $house4)->with('daily4', $daily4)->with('sum4', $sum4)->with('avg4', $avg4)
+        ->with('house5', $house5)->with('daily5', $daily5)->with('sum5', $sum5)->with('avg5', $avg5)
+        ->with('house6', $house6)->with('daily6', $daily6)->with('sum6', $sum6)->with('avg6', $avg6);
     }
     function fetchMortalityByHouse(Request $req){
         $farmId = $req->input('farm_id');
@@ -295,16 +340,20 @@ class ReportController extends Controller
                     ->where('status',1)
                     ->get()->first();
 
-            $daily1 = Daily_chicken::where('chicken_id', $chicken['id'])
+        $daily1 = Daily_chicken::where('chicken_id', $chicken['id'])
                     ->get();
         
         $sum1 = Daily_chicken::where('chicken_id', $chicken['id'])
                     ->sum('mortality');
 
+        $avg1 = Daily_chicken::where('chicken_id', $chicken['id'])
+                    ->avg('mortality');
+
         
         return view ('admin/report/mortalityReportHouse')->with('flock', $flock)->with('farm', $farm)
-        ->with('house1', $chicken)->with('daily1', $daily1)->with('sum1', $sum1);
+        ->with('house1', $chicken)->with('daily1', $daily1)->with('sum1', $sum1)->with('avg1', $avg1);
     }
+
     function fetchMortalityByDate(Request $req){
          $farmId = $req->input('farm_id');
 
@@ -324,12 +373,16 @@ class ReportController extends Controller
                     ->whereBetween('date', [$start, $end])
                     -> get();
         
-        $sum1 = Daily_chicken::where('chicken_id', $house1['id'])
+            $sum1 = Daily_chicken::where('chicken_id', $house1['id'])
                     ->whereBetween('date', [$start, $end])-> sum('mortality');
+            
+            $avg1 = Daily_chicken::where('chicken_id', $house1['id'])
+                    ->whereBetween('date', [$start, $end])->avg('mortality');
         }
         else{
             $daily1 = "";
             $sum1 = "";
+            $avg1 = "";
         }
         
 
@@ -344,10 +397,14 @@ class ReportController extends Controller
         
             $sum2 = Daily_chicken::where('chicken_id', $house2['id'])
                     ->whereBetween('date', [$start, $end])-> sum('mortality');
+
+            $avg2 = Daily_chicken::where('chicken_id', $house2['id'])
+                    ->whereBetween('date', [$start, $end])->avg('mortality');
         }
         else{
             $daily2 = "";
             $sum2 = "";
+            $avg2 = "";
         }
 
         //House 3
@@ -361,10 +418,14 @@ class ReportController extends Controller
         
             $sum3 = Daily_chicken::where('chicken_id', $house3['id'])
                     ->whereBetween('date', [$start, $end])-> sum('mortality');
+
+            $avg3 = Daily_chicken::where('chicken_id', $house3['id'])
+                    ->whereBetween('date', [$start, $end])->avg('mortality');
         }
         else{
             $daily3 = "";
             $sum3 = "";
+            $avg3 = "";
         }
 
         //House 4
@@ -378,10 +439,14 @@ class ReportController extends Controller
         
             $sum4 = Daily_chicken::where('chicken_id', $house4['id'])
                     ->whereBetween('date', [$start, $end])-> sum('mortality');
+
+            $avg4 = Daily_chicken::where('chicken_id', $house4['id'])
+                    ->whereBetween('date', [$start, $end])->avg('mortality');
         }
         else{
             $daily4 = "";
             $sum4 = "";
+            $avg4 = "";
         }
 
         //House 5
@@ -395,10 +460,14 @@ class ReportController extends Controller
         
             $sum5 = Daily_chicken::where('chicken_id', $house5['id'])
                     ->whereBetween('date', [$start, $end])-> sum('mortality');
+
+            $avg5 = Daily_chicken::where('chicken_id', $house5['id'])
+                    ->whereBetween('date', [$start, $end])->avg('mortality');
         }
         else{
             $daily5 = "";
             $sum5 = "";
+            $avg5 = "";
         }
 
         //House 6
@@ -412,20 +481,33 @@ class ReportController extends Controller
         
             $sum6 = Daily_chicken::where('chicken_id', $house6['id'])
                     ->whereBetween('date', [$start, $end])-> sum('mortality');
+
+            $avg6 = Daily_chicken::where('chicken_id', $house6['id'])
+                    ->whereBetween('date', [$start, $end])->avg('mortality');
         }
         else{
             $daily6 = ""; 
             $sum6 = "";
+            $avg6 = "";
         }
 
         return view ('admin/report/mortalityReport')->with('flock', $flock)->with('farm', $farm)
-        ->with('house1', $house1)->with('daily1', $daily1)->with('sum1', $sum1)
-        ->with('house2', $house2)->with('daily2', $daily2)->with('sum2', $sum2)
-        ->with('house3', $house3)->with('daily3', $daily3)->with('sum3', $sum3)
-        ->with('house4', $house4)->with('daily4', $daily4)->with('sum4', $sum4)
-        ->with('house5', $house5)->with('daily5', $daily5)->with('sum5', $sum5)
-        ->with('house6', $house6)->with('daily6', $daily6)->with('sum6', $sum6);
+        ->with('house1', $house1)->with('daily1', $daily1)->with('sum1', $sum1)->with('avg1', $avg1)
+        ->with('house2', $house2)->with('daily2', $daily2)->with('sum2', $sum2)->with('avg2', $avg2)
+        ->with('house3', $house3)->with('daily3', $daily3)->with('sum3', $sum3)->with('avg3', $avg3)
+        ->with('house4', $house4)->with('daily4', $daily4)->with('sum4', $sum4)->with('avg4', $avg4)
+        ->with('house5', $house5)->with('daily5', $daily5)->with('sum5', $sum5)->with('avg5', $avg5)
+        ->with('house6', $house6)->with('daily6', $daily6)->with('sum6', $sum6)->with('avg6', $avg6);
     }
+
+
+
+
+
+
+
+
+
 
     //Rejection report 
     function getRejection(){
