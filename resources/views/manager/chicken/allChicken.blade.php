@@ -47,6 +47,7 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
+                                                <th scope="col">Flock</th>
                                                 <th scope="col">House</th>
                                                 <th scope="col">Age</th>
                                                 <th scope="col">Total</th>
@@ -54,6 +55,7 @@
                                                 <th scope="col">Weight</th>
                                                 <th scope="col">FCR</th>
                                                 <th scope="col">Dead</th>
+                                                <th scope="col">Avg Dead</th>
                                                 <th scope="col">Rejected</th>
                                                 <th scope="col">Sold</th>
                                                 <th class="" scope="col">
@@ -64,28 +66,21 @@
                                         <tbody>
                                             @foreach ($chickenList as $item)
                                             <tr>
+                                                <td>{{$item->flock->name}}</td>
                                                 <td>{{$item->house->name}}</td>
-                                                <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())+1}} days</td>
-                                                <td>{{$item['sum_of_doc']}}</td>
+                                                <td>{{(Carbon\Carbon::parse($item['date']))->diffInDays(Carbon\Carbon::now())}} days</td>
+                                                <td>{{$item['first_doc']}}</td>
                                                 <td>{{$item['sum_of_doc'] - $item['sum_of_mortality']-$item['sum_of_rejection']}}</td>
                                                 <td>{{number_format($item['avg_weight'], 2, '.', ',')}} Kg</td>
                                                 <td>{{number_format($item['avg_fcr'], 2, '.', ',')}}</td>
                                                 <td>{{$item['sum_of_mortality']}}</td>
+                                                <td>{{round($item['avg_of_mortality'])}}</td>
                                                 <td>{{$item['sum_of_rejection']}}</td>
                                                 <td>{{$item['first_doc'] - $item['sum_of_doc']}}</td>
 
                                                 <td>
-                                                    <div class="dropdown custom-dropdown float-right cursor">
-                                                        <div data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v display-7 display-7"></i>
-                                                        </div>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
-                                                            <a class="dropdown-item text-warning" href="#">Sale</a>
-                                                            <a class="dropdown-item text-danger" href="#">View</a>
-                                                            <a class="dropdown-item text-success" href="#">Edit</a>
-                                                        </div>
-                                                    </div>
+                                                    <a class="cursor text-primary" id="{{$item['id']}}" onclick="openModal(this.id)"><i class="ti-plus mr-1"></i>Add Daily Data</a>
+
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -97,6 +92,7 @@
                             </div>
                         </div>
                     </div>
+
 
                 </div>
             </div>
@@ -142,34 +138,39 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label> Weight 1 (for 12 chicken in KG)</label>
-                                        <input type="number" name="weight1" class="form-control input-default" placeholder="Weight 1" />
+                                        <input type="number" name="weight1" step='0.001' class="form-control input-default" placeholder="Weight 1" />
+
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label> Weight 2 (for 12 chicken in KG)</label>
 
-                                        <input type="number" name="weight2" class="form-control input-default" placeholder="Weight 2" />
+                                        <input type="number" name="weight2" step='0.001' class="form-control input-default" placeholder="Weight 2" />
+
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label> Weight 3 (for 12 chicken in KG)</label>
 
-                                        <input type="number" name="weight3" class="form-control input-default" placeholder="Weight 3" />
+                                        <input type="number" name="weight3" step='0.001' class="form-control input-default" placeholder="Weight 3" />
+
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label> Weight 4 (for 12 chicken in KG)</label>
 
-                                        <input type="number" name="weight4" class="form-control input-default" placeholder="Weight 4" />
+                                        <input type="number" name="weight4" step='0.001' class="form-control input-default" placeholder="Weight 4" />
+
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <div class="form-group">
                                         <label> Feed Consumption (Total in KG)</label>
-                                        <input type="number" name="feed_consumption" class="form-control input-default" placeholder="Feed Consumption" />
+                                        <input type="number" name="feed_consumption" step='0.001' class="form-control input-default" placeholder="Feed Consumption" />
+
                                     </div>
                                 </div>
                             </div>
@@ -187,6 +188,7 @@
             </div>
         </div>
         <!-------------------Add Data Modal End ------------------->
+
         <!---------------------Modal End------------------------>
         <!--**********************************
             Content body end
@@ -240,5 +242,6 @@
         }
 
     </script>
+
 </body>
 </html>
