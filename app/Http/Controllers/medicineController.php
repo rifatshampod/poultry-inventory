@@ -21,14 +21,37 @@ class medicineController extends Controller
 
     function getHouseMedicine($slug){
 
-    $farmList = Farm::all();
-    $medicineList = Medicine::all();
-    $farmMedicine = Farm_medicine::where('medicine_id', $slug)
-    ->select('farm_medicines.*',
-        DB::raw('SUM(farm_medicines.amount) AS sum_of_amount')
-        )
-        ->groupBy('farm_medicines.farm_id')
-    ->get();
+        $userRole = auth()->user()->role;
+        $userFarm = auth()->user()->farm_id;
+
+        $medicineList = Medicine::all();
+
+        if($userRole==1){
+            $farmList = Farm::all();
+            $farmMedicine = Farm_medicine::where('medicine_id', $slug)
+                            ->select('farm_medicines.*',
+                                DB::raw('SUM(farm_medicines.amount) AS sum_of_amount')
+                                )
+                                ->groupBy('farm_medicines.farm_id')
+                            ->get();
+        }
+        else{
+
+            $farmList = Farm::where('id', $userFarm)
+            ->get();
+            $farmMedicine = Farm_medicine::where('medicine_id', $slug)
+                            ->select('farm_medicines.*',
+                                DB::raw('SUM(farm_medicines.amount) AS sum_of_amount')
+                                )
+                            ->groupBy('farm_medicines.farm_id')
+                            ->where('farm_medicines.farm_id', $userFarm)
+                            ->get();
+
+        }
+
+        
+        
+        
        
         return view('admin/medicine/allHouseMedicine')->with('farmList', $farmList)->with('farmMedicine',$farmMedicine)->with('medicineList', $medicineList);
     }
