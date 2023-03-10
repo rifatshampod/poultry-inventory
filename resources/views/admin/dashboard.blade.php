@@ -26,7 +26,7 @@
                                 <div class="d-inline-block">
                                     <h2 class="text-white">{{$chicken - $dead - $rejected}}</h2>
 
-                                    <p class="text-white mb-0">All farms total. (Dead : {{$dead}})</p>
+                                    <p class="text-white mb-0">All farms total.</p>
 
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
