@@ -1246,4 +1246,93 @@ class ReportController extends Controller
         return view ('admin/report/expenseReport')->with('farm', $farm)
         ->with('expenseList', $expenseList)->with('duration', $duration);
     }
+
+    //General report
+    function getGeneral(){
+
+        $flock = Flock::all();
+        $farm = Farm::all();
+        $houseList = House::all();
+
+        return view ('admin/report/introGeneral')->with('flockList', $flock)->with('farmList', $farm)->with('houseList', $houseList);
+    }
+    function fetchGeneralByFlock(Request $req){
+
+        $flockId = $req->input('flock_id');
+        $farmId = $req->input('farm_id');
+
+        $standard = Standard::all();
+
+        $flock = Flock::where('id',$flockId)->get()->first();
+        $farm = Farm::where('id',$farmId)->get()->first();
+
+        $feedList = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
+                    ->where('chickens.farm_id', $farmId)
+                    ->where('chickens.flock_id', $flockId)
+                    ->where('chickens.status', 0)
+                    ->get('daily_chickens.*', 'chickens.date as age_date');
+
+        return view ('admin/report/generalReport')->with('flock', $flock)->with('farm', $farm)
+        ->with('feedList', $feedList)->with('standardList', $standard);
+    }
+    function fetchGeneralByFarm(Request $req){
+        
+        $farmId = $req->input('farm_id');
+
+        $standard = Standard::all();
+
+        $flock = Flock::where('status', 1)->where('farm_id', $farmId)
+        ->get()->first();
+
+        $farm = Farm::where('id',$farmId)->get()->first();
+
+        $feedList = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
+                    ->where('chickens.farm_id', $farmId)
+                    ->where('chickens.status', 1)
+                    ->get('daily_chickens.*', 'chickens.date as age_date');
+
+        return view ('admin/report/generalReport')->with('flock', $flock)->with('farm', $farm)
+        ->with('feedList', $feedList)->with('standardList', $standard);
+    }
+    function fetchGeneralByHouse(Request $req){
+        $farmId = $req->input('farm_id');
+        $houseId = $req->input('house_id');
+
+        $standard = Standard::all();
+
+        $flock = Flock::where('status', 1)->where('farm_id', $farmId)
+        ->get()->first();
+
+        $farm = Farm::where('id',$farmId)->get()->first();
+
+        $feedList = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
+                    ->where('chickens.farm_id', $farmId)
+                    ->where('chickens.house_id', $houseId)
+                    ->where('chickens.status', 1)
+                    ->get('daily_chickens.*', 'chickens.date as age_date');
+
+        return view ('admin/report/generalReport')->with('flock', $flock)->with('farm', $farm)
+        ->with('feedList', $feedList)->with('standardList', $standard);
+    }
+    function fetchGeneralByDate(Request $req){
+        $farmId = $req->input('farm_id');
+        $start = $req->input('start_date');
+        $end = $req->input('end_date');
+
+        $flock = null;
+
+        $duration = $start." to ".$end;
+
+        $standard = Standard::all();
+
+        $farm = Farm::where('id',$farmId)->get()->first();
+
+        $feedList = Daily_chicken::join('chickens','chickens.id','=','daily_chickens.chicken_id')
+                    ->where('chickens.farm_id', $farmId)
+                    ->whereBetween('daily_chickens.date', [$start, $end])
+                    ->get('daily_chickens.*', 'chickens.date as age_date');
+
+        return view ('admin/report/generalReport')->with('farm', $farm)->with('flock', $flock)
+        ->with('feedList', $feedList)->with('standardList', $standard)->with('duration', $duration);
+    }
 }

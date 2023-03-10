@@ -184,6 +184,14 @@ Route::post('farm-expense-report',[ReportController::class,'fetchExpenseByFarm']
 Route::post('date-expense-report',[ReportController::class,'fetchExpenseByDate']);
 Route::post('house-expense-report',[ReportController::class,'fetchExpenseByHouse']);
 
+//General Reports
+Route::get('general-report',[ReportController::class,'getGeneral']);
+Route::post('flock-general-report',[ReportController::class,'fetchGeneralByFlock']);
+Route::post('farm-general-report',[ReportController::class,'fetchGeneralByFarm']);
+Route::post('date-general-report',[ReportController::class,'fetchGeneralByDate']);
+Route::post('house-general-report',[ReportController::class,'fetchGeneralByHouse']);
+
+
 //Report routes ends -----------------------------------------------------------
 
 

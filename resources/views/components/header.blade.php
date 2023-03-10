@@ -197,6 +197,8 @@
                     <li><a href="feed-report">Feed Consumption Report</a></li>
                     <li><a href="sales-report">Sales Report</a></li>
                     <li><a href="expense-report">Expenses Report</a></li>
+                    <li><a href="general-report">General Report</a></li>
+
 
 
                 </ul>
