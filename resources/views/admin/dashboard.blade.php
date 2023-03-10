@@ -17,22 +17,8 @@
         <div class="content-body">
             <div class="container-fluid mt-3">
                 <div class="row">
-                    @if($flock)
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card gradient-1">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">Current Flock</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">{{$flock->name}}</h2>
-                                    <p class="text-white mb-0">{{date('M j, y', strtotime($flock->start_date))}} - {{date('M j, y', strtotime($flock->end_date))}}</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
-                            </div>
-                        </div>
-                    </div>
 
-                    @endif
-
+                    {{-- Chicken in stock --}}
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-3">
                             <div class="card-body">
@@ -40,13 +26,15 @@
                                 <div class="d-inline-block">
                                     <h2 class="text-white">{{$chicken - $dead - $rejected}}</h2>
 
-                                    <p class="text-white mb-0">{{date('M j, y', strtotime($flock->start_date))}} - {{date('M j, y', strtotime($flock->end_date))}}</p>
+                                    <p class="text-white mb-0">All farms total. (Dead : {{$dead}})</p>
 
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
                             </div>
                         </div>
                     </div>
+
+                    {{-- Total Expenses --}}
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-2">
                             <div class="card-body">
@@ -65,15 +53,30 @@
                         </div>
                     </div>
 
+                    {{-- Total Petty Cash --}}
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-1">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">Petty Cash Left</h3>
+                                <div class="d-inline-block">
+                                    <h2 class="text-white">&#2547; {{$cash}}</h2>
+                                    <p class="text-white mb-0">All Farms total</p>
+                                </div>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Feed in stock --}}
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-4">
                             <div class="card-body">
                                 <h3 class="card-title text-white">Feed in Stock</h3>
                                 <div class="d-inline-block">
                                     <h2 class="text-white">{{$feed}} KG</h2>
-                                    <p class="text-white mb-0">In: {{$feedRestock}} | Consumed: {{$consumption}}</p>
+                                    <p class="text-white mb-0">In: {{$feedRestock}} | Used: {{$consumption}}</p>
                                 </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
+                                {{-- <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span> --}}
                             </div>
                         </div>
                     </div>
@@ -81,6 +84,38 @@
 
                 <div class="row">
 
+                    {{-- Flock Summary --}}
+                    <div class="col-lg-4 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Active Flocks</h4>
+                                <div class="table-responsive">
+                                    <table class="table header-border table-hover verticle-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Flock</th>
+                                                <th scope="col">Farm</th>
+                                                <th scope="col" style="text-align:right;">Age (Day)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($flockList as $item)
+                                            <tr>
+                                                <td>{{$item->name}}</td>
+                                                <td>{{$item->farm->name}}</td>
+                                                <td style="text-align:center;">{{(Carbon\Carbon::parse($item['start_date']))->diffInDays(Carbon\Carbon::now())}}</td>
+
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Mortality Summary --}}
                     <div class="col-lg-4 col-md-12">
                         <div class="card">
                             <div class="card-body">
@@ -120,6 +155,7 @@
                             </div>
                         </div>
                     </div>
+                    {{-- Rejection Summary --}}
                     <div class="col-lg-4 col-md-12">
                         <div class="card">
                             <div class="card-body">
@@ -160,7 +196,7 @@
                             </div>
                         </div>
                     </div>
-
+                    {{-- FCR Summary --}}
                     <div class="col-lg-4 col-md-12">
                         <div class="card">
                             <div class="card-body">

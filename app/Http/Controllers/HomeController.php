@@ -35,8 +35,8 @@ class HomeController extends Controller
 
     public function adminDashboard()
     {
-        $flock = Flock::where('status', 1)
-        ->get()->first();
+        $flockList = Flock::where('status', 1)
+        ->get();
 
 
         $chickenList = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
@@ -48,32 +48,41 @@ class HomeController extends Controller
         DB::raw('SUM(chickens.sum_of_doc) AS sum_of_chicken')
         )
         ->groupBy('chickens.farm_id')
+        ->where('chickens.status', 1)
         ->get();
 
         $total = DB::table('chickens')
+            ->where('status', 1)
             ->sum('sum_of_doc');
 
         $dead = DB::table('daily_chickens')
+            ->join('chickens','chickens.id','daily_chickens.chicken_id')
+            ->where('chickens.status',1)
             ->sum('mortality');
 
         $rejected = DB::table('daily_chickens')
+            ->join('chickens','chickens.id','daily_chickens.chicken_id')
+            ->where('chickens.status',1)
             ->sum('rejection');
 
         $expense = DB::table('expenses')
             ->select(DB::raw('SUM(amount) as total, MIN(created_at) as first, MAX(created_at) as last'))
             ->first();
         
+        
         $feed = DB::table('total_feeds')
+            ->sum('amount');
+        $cash = DB::table('total_cashes')
             ->sum('amount');
         $feedRestock = DB::table('feeds')
             ->sum('amount');
         $consumption = DB::table('daily_chickens')
             ->sum('feed_consumption');
 
-        return view ('admin/dashboard')->with('flock', $flock)->with('chicken',$total)
+        return view ('admin/dashboard')->with('flockList', $flockList)->with('chicken',$total)
         ->with('dead',$dead)->with('rejected',$rejected)->with('expense', $expense)
         ->with('feed', $feed)->with('feedRestock', $feedRestock)->with('consumption', $consumption)
-        ->with('chickenList', $chickenList);
+        ->with('cash', $cash)->with('chickenList', $chickenList);
 
         
     }
