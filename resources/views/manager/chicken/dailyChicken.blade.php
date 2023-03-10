@@ -40,27 +40,24 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Date</th>
-                                                <th scope="col">House</th>
+                                                <th scope="col" class="col-2">Date</th>
+                                                <th scope="col" class="col-2">House</th>
                                                 <th scope="col">F.C.</th>
                                                 <th scope="col">F.C.R</th>
                                                 <th scope="col">Weight 1</th>
                                                 <th scope="col">Weight 2</th>
                                                 <th scope="col">Weight 3</th>
                                                 <th scope="col">Weight 4</th>
-                                                <th scope="col">Morality</th>
+                                                <th scope="col">Mortality</th>
                                                 <th scope="col">Rejection</th>
                                                 <th scope="col">Action</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($dailyList->isEmpty())
-                                            No data found
-                                            @else
+
                                             @foreach ($dailyList as $item)
                                             <tr>
-                                                <th>{{$item['date']}}</th>
+                                                <th>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</th>
                                                 <td>{{$item->chicken->house->name}}</td>
                                                 <td>{{$item['feed_consumption']}}</td>
                                                 <td>{{$item['fcr']}}</td>
@@ -73,14 +70,8 @@
                                                 <td>
                                                     <span class="float-right"><a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a></span>
                                                 </td>
-
                                             </tr>
                                             @endforeach
-
-                                            @endif
-
-
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -88,6 +79,7 @@
                         </div>
 
                     </div>
+
 
                 </div>
             </div>
@@ -201,6 +193,7 @@
     <!---- End of edit modal ---->
 
 
+
     <!--**********************************
         Scripts
     ***********************************-->
@@ -239,6 +232,7 @@
         }
 
     </script>
+
 
 </body>
 </html>
