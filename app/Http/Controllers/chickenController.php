@@ -405,10 +405,13 @@ class chickenController extends Controller
         $chicken = $req->input('chicken_id');
         $daily_id = $req->input('daily_id');
 
-        $previousDaily = Daily_chicken::where('chicken_id', $chicken)->orderBy('id', 'desc')->skip(1)->first();
+        $previousDaily = Daily_chicken::where('chicken_id', $chicken)
+        ->where('id','<=', $daily_id)->orderBy('id', 'desc')->skip(1)->first();
 
         $weight = ($req->input('weight1')+$req->input('weight2')+$req->input('weight3')+$req->input('weight4'))/48;
 
+
+        if($previousDaily){
         //retrive previous data
         $chickenList = Chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
         ->select('chickens.*',
@@ -421,10 +424,9 @@ class chickenController extends Controller
         ->groupBy('chickens.id')
         ->where('chickens.id',$chicken)
         ->where('daily_chickens.id', $previousDaily['id'])
-        ->orderBy('daily_chickens.id', 'desc')
         ->get()->first();
 
-        if($chickenList){
+        
             $weight_gain = $weight-$chickenList['avg_weight'];
             $total_chicken = $chickenList['sum_of_doc']-$chickenList['sum_of_mortality']-$chickenList['sum_of_rejection'];
             //$fcr += ($req->input('feed_consumption')/$total_chicken)/$weight_gain;
@@ -433,14 +435,25 @@ class chickenController extends Controller
             $cfc = $chickenList['last_cfc'] + $avg_feed_consumption ; 
             $fcr = $cfc/$weight;
             $fc = ($req->input('feed_consumption')/$total_chicken)/$weight_gain;
+
+
+            //retrieve previous total
+
+        $farm = $chickenList['farm_id'];
+        $difference = $chickenList['feedBefore'] - $req->input('feed_consumption');
+        
+        $total = Total_feed::where('farm_id', $farm)->first();
+        $total->amount += $difference;
+        $total->save();
         }
         else{
             $weight_gain = 0;
             $total_chicken = 1;
             $fcr = 0;
+            $cfc = 0;
             $fc = 0;
             $avg_gain = 0;
-            $avg_feed_consumption = $req->input('feed_consumption')/$total_chicken;
+            $avg_feed_consumption = 0;
         }
         
         
@@ -464,14 +477,7 @@ class chickenController extends Controller
         
         $data->update();
 
-        //retrieve previous total
-
-        $farm = $chickenList['farm_id'];
-        $difference = $chickenList['feedBefore'] - $req->input('feed_consumption');
         
-        $total = Total_feed::where('farm_id', $farm)->first();
-        $total->amount += $difference;
-        $total->save();
 
         return redirect()->back();
     }
