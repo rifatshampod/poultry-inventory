@@ -322,7 +322,7 @@ class chickenController extends Controller
         $weight = ($req->input('weight1')+$req->input('weight2')+$req->input('weight3')+$req->input('weight4'))/48;
 
         //retrive previous data
-        $chickenList = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
+        $chickenList = Chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
         ->select('chickens.*',
         DB::raw('SUM(daily_chickens.mortality) AS sum_of_mortality'),
         DB::raw('MAX(daily_chickens.weight_avg) AS avg_weight'), 
@@ -399,57 +399,69 @@ class chickenController extends Controller
     }
 
     function updateDailyChicken(Request $req){
-
-        $validated = $req->validate([
-        'chicken_id' => 'required',
-        'feed_consumption' => 'required',
-        'weight1' => 'required',
-        'weight2' => 'required',
-        'weight3' => 'required',
-        'weight4' => 'required',
-        ]);
+       
+       $fcr = 0;
 
         $chicken = $req->input('chicken_id');
+        $daily_id = $req->input('daily_id');
+
+        $previousDaily = Daily_chicken::where('chicken_id', $chicken)->orderBy('id', 'desc')->skip(1)->first();
 
         $weight = ($req->input('weight1')+$req->input('weight2')+$req->input('weight3')+$req->input('weight4'))/48;
 
         //retrive previous data
-        $chickenList = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
-        ->select('chickens.*', 'daily_chickens.feed_consumption as feedBefore',
+        $chickenList = Chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
+        ->select('chickens.*',
         DB::raw('SUM(daily_chickens.mortality) AS sum_of_mortality'),
         DB::raw('MAX(daily_chickens.weight_avg) AS avg_weight'), 
+        DB::raw('MAX(daily_chickens.cfc) AS last_cfc'), 
         DB::raw('AVG(daily_chickens.fcr) AS avg_fcr'),
         DB::raw('SUM(daily_chickens.rejection) AS sum_of_rejection')
         )
         ->groupBy('chickens.id')
         ->where('chickens.id',$chicken)
+        ->where('daily_chickens.id', $previousDaily['id'])
+        ->orderBy('daily_chickens.id', 'desc')
         ->get()->first();
 
         if($chickenList){
-            $weight_gain = $weight - $chickenList['avg_weight'];
+            $weight_gain = $weight-$chickenList['avg_weight'];
             $total_chicken = $chickenList['sum_of_doc']-$chickenList['sum_of_mortality']-$chickenList['sum_of_rejection'];
-            $fcr = ($req->input('feed_consumption')/$total_chicken)/$weight_gain;
+            //$fcr += ($req->input('feed_consumption')/$total_chicken)/$weight_gain;
+            $avg_gain = $weight_gain / $total_chicken ; 
+            $avg_feed_consumption = $req->input('feed_consumption')/$total_chicken;
+            $cfc = $chickenList['last_cfc'] + $avg_feed_consumption ; 
+            $fcr = $cfc/$weight;
+            $fc = ($req->input('feed_consumption')/$total_chicken)/$weight_gain;
         }
         else{
             $weight_gain = 0;
-            $total_chicken = 0;
+            $total_chicken = 1;
             $fcr = 0;
+            $fc = 0;
+            $avg_gain = 0;
+            $avg_feed_consumption = $req->input('feed_consumption')/$total_chicken;
         }
-
-        $daily_id = $req->input('daily_id');
+        
+        
 
         $data = Daily_chicken::find($daily_id);
         $data->date = $req->input('date');
-        $data->chicken_id=$req->input('chicken_id');
-        $data->feed_consumption=$req->input('feed_consumption');
-        $data->fcr= $fcr;
-        $data->weight1=$req->input('weight1');
-        $data->weight2=$req->input('weight2');
-        $data->weight3=$req->input('weight3');
-        $data->weight4=$req->input('weight4');
-        $data->weight_avg= $weight;
-        $data->mortality=$req->input('mortality');
-        $data->rejection=$req->input('rejection');
+            $data->chicken_id=$req->input('chicken_id');
+            $data->feed_consumption=$req->input('feed_consumption');
+            $data->avg_feed_consumption=$avg_feed_consumption;
+            $data->cfc= $cfc;
+            $data->fcr= $fcr;
+            $data->fc= $fc;
+            $data->weight1=$req->input('weight1');
+            $data->weight2=$req->input('weight2');
+            $data->weight3=$req->input('weight3');
+            $data->weight4=$req->input('weight4');
+            $data->weight_avg= $weight;
+            $data->weight_gain= $weight_gain;
+            $data->mortality=$req->input('mortality');
+            $data->rejection=$req->input('rejection');
+        
         $data->update();
 
         //retrieve previous total
