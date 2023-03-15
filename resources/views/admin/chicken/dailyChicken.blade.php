@@ -91,8 +91,11 @@
                                                 <td>{{$item['mortality']}}</td>
                                                 <td>{{$item['rejection']}}</td>
                                                 <td>
+                                                    @if($loop->iteration==1)
                                                     <span class="float-right"><a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a></span>
+                                                    @endif
                                                 </td>
+
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -140,8 +143,11 @@
                                                 <td>{{$item['weight4']}}</td>
                                                 <td>{{$item['mortality']}}</td>
                                                 <td>{{$item['rejection']}}</td>
+
                                                 <td>
+                                                    @if($loop->iteration==1)
                                                     <span class="float-right"><a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a></span>
+                                                    @endif
                                                 </td>
 
                                             </tr>
@@ -199,8 +205,11 @@
                                                 <td>{{$item['mortality']}}</td>
                                                 <td>{{$item['rejection']}}</td>
                                                 <td>
+                                                    @if($loop->iteration==1)
                                                     <span class="float-right"><a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a></span>
+                                                    @endif
                                                 </td>
+
 
                                             </tr>
 
@@ -254,8 +263,11 @@
                                                 <td>{{$item['mortality']}}</td>
                                                 <td>{{$item['rejection']}}</td>
                                                 <td>
+                                                    @if($loop->iteration==1)
                                                     <span class="float-right"><a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a></span>
+                                                    @endif
                                                 </td>
+
 
                                             </tr>
                                             @endforeach
