@@ -25,6 +25,7 @@ class medicineController extends Controller
         $userFarm = auth()->user()->farm_id;
 
         $medicineList = Medicine::all();
+        $medicineName = Medicine::find($slug);
 
         if($userRole==1){
             $farmList = Farm::all();
@@ -49,11 +50,7 @@ class medicineController extends Controller
 
         }
 
-        
-        
-        
-       
-        return view('admin/medicine/allHouseMedicine')->with('farmList', $farmList)->with('farmMedicine',$farmMedicine)->with('medicineList', $medicineList);
+        return view('admin/medicine/allHouseMedicine')->with('farmList', $farmList)->with('farmMedicine',$farmMedicine)->with('medicineList', $medicineList)->with('medicineName', $medicineName);
     }
 
     function addMedicine(Request $req){

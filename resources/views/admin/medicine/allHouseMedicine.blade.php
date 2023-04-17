@@ -104,7 +104,10 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Farm wise Medicine Inventory</h4>
+                                <h4 class="card-title">Farm wise Medicine Inventory (<span class="text-primary">{{$medicineName->name}}</span>)</h4>
+
+
+
                                 <div class="table-responsive">
                                     <table class="table table-bordered verticle-middle">
                                         <thead>
