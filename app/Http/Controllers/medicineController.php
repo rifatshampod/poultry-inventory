@@ -117,6 +117,39 @@ class medicineController extends Controller
         return view('admin/medicine/medicineDistribution')->with('medicineList', $medicineList)->with('medicineTypeList', $medicineTypeList)->with('farmList', $farmList);
     }
 
+    function getAddDistribution(){
+
+        $userRole = auth()->user()->role;
+        $userFarm = auth()->user()->farm_id;
+
+        $medicineList = Medicine::all();
+
+        if($userRole==1){
+            $farmList = Farm::all();
+            $farmMedicine = Farm_medicine::select('farm_medicines.*',
+                                DB::raw('SUM(farm_medicines.amount) AS sum_of_amount')
+                                )
+                                ->groupBy('farm_medicines.farm_id')
+                                ->groupBy('farm_medicines.medicine_id')
+                            ->get();
+        }
+        else{
+
+            $farmList = Farm::where('id', $userFarm)
+            ->get();
+            $farmMedicine = Farm_medicine::select('farm_medicines.*',
+                                DB::raw('SUM(farm_medicines.amount) AS sum_of_amount')
+                                )
+                            ->groupBy('farm_medicines.farm_id')
+                            ->groupBy('farm_medicines.medicine_id')
+                            ->where('farm_medicines.farm_id', $userFarm)
+                            ->get();
+
+        }
+
+        return view('admin/medicine/addDistributeMedicine')->with('farmList', $farmList)->with('farmMedicine',$farmMedicine)->with('medicineList', $medicineList);
+    }
+
     //edit medicine restock
     function getEditMedicineDistribution($id){
         $data=Farm_medicine::find($id);

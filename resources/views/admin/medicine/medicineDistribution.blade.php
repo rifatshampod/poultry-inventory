@@ -42,7 +42,8 @@
                                     </button>
                                 </div>
                                 <div>
-                                    <button type="button" class="btn mb-1 btn-primary" onclick="location.href='all-house-medicine=1'">
+                                    <button type="button" class="btn mb-1 btn-primary" onclick="location.href='add-distribute-medicine'">
+
                                         Distribute Medicine
                                         <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
                                     </button>
@@ -69,17 +70,21 @@
                                         <td>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
                                         <td>{{$item->farm->name}}</td>
                                         <td>{{$item->medicine->name}}</td>
-                                        <td>{{$item['amount']}}</td>
-                                        <td>{{$item['price']}}</td>
+                                        @if($item['amount']<0) <td>{{-$item['amount']}} (Used)</td>
+                                            @else
+                                            <td>{{$item['amount']}}</td>
+                                            @endif
 
-                                        <td>
-                                            <span class="float-right">
-                                                <a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a>
-                                                {{-- <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
+                                            <td>{{$item['price']}}</td>
+
+                                            <td>
+                                                <span class="float-right">
+                                                    <a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a>
+                                                    {{-- <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
                                                         </a> --}}
-                                            </span>
+                                                </span>
 
-                                        </td>
+                                            </td>
                                     </tr>
 
 

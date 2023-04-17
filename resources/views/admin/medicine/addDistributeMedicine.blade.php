@@ -22,14 +22,14 @@
                             <a href="dashboard">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item active">
-                            <a href="javascript:void(0)">All Medicine</a>
+                            <a href="javascript:void(0)">All Feed</a>
                         </li>
                     </ol>
                 </div>
             </div>
             <div class="container-fluid mt-3">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-5">
                         <div class="card">
                             <div class="card-body">
                                 <div class="mb-4">
@@ -92,7 +92,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-7">
                         @if (Session::get('status'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{Session::get('status')}}
@@ -104,7 +104,7 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Farm wise Medicine Inventory (<span class="text-primary">{{$medicineName->name}}</span>)</h4>
+                                <h4 class="card-title">Farm wise Medicine Inventory</h4>
 
 
 
@@ -112,27 +112,60 @@
                                     <table class="table table-bordered verticle-middle">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Farm</th>
-                                                <th scope="col">Medicine In Stock</th>
-                                                <th class="" scope="col">
+                                                <th scope="col">Medicine</th>
+                                                @if(auth()->user()->role==1)
+                                                <th scope="col">Farm 1</th>
+                                                <th scope="col">Farm 2</th>
+                                                <th scope="col">Farm 3</th>
+                                                <th scope="col">Farm 4</th>
+                                                @else
+                                                <th scope="col">Stock Left</th>
+                                                @endif
+                                                {{-- <th class="" scope="col">
                                                     <span class="float-right">Action</span>
-                                                </th>
+                                                </th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($farmMedicine as $item)
                                             <tr>
-                                                <td>{{$item->farm->name}}</td>
+                                                <td>{{$item->medicine->name}}</td>
+                                                @if(auth()->user()->role==1)
+                                                {{-- Farm 1  --}}
+                                                @if($item->farm->id ==1)
                                                 <td>{{$item['sum_of_amount']}}</td>
+                                                @else
+                                                <td>0</td>
+                                                @endif
+                                                {{-- Farm 2  --}}
+                                                @if($item->farm->id ==2)
+                                                <td>{{$item['sum_of_amount']}}</td>
+                                                @else
+                                                <td>0</td>
+                                                @endif
+                                                {{-- Farm 3  --}}
+                                                @if($item->farm->id ==3)
+                                                <td>{{$item['sum_of_amount']}}</td>
+                                                @else
+                                                <td>0</td>
+                                                @endif
+                                                {{-- Farm 4  --}}
+                                                @if($item->farm->id ==4)
+                                                <td>{{$item['sum_of_amount']}}</td>
+                                                @else
+                                                <td>0</td>
+                                                @endif
+                                                @else
+                                                <td>{{$item['sum_of_amount']}}</td>
+                                                @endif
 
-
-                                                <td>
+                                                {{-- <td>
                                                     <span class="float-right"><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i>
                                                         </a>
                                                         <a href="#" data-toggle="tooltip" data-placement="top" title="End"><i class="fa fa-trash color-muted m-r-5"></i>
                                                         </a>
                                                     </span>
-                                                </td>
+                                                </td> --}}
                                             </tr>
                                             @endforeach
 

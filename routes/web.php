@@ -68,6 +68,7 @@ Route::post('add-medicine', [medicineController::class,'addMedicine']);
 Route::get('all-house-medicine={slug}', [medicineController::class,'getHouseMedicine']);
 Route::post('add-farm-medicine', [medicineController::class,'addFarmMedicine']);
 Route::get('distribute-medicine', [medicineController::class,'getDistribution']);
+Route::get('add-distribute-medicine', [medicineController::class,'getAddDistribution']);
 Route::get('edit-medicinedistribution{id}', [medicineController::class,'getEditMedicineDistribution']);
 Route::post('edit-medicine-distribution-info', [medicineController::class,'updateMedicineDistribution']);
 
