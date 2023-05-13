@@ -171,7 +171,7 @@
                     }
                     , dataType: 'json'
                     , success: function(result) {
-                        $('#house-dropdown').html('<option value="">-- Select House --</option>');
+                        $('#house-dropdown').html('<option value="0">No House (Whole Farm)</option>');
                         $.each(result.houses, function(key, value) {
                             $("#house-dropdown").append('<option value="' + value
                                 .id + '">' + value.name + '</option>');

@@ -74,7 +74,11 @@
                                     <tr>
                                         <td>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
                                         <td>{{$item->farm->name}}</td>
+                                        @if($item->house_id !=0)
                                         <td>{{$item->house->name}}</td>
+                                        @else
+                                        <td>Whole Farm</td>
+                                        @endif
                                         <td>{{$item->flock->name}}</td>
                                         <td>{{$item->expenseType->name}}</td>
                                         <td>{{$item->expenseSector->name}}</td>
