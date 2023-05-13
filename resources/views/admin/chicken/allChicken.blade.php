@@ -359,32 +359,32 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label> Weight 1 (for 12 chicken in KG)</label>
-                                        <input type="number" name="weight1" step='0.001' class="form-control input-default" placeholder="Weight 1" />
+                                        <label> Weight 1 (for 12 chicken in gram)</label>
+                                        <input type="number" name="weight1" step='1' class="form-control input-default" placeholder="Weight 1" />
 
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label> Weight 2 (for 12 chicken in KG)</label>
+                                        <label> Weight 2 (for 12 chicken in gram)</label>
 
-                                        <input type="number" name="weight2" step='0.001' class="form-control input-default" placeholder="Weight 2" />
-
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label> Weight 3 (for 12 chicken in KG)</label>
-
-                                        <input type="number" name="weight3" step='0.001' class="form-control input-default" placeholder="Weight 3" />
+                                        <input type="number" name="weight2" step='1' class="form-control input-default" placeholder="Weight 2" />
 
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label> Weight 4 (for 12 chicken in KG)</label>
+                                        <label> Weight 3 (for 12 chicken in gram)</label>
 
-                                        <input type="number" name="weight4" step='0.001' class="form-control input-default" placeholder="Weight 4" />
+                                        <input type="number" name="weight3" step='1' class="form-control input-default" placeholder="Weight 3" />
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label> Weight 4 (for 12 chicken in gram)</label>
+
+                                        <input type="number" name="weight4" step='1' class="form-control input-default" placeholder="Weight 4" />
 
                                     </div>
                                 </div>

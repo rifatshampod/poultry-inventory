@@ -319,7 +319,7 @@ class chickenController extends Controller
 
         $chicken = $req->input('chicken_id');
 
-        $weight = ($req->input('weight1')+$req->input('weight2')+$req->input('weight3')+$req->input('weight4'))/48;
+        $weight = ($req->input('weight1')+$req->input('weight2')+$req->input('weight3')+$req->input('weight4'))/48000;
 
         //retrive previous data
         $chickenList = Chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
@@ -369,10 +369,10 @@ class chickenController extends Controller
             $data->cfc= $cfc;
             $data->fcr= $fcr;
             $data->fc= $fc;
-            $data->weight1=$req->input('weight1');
-            $data->weight2=$req->input('weight2');
-            $data->weight3=$req->input('weight3');
-            $data->weight4=$req->input('weight4');
+            $data->weight1=$req->input('weight1')/1000;
+            $data->weight2=$req->input('weight2')/1000;
+            $data->weight3=$req->input('weight3')/1000;
+            $data->weight4=$req->input('weight4')/1000;
             $data->weight_avg= $weight;
             $data->weight_gain= $weight_gain;
             $data->mortality=$req->input('mortality');
@@ -408,7 +408,7 @@ class chickenController extends Controller
         $previousDaily = Daily_chicken::where('chicken_id', $chicken)
         ->where('id','<=', $daily_id)->orderBy('id', 'desc')->skip(1)->first();
 
-        $weight = ($req->input('weight1')+$req->input('weight2')+$req->input('weight3')+$req->input('weight4'))/48;
+        $weight = ($req->input('weight1')+$req->input('weight2')+$req->input('weight3')+$req->input('weight4'))/48000;
 
 
         if($previousDaily){
@@ -466,10 +466,10 @@ class chickenController extends Controller
             $data->cfc= $cfc;
             $data->fcr= $fcr;
             $data->fc= $fc;
-            $data->weight1=$req->input('weight1');
-            $data->weight2=$req->input('weight2');
-            $data->weight3=$req->input('weight3');
-            $data->weight4=$req->input('weight4');
+            $data->weight1=$req->input('weight1')/1000;
+            $data->weight2=$req->input('weight2')/1000;
+            $data->weight3=$req->input('weight3')/1000;
+            $data->weight4=$req->input('weight4')/1000;
             $data->weight_avg= $weight;
             $data->weight_gain= $weight_gain;
             $data->mortality=$req->input('mortality');
