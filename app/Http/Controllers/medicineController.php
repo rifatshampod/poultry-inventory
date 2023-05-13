@@ -80,7 +80,7 @@ class medicineController extends Controller
         $data->farm_id=$req->input('farm_id');
         $data->date=$req->input('date');
         $data->amount=$amount;
-        $data->price=$req->input('price');
+        // $data->price=$req->input('price');
         $data->save();
         
         $req->session()->flash('status','New Medicine added successfully');
@@ -171,7 +171,7 @@ class medicineController extends Controller
         $data->farm_id=$req->input('farm_id');
         $data->medicine_id=$req->input('medicine_id');
         $data->amount=$req->input('amount');
-        $data->price=$req->input('price');
+        // $data->price=$req->input('price');
         $data->update();
 
         //Change total

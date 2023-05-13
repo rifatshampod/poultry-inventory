@@ -58,10 +58,12 @@
                                         <th scope="col">Farm</th>
                                         <th scope="col">Medicine</th>
                                         <th scope="col">Amount</th>
-                                        <th scope="col">Price</th>
+                                        {{-- <th scope="col">Price</th> --}}
+                                        @if(Auth()->user()->role==1)
                                         <th class="" scope="col">
                                             <span class="float-right">Action</span>
                                         </th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -75,8 +77,9 @@
                                             <td>{{$item['amount']}}</td>
                                             @endif
 
-                                            <td>{{$item['price']}}</td>
+                                            {{-- <td>{{$item['price']}}</td> --}}
 
+                                            @if(Auth()->user()->role==1)
                                             <td>
                                                 <span class="float-right">
                                                     <a id="{{$item['id']}}" onclick="openModal(this.id)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5 px-1"></i></a>
@@ -85,6 +88,7 @@
                                                 </span>
 
                                             </td>
+                                            @endif
                                     </tr>
 
 
@@ -155,10 +159,10 @@
 
                             </div>
 
-                            <div class="form-group col-md-6">
+                            {{-- <div class="form-group col-md-6">
                                 <label>Price </label>
                                 <input type="number" class="form-control input-default" name="price" id="edit_price" placeholder="Type Reference" />
-                            </div>
+                            </div> --}}
 
                             <div class="col-md-12 mt-4 text-center">
                                 <div>
@@ -207,7 +211,7 @@
                     $('#edit_date').val(response.data.date);
                     $('#edit_amount').val(response.data.amount);
                     $('#edit_previous_amount').val(response.data.amount);
-                    $('#edit_price').val(response.data.price);
+                    // $('#edit_price').val(response.data.price);
                     $('#edit_distribution_id').val(clicked_id);
                 }
             });

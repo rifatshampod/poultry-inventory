@@ -64,10 +64,10 @@
                                             <input type="number" class="form-control input-default" name="amount" placeholder="Input amount" />
                                         </div>
 
-                                        <div class="form-group col-md-6">
+                                        {{-- <div class="form-group col-md-6">
                                             <label>Price</label>
                                             <input type="number" class="form-control input-default" name="price" placeholder="Input Price" />
-                                        </div>
+                                        </div> --}}
 
                                         <div class="form-group col-md-6">
                                             <label>Data Type</label>
