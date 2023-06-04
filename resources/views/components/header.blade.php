@@ -137,9 +137,12 @@
 
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="all-medicine">Medicine Type</a></li>
+                    <li><a href="all-medicine">Add new medicine name
+
+                        </a></li>
                     <li>
-                        <a href="distribute-medicine">All Medicine Distribution</a>
+                        <a href="distribute-medicine">Distribute Medicine</a>
+
 
                     </li>
 

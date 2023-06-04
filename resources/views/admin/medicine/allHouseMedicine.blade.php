@@ -72,7 +72,7 @@
                                         <div class="form-group col-md-6">
                                             <label>Data Type</label>
                                             <select class="form-control input-default" name="data_type" required>
-                                                <option value="1">Adding New Medicine</option>
+                                                <option value="1">Received New Medicine</option>
                                                 <option value="2">Used Medicine</option>
 
                                             </select>

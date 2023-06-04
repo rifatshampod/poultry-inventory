@@ -35,12 +35,12 @@
                                 <h4 class="card-title">Total in Stock : 50</h4>
                             </div> --}}
                             <div class="d-flex">
-                                <div class=" mr-2 ">
+                                {{-- <div class=" mr-2 ">
                                     <button type="button" class="btn mb-1 btn-primary" onclick="location.href='all-medicine'">
-                                        Add New Medicine Type
+                                        Add New Medicine Name
                                         <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
                                     </button>
-                                </div>
+                                </div> --}}
                                 <div>
                                     <button type="button" class="btn mb-1 btn-primary" onclick="location.href='add-distribute-medicine'">
 
