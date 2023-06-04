@@ -29,7 +29,7 @@
             </div>
             <div class="container-fluid mt-3">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="card">
                             <div class="card-body">
                                 <div class="mb-4">
@@ -38,26 +38,31 @@
                                 <form action="add-flock" method="POST">
                                     @csrf
                                     <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label>Flock Name</label>
-                                            <input type="text" name="name" class="form-control input-default" placeholder="Flock Name" />
+                                        <div class="form-group col-lg-12">
+                                            <label>Flock Name <span class="text-danger">*</span></label>
+                                            <input type="text" name="name" class="form-control input-default" placeholder="Flock Name" required />
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-lg-12">
                                             <label>Farm Name <span class="text-danger">*</span></label>
+
                                             <select name="farm_id" class="form-control input-default" required>
+                                                @if(auth()->user()->role==1)
                                                 @foreach ($farmList as $item)
                                                 <option value="{{$item['id']}}">{{$item['name']}}</option>
                                                 @endforeach
+                                                @else
+                                                <option value="{{auth()->user()->farm_id}}">{{auth()->user()->farm->name}}</option>
+                                                @endif
+
                                             </select>
+
+
+
                                         </div>
 
-                                        <div class="form-group col-md-6">
-                                            <label>Start Date</label>
-                                            <input type="date" name="start_date" class="form-control input-default" placeholder="date" />
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Assumed complete date</label>
-                                            <input type="date" name="end_date" class="form-control input-default" placeholder="Assumed complete date" />
+                                        <div class="form-group col-lg-12">
+                                            <label>Start Date <span class="text-danger">*</span></label>
+                                            <input type="date" name="start_date" class="form-control input-default" placeholder="date" required />
                                         </div>
                                         <div class="col-md-12">
                                             <div>
@@ -71,7 +76,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-8">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">All Flock</h4>
@@ -113,10 +118,10 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             {{-- <a class="dropdown-item text-primary" href="singleSale.html">View</a> --}}
                                                             <a class="dropdown-item text-warning" id="{{$item['id']}}" onclick="openModal(this.id)">Edit</a>
-                                                            @if($item['status']==1)
+                                                            {{-- @if($item['status']==1)
                                                             <a class="dropdown-item text-danger" id="{{$item['id']}}" onclick="openModalComplete(this.id)">Complete Flock</a>
 
-                                                            @endif
+                                                            @endif --}}
 
 
 
@@ -199,7 +204,7 @@
                                     <div class="input-group">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
 
-                                        <input id="edit_end_date" type="date" name="end_date" class="form-control" placeholder="Contact number" required />
+                                        <input id="edit_end_date" type="date" name="end_date" class="form-control" placeholder="Contact number" />
                                     </div>
                                 </div>
                             </div>

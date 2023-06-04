@@ -212,7 +212,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li>
-                        <a href="flock" aria-expanded="false">Flocks</a>
+                        <a href="flock" aria-expanded="false">Add New Flock</a>
                     </li>
                     <li>
                         <a href="farm" aria-expanded="false">Farms</a>
@@ -253,7 +253,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li>
-                        <a href="flock" aria-expanded="false">Flocks</a>
+                        <a href="flock" aria-expanded="false">Add New Flock</a>
                     </li>
                 </ul>
             </li>

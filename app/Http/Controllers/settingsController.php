@@ -32,7 +32,6 @@ class settingsController extends Controller
         $data->name = $req->input('name');
         $data->farm_id = $req->input('farm_id');
         $data->start_date=$req->input('start_date');
-        $data->end_date=$req->input('end_date');
         $data->status = 1;
         $data->save();
 
