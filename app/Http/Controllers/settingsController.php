@@ -18,25 +18,45 @@ use Illuminate\Support\Facades\Hash;
 class settingsController extends Controller
 {
     function getFlock(){
-        $flockList = Flock::orderBy('id','desc')
-        ->get();
-        $farmList = Farm::get();
+        if(auth()->user()->role==1){
+            $flockList = Flock::orderBy('id','desc')
+            ->get();
+            $farmList = Farm::get();
+        }
+        else{
+            $flockList = Flock::orderBy('id','desc')
+            ->where('farm_id', auth()->user()->farm_id)
+            ->get();
+            $farmList = Farm::get();
+        }
+        
 
         return view('admin/settings/flock')->with('flockList', $flockList)->with('farmList', $farmList);
     }
     function addFlock(Request $req){
 
         //Flock::query()->update(['status' => 0]);
+        $farm = $req->input('farm_id');
+        $currentFlock = Flock::where('farm_id', $farm)
+                        ->where('status', 1)
+                        ->get()->first();
+        if($currentFlock){
+            $req->session()->flash('error','There is already a running flock in this farm. Please complete the flock to add a new flock.');
+            return redirect()->back();
+        }
+        else{
+            $data = new Flock;
+            $data->name = $req->input('name');
+            $data->farm_id = $req->input('farm_id');
+            $data->start_date=$req->input('start_date');
+            $data->status = 1;
+            $data->save();
 
-        $data = new Flock;
-        $data->name = $req->input('name');
-        $data->farm_id = $req->input('farm_id');
-        $data->start_date=$req->input('start_date');
-        $data->status = 1;
-        $data->save();
+            $req->session()->flash('status','New flock added successfully');
+            return redirect()->back();
+        }
 
-        $req->session()->flash('status','New flock added successfully');
-        return redirect()->back();
+        
     }
     function editFlockData($id){
         $data=Flock::find($id);
