@@ -117,16 +117,16 @@
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label> Date <span class="text-danger">*</span></label>
-                                        <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" required />
+                                        <input type="date" class="form-control input-default" name="date" @if($flock) min="{{$flock->start_date}}" @endif placeholder="Input Start Date" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>Flock <span class="text-danger">*</span></label>
                                         <select class="form-control input-default" name="flock_id" required>
-                                            @foreach ($flock as $item)
-                                            <option value="{{$item['id']}}">{{$item['name']}}</option>
-                                            @endforeach
+                                            @if($flock)
+                                            <option value="{{$flock['id']}}">{{$flock['name']}}</option>
+                                            @endif
                                         </select>
                                     </div>
                                 </div>
