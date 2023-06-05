@@ -59,24 +59,32 @@
                                             <label>Date</label>
                                             <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" />
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Amount (KG)</label>
-                                            <input type="number" class="form-control input-default" name="amount" placeholder="Input amount" />
-                                        </div>
-
-                                        {{-- <div class="form-group col-md-6">
-                                            <label>Price</label>
-                                            <input type="number" class="form-control input-default" name="price" placeholder="Input Price" />
-                                        </div> --}}
 
                                         <div class="form-group col-md-6">
                                             <label>Data Type</label>
                                             <select class="form-control input-default" name="data_type" required>
                                                 <option value="1">Received New Medicine</option>
                                                 <option value="2">Used Medicine</option>
-
                                             </select>
                                         </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label>Amount</label>
+                                            <input type="number" class="form-control input-default" name="amount" placeholder="Input amount" />
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label>Amount Unit</label>
+                                            <select class="form-control input-default" name="unit" required>
+                                                <option>KG</option>
+                                                <option>Pcs</option>
+                                                <option>Litre</option>
+                                                <option>Dose</option>
+
+                                            </select>
+
+                                        </div>
+
 
 
 
@@ -101,6 +109,15 @@
                             </button>
                         </div>
                         @endif
+                        @if (Session::get('error'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{Session::get('error')}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
+
 
                         <div class="card">
                             <div class="card-body">

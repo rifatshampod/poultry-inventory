@@ -14,7 +14,7 @@ class medicineController extends Controller
 
     function getMedicine(){
 
-    $medicineList = Medicine::where('status',1)->get();
+        $medicineList = Medicine::where('status',1)->get();
        
         return view('admin/medicine/allMedicine')->with('medicineList', $medicineList);
     }
@@ -68,24 +68,66 @@ class medicineController extends Controller
     function addFarmMedicine(Request $req){
 
         $amount = 0;
+        $medicine = $req->input('medicine_id');
+        $farm = $req->input('farm_id');
+        $type = $req->input('data_type');
+        $stock = 0;
 
+        //check stock before using medicine
         if($req->input('data_type')==2){
-            $amount = -($req->input('amount'));
+
+            $farmMedicine = Farm_medicine::select(
+                                DB::raw('SUM(farm_medicines.amount) AS sum_of_amount')
+                                )
+                                ->groupBy('farm_medicines.farm_id')
+                                ->groupBy('farm_medicines.medicine_id')
+                                ->where('farm_medicines.farm_id', $farm)
+                                ->where('farm_medicines.medicine_id', $medicine)
+                            ->get()->first();
+            if($farmMedicine){
+                $stock = $farmMedicine['sum_of_amount'] - $req->input('amount');
+
+                if($stock<=0){
+                    $req->session()->flash('error','Medicine stock is lower than the used amount. Please add medicine in stock before using.');
+                    return redirect()->back();
+                }
+                else{
+                    $amount = -($req->input('amount'));
+                    $data = new Farm_medicine;
+                    $data->medicine_id = $req->input('medicine_id');
+                    $data->farm_id=$req->input('farm_id');
+                    $data->date=$req->input('date');
+                    $data->amount=$amount;
+                    $data->unit=$req->input('unit');
+                    $data->save();
+                    
+                    $req->session()->flash('status','Medicine use data added successfully');
+                    return redirect()->back();
+                }
+            }
+            else{
+                $req->session()->flash('error','No medicine available in stock. Please add medicine in stock before using.');
+                    return redirect()->back();
+            }
+            
+            
         }
         else{
             $amount = $req->input('amount');
+
+            $data = new Farm_medicine;
+            $data->medicine_id = $req->input('medicine_id');
+            $data->farm_id=$req->input('farm_id');
+            $data->date=$req->input('date');
+            $data->amount=$amount;
+            $data->unit=$req->input('unit');
+            $data->save();
+            
+            $req->session()->flash('status','New Medicine added successfully');
+            return redirect()->back();
         }
         
-        $data = new Farm_medicine;
-        $data->medicine_id = $req->input('medicine_id');
-        $data->farm_id=$req->input('farm_id');
-        $data->date=$req->input('date');
-        $data->amount=$amount;
-        // $data->price=$req->input('price');
-        $data->save();
-        
-        $req->session()->flash('status','New Medicine added successfully');
-        return redirect()->back();
+       
     }
 
     function getDistribution(Request $req){
