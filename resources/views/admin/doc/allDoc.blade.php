@@ -353,16 +353,15 @@
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label> Date <span class="text-danger">*</span></label>
-                                        <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" required />
+                                        <input type="date" class="form-control input-default" name="date" min={{$flock1->start_date}} placeholder="Input Start Date" required />
+
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>Flock <span class="text-danger">*</span></label>
                                         <select class="form-control input-default" name="flock_id" required>
-                                            @foreach ($flock1 as $item)
-                                            <option value="{{$item['id']}}">{{$item['name']}}</option>
-                                            @endforeach
+                                            <option value="{{$flock1['id']}}">{{$flock1['name']}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -490,16 +489,15 @@
                                     <div class="form-group">
                                         <label> Date <span class="text-danger">*</span></label>
 
-                                        <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" required />
+                                        <input type="date" class="form-control input-default" name="date" min={{$flock2->start_date}} placeholder="Input Start Date" required />
+
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>Flock <span class="text-danger">*</span></label>
                                         <select class="form-control input-default" name="flock_id" required>
-                                            @foreach ($flock2 as $item)
-                                            <option value="{{$item['id']}}">{{$item['name']}}</option>
-                                            @endforeach
+                                            <option value="{{$flock2['id']}}">{{$flock2['name']}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -628,16 +626,15 @@
                                     <div class="form-group">
                                         <label> Date <span class="text-danger">*</span></label>
 
-                                        <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" required />
+                                        <input type="date" class="form-control input-default" name="date" min={{$flock3->start_date}} placeholder="Input Start Date" required />
+
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>Flock <span class="text-danger">*</span></label>
                                         <select class="form-control input-default" name="flock_id" required>
-                                            @foreach ($flock3 as $item)
-                                            <option value="{{$item['id']}}">{{$item['name']}}</option>
-                                            @endforeach
+                                            <option value="{{$flock3['id']}}">{{$flock3['name']}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -766,16 +763,15 @@
                                     <div class="form-group">
                                         <label> Date <span class="text-danger">*</span></label>
 
-                                        <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" required />
+                                        <input type="date" class="form-control input-default" name="date" min={{$flock4->start_date}} placeholder="Input Start Date" required />
+
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>Flock <span class="text-danger">*</span></label>
                                         <select class="form-control input-default" name="flock_id" required>
-                                            @foreach ($flock4 as $item)
-                                            <option value="{{$item['id']}}">{{$item['name']}}</option>
-                                            @endforeach
+                                            <option value="{{$flock4['id']}}">{{$flock4['name']}}</option>
                                         </select>
                                     </div>
                                 </div>

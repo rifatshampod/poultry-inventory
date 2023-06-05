@@ -39,16 +39,16 @@ class chickenController extends Controller
 
         $flock1 = Flock::where('status',1)
         ->where('farm_id', 1)
-        ->get();
+        ->get()->first();
         $flock2 = Flock::where('status',1)
         ->where('farm_id', 2)
-        ->get();
+        ->get()->first();
         $flock3 = Flock::where('status',1)
         ->where('farm_id', 3)
-        ->get();
+        ->get()->first();
         $flock4 = Flock::where('status',1)
         ->where('farm_id', 4)
-        ->get();
+        ->get()->first();
 
         $docList1 = Chicken::where('farm_id',1)
         ->where('status', 1)
