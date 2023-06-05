@@ -14,7 +14,7 @@ class medicineController extends Controller
 
     function getMedicine(){
 
-    $medicineList = Medicine::all();
+    $medicineList = Medicine::where('status',1)->get();
        
         return view('admin/medicine/allMedicine')->with('medicineList', $medicineList);
     }
@@ -24,7 +24,7 @@ class medicineController extends Controller
         $userRole = auth()->user()->role;
         $userFarm = auth()->user()->farm_id;
 
-        $medicineList = Medicine::all();
+        $medicineList = Medicine::where('status',1)->get();
         $medicineName = Medicine::find($slug);
 
         if($userRole==1){
@@ -58,6 +58,7 @@ class medicineController extends Controller
         $data = new Medicine;
         $data->name = $req->input('name');
         $data->usages=$req->input('usages');
+        $data->status=1;
         $data->save();
         
         $req->session()->flash('status','New Medicine added successfully');
@@ -98,7 +99,7 @@ class medicineController extends Controller
             $medicineList = Farm_medicine::orderBy('id','desc')
             ->get();
             $medicineTypeList = Medicine::orderBy('id','desc')
-            ->get();
+            ->where('status',1)->get();
 
             
         }
@@ -110,7 +111,7 @@ class medicineController extends Controller
             ->where('farm_id', $loggedFarm)
             ->get();
             $medicineTypeList = Medicine::orderBy('id','desc')
-            ->get();
+            ->where('status',1)->get();
             
         }
        
@@ -122,7 +123,7 @@ class medicineController extends Controller
         $userRole = auth()->user()->role;
         $userFarm = auth()->user()->farm_id;
 
-        $medicineList = Medicine::all();
+        $medicineList = Medicine::where('status',1)->get();
 
         if($userRole==1){
             $farmList = Farm::all();
@@ -159,6 +160,8 @@ class medicineController extends Controller
         ]);
     }
 
+    
+
     function updateMedicineDistribution(Request $req){
 
        
@@ -184,6 +187,45 @@ class medicineController extends Controller
         // $total->save();
 
         $req->session()->flash('status', 'Feed restock data updated successfully.');
+        return redirect()->back();
+    }
+
+    //edit medicine type
+    function getEditMedicineType($id){
+        $data=Medicine::find($id);
+        return response()->json([
+            'status'=>200,
+            'data'=>$data,
+        ]);
+    }
+    function updateMedicine(Request $req){
+
+       
+        $medicine = $req->input('medicine_id');
+        
+        //Retrieve previous data
+
+        $data = Medicine::find($medicine);
+        $data->name = $req->input('name');
+        $data->usages=$req->input('usages');
+        $data->update();
+
+        $req->session()->flash('status', 'Medicine type updated successfully.');
+        return redirect()->back();
+    }
+
+    function deleteMedicine(Request $req){
+
+       
+        $medicine = $req->input('medicine_id');
+        
+        //Retrieve previous data
+
+        $data = Medicine::find($medicine);
+        $data->status=0;
+        $data->update();
+
+        $req->session()->flash('status', 'Medicine deleted successfully.');
         return redirect()->back();
     }
 }

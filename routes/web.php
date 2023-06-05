@@ -71,6 +71,10 @@ Route::get('distribute-medicine', [medicineController::class,'getDistribution'])
 Route::get('add-distribute-medicine', [medicineController::class,'getAddDistribution']);
 Route::get('edit-medicinedistribution{id}', [medicineController::class,'getEditMedicineDistribution']);
 Route::post('edit-medicine-distribution-info', [medicineController::class,'updateMedicineDistribution']);
+Route::get('edit-medicineType{id}', [medicineController::class,'getEditMedicineType']);
+Route::post('update-medicine', [medicineController::class,'updateMedicine']);
+Route::post('delete-medicine', [medicineController::class,'deleteMedicine']);
+
 
 //Account
 Route::get('add-expense', [accountController::class,'getAddExpense']);
