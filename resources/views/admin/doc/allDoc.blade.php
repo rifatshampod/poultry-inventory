@@ -75,12 +75,12 @@
                                                 <th scope="col">House</th>
                                                 <th scope="col">Start Date</th>
                                                 <th scope="col">Total DOC</th>
-                                                <th scope="col">Hatchery</th>
-                                                <th scope="col">Bird/Case</th>
+                                                <th scope="col">Breeder Name</th>
+                                                {{-- <th scope="col">Bird/Case</th> --}}
                                                 <th scope="col">Vaccination</th>
-                                                <th scope="col">Density</th>
+                                                {{-- <th scope="col">Density</th>
                                                 <th scope="col">Catching Start</th>
-                                                <th scope="col">Catching End</th>
+                                                <th scope="col">Catching End</th> --}}
                                                 <th class="" scope="col">
                                                     <span class="float-right">Action</span>
                                                 </th>
@@ -94,11 +94,11 @@
                                                 <td>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
                                                 <td>{{$item['sum_of_doc']}}</td>
                                                 <td>{{$item['hatchery']}}</td>
-                                                <td>{{$item['bird_in_case']}}</td>
+                                                {{-- <td>{{$item['bird_in_case']}}</td> --}}
                                                 <td>{{$item['vaccine']}}</td>
-                                                <td>{{$item['density']}}</td>
+                                                {{-- <td>{{$item['density']}}</td>
                                                 <td>{{\Carbon\Carbon::parse($item['catching_start'])->format('m/d/Y')}}</td>
-                                                <td>{{\Carbon\Carbon::parse($item['catching_end'])->format('m/d/Y')}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['catching_end'])->format('m/d/Y')}}</td> --}}
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
@@ -143,12 +143,12 @@
                                                 <th scope="col">House</th>
                                                 <th scope="col">Start Date</th>
                                                 <th scope="col">Total DOC</th>
-                                                <th scope="col">Hatchery</th>
-                                                <th scope="col">Bird/Case</th>
+                                                <th scope="col">Breeder Name</th>
+                                                {{-- <th scope="col">Bird/Case</th> --}}
                                                 <th scope="col">Vaccination</th>
-                                                <th scope="col">Density</th>
+                                                {{-- <th scope="col">Density</th>
                                                 <th scope="col">Catching Start</th>
-                                                <th scope="col">Catching End</th>
+                                                <th scope="col">Catching End</th> --}}
                                                 <th class="" scope="col">
                                                     <span class="float-right">Action</span>
                                                 </th>
@@ -162,11 +162,11 @@
                                                 <td>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
                                                 <td>{{$item['sum_of_doc']}}</td>
                                                 <td>{{$item['hatchery']}}</td>
-                                                <td>{{$item['bird_in_case']}}</td>
+                                                {{-- <td>{{$item['bird_in_case']}}</td> --}}
                                                 <td>{{$item['vaccine']}}</td>
-                                                <td>{{$item['density']}}</td>
+                                                {{-- <td>{{$item['density']}}</td>
                                                 <td>{{\Carbon\Carbon::parse($item['catching_start'])->format('m/d/Y')}}</td>
-                                                <td>{{\Carbon\Carbon::parse($item['catching_end'])->format('m/d/Y')}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['catching_end'])->format('m/d/Y')}}</td> --}}
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
@@ -214,12 +214,12 @@
                                                 <th scope="col">House</th>
                                                 <th scope="col">Start Date</th>
                                                 <th scope="col">Total DOC</th>
-                                                <th scope="col">Hatchery</th>
-                                                <th scope="col">Bird/Case</th>
+                                                <th scope="col">Breeder Name</th>
+                                                {{-- <th scope="col">Bird/Case</th> --}}
                                                 <th scope="col">Vaccination</th>
-                                                <th scope="col">Density</th>
+                                                {{-- <th scope="col">Density</th>
                                                 <th scope="col">Catching Start</th>
-                                                <th scope="col">Catching End</th>
+                                                <th scope="col">Catching End</th> --}}
                                                 <th class="" scope="col">
                                                     <span class="float-right">Action</span>
                                                 </th>
@@ -233,11 +233,11 @@
                                                 <td>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
                                                 <td>{{$item['sum_of_doc']}}</td>
                                                 <td>{{$item['hatchery']}}</td>
-                                                <td>{{$item['bird_in_case']}}</td>
+                                                {{-- <td>{{$item['bird_in_case']}}</td> --}}
                                                 <td>{{$item['vaccine']}}</td>
-                                                <td>{{$item['density']}}</td>
+                                                {{-- <td>{{$item['density']}}</td>
                                                 <td>{{\Carbon\Carbon::parse($item['catching_start'])->format('m/d/Y')}}</td>
-                                                <td>{{\Carbon\Carbon::parse($item['catching_end'])->format('m/d/Y')}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['catching_end'])->format('m/d/Y')}}</td> --}}
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
@@ -284,12 +284,12 @@
                                                 <th scope="col">House</th>
                                                 <th scope="col">Start Date</th>
                                                 <th scope="col">Total DOC</th>
-                                                <th scope="col">Hatchery</th>
-                                                <th scope="col">Bird/Case</th>
+                                                <th scope="col">Breeder Name</th>
+                                                {{-- <th scope="col">Bird/Case</th> --}}
                                                 <th scope="col">Vaccination</th>
-                                                <th scope="col">Density</th>
+                                                {{-- <th scope="col">Density</th>
                                                 <th scope="col">Catching Start</th>
-                                                <th scope="col">Catching End</th>
+                                                <th scope="col">Catching End</th> --}}
                                                 <th class="" scope="col">
                                                     <span class="float-right">Action</span>
                                                 </th>
@@ -303,11 +303,11 @@
                                                 <td>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
                                                 <td>{{$item['sum_of_doc']}}</td>
                                                 <td>{{$item['hatchery']}}</td>
-                                                <td>{{$item['bird_in_case']}}</td>
+                                                {{-- <td>{{$item['bird_in_case']}}</td> --}}
                                                 <td>{{$item['vaccine']}}</td>
-                                                <td>{{$item['density']}}</td>
+                                                {{-- <td>{{$item['density']}}</td>
                                                 <td>{{\Carbon\Carbon::parse($item['catching_start'])->format('m/d/Y')}}</td>
-                                                <td>{{\Carbon\Carbon::parse($item['catching_end'])->format('m/d/Y')}}</td>
+                                                <td>{{\Carbon\Carbon::parse($item['catching_end'])->format('m/d/Y')}}</td> --}}
                                                 <td>
                                                     <div class="dropdown custom-dropdown float-right cursor">
                                                         <div data-toggle="dropdown">
@@ -390,26 +390,26 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label> Sum of Doc <span class="text-danger">*</span></label>
+                                        <label> Total Bird Ordered <span class="text-danger">*</span></label>
 
                                         <input type="number" class="form-control input-default" name="sum_of_doc" placeholder="Total Doc" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label> Hatchery</label>
-                                        <input type="text" class="form-control input-default" name="hatchery" placeholder="Hatchery Name" />
+                                        <label> Breeder Name</label>
+                                        <input type="text" class="form-control input-default" name="hatchery" placeholder="Breeder Name" />
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                {{-- <div class="col-lg-4">
                                     <div class="form-group">
                                         <label> Bird In Case</label>
                                         <input type="number" class="form-control input-default" name="bird_in_case" placeholder="Bird" />
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-lg-12 mb-4">
                                     <div>
-                                        <label>Vaccination From Hacthery</label>
+                                        <label>Vaccination From Breeder</label>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-3">
@@ -442,7 +442,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                {{-- <div class="col-lg-4">
                                     <div class="form-group">
                                         <label> Density</label>
                                         <input type="number" class="form-control input-default" name="density" placeholder="Density" />
@@ -459,7 +459,7 @@
                                         <label> Catching End date</label>
                                         <input type="date" class="form-control input-default" name="catching_end" placeholder="" />
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="d-flex justify-content-center">
                                 <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">
@@ -527,26 +527,26 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label> Sum of Doc <span class="text-danger">*</span></label>
+                                        <label> Total Bird Ordered <span class="text-danger">*</span></label>
 
                                         <input type="number" class="form-control input-default" name="sum_of_doc" placeholder="Total Doc" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label> Hatchery</label>
-                                        <input type="text" class="form-control input-default" name="hatchery" placeholder="Hatchery Name" />
+                                        <label> Breeder Name</label>
+                                        <input type="text" class="form-control input-default" name="hatchery" placeholder="Breeder Name" />
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                {{-- <div class="col-lg-4">
                                     <div class="form-group">
                                         <label> Bird In Case</label>
                                         <input type="number" class="form-control input-default" name="bird_in_case" placeholder="Bird" />
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-lg-12 mb-4">
                                     <div>
-                                        <label>Vaccination From Hacthery</label>
+                                        <label>Vaccination From Breeder</label>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-3">
@@ -579,7 +579,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                {{-- <div class="col-lg-4">
                                     <div class="form-group">
                                         <label> Density</label>
                                         <input type="number" class="form-control input-default" name="density" placeholder="Density" />
@@ -596,7 +596,7 @@
                                         <label> Catching End date</label>
                                         <input type="date" class="form-control input-default" name="catching_end" placeholder="" />
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="d-flex justify-content-center">
                                 <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">
@@ -665,26 +665,26 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label> Sum of Doc <span class="text-danger">*</span></label>
+                                        <label> Total Bird Ordered <span class="text-danger">*</span></label>
 
                                         <input type="number" class="form-control input-default" name="sum_of_doc" placeholder="Total Doc" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label> Hatchery</label>
-                                        <input type="text" class="form-control input-default" name="hatchery" placeholder="Hatchery Name" />
+                                        <label> Breeder Name</label>
+                                        <input type="text" class="form-control input-default" name="hatchery" placeholder="Breeder Name" />
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                {{-- <div class="col-lg-4">
                                     <div class="form-group">
                                         <label> Bird In Case</label>
                                         <input type="number" class="form-control input-default" name="bird_in_case" placeholder="Bird" />
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-lg-12 mb-4">
                                     <div>
-                                        <label>Vaccination From Hacthery</label>
+                                        <label>Vaccination From Breeder</label>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-3">
@@ -717,7 +717,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                {{-- <div class="col-lg-4">
                                     <div class="form-group">
                                         <label> Density</label>
                                         <input type="number" class="form-control input-default" name="density" placeholder="Density" />
@@ -734,7 +734,7 @@
                                         <label> Catching End date</label>
                                         <input type="date" class="form-control input-default" name="catching_end" placeholder="" />
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="d-flex justify-content-center">
                                 <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">
@@ -805,26 +805,26 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label> Sum of Doc <span class="text-danger">*</span></label>
+                                        <label> Total Bird Ordered <span class="text-danger">*</span></label>
 
                                         <input type="number" class="form-control input-default" name="sum_of_doc" placeholder="Total Doc" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label> Hatchery</label>
-                                        <input type="text" class="form-control input-default" name="hatchery" placeholder="Hatchery Name" />
+                                        <label> Breeder Name</label>
+                                        <input type="text" class="form-control input-default" name="hatchery" placeholder="Breeder Name" />
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                {{-- <div class="col-lg-4">
                                     <div class="form-group">
                                         <label> Bird In Case</label>
                                         <input type="number" class="form-control input-default" name="bird_in_case" placeholder="Bird" />
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-lg-12 mb-4">
                                     <div>
-                                        <label>Vaccination From Hacthery</label>
+                                        <label>Vaccination From Breeder</label>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-3">
@@ -857,7 +857,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                {{-- <div class="col-lg-4">
                                     <div class="form-group">
                                         <label> Density</label>
                                         <input type="number" class="form-control input-default" name="density" placeholder="Density" />
@@ -874,7 +874,7 @@
                                         <label> Catching End date</label>
                                         <input type="date" class="form-control input-default" name="catching_end" placeholder="" />
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="d-flex justify-content-center">
                                 <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">
@@ -933,25 +933,25 @@
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label> Sum of Doc</label>
+                                    <label> Total Bird Ordered</label>
                                     <input type="number" id="edit_sum" class="form-control input-default" name="sum_of_doc" placeholder="Total Doc" />
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label> Hatchery</label>
-                                    <input type="text" id="edit_hatchery" class="form-control input-default" name="hatchery" placeholder="Hatchery Name" />
+                                    <label> Breeder Name</label>
+                                    <input type="text" id="edit_hatchery" class="form-control input-default" name="hatchery" placeholder="Breeder Name" />
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            {{-- <div class="col-lg-4">
                                 <div class="form-group">
                                     <label> Bird In Case</label>
                                     <input type="number" id="edit_birdincase" class="form-control input-default" name="bird_in_case" placeholder="Bird" />
                                 </div>
-                            </div>
+                            </div> --}}
                             {{-- <div class="col-lg-12 mb-4">
                                 <div>
-                                    <label>Vaccination From Hacthery</label>
+                                    <label>Vaccination From Breeder</label>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3">
@@ -984,7 +984,7 @@
                                     </div>
                                 </div>
                             </div> --}}
-                            <div class="col-lg-4">
+                            {{-- <div class="col-lg-4">
                                 <div class="form-group">
                                     <label> Density</label>
                                     <input type="number" id="edit_density" class="form-control input-default" name="density" placeholder="Density" />
@@ -1001,7 +1001,7 @@
                                     <label> Catching End date</label>
                                     <input type="date" id="edit_catchingEnd" class="form-control input-default" name="catching_end" placeholder="" />
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="col-lg-12">
                             <div class="d-flex justify-content-center">
@@ -1048,10 +1048,6 @@
                     $('#edit_house').val(response.chicken.house_id);
                     $('#edit_sum').val(response.chicken.first_doc);
                     $('#edit_hatchery').val(response.chicken.hatchery);
-                    $('#edit_birdincase').val(response.chicken.bird_in_case);
-                    $('#edit_density').val(response.chicken.density);
-                    $('#edit_catchingStart').val(response.chicken.catching_start);
-                    $('#edit_catchingEnd').val(response.chicken.catching_end);
                     $('#edit_chicken_id').val(clicked_id);
 
                 }

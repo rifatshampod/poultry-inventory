@@ -94,13 +94,9 @@ class chickenController extends Controller
         $data->first_doc=$req->input('sum_of_doc');
         $data->sum_of_doc=$req->input('sum_of_doc');
         $data->hatchery=$req->input('hatchery');
-        $data->bird_in_case=$req->input('bird_in_case');
         if($req->input('vaccine')){         //validation
             $data->vaccine=implode(",", $req->input('vaccine'));
         }
-        $data->density=$req->input('density');
-        $data->catching_start=$req->input('catching_start');
-        $data->catching_end=$req->input('catching_end');
         $data->flock_id=$req->input('flock_id');
         $data->status = 1;
         $data->save();
@@ -135,10 +131,6 @@ class chickenController extends Controller
             $doc->first_doc=$req->input('sum_of_doc');
             $doc->sum_of_doc+=$sumDifference;
             $doc->hatchery=$req->input('hatchery');
-            $doc->bird_in_case=$req->input('bird_in_case');
-            $doc->density=$req->input('density');
-            $doc->catching_start=$req->input('catching_start');
-            $doc->catching_end=$req->input('catching_end');
             $doc->update();
 
         return redirect()->back();
