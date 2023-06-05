@@ -71,6 +71,7 @@
                                                 <th scope="col">Weight 2</th>
                                                 <th scope="col">Weight 3</th>
                                                 <th scope="col">Weight 4</th>
+                                                <th scope="col">Avg Weight</th>
                                                 <th scope="col">Mortality</th>
                                                 <th scope="col">Rejection</th>
                                                 <th scope="col">Action</th>
@@ -88,6 +89,7 @@
                                                 <td>{{$item['weight2']}}</td>
                                                 <td>{{$item['weight3']}}</td>
                                                 <td>{{$item['weight4']}}</td>
+                                                <td>{{$item['weight_avg']}}</td>
                                                 <td>{{$item['mortality']}}</td>
                                                 <td>{{$item['rejection']}}</td>
                                                 <td>
@@ -121,6 +123,7 @@
                                                 <th scope="col">Weight 2</th>
                                                 <th scope="col">Weight 3</th>
                                                 <th scope="col">Weight 4</th>
+                                                <th scope="col">Avg Weight</th>
                                                 <th scope="col">Mortality</th>
                                                 <th scope="col">Rejection</th>
                                                 <th scope="col">Action</th>
@@ -141,6 +144,7 @@
                                                 <td>{{$item['weight2']}}</td>
                                                 <td>{{$item['weight3']}}</td>
                                                 <td>{{$item['weight4']}}</td>
+                                                <td>{{$item['weight_avg']}}</td>
                                                 <td>{{$item['mortality']}}</td>
                                                 <td>{{$item['rejection']}}</td>
 
@@ -181,6 +185,7 @@
                                                 <th scope="col">Weight 2</th>
                                                 <th scope="col">Weight 3</th>
                                                 <th scope="col">Weight 4</th>
+                                                <th scope="col">Avg Weight</th>
                                                 <th scope="col">Mortality</th>
                                                 <th scope="col">Rejection</th>
                                                 <th scope="col">Action</th>
@@ -202,6 +207,7 @@
                                                 <td>{{$item['weight2']}}</td>
                                                 <td>{{$item['weight3']}}</td>
                                                 <td>{{$item['weight4']}}</td>
+                                                <td>{{$item['weight_avg']}}</td>
                                                 <td>{{$item['mortality']}}</td>
                                                 <td>{{$item['rejection']}}</td>
                                                 <td>
@@ -241,6 +247,7 @@
                                                 <th scope="col">Weight 2</th>
                                                 <th scope="col">Weight 3</th>
                                                 <th scope="col">Weight 4</th>
+                                                <th scope="col">Avg Weight</th>
                                                 <th scope="col">Mortality</th>
                                                 <th scope="col">Rejection</th>
                                                 <th scope="col">Action</th>
@@ -260,6 +267,7 @@
                                                 <td>{{$item['weight2']}}</td>
                                                 <td>{{$item['weight3']}}</td>
                                                 <td>{{$item['weight4']}}</td>
+                                                <td>{{$item['weight_avg']}}</td>
                                                 <td>{{$item['mortality']}}</td>
                                                 <td>{{$item['rejection']}}</td>
                                                 <td>

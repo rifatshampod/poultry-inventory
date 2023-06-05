@@ -112,8 +112,9 @@
 
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="all-chicken">All Chicken (House Wise)</a></li>
-                    <li><a href="daily-chicken">Daily Chicken</a></li>
+                    <li><a href="all-chicken">Add daily chicken data (House Wise)</a></li>
+                    <li><a href="daily-chicken">All chicken information (Day Wise)</a></li>
+
                 </ul>
             </li>
             @if(Auth::user()->role==1)
@@ -124,9 +125,9 @@
                     <span class="nav-text">Feed</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="all-feed">All Feed (House)</a></li>
+                    <li><a href="all-feed">Add Feed</a></li>
                     <li>
-                        <a href="feed-restock">Feed Restock</a>
+                        <a href="feed-restock">Feed Inventory</a>
                     </li>
                 </ul>
             </li>
@@ -138,15 +139,10 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="all-medicine">Add new medicine name
-
                         </a></li>
                     <li>
                         <a href="distribute-medicine">Distribute Medicine</a>
-
-
                     </li>
-
-
                 </ul>
             </li>
             <li>
