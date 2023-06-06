@@ -58,8 +58,8 @@
                                                 <td>{{$item['sum_of_birds']}}</td>
                                                 <td>{{$item['sum_of_weight']}}</td>
                                                 <td>{{$item['avg_of_weight']}}</td>
-                                                <td>{{$item['sum_of_price']}}</td>
-                                                <td>{{$item['avg_of_price']}}</td>
+                                                <td>{{number_format($item['sum_of_price'], 2, '.', ',')}}</td>
+                                                <td>{{number_format($item['avg_of_price'], 2, '.', ',')}}</td>
                                                 <td>{{$item['avg_kg_price']}}</td>
                                             </tr>
                                             @endforeach

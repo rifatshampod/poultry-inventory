@@ -51,7 +51,7 @@
                                                 <th scope="col">Car No</th>
                                                 <th scope="col">Catching Slip</th>
                                                 <th scope="col">Payment Method</th>
-                                                <th scope="col">Branch</th>
+                                                <th scope="col">Address</th>
 
                                             </tr>
                                         </thead>
@@ -64,7 +64,7 @@
                                                 <td>{{$item['total_birds']}}</td>
                                                 <td>{{$item['total_weight']}}</td>
                                                 <td>{{$item['avg_weight']}}</td>
-                                                <td>{{$item['total_price']}}</td>
+                                                <td>{{number_format($item['total_price'], 2, '.', ',')}}</td>
                                                 <td>{{$item['avg_price']}}</td>
                                                 <td>{{$item['per_kg_price']}}</td>
                                                 <td>{{$item['customer']}}</td>
