@@ -149,6 +149,19 @@ class chickenController extends Controller
         $farm4 = Farm::where('id',4)
         ->first();
 
+        $flock1 = Flock::where('status',1)
+        ->where('farm_id', 1)
+        ->get()->first();
+        $flock2 = Flock::where('status',1)
+        ->where('farm_id', 2)
+        ->get()->first();
+        $flock3 = Flock::where('status',1)
+        ->where('farm_id', 3)
+        ->get()->first();
+        $flock4 = Flock::where('status',1)
+        ->where('farm_id', 4)
+        ->get()->first();
+
         $chickenList1 = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
         ->select('chickens.*',
         DB::raw('SUM(daily_chickens.mortality) AS sum_of_mortality'),
@@ -202,20 +215,20 @@ class chickenController extends Controller
         ->get();
         
         if(auth()->user()->role ==1){
-        return view('admin/chicken/allChicken')->with('chickenList1', $chickenList1)->with('chickenList2', $chickenList2)->with('chickenList3', $chickenList3)->with('chickenList4', $chickenList4)->with('farm1', $farm1)->with('farm2', $farm2)->with('farm3', $farm3)->with('farm4', $farm4);
+        return view('admin/chicken/allChicken')->with('chickenList1', $chickenList1)->with('chickenList2', $chickenList2)->with('chickenList3', $chickenList3)->with('chickenList4', $chickenList4)->with('farm1', $farm1)->with('farm2', $farm2)->with('farm3', $farm3)->with('farm4', $farm4)->with('flock1', $flock1)->with('flock2', $flock2)->with('flock3', $flock3)->with('flock4', $flock4);
         }
         else{
              if(auth()->user()->farm_id ==1){
-                return view('manager/chicken/allChicken')->with('chickenList', $chickenList1);
+                return view('manager/chicken/allChicken')->with('chickenList', $chickenList1)->with('flock1', $flock1);
              }
              elseif(auth()->user()->farm_id ==2){
-                return view('manager/chicken/allChicken')->with('chickenList', $chickenList2);
+                return view('manager/chicken/allChicken')->with('chickenList', $chickenList2)->with('flock2', $flock2);
              }
              elseif(auth()->user()->farm_id ==3){
-                return view('manager/chicken/allChicken')->with('chickenList', $chickenList3);
+                return view('manager/chicken/allChicken')->with('chickenList', $chickenList3)->with('flock3', $flock3);
              }
              elseif(auth()->user()->farm_id ==4){
-                return view('manager/chicken/allChicken')->with('chickenList', $chickenList4);
+                return view('manager/chicken/allChicken')->with('chickenList', $chickenList4)->with('flock4', $flock4);
              }
              
 
@@ -350,29 +363,38 @@ class chickenController extends Controller
         
         if($total){
 
-            $total->amount -= $req->input('feed_consumption');
-            $total->save();
+            $feedStock = $total['amount']-$req->input('feed_consumption');
 
-            $data = new Daily_chicken;
-            $data->date = $req->input('date');
-            $data->chicken_id=$req->input('chicken_id');
-            $data->feed_consumption=$req->input('feed_consumption');
-            $data->avg_feed_consumption=$avg_feed_consumption;
-            $data->cfc= $cfc;
-            $data->fcr= $fcr;
-            $data->fc= $fc;
-            $data->weight1=$req->input('weight1')/1000;
-            $data->weight2=$req->input('weight2')/1000;
-            $data->weight3=$req->input('weight3')/1000;
-            $data->weight4=$req->input('weight4')/1000;
-            $data->weight_avg= $weight;
-            $data->weight_gain= $weight_gain;
-            $data->mortality=$req->input('mortality');
-            $data->rejection=$req->input('rejection');
-            $data->status = 1;
-            $data->save();
+            if($feedStock<=0){
+                $req->session()->flash('error','Feed stock is lowar than feed consumption. Please add feed amount first.');
+            }
+            else{
+                $total->amount -= $req->input('feed_consumption');
+                $total->save();
 
-            $req->session()->flash('status','New Daily data added successfully. FCR value= '.$fcr.' and cfc value = '.$cfc.' and previous weight gain = '.$weight_gain);
+                $data = new Daily_chicken;
+                $data->date = $req->input('date');
+                $data->chicken_id=$req->input('chicken_id');
+                $data->feed_consumption=$req->input('feed_consumption');
+                $data->avg_feed_consumption=$avg_feed_consumption;
+                $data->cfc= $cfc;
+                $data->fcr= $fcr;
+                $data->fc= $fc;
+                $data->weight1=$req->input('weight1')/1000;
+                $data->weight2=$req->input('weight2')/1000;
+                $data->weight3=$req->input('weight3')/1000;
+                $data->weight4=$req->input('weight4')/1000;
+                $data->weight_avg= $weight;
+                $data->weight_gain= $weight_gain;
+                $data->mortality=$req->input('mortality');
+                $data->rejection=$req->input('rejection');
+                $data->status = 1;
+                $data->save();
+
+                $req->session()->flash('status','New Daily data added successfully. FCR value= '.$fcr.' and cfc value = '.$cfc.' and previous weight gain = '.$weight_gain);
+            }
+
+            
 
         }
         else{
@@ -450,8 +472,8 @@ class chickenController extends Controller
         
         
 
-        $data = Daily_chicken::find($daily_id);
-        $data->date = $req->input('date');
+            $data = Daily_chicken::find($daily_id);
+            $data->date = $req->input('date');
             $data->chicken_id=$req->input('chicken_id');
             $data->feed_consumption=$req->input('feed_consumption');
             $data->avg_feed_consumption=$avg_feed_consumption;
@@ -468,8 +490,6 @@ class chickenController extends Controller
             $data->rejection=$req->input('rejection');
         
         $data->update();
-
-        
 
         return redirect()->back();
     }

@@ -119,26 +119,26 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label> Date</label>
-                                        <input type="date" name="date" class="form-control input-default" placeholder="Today's Date" />
+                                        <input type="date" name="date" class="form-control input-default" placeholder="Today's Date" required />
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label> Mortality</label>
-                                        <input type="number" name="mortality" class="form-control input-default" placeholder="Mortality" />
+                                        <input type="number" name="mortality" class="form-control input-default" placeholder="Mortality" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label> Rejection</label>
-                                        <input type="number" name="rejection" class="form-control input-default" placeholder="Rejection" />
+                                        <input type="number" name="rejection" class="form-control input-default" placeholder="Rejection" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label> Weight 1 (for 12 chicken in gram)</label>
-                                        <input type="number" name="weight1" step='1' class="form-control input-default" placeholder="Weight 1" />
+                                        <input type="number" name="weight1" step='1' class="form-control input-default" placeholder="Weight 1" required />
 
                                     </div>
                                 </div>
@@ -146,7 +146,7 @@
                                     <div class="form-group">
                                         <label> Weight 2 (for 12 chicken in gram)</label>
 
-                                        <input type="number" name="weight2" step='1' class="form-control input-default" placeholder="Weight 2" />
+                                        <input type="number" name="weight2" step='1' class="form-control input-default" placeholder="Weight 2" required />
 
                                     </div>
                                 </div>
@@ -154,7 +154,7 @@
                                     <div class="form-group">
                                         <label> Weight 3 (for 12 chicken in gram)</label>
 
-                                        <input type="number" name="weight3" step='1' class="form-control input-default" placeholder="Weight 3" />
+                                        <input type="number" name="weight3" step='1' class="form-control input-default" placeholder="Weight 3" required />
 
                                     </div>
                                 </div>
@@ -162,14 +162,14 @@
                                     <div class="form-group">
                                         <label> Weight 4 (for 12 chicken in gram)</label>
 
-                                        <input type="number" name="weight4" step='1' class="form-control input-default" placeholder="Weight 4" />
+                                        <input type="number" name="weight4" step='1' class="form-control input-default" placeholder="Weight 4" required />
 
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label> Feed Consumption (Total in KG)</label>
-                                        <input type="number" name="feed_consumption" step='0.001' class="form-control input-default" placeholder="Feed Consumption" />
+                                        <input type="number" name="feed_consumption" step='0.001' class="form-control input-default" placeholder="Feed Consumption" required />
 
                                     </div>
                                 </div>

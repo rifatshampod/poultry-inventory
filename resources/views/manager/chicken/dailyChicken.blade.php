@@ -120,53 +120,53 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label> Date</label>
-                                    <input type="date" id="editDate" name="date" class="form-control input-default" placeholder="Today's Date" />
+                                    <input type="date" id="editDate" name="date" class="form-control input-default" placeholder="Today's Date" required />
                                 </div>
                             </div>
 
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label> Mortality</label>
-                                    <input type="number" id="editMortality" name="mortality" class="form-control input-default" placeholder="Mortality" />
+                                    <input type="number" id="editMortality" name="mortality" class="form-control input-default" placeholder="Mortality" required />
 
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label> Rejection</label>
-                                    <input type="number" id="editRejection" name="rejection" class="form-control input-default" placeholder="Rejection" />
+                                    <input type="number" id="editRejection" name="rejection" class="form-control input-default" placeholder="Rejection" required />
 
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label> Weight 1 (for 12 chicken in KG)</label>
-                                    <input type="number" id="editWeight1" name="weight1" step='0.001' class="form-control input-default" placeholder="Weight 1" />
-
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label> Weight 2 (for 12 chicken in KG)</label>
-
-                                    <input type="number" id="editWeight2" name="weight2" step='0.001' class="form-control input-default" placeholder="Weight 2" />
+                                    <label> Weight 1 (for 12 chicken in gram)</label>
+                                    <input type="number" id="editWeight1" name="weight1" step='0.001' class="form-control input-default" placeholder="Weight 1" required />
 
 
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label> Weight 3 (for 12 chicken in KG)</label>
+                                    <label> Weight 2 (for 12 chicken in gram)</label>
 
-                                    <input type="number" id="editWeight3" name="weight3" step='0.001' class="form-control input-default" placeholder="Weight 3" />
+                                    <input type="number" id="editWeight2" name="weight2" step='0.001' class="form-control input-default" placeholder="Weight 2" required />
 
 
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label> Weight 4 (for 12 chicken in KG)</label>
+                                    <label> Weight 3 (for 12 chicken in gram)</label>
+
+                                    <input type="number" id="editWeight3" name="weight3" step='0.001' class="form-control input-default" placeholder="Weight 3" required />
+
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label> Weight 4 (for 12 chicken in gram)</label>
 
                                     <input type="number" id="editWeight4" name="weight4" step='0.001' class="form-control input-default" placeholder="Weight 4" />
 
