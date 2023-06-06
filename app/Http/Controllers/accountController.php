@@ -100,23 +100,30 @@ class accountController extends Controller
         if($req->input('paid_from')==1){
             $total = Total_cash::where('farm_id', $req->input('farm_id'))->first();
             if($total){
-                $data = new Expense;
-                $data->date = $req->input('date');
-                $data->farm_id=$req->input('farm_id');
-                $data->house_id=$req->input('house_id');
-                $data->flock_id=$req->input('flock_id');
-                $data->expense_sector_id=$req->input('expense_sector_id');
-                $data->expense_type_id=$req->input('expense_type_id');
-                $data->amount=$req->input('amount');
-                $data->paid_from=$req->input('paid_from');
-                $data->approver=$req->input('approver');
-                $data->reference=$req->input('reference');
-                $data->save();
+                $pettyStock = $total['amount']-$req->input('amount');
+                if($pettyStock<=0){
+                    $req->session()->flash('error','Petty cash stock is lowar than expense amount. Please add Petty cash first.');
+                }
+                else{
+                    $data = new Expense;
+                    $data->date = $req->input('date');
+                    $data->farm_id=$req->input('farm_id');
+                    $data->house_id=$req->input('house_id');
+                    $data->flock_id=$req->input('flock_id');
+                    $data->expense_sector_id=$req->input('expense_sector_id');
+                    $data->expense_type_id=$req->input('expense_type_id');
+                    $data->amount=$req->input('amount');
+                    $data->paid_from=$req->input('paid_from');
+                    $data->approver=$req->input('approver');
+                    $data->reference=$req->input('reference');
+                    $data->save();
 
-                $total->amount -= $req->input('amount');
-                $total->save();
+                    $total->amount -= $req->input('amount');
+                    $total->save();
 
-                $req->session()->flash('status','New Expense added successfully');
+                    $req->session()->flash('status','New Expense added successfully');
+                }
+                
             }
             else{
                 $req->session()->flash('error','No Petty cash available for this farm. Please add Petty cash first.');

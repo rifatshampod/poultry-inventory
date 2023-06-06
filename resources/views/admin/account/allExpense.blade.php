@@ -158,9 +158,8 @@
                             <div class="form-group col-md-4">
                                 <label>House Name</label>
                                 <select class="form-control input-default" name="house_id" id="edit_house_id" required>
-
-
                                     <option value="" selected disabled hidden>Select House</option>
+                                    <option value="0">No House (Whole Farm)</option>
                                     @foreach ($houseList as $item)
                                     <option value="{{$item['id']}}">{{$item['name']}} ({{$item->farm->name}})</option>
                                     @endforeach

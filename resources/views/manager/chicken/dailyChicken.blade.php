@@ -141,7 +141,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label> Weight 1 (for 12 chicken in gram)</label>
-                                    <input type="number" id="editWeight1" name="weight1" step='0.001' class="form-control input-default" placeholder="Weight 1" required />
+                                    <input type="number" id="editWeight1" name="weight1" class="form-control input-default" placeholder="Weight 1" required />
 
 
                                 </div>
@@ -150,7 +150,7 @@
                                 <div class="form-group">
                                     <label> Weight 2 (for 12 chicken in gram)</label>
 
-                                    <input type="number" id="editWeight2" name="weight2" step='0.001' class="form-control input-default" placeholder="Weight 2" required />
+                                    <input type="number" id="editWeight2" name="weight2" class="form-control input-default" placeholder="Weight 2" required />
 
 
                                 </div>
@@ -159,7 +159,7 @@
                                 <div class="form-group">
                                     <label> Weight 3 (for 12 chicken in gram)</label>
 
-                                    <input type="number" id="editWeight3" name="weight3" step='0.001' class="form-control input-default" placeholder="Weight 3" required />
+                                    <input type="number" id="editWeight3" name="weight3" class="form-control input-default" placeholder="Weight 3" required />
 
 
                                 </div>
@@ -168,7 +168,7 @@
                                 <div class="form-group">
                                     <label> Weight 4 (for 12 chicken in gram)</label>
 
-                                    <input type="number" id="editWeight4" name="weight4" step='0.001' class="form-control input-default" placeholder="Weight 4" />
+                                    <input type="number" id="editWeight4" name="weight4" class="form-control input-default" placeholder="Weight 4" required />
 
 
                                 </div>
@@ -176,7 +176,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label> Feed Consumption (Total in KG)</label>
-                                    <input type="number" id="editConsumption" name="feed_consumption" step='0.001' class="form-control input-default" placeholder="Feed Consumption" />
+                                    <input type="number" id="editConsumption" name="feed_consumption" step='0.001' class="form-control input-default" placeholder="Feed Consumption" required />
 
 
                                 </div>
