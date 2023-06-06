@@ -35,6 +35,21 @@ class saleController extends Controller
 
     function getSale(){
 
+        $flock1id = 0;
+        $flock2id = 0;
+        $flock3id = 0;
+        $flock4id = 0;
+
+        $flock1 = Flock::where('farm_id',1)->where('status',1)->get()->first();
+        $flock2 = Flock::where('farm_id',2)->where('status',1)->get()->first();
+        $flock3 = Flock::where('farm_id',3)->where('status',1)->get()->first();
+        $flock4 = Flock::where('farm_id',4)->where('status',1)->get()->first();
+
+        if($flock1){$flock1id=$flock1['id'];}
+        if($flock2){$flock2id=$flock2['id'];}
+        if($flock3){$flock3id=$flock3['id'];}
+        if($flock4){$flock4id=$flock4['id'];}
+
         $saleList1 = Sale::select('sales.*',
         DB::raw('SUM(sales.total_birds) AS sum_of_birds'),
         DB::raw('SUM(sales.total_weight) AS sum_of_weight'),
@@ -44,6 +59,7 @@ class saleController extends Controller
         DB::raw('AVG(sales.per_kg_price) AS avg_kg_price'),
         )
         ->where('farm_id',1)
+        ->where('flock_id', $flock1id)
         ->groupBy('sales.farm_id')
         ->get();
 
@@ -56,6 +72,7 @@ class saleController extends Controller
         DB::raw('AVG(sales.per_kg_price) AS avg_kg_price'),
         )
         ->where('farm_id',2)
+        ->where('flock_id', $flock2id)
         ->groupBy('sales.farm_id')
         ->get();
 
@@ -68,6 +85,7 @@ class saleController extends Controller
         DB::raw('AVG(sales.per_kg_price) AS avg_kg_price'),
         )
         ->where('farm_id',3)
+        ->where('flock_id', $flock3id)
         ->groupBy('sales.farm_id')
         ->get();
 
@@ -80,6 +98,7 @@ class saleController extends Controller
         DB::raw('AVG(sales.per_kg_price) AS avg_kg_price'),
         )
         ->where('farm_id',4)
+        ->where('flock_id', $flock4id)
         ->groupBy('sales.farm_id')
         ->get();
 
