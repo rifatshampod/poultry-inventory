@@ -82,10 +82,132 @@
                     </div>
                 </div>
 
+                {{-- Farm summary --}}
                 <div class="row">
-
                     {{-- Flock Summary --}}
-                    <div class="col-lg-4 col-md-12">
+                    <div class="col-lg-3 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Chicken Stock</h4>
+                                <div class="table-responsive">
+                                    <table class="table header-border table-hover verticle-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Farm</th>
+                                                <th scope="col" style="text-align:right;">Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($flockList as $item)
+                                            <tr>
+                                                <td>{{$item->name}}</td>
+                                                <td>{{$item->farm->name}}</td>
+
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Farm Wise Total Expense --}}
+                    <div class="col-lg-3 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Total Expense</h4>
+                                <div class="table-responsive">
+                                    <table class="table header-border table-hover verticle-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Farm</th>
+                                                <th scope="col" style="text-align:right;">Amount</th>
+                                                <th scope="col" style="text-align:center;">From</th>
+                                                <th scope="col" style="text-align:center;">To</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($chickenList as $item)
+                                            <tr>
+                                                <th>{{$loop->iteration}}</th>
+                                                <td>{{$item->farm->name}}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Fram Wise Petty Cash --}}
+                    <div class="col-lg-3 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Petty Cash</h4>
+                                <div class="table-responsive">
+                                    <table class="table header-border table-hover verticle-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Farm</th>
+                                                <th scope="col" style="text-align:right;">Amount</th>
+                                                {{-- <th scope="col" style="text-align:right;">In</th>
+                                                <th scope="col" style="text-align:right;">Out</th> --}}
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($farmCash as $item)
+                                            <tr>
+                                                <td>{{$item->farm->name}}</td>
+                                                <td style="text-align:right;">{{$item['amount']}}</td>
+
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Farm wise Feed In Stock --}}
+                    <div class="col-lg-3 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Feed Stock</h4>
+                                <div class="table-responsive">
+                                    <table class="table header-border table-hover verticle-middle">
+                                        <thead style="background-color: rgb(0, 0, 0); color:#ffffff">
+
+                                            <tr>
+                                                <th scope="col">Farm</th>
+                                                <th scope="col" style="text-align:right;">Feed</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($farmFeed as $item)
+                                            <tr>
+                                                <td>{{$item->farm->name}}</td>
+                                                <td style="text-align:right;">{{$item->amount}}</td>
+
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                {{-- chicken summary -----------------------}}
+                <div class="row">
+                    {{-- Flock Summary --}}
+                    <div class="col-lg-3 col-md-12">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Active Flocks</h4>
@@ -114,9 +236,8 @@
                             </div>
                         </div>
                     </div>
-
                     {{-- Mortality Summary --}}
-                    <div class="col-lg-4 col-md-12">
+                    <div class="col-lg-3 col-md-12">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Mortality Summary</h4>
@@ -156,7 +277,7 @@
                         </div>
                     </div>
                     {{-- Rejection Summary --}}
-                    <div class="col-lg-4 col-md-12">
+                    <div class="col-lg-3 col-md-12">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Rejection Summary</h4>
@@ -197,7 +318,7 @@
                         </div>
                     </div>
                     {{-- FCR Summary --}}
-                    <div class="col-lg-4 col-md-12">
+                    <div class="col-lg-3 col-md-12">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">FCR Summary</h4>
@@ -229,8 +350,6 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
                 <!--
                 <div class="row">

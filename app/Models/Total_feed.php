@@ -16,6 +16,6 @@ class Total_feed extends Model
 
     public function farm()
     {
-    return $this->belongsTo(Farm::class);
+        return $this->belongsTo(Farm::class);
     }
 }
