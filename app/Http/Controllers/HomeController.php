@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Daily_chicken;
 use App\Models\Flock;
 use App\Models\Chicken;
+use App\Models\Expense;
 use App\Models\Total_cash;
 use App\Models\Total_feed;
 use App\Models\User;
@@ -45,15 +46,17 @@ class HomeController extends Controller
             $flockList = Flock::where('status', 1)
             ->get();
 
-            $chickenList = chicken::leftJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
-            ->select('chickens.*',
+            $chickenList = Chicken::rightJoin('daily_chickens','daily_chickens.chicken_id','=','chickens.id')
+            ->select('chickens.farm_id', 'chickens.house_id',
             DB::raw('SUM(daily_chickens.mortality) AS sum_of_mortality'),
             DB::raw('MAX(daily_chickens.weight_avg) AS avg_weight'), 
             DB::raw('AVG(daily_chickens.fcr) AS avg_fcr'),
+            DB::raw('COUNT(daily_chickens.id) AS total_repeat'),
             DB::raw('SUM(daily_chickens.rejection) AS sum_of_rejection'),
             DB::raw('SUM(chickens.sum_of_doc) AS sum_of_chicken')
             )
             ->groupBy('chickens.farm_id')
+            ->groupBy('chickens.id')
             ->where('chickens.status', 1)
             ->get();
 
@@ -74,7 +77,9 @@ class HomeController extends Controller
             $expense = DB::table('expenses')
                 ->select(DB::raw('SUM(amount) as total, MIN(created_at) as first, MAX(created_at) as last'))
                 ->first();
-            
+            $farmExpense = Expense::GroupBy('farm_id')
+            ->selectRaw('*, sum(amount) as sum')
+            ->get();
             
             $feed = DB::table('total_feeds')
                 ->sum('amount');
@@ -150,11 +155,13 @@ class HomeController extends Controller
                 ->join('chickens','chickens.id','daily_chickens.chicken_id')
                 ->where('chickens.farm_id', $userFarm)
                 ->sum('feed_consumption');
+
+            $farmExpense =1;
         }
 
     
         return view ('admin/dashboard')->with('flockList', $flockList)->with('chicken',$total)
-        ->with('dead',$dead)->with('rejected',$rejected)->with('expense', $expense)
+        ->with('dead',$dead)->with('rejected',$rejected)->with('expense', $expense)->with('farmExpense', $farmExpense)
         ->with('feed', $feed)->with('farmFeed', $farmFeed)->with('feedRestock', $feedRestock)->with('consumption', $consumption)
         ->with('cash', $cash)->with('farmCash', $farmCash)->with('chickenList', $chickenList);
 

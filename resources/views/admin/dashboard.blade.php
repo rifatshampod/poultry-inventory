@@ -82,10 +82,11 @@
                     </div>
                 </div>
 
+                @if(auth()->user()->role==1)
                 {{-- Farm summary --}}
                 <div class="row">
                     {{-- Flock Summary --}}
-                    <div class="col-lg-3 col-md-12">
+                    <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Chicken Stock</h4>
@@ -94,45 +95,16 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">Farm</th>
+                                                <th scope="col">House</th>
                                                 <th scope="col" style="text-align:right;">Amount</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($flockList as $item)
-                                            <tr>
-                                                <td>{{$item->name}}</td>
-                                                <td>{{$item->farm->name}}</td>
-
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    {{-- Farm Wise Total Expense --}}
-                    <div class="col-lg-3 col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Total Expense</h4>
-                                <div class="table-responsive">
-                                    <table class="table header-border table-hover verticle-middle">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Farm</th>
-                                                <th scope="col" style="text-align:right;">Amount</th>
-                                                <th scope="col" style="text-align:center;">From</th>
-                                                <th scope="col" style="text-align:center;">To</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($chickenList as $item)
                                             <tr>
-                                                <th>{{$loop->iteration}}</th>
                                                 <td>{{$item->farm->name}}</td>
+                                                <td>{{$item->house->name}}</td>
+                                                <td style="text-align:right;">{{$item['sum_of_chicken']/$item['total_repeat']}}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -142,215 +114,255 @@
                             </div>
                         </div>
                     </div>
-                    {{-- Fram Wise Petty Cash --}}
-                    <div class="col-lg-3 col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Petty Cash</h4>
-                                <div class="table-responsive">
-                                    <table class="table header-border table-hover verticle-middle">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Farm</th>
-                                                <th scope="col" style="text-align:right;">Amount</th>
-                                                {{-- <th scope="col" style="text-align:right;">In</th>
+                    <div class="col-lg-9 col-md-6">
+                        <div class="row">
+                            {{-- Farm Wise Total Expense --}}
+                            <div class="col-lg-4 col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Total Expense</h4>
+                                        <div class="table-responsive">
+                                            <table class="table header-border table-hover verticle-middle">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Farm</th>
+                                                        <th scope="col" style="text-align:right;">Amount</th>
+                                                        <th scope="col" style="text-align:center;">From</th>
+                                                        <th scope="col" style="text-align:center;">To</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($farmExpense as $item)
+                                                    <tr>
+                                                        <td>{{$item->farm->name}}</td>
+                                                        <td>{{$item['sum']}}</td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- Fram Wise Petty Cash --}}
+                            <div class="col-lg-4 col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Petty Cash</h4>
+                                        <div class="table-responsive">
+                                            <table class="table header-border table-hover verticle-middle">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Farm</th>
+                                                        <th scope="col" style="text-align:right;">Amount</th>
+                                                        {{-- <th scope="col" style="text-align:right;">In</th>
                                                 <th scope="col" style="text-align:right;">Out</th> --}}
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($farmCash as $item)
-                                            <tr>
-                                                <td>{{$item->farm->name}}</td>
-                                                <td style="text-align:right;">{{$item['amount']}}</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($farmCash as $item)
+                                                    <tr>
+                                                        <td>{{$item->farm->name}}</td>
+                                                        <td style="text-align:right;">{{$item['amount']}}</td>
 
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
                                 </div>
-
                             </div>
-                        </div>
-                    </div>
-                    {{-- Farm wise Feed In Stock --}}
-                    <div class="col-lg-3 col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Feed Stock</h4>
-                                <div class="table-responsive">
-                                    <table class="table header-border table-hover verticle-middle">
-                                        <thead style="background-color: rgb(0, 0, 0); color:#ffffff">
+                            {{-- Farm wise Feed In Stock --}}
+                            <div class="col-lg-4 col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Feed Stock</h4>
+                                        <div class="table-responsive">
+                                            <table class="table header-border table-hover verticle-middle">
+                                                <thead>
 
-                                            <tr>
-                                                <th scope="col">Farm</th>
-                                                <th scope="col" style="text-align:right;">Feed</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($farmFeed as $item)
-                                            <tr>
-                                                <td>{{$item->farm->name}}</td>
-                                                <td style="text-align:right;">{{$item->amount}}</td>
+                                                    <tr>
+                                                        <th scope="col">Farm</th>
+                                                        <th scope="col" style="text-align:right;">Feed</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($farmFeed as $item)
+                                                    <tr>
+                                                        <td>{{$item->farm->name}}</td>
+                                                        <td style="text-align:right;">{{$item->amount}}</td>
 
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
                                 </div>
-
                             </div>
+
+                            {{-- Flock Summary --}}
+                            <div class="col-lg-4 col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Active Flocks</h4>
+                                        <div class="table-responsive">
+                                            <table class="table header-border table-hover verticle-middle">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Flock</th>
+                                                        <th scope="col">Farm</th>
+                                                        <th scope="col" style="text-align:right;">Age (Day)</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($flockList as $item)
+                                                    <tr>
+                                                        <td>{{$item->name}}</td>
+                                                        <td>{{$item->farm->name}}</td>
+                                                        <td style="text-align:center;">{{(Carbon\Carbon::parse($item['start_date']))->diffInDays(Carbon\Carbon::now())}}</td>
+
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- Mortality Summary --}}
+                            <div class="col-lg-8 col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Mortality Summary</h4>
+                                        <div class="table-responsive">
+                                            <table class="table header-border table-hover verticle-middle">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Farm</th>
+                                                        <th scope="col">House</th>
+                                                        <th scope="col" style="text-align:right;">Mortality</th>
+                                                        <th scope="col" style="text-align:center;">Rate</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($chickenList as $item)
+                                                    <tr>
+                                                        <th>{{$loop->iteration}}</th>
+                                                        <td>{{$item->farm->name}}</td>
+                                                        <td>{{$item->house->name}}</td>
+                                                        <td style="text-align:right;">{{$item['sum_of_mortality']}}</td>
+
+                                                        <td style="text-align:center;">
+
+                                                            @if(($item['sum_of_mortality']/$item['sum_of_chicken'])*100 < 1) <span class="label gradient-1 btn-rounded">{{number_format(($item['sum_of_mortality']/$item['sum_of_chicken'])*100,1)}}%</span>
+                                                                @elseif(($item['sum_of_mortality']/$item['sum_of_chicken'])*100 >1 && ($item['sum_of_mortality']/$item['sum_of_chicken'])*100 <2) <span class="label gradient-3 btn-rounded">{{number_format(($item['sum_of_mortality']/$item['sum_of_chicken'])*100,1)}}%</span>
+                                                                    @else
+                                                                    <span class="label gradient-2 btn-rounded">{{number_format(($item['sum_of_mortality']/$item['sum_of_chicken'])*100,1)}}%</span>
+                                                                    @endif
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- Rejection Summary --}}
+                            <div class="col-lg-6 col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Rejection Summary</h4>
+                                        <div class="table-responsive">
+                                            <table class="table header-border table-hover verticle-middle">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Farm</th>
+                                                        <th scope="col">House</th>
+                                                        <th scope="col" style="text-align:right;">Rejection</th>
+
+                                                        <th scope="col" style="text-align:center;">Rate</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($chickenList as $item)
+                                                    <tr>
+                                                        <th>{{$loop->iteration}}</th>
+                                                        <td>{{$item->farm->name}}</td>
+                                                        <td>{{$item->house->name}}</td>
+                                                        <td style="text-align:right;">{{$item['sum_of_rejection']}}</td>
+
+                                                        <td style="text-align:center;">
+
+                                                            @if(($item['sum_of_rejection']/$item['sum_of_chicken'])*100 < 1) <span class="label gradient-1 btn-rounded">{{number_format(($item['sum_of_rejection']/$item['sum_of_chicken'])*100,1)}}%</span>
+                                                                @elseif(($item['sum_of_rejection']/$item['sum_of_chicken'])*100 >1 && ($item['sum_of_rejection']/$item['sum_of_chicken'])*100 <2) <span class="label gradient-3 btn-rounded">{{number_format(($item['sum_of_rejection']/$item['sum_of_chicken'])*100,1)}}%</span>
+                                                                    @else
+                                                                    <span class="label gradient-2 btn-rounded">{{number_format(($item['sum_of_rejection']/$item['sum_of_chicken'])*100,1)}}%</span>
+                                                                    @endif
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- FCR Summary --}}
+                            <div class="col-lg-6 col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">FCR Summary</h4>
+                                        <div class="table-responsive">
+                                            <table class="table header-border table-hover verticle-middle">
+                                                <thead style="background-color: rgb(0, 0, 0); color:#ffffff">
+
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Farm</th>
+                                                        <th scope="col">House</th>
+                                                        <th scope="col" style="text-align:right;">FCR</th>
+
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($chickenList as $item)
+                                                    <tr>
+                                                        <th>{{$loop->iteration}}</th>
+                                                        <td>{{$item->farm->name}}</td>
+                                                        <td>{{$item->house->name}}</td>
+                                                        <td style="text-align:right;">{{number_format($item['avg_fcr'],2)}}</td>
+
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
+
+
                     </div>
                 </div>
 
-
-                {{-- chicken summary -----------------------}}
-                <div class="row">
-                    {{-- Flock Summary --}}
-                    <div class="col-lg-3 col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Active Flocks</h4>
-                                <div class="table-responsive">
-                                    <table class="table header-border table-hover verticle-middle">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Flock</th>
-                                                <th scope="col">Farm</th>
-                                                <th scope="col" style="text-align:right;">Age (Day)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($flockList as $item)
-                                            <tr>
-                                                <td>{{$item->name}}</td>
-                                                <td>{{$item->farm->name}}</td>
-                                                <td style="text-align:center;">{{(Carbon\Carbon::parse($item['start_date']))->diffInDays(Carbon\Carbon::now())}}</td>
-
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    {{-- Mortality Summary --}}
-                    <div class="col-lg-3 col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Mortality Summary</h4>
-                                <div class="table-responsive">
-                                    <table class="table header-border table-hover verticle-middle">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Farm</th>
-                                                <th scope="col" style="text-align:right;">Mortality</th>
-                                                <th scope="col" style="text-align:center;">Rate</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($chickenList as $item)
-                                            <tr>
-                                                <th>{{$loop->iteration}}</th>
-                                                <td>{{$item->farm->name}}</td>
-                                                <td style="text-align:right;">{{$item['sum_of_mortality']}}</td>
-
-                                                <td style="text-align:center;">
-
-                                                    @if(($item['sum_of_mortality']/$item['sum_of_chicken'])*100 < 1) <span class="label gradient-1 btn-rounded">{{number_format(($item['sum_of_mortality']/$item['sum_of_chicken'])*100,1)}}%</span>
-                                                        @elseif(($item['sum_of_mortality']/$item['sum_of_chicken'])*100 >1 && ($item['sum_of_mortality']/$item['sum_of_chicken'])*100 <2) <span class="label gradient-3 btn-rounded">{{number_format(($item['sum_of_mortality']/$item['sum_of_chicken'])*100,1)}}%</span>
-                                                            @else
-                                                            <span class="label gradient-2 btn-rounded">{{number_format(($item['sum_of_mortality']/$item['sum_of_chicken'])*100,1)}}%</span>
-                                                            @endif
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    {{-- Rejection Summary --}}
-                    <div class="col-lg-3 col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Rejection Summary</h4>
-                                <div class="table-responsive">
-                                    <table class="table header-border table-hover verticle-middle">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Farm</th>
-                                                <th scope="col" style="text-align:right;">Rejection</th>
-
-                                                <th scope="col" style="text-align:center;">Rate</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($chickenList as $item)
-                                            <tr>
-                                                <th>{{$loop->iteration}}</th>
-                                                <td>{{$item->farm->name}}</td>
-                                                <td style="text-align:right;">{{$item['sum_of_rejection']}}</td>
-
-                                                <td style="text-align:center;">
-
-                                                    @if(($item['sum_of_rejection']/$item['sum_of_chicken'])*100 < 1) <span class="label gradient-1 btn-rounded">{{number_format(($item['sum_of_rejection']/$item['sum_of_chicken'])*100,1)}}%</span>
-                                                        @elseif(($item['sum_of_rejection']/$item['sum_of_chicken'])*100 >1 && ($item['sum_of_rejection']/$item['sum_of_chicken'])*100 <2) <span class="label gradient-3 btn-rounded">{{number_format(($item['sum_of_rejection']/$item['sum_of_chicken'])*100,1)}}%</span>
-                                                            @else
-                                                            <span class="label gradient-2 btn-rounded">{{number_format(($item['sum_of_rejection']/$item['sum_of_chicken'])*100,1)}}%</span>
-                                                            @endif
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    {{-- FCR Summary --}}
-                    <div class="col-lg-3 col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">FCR Summary</h4>
-                                <div class="table-responsive">
-                                    <table class="table header-border table-hover verticle-middle">
-                                        <thead style="background-color: rgb(0, 0, 0); color:#ffffff">
-
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Farm</th>
-                                                <th scope="col" style="text-align:right;">FCR</th>
-
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($chickenList as $item)
-                                            <tr>
-                                                <th>{{$loop->iteration}}</th>
-                                                <td>{{$item->farm->name}}</td>
-                                                <td style="text-align:right;">{{number_format($item['avg_fcr'],2)}}</td>
-
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!--
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
@@ -425,6 +437,164 @@
                     </div>
                 </div>
             -->
+                @else
+                <div class="row">
+                    {{-- Flock Summary --}}
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Active Flocks</h4>
+                                <div class="table-responsive">
+                                    <table class="table header-border table-hover verticle-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Flock</th>
+                                                <th scope="col">Farm</th>
+                                                <th scope="col" style="text-align:right;">Age (Day)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($flockList as $item)
+                                            <tr>
+                                                <td>{{$item->name}}</td>
+                                                <td>{{$item->farm->name}}</td>
+                                                <td style="text-align:center;">{{(Carbon\Carbon::parse($item['start_date']))->diffInDays(Carbon\Carbon::now())}}</td>
+
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Mortality Summary --}}
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Mortality Summary</h4>
+                                <div class="table-responsive">
+                                    <table class="table header-border table-hover verticle-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Farm</th>
+                                                <th scope="col">House</th>
+                                                <th scope="col" style="text-align:right;">Mortality</th>
+                                                <th scope="col" style="text-align:center;">Rate</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($chickenList as $item)
+                                            <tr>
+                                                <th>{{$loop->iteration}}</th>
+                                                <td>{{$item->farm->name}}</td>
+                                                <td>{{$item->house->name}}</td>
+                                                <td style="text-align:right;">{{$item['sum_of_mortality']}}</td>
+
+                                                <td style="text-align:center;">
+
+                                                    @if(($item['sum_of_mortality']/$item['sum_of_chicken'])*100 < 1) <span class="label gradient-1 btn-rounded">{{number_format(($item['sum_of_mortality']/$item['sum_of_chicken'])*100,1)}}%</span>
+                                                        @elseif(($item['sum_of_mortality']/$item['sum_of_chicken'])*100 >1 && ($item['sum_of_mortality']/$item['sum_of_chicken'])*100 <2) <span class="label gradient-3 btn-rounded">{{number_format(($item['sum_of_mortality']/$item['sum_of_chicken'])*100,1)}}%</span>
+                                                            @else
+                                                            <span class="label gradient-2 btn-rounded">{{number_format(($item['sum_of_mortality']/$item['sum_of_chicken'])*100,1)}}%</span>
+                                                            @endif
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Rejection Summary --}}
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Rejection Summary</h4>
+                                <div class="table-responsive">
+                                    <table class="table header-border table-hover verticle-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Farm</th>
+                                                <th scope="col">House</th>
+                                                <th scope="col" style="text-align:right;">Rejection</th>
+
+                                                <th scope="col" style="text-align:center;">Rate</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($chickenList as $item)
+                                            <tr>
+                                                <th>{{$loop->iteration}}</th>
+                                                <td>{{$item->farm->name}}</td>
+                                                <td>{{$item->house->name}}</td>
+                                                <td style="text-align:right;">{{$item['sum_of_rejection']}}</td>
+
+                                                <td style="text-align:center;">
+
+                                                    @if(($item['sum_of_rejection']/$item['sum_of_chicken'])*100 < 1) <span class="label gradient-1 btn-rounded">{{number_format(($item['sum_of_rejection']/$item['sum_of_chicken'])*100,1)}}%</span>
+                                                        @elseif(($item['sum_of_rejection']/$item['sum_of_chicken'])*100 >1 && ($item['sum_of_rejection']/$item['sum_of_chicken'])*100 <2) <span class="label gradient-3 btn-rounded">{{number_format(($item['sum_of_rejection']/$item['sum_of_chicken'])*100,1)}}%</span>
+                                                            @else
+                                                            <span class="label gradient-2 btn-rounded">{{number_format(($item['sum_of_rejection']/$item['sum_of_chicken'])*100,1)}}%</span>
+                                                            @endif
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {{-- FCR Summary --}}
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">FCR Summary</h4>
+                                <div class="table-responsive">
+                                    <table class="table header-border table-hover verticle-middle">
+                                        <thead style="background-color: rgb(0, 0, 0); color:#ffffff">
+
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Farm</th>
+                                                <th scope="col">House</th>
+                                                <th scope="col" style="text-align:right;">FCR</th>
+
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($chickenList as $item)
+                                            <tr>
+                                                <th>{{$loop->iteration}}</th>
+                                                <td>{{$item->farm->name}}</td>
+                                                <td>{{$item->house->name}}</td>
+                                                <td style="text-align:right;">{{number_format($item['avg_fcr'],2)}}</td>
+
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                @endif
+
+
 
             </div>
         </div>
