@@ -31,7 +31,7 @@
                                     <div class="row">
                                         <div class="form-group col-md-4">
                                             <label>Farm Name</label>
-                                            <select class="form-control input-default" name="farm_id" id="farm-dropdown">
+                                            <select class="form-control input-default" name="farm_id" id="farm-dropdown" required>
 
                                                 <option value="" selected disabled hidden>Select Farm</option>
                                                 @foreach ($farmList as $item)
@@ -41,7 +41,7 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>House Name</label>
-                                            <select class="form-control input-default" name="house_id" id="house-dropdown">
+                                            <select class="form-control input-default" name="house_id" id="house-dropdown" required>
 
                                                 <option value="" selected disabled hidden>Select House</option>
                                                 @foreach ($houseList as $item)
@@ -51,20 +51,36 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Date</label>
-                                            <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" />
+                                            <input type="date" class="form-control input-default" name="date" placeholder="Input Start Date" required />
                                         </div>
 
                                         <div class="form-group col-md-4">
-                                            <label>Number of Birds</label>
-                                            <input type="number" class="form-control input-default" name="total_birds" placeholder="Input amount of Birds" />
+                                            <label>Number of Birds (Pcs)</label>
+                                            <input type="number" class="form-control input-default" name="total_birds" placeholder="Input amount of Birds" required />
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label>Total Weight </label>
-                                            <input type="text" class="form-control input-default" name="total_weight" placeholder="Total Weight Sold" />
+                                            <label>Total Weight (KG)</label>
+                                            <input type="number" class="form-control input-default" id="totalWeight" name="total_weight" onchange="calculatePrice(this);" placeholder="Total Weight Sold" required />
+
                                         </div>
+                                        <div class="form-group col-md-4">
+                                            <label>Chicken Quality</label>
+                                            <select class="form-control input-default" name="quality">
+                                                <option value="" selected disabled hidden>Select Quality</option>
+                                                <option>Good</option>
+                                                <option>Bad</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label>Today Price/Kg </label>
+                                            <input type="number" class="form-control input-default" id="kgPrice" step="0.01" name="price_per_kg" onchange="calculatePrice(this);" placeholder="Today per kg price" required />
+
+                                        </div>
+
                                         <div class="form-group col-md-4">
                                             <label>Total Price </label>
-                                            <input type="text" class="form-control input-default" name="total_price" placeholder="Total Price Received" />
+                                            <input type="number" class="form-control input-default" id="totalPrice" step="0.01" name="total_price" placeholder="Total Price Received" readonly required />
                                         </div>
 
 
@@ -90,8 +106,8 @@
                                             <input type="text" class="form-control input-default" name="payment_method" placeholder="Type Payment Method" />
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Branch </label>
-                                            <input type="text" class="form-control input-default" name="branch" placeholder="Type Branch Name/information" />
+                                            <label>Customer Address </label>
+                                            <input type="text" class="form-control input-default" name="branch" placeholder="Type Address" />
                                         </div>
 
                                         <div class="col-md-12 mt-4 text-center">
@@ -177,6 +193,18 @@
         });
 
     </script>
+
+    <script>
+        function calculatePrice(input) {
+            var perkgPrice = parseFloat(document.getElementById("kgPrice").value);
+            var totalWeight = parseFloat(document.getElementById("totalWeight").value);
+            var total = perkgPrice * totalWeight;
+            document.getElementById("totalPrice").value = total;
+
+        }
+
+    </script>
+
 
 
 </body>
