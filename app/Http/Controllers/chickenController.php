@@ -230,8 +230,7 @@ class chickenController extends Controller
              elseif(auth()->user()->farm_id ==4){
                 return view('manager/chicken/allChicken')->with('chickenList', $chickenList4)->with('flock', $flock4);
              }
-             
-
+            
         }
     }
 

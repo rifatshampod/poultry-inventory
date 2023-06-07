@@ -197,6 +197,7 @@ class saleController extends Controller
         $data->total_birds=$req->input('total_birds');
         $data->total_weight=$req->input('total_weight');
         $data->avg_weight=$avgWeight;
+        $data->quality = $req->input('quality');
         $data->total_price=$req->input('total_price');
         $data->avg_price=$avgPrice;
         $data->per_kg_price=$perkgPrice;

@@ -10,7 +10,7 @@ class Sale extends Model
     use HasFactory;
 
     protected $fillable = [
-    'farm_id' , 'house_id' , 'date', 'total_birds','total_weight','avg_weight','total_price','avg_price','per_kg_price','customer','car_no','catching_slip','payment_method','branch', 'status',
+    'farm_id' , 'house_id' , 'date', 'total_birds','total_weight','avg_weight','quality','total_price','avg_price','per_kg_price','customer','car_no','catching_slip','payment_method','branch', 'status',
     ];
     protected $guarded = ['id'];
 
