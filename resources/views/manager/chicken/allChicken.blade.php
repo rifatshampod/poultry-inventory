@@ -119,7 +119,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label> Date</label>
-                                        <input type="date" name="date" class="form-control input-default" placeholder="Today's Date" required />
+                                        <input type="date" name="date" class="form-control input-default" min={{$flock->start_date}} placeholder="Today's Date" required />
                                     </div>
                                 </div>
 

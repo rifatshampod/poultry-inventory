@@ -219,16 +219,16 @@ class chickenController extends Controller
         }
         else{
              if(auth()->user()->farm_id ==1){
-                return view('manager/chicken/allChicken')->with('chickenList', $chickenList1)->with('flock1', $flock1);
+                return view('manager/chicken/allChicken')->with('chickenList', $chickenList1)->with('flock', $flock1);
              }
              elseif(auth()->user()->farm_id ==2){
-                return view('manager/chicken/allChicken')->with('chickenList', $chickenList2)->with('flock2', $flock2);
+                return view('manager/chicken/allChicken')->with('chickenList', $chickenList2)->with('flock', $flock2);
              }
              elseif(auth()->user()->farm_id ==3){
-                return view('manager/chicken/allChicken')->with('chickenList', $chickenList3)->with('flock3', $flock3);
+                return view('manager/chicken/allChicken')->with('chickenList', $chickenList3)->with('flock', $flock3);
              }
              elseif(auth()->user()->farm_id ==4){
-                return view('manager/chicken/allChicken')->with('chickenList', $chickenList4)->with('flock4', $flock4);
+                return view('manager/chicken/allChicken')->with('chickenList', $chickenList4)->with('flock', $flock4);
              }
              
 

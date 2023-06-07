@@ -170,32 +170,34 @@
                                         <label>Vaccination From Hacthery</label>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-3">
+                                        <div class="col-lg-4">
                                             <div class="form-check form-check-inline">
                                                 <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input" name="vaccine[]" value="ND + IB(Live)" />ND + IB(Live)</label>
+                                                    <input type="checkbox" class="form-check-input" name="vaccine[]" value="Cevac Transmune IBD" />Cevac Transmune IBD</label>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3">
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input" name="vaccine[]" value="NDS Yellow" />NDS Yellow</label>
-
-
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input" name="vaccine[]" value="Transmune IBD" />Transmune IBD</label>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3">
+                                        <div class="col-lg-4">
                                             <div class="form-check form-check-inline">
                                                 <label class="form-check-label">
                                                     <input type="checkbox" class="form-check-input" name="vaccine[]" value="Vectormune ND" />Vectormune ND</label>
-
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input" name="vaccine[]" value="ND Yellow" />ND Yellow</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input" name="vaccine[]" value="Cevac BIL" />Cevac BIL</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input" name="vaccine[]" value="Hipraviar Clon-79" />Hipraviar Clon-79</label>
                                             </div>
                                         </div>
                                     </div>
