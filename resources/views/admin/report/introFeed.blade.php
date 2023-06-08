@@ -45,24 +45,27 @@
                                     <div class="row justify-content-center">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Flock</label>
-                                                <select name="flock_id" class="form-control input-default">
-                                                    @foreach ($flockList as $item)
-                                                    <option value="{{$item['id']}}">{{$item['name']}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
                                                 <label>Farm Name</label>
-                                                <select name="farm_id" class="form-control input-default">
+                                                <select name="farm_id" class="form-control input-default" id="flockfarm-dropdown" required>
+                                                    <option selected disabled>Select Farm</option>
                                                     @foreach ($farmList as $item)
                                                     <option value="{{$item['id']}}">{{$item['name']}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Flock</label>
+                                                <select name="flock_id" class="form-control input-default" id="flock-dropdown" required>
+                                                    @foreach ($flockList as $item)
+                                                    <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
                                         <div class="col-md-6">
                                             <div>
                                                 <button type="submit" class="btn mb-1 btn-primary w-100">
@@ -71,6 +74,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </form>
                             </div>
                         </div>
@@ -261,6 +265,26 @@
                         $.each(result.houses, function(key, value) {
                             $("#house-dropdown").append('<option value="' + value.id + '">' + value.name + '</option>');
                         });
+
+                        //console.log(result);
+                    }
+                });
+            });
+
+            $('#flockfarm-dropdown').on('change', function() {
+                var idCountry = this.value;
+                $("#flock-dropdown").html('');
+
+                $.ajax({
+                    url: "{{url('fetch-houses-report')}}"
+                    , type: "POST"
+                    , data: {
+                        farm_id: idCountry
+                        , _token: '{{csrf_token()}}'
+                    }
+                    , dataType: 'json'
+                    , success: function(result) {
+
                         $('#flock-dropdown').html('<option value="">-- Select Flock --</option>');
                         $.each(result.flocks, function(key, value) {
                             $("#flock-dropdown").append('<option value="' + value
@@ -270,6 +294,7 @@
                     }
                 });
             });
+
 
         });
 

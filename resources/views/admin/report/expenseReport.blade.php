@@ -72,7 +72,13 @@
                                             @foreach ($expenseList as $item)
                                             <tr>
                                                 <td>{{\Carbon\Carbon::parse($item['date'])->format('m/d/Y')}}</td>
-                                                <td>{{$item->house->name}}</td>
+                                                <td>
+                                                    @if($item['house_id']==0)
+                                                    Whole Farm
+                                                    @else
+                                                    {{$item->house->name}}
+                                                    @endif
+                                                </td>
                                                 <td>{{$item->expenseType->name}}</td>
                                                 <td>{{$item->expenseSector->name}}</td>
                                                 <td>

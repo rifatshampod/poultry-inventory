@@ -207,7 +207,7 @@
                 var idCountry = this.value;
                 $("#house-dropdown").html('');
                 $.ajax({
-                    url: "{{url('fetch-houses')}}"
+                    url: "{{url('fetch-houses-report')}}"
                     , type: "POST"
                     , data: {
                         farm_id: idCountry

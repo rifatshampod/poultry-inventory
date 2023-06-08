@@ -33,6 +33,7 @@
 
             <div class="container-fluid mt-3">
                 <div class="row">
+                    {{-- Search by flock  --}}
                     <div class="col-lg-6">
                         <div class="card">
                             <div class="card-body">
@@ -46,24 +47,27 @@
                                     <div class="row justify-content-center">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Flock</label>
-                                                <select name="flock_id" class="form-control input-default" required>
-                                                    @foreach ($flockList as $item)
-                                                    <option value="{{$item['id']}}">{{$item['name']}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
                                                 <label>Farm Name</label>
-                                                <select name="farm_id" class="form-control input-default" required>
+                                                <select name="farm_id" class="form-control input-default" id="flockfarm-dropdown" required>
+                                                    <option selected disabled>Select Farm</option>
                                                     @foreach ($farmList as $item)
                                                     <option value="{{$item['id']}}">{{$item['name']}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Flock</label>
+                                                <select name="flock_id" class="form-control input-default" id="flock-dropdown" required>
+                                                    @foreach ($flockList as $item)
+                                                    <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
                                         <div class="col-md-6">
                                             <div>
                                                 <button type="submit" class="btn mb-1 btn-primary w-100">
@@ -239,39 +243,48 @@
     <script src="./plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $('#farm-dropdown').on('change', function() {
+            var idCountry = this.value;
+            $("#house-dropdown").html('');
+            $.ajax({
+                url: "{{url('fetch-houses-report')}}"
+                , type: "POST"
+                , data: {
+                    farm_id: idCountry
+                    , _token: '{{csrf_token()}}'
+                }
+                , dataType: 'json'
+                , success: function(result) {
+                    $('#house-dropdown').html('<option value="">-- Select House --</option>');
+                    $.each(result.houses, function(key, value) {
+                        $("#house-dropdown").append('<option value="' + value.id + '">' + value.name + '</option>');
+                    });
 
-            /*------------------------------------------
-            --------------------------------------------
-            Country Dropdown Change Event
-            --------------------------------------------
-            --------------------------------------------*/
-            $('#farm-dropdown').on('change', function() {
-                var idCountry = this.value;
-                $("#house-dropdown").html('');
-                $.ajax({
-                    url: "{{url('fetch-houses')}}"
-                    , type: "POST"
-                    , data: {
-                        farm_id: idCountry
-                        , _token: '{{csrf_token()}}'
-                    }
-                    , dataType: 'json'
-                    , success: function(result) {
-                        $('#house-dropdown').html('<option value="">-- Select House --</option>');
-                        $.each(result.houses, function(key, value) {
-                            $("#house-dropdown").append('<option value="' + value.id + '">' + value.name + '</option>');
-                        });
-                        $('#flock-dropdown').html('<option value="">-- Select Flock --</option>');
-                        $.each(result.flocks, function(key, value) {
-                            $("#flock-dropdown").append('<option value="' + value
-                                .id + '">' + value.name + '</option>');
-                        });
-                        //console.log(result);
-                    }
-                });
+                    //console.log(result);
+                }
             });
+        });
+        $('#flockfarm-dropdown').on('change', function() {
+            var idCountry = this.value;
+            $("#flock-dropdown").html('');
 
+            $.ajax({
+                url: "{{url('fetch-houses-report')}}"
+                , type: "POST"
+                , data: {
+                    farm_id: idCountry
+                    , _token: '{{csrf_token()}}'
+                }
+                , dataType: 'json'
+                , success: function(result) {
+                    $('#flock-dropdown').html('<option value="">-- Select Flock --</option>');
+                    $.each(result.flocks, function(key, value) {
+                        $("#flock-dropdown").append('<option value="' + value
+                            .id + '">' + value.name + '</option>');
+                    });
+                    //console.log(result);
+                }
+            });
         });
 
     </script>
