@@ -45,6 +45,13 @@
             <div class="container-fluid">
                 <div class="row justify-content-center">
                     <div class="col-lg-9">
+                        <div class="text-right mb-2">
+                            <a href="javascript:window.print()" class="btn btn-primary" id="printPageButton">
+                                <i class="fa fa-print mx-2"></i>
+                                Print
+                            </a>
+                        </div>
+
                         <div class="card p-3">
                             <div class="my-2 text-center">
                                 <h3>Weight Progress Report</h3>

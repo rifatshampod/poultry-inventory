@@ -21466,3 +21466,9 @@ html[dir="rtl"]
 #farmList {
   display: none;
 }
+
+@media print {
+  #printPageButton {
+    display: none;
+  }
+}
