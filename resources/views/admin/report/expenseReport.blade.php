@@ -49,7 +49,6 @@
                         <div class="text-right mb-2">
                             <a href="javascript:window.print()" class="btn btn-primary" id="printPageButton">
                                 <i class="fa fa-print mx-2"></i>
-
                                 Print
                             </a>
                         </div>

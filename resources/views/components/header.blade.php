@@ -138,8 +138,11 @@
 
                 </a>
                 <ul aria-expanded="false">
+                    @if(Auth::user()->role==1)
+
                     <li><a href="all-medicine">Add new medicine name
                         </a></li>
+                    @endif
                     <li>
                         <a href="distribute-medicine">Distribute Medicine</a>
                     </li>
