@@ -33,6 +33,24 @@
             </div>
             <div class="container-fluid mt-3">
 
+                @if (Session::get('status'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{Session::get('status')}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+                @if (Session::get('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{Session::get('error')}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+
+
                 <div class="tab-content br-n pn">
                     <div id="farm-1" class="tab-pane active">
                         <div class="card">
@@ -113,8 +131,8 @@
                             @csrf
                             <div class="row">
 
-                                <input type="hidden" class="form-control input-default" id="chickenId" name="chicken_id" />
-                                <input type="hidden" class="form-control input-default" id="farmId" name="farm_id" />
+                                <input type="text" class="form-control input-default" id="chickenId" name="chicken_id" />
+                                <input type="text" class="form-control input-default" id="farmId" name="farm_id" />
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
@@ -228,7 +246,6 @@
         function openModal(clicked_id) {
             $("#addData").modal("show");
             console.log(clicked_id);
-
 
             document.getElementById("chickenId").value = clicked_id;
             $.ajax({

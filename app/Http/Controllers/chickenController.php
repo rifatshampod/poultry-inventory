@@ -310,15 +310,6 @@ class chickenController extends Controller
 
     function addDailyChicken(Request $req){
 
-        $validated = $req->validate([
-        'chicken_id' => 'required',
-        'feed_consumption' => 'required',
-        'weight1' => 'required',
-        'weight2' => 'required',
-        'weight3' => 'required',
-        'weight4' => 'required',
-        ]);
-
         $fcr = 0;
 
         $chicken = $req->input('chicken_id');
