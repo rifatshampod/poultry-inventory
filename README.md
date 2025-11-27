@@ -1,64 +1,121 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<div align="center">
+  
+  # 🐔 Poultry Inventory
+  **Data-driven poultry farm operations and performance dashboard**
+  
+  [![Tech Stack](https://img.shields.io/badge/Stack-Laravel%208%20%7C%20PHP%20%7C%20MySQL-orange?logo=laravel)](https://laravel.com/)
+  [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+  [![Status](https://img.shields.io/badge/Status-Production-blue)](#)
+  [![Version](https://img.shields.io/badge/Version-1.0.0-purple)](#)
+</div>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 📖 Introduction
+Poultry Inventory is a Laravel 8 application for managing day-to-day poultry farm operations. It centralizes flock onboarding, daily production metrics, feed and medicine usage, workforce details, sales, and accounting so that farm managers can make faster, data-backed decisions.
 
-## About Laravel
+## ✨ Features
+- 🧭 **Role-aware dashboards** highlighting mortality, feed consumption, and cash across farms.
+- 🐣 **Flock lifecycle tracking** from DOC intake through daily weight, mortality, and rejection logging.
+- 🌾 **Feed & medicine stock** management with restocking, distribution, and consumption history.
+- 💵 **Sales and expense** capture, including petty cash controls and house-level allocations.
+- 🧑‍🌾 **HR workflows** for employees, leaves, and payroll oversight.
+- 📊 **Operational reports** by flock, farm, house, or date for mortality, weight, feed, expenses, and sales.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🧠 Use Cases & Examples
+- **Daily performance logging**: Supervisors record mortality, weight averages, and feed consumption per house to keep the dashboard up to date.
+- **Cost traceability**: Accountants post expenses with farm and house context, then review consolidated cash positions before approving payouts.
+- **Decision-ready reporting**: Managers export mortality or feed reports filtered by flock to identify underperforming houses.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Example: Add a new expense entry**
+```bash
+# Submit a farm-specific expense (requires authentication middleware)
+curl -X POST \
+  -F "farm_id=2" \
+  -F "house_id=5" \
+  -F "expense_sector_id=3" \
+  -F "amount=12500" \
+  -F "description=Starter feed delivery" \
+  http://localhost/add-expense-data
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Example: Log daily flock performance**
+```bash
+# Record mortality, rejection, and weight metrics for a house
+curl -X POST \
+  -F "chicken_id=18" \
+  -F "mortality=4" \
+  -F "rejection=1" \
+  -F "feed_consumption=72" \
+  -F "weight_avg=1.45" \
+  -F "fcr=1.72" \
+  http://localhost/add-daily-data
+```
 
-## Learning Laravel
+## 🧰 Tech Stack
+- 🐘 PHP 7.3+ with **Laravel 8** framework (MVC, routing, validation, Eloquent ORM)
+- 🗄️ **MySQL** or compatible relational database for operational data
+- 🎨 **Blade + Bootstrap 5** UI with Laravel Mix asset pipeline
+- 📦 **Composer** for PHP dependencies; **npm** for frontend tooling
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🚀 Getting Started
+### Prerequisites
+- PHP 8.x or 7.3+ with Composer
+- Node.js 14+ with npm
+- MySQL (or MariaDB) instance
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Installation
+```bash
+# Clone and install PHP dependencies
+composer install
 
-## Laravel Sponsors
+# Install frontend tooling
+npm install
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+# Copy environment template and set your secrets
+cp .env.example .env
+php artisan key:generate
+```
 
-### Premium Partners
+### Configuration
+Update database and app settings in `.env`:
+```dotenv
+APP_NAME="Poultry Inventory"
+APP_URL=http://localhost
+APP_ENV=local
+APP_DEBUG=true
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=poultry_inventory
+DB_USERNAME=root
+DB_PASSWORD=secret
+```
 
-## Contributing
+### Database & Assets
+```bash
+# Run schema migrations
+php artisan migrate
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Build frontend assets (development)
+npm run dev
 
-## Code of Conduct
+# Start the application
+php artisan serve
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 🗂️ Project Structure
+```
+app/
+  Http/Controllers/    # Business flows for flocks, feed, medicine, HR, accounts, reporting
+  Models/              # Eloquent models for farms, houses, flocks, chickens, finance, HR
+routes/
+  web.php              # Authenticated web routes and module entrypoints
+resources/views/       # Blade templates for dashboards and CRUD screens
+database/migrations/   # Schema definitions for operational and HR data
+```
 
-## Security Vulnerabilities
+## 🤝 Contributing
+Pull requests are welcome! Please fork the repository, create a feature branch, and open a PR that describes the change and any setup steps.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📜 License
+This project is licensed under the MIT License.
